@@ -1,0 +1,12 @@
+---
+:id: 82970245
+:submitters:
+- :name: Luis Ventura
+  :email: luis.ventura@students.makeschool.com
+:created_at: !ruby/object:ActiveSupport::TimeWithZone
+  utc: 2021-06-23 17:41:47.239554000 Z
+  zone: !ruby/object:ActiveSupport::TimeZone
+    name: America/Los_Angeles
+  time: 2021-06-23 10:41:47.239554000 Z
+:status: processed
+:score: 11.0

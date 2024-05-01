@@ -1,0 +1,12 @@
+---
+:id: 82896723
+:submitters:
+- :name: Anjelica Ambrosio
+  :email: anjelica.ambrosio@students.makeschool.com
+:created_at: !ruby/object:ActiveSupport::TimeWithZone
+  utc: 2021-06-21 22:44:54.936155000 Z
+  zone: !ruby/object:ActiveSupport::TimeZone
+    name: America/Los_Angeles
+  time: 2021-06-21 15:44:54.936155000 Z
+:status: processed
+:score: 12.0

@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  
+html, body {
+    min-height: 100%;
+}
+
+body {
+    background-color:rgb(218,223,217);
+    color: rgb(8,11,23);
+    line-height: 1.75rem;
+}
+
+body.dark {
+    background-color: rgb(8,11,23);
+    color:rgb(218,223,217);
+}
+
+
+.navbar {
+    background-color: rgba(103,173,185,255);
+    color: rgba(250,16,35,255);
+    box-shadow: 0px 0px 10px rgba(239,221,130,255);
+    min-height: 5%;
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    text-transform: uppercase;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body > .navbar {
+    position: fixed; 
+    top: 0;  
+    z-index: 9999;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: space-between;
+    min-width: 10%;
+    list-style-type: none;
+}
+
+.navbar ul h1 {
+    padding-right: 1rem;
+    text-shadow: 2px 2px 2px rgb(8,11,23);
+}
+
+.navbar ul a {
+    display: inline-block;
+    justify-content: space-around;
+    color: rgba(245,242,248,255);
+    padding: 0 1rem;
+}
+
+
+a {
+    color: rgba(179,251,229,255);
+    text-decoration: none;
+}
+
+abbr {
+    color: rgba(195,77,38,255);
+    text-decoration: none;
+}
+
+button {
+    padding: 1em;
+    background: none;
+    border: 4px solid rgba(239,245,246,255);
+    color: rgba(239,245,246,255);
+    border-radius: 4px;
+    font-weight: bolder;
+    box-shadow: inset 0 0 0 0 rgba(8,11,28,255);
+    transition: ease-out 0.3s;
+    outline: none;
+    z-index: 1;
+}
+
+button:hover {
+    box-shadow: inset 300px 0 0 0 rgba(158,246,240,255);
+    cursor: pointer;
+    color: black;
+}
+
+pre, form{
+    background-color: rgba(9,29,44,255);
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 4px;
+}
+
+form {
+    display: grid;
+    grid-gap: 1rem;
+    padding: 2rem;
+}
+
+form > *, textarea{
+    padding: 1rem;
+}
+
+form input, textarea {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border: none;
+    outline: none;
+    padding-left: 1rem;
+    background-color: rgba(221,240,254,255);
+}
+
+
+div[class="container main"] {
+    width: 80%;
+    margin: 5rem auto 0;
+}

@@ -1,0 +1,561 @@
+/* reikamoon css framework */
+body {
+    background-color: rgb(20, 20, 20);
+    color: whitesmoke;
+    margin: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 2px 2px rgb(219, 27, 139);
+}
+
+hr {
+    border-top: 1px solid;
+    border-color: whitesmoke;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+h3 {
+    font-size: 30px;
+}
+
+p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 25px;
+}
+
+a {
+    font-family: 'Exo', sans-serif;
+    font-size: 25px;
+}
+
+a:link {
+    color: rgb(201, 20, 116);
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(3, 155, 216);
+}
+
+b {
+    font-family: "Quicksand", sans-serif;
+}
+
+li {
+    list-style-type: circle;
+}
+
+.bowli {
+    list-style-type: "\1F380";
+}
+
+th {
+    font-family: "Quicksand", sans-serif;
+}
+
+td{
+    font-family: "Quicksand", sans-serif;
+}
+
+
+
+/* Titles */
+.title {
+    font-size: 40px;
+    text-align: center;
+}
+
+.aligncenter {
+    text-align: center;
+}
+
+.headings {
+    text-align: center;
+}
+
+.headingsblue {
+    text-shadow: 2px 2px rgb(3, 155, 216);
+}
+
+/* Navbar */
+
+.navbar {
+    background-color: deeppink;
+    overflow: hidden;
+    border: 1px solid;  
+    border-radius: 25px;
+    text-align: center;
+}
+
+.navbar a {
+    color: whitesmoke;
+    font-size: 24px;
+    text-decoration: none;
+    padding: 20px;
+    text-align: center;
+    text-shadow: 2px 2px rgb(22, 22, 22);
+}
+
+.navbar a:hover {
+    background-color: whitesmoke;
+    color: rgb(20, 20, 20);
+    text-shadow: 1px 1px deeppink;
+}
+
+.navbar a:hover.active {
+    color: deeppink;
+    text-shadow: 1px 1px rgb(20, 20, 20);
+}
+
+.navbar a.active {
+    text-decoration: underline;
+    color: whitesmoke;
+    text-shadow: 2px 2px rgb(10, 10, 10);
+}
+
+
+/* Articles */
+
+.articles {
+   display: grid;
+   grid-template-areas: 
+   "a b c";
+   grid-gap: 20px
+}
+
+.articles h3, p {
+    text-align: center;
+}
+
+.article1 {
+    grid-area: a;
+}
+
+.article2 {
+    grid-area: b;
+}
+
+.article3 {
+    grid-area: c;
+}
+
+/* List */
+
+.list {
+    display: grid;
+    grid-template-areas: 
+    "a b c"
+    "d e f";
+}
+
+li {
+    font-family: "Quicksand", sans-serif;
+    font-size: 21px;
+}
+
+/* Cards */
+
+.gridforcards {
+    display: grid;
+    grid-template-areas: 
+    "q w r"
+    "t y u";
+    align-content: center;
+    justify-content: center;
+    grid-gap: 10px
+}
+
+.cardA {
+    background-color: deeppink;
+    color: whitesmoke;
+    grid-area: q;
+    padding: 5px;
+    border-radius: 20px;
+    border: 2px solid rgb(3, 155, 216);
+    margin-bottom: 0;
+}
+
+.cardA h3 {
+    font-family: "Quicksand", sans-serif;
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+.cardA p {
+    font-family: "Quicksand", sans-serif;
+    font-size: 20px;
+}
+
+.cardB {
+    background-color: rgb(3, 155, 216);
+    color: whitesmoke;
+    grid-area: w;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid whitesmoke;
+    margin-bottom: 0;
+}
+
+.cardB h3 {
+    font-family: "Quicksand", sans-serif;
+    text-shadow: none;
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+.cardB p {
+    font-family: "Quicksand", sans-serif;
+    font-size: 20px;
+}
+
+.cardC {
+    background-color: rgb(219, 219, 219);
+    color: deeppink;
+    border-radius: 25px;
+    border: 2px solid deeppink;
+    grid-area: r;
+    padding: 20px;
+    margin-bottom: 0;
+}
+
+.cardC h3 {
+    font-family: "Quicksand", sans-serif;
+    text-shadow: none;
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+.cardC p {
+    font-family: "Quicksand", sans-serif;
+    font-size: 20px;
+}
+
+.cardD {
+    background-color: deeppink;
+    color:rgb(22, 22, 22);
+    border-radius: 25px;
+    border: 2px solid rgb(3, 155, 216);
+    grid-area: t;
+    padding: 20px;
+    margin-bottom: 0;
+}
+
+.cardD h3 {
+    font-family: "Quicksand", sans-serif;
+    text-shadow: none;
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+.cardD p {
+    font-family: "Quicksand", sans-serif;
+    font-size: 20px;
+}
+
+.cardE {
+    background-color: rgb(3, 155, 216);
+    color: rgb(22, 22, 22);
+    border-radius: 25px;
+    border: 2px solid whitesmoke;
+    grid-area: y;
+    padding: 20px;
+    margin-bottom: 0;
+}
+
+.cardE h3 {
+    font-family: "Quicksand", sans-serif;
+    text-shadow: none;
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+.cardE p {
+    font-family: "Quicksand", sans-serif;
+    font-size: 20px;
+}
+
+.cardF {
+    background-color: rgb(19, 15, 15);
+    color: deeppink;
+    border-radius: 25px;
+    border: 2px solid deeppink;
+    grid-area: u;
+    padding: 20px;
+    margin-bottom: 0;
+}
+
+.cardF h3 {
+    font-family: "Quicksand", sans-serif;
+    text-shadow: none;
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+.cardF p {
+    font-family: "Quicksand", sans-serif;
+    font-size: 20px;
+}
+
+/* Buttons */
+
+button {
+    font-family: 'Chakra Petch', sans-serif;
+    background-color: deeppink;
+    color: whitesmoke;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: whitesmoke;
+    padding: 10px;
+}
+
+.button2 {
+    background-color: rgb(3, 155, 216);
+    color: whitesmoke;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: whitesmoke;
+}
+
+.button3 {
+    background-color: rgb(219, 219, 219);
+    color: rgb(219, 27, 139);
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: deeppink;
+}
+
+.button4 {
+    font-family: 'Chakra Petch', sans-serif;
+    background-color: deeppink;
+    color: rgb(22, 22, 22);
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: rgb(22, 22, 22);
+    padding: 10px;
+}
+
+.button5 {
+    background-color: rgb(3, 155, 216);
+    color: rgb(22, 22, 22);
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: rgb(22, 22, 22);
+}
+
+.button6 {
+    background-color: rgb(19, 15, 15);
+    color: rgb(3, 155, 216);
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: rgb(3, 155, 216);
+}
+
+.button6 {
+    background-color: rgb(19, 15, 15);
+    color: rgb(3, 155, 216);
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: rgb(3, 155, 216);
+}
+
+.button7 {
+    background-color: rgb(19, 15, 15);
+    color: deeppink;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: deeppink;
+}
+
+
+.dangerbutton {
+    background-color: rgb(163, 13, 13);
+    color: whitesmoke;
+    font-size: 20px;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: rgb(0, 0, 0);
+    box-shadow: 0 0 5px rgb(248, 67, 67);
+}
+
+/* Flexbox */
+
+.flexbox {
+    display: flex;
+}
+
+.flexbox > div {
+    font-family: "Chakra Petch", sans-serif;
+    color: whitesmoke;
+    border: 3px solid whitesmoke;
+    border-radius: 24px;
+    text-shadow: 2px 2px deeppink;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.flexbox > div:nth-child(even) {
+    text-shadow: 2px 2px rgb(3, 155, 216);
+}
+
+/* Grids */
+
+.grid2x2 {
+    display: grid;
+	grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "a b"
+    "c d";
+}
+
+.grid2x2 > div {
+    background-color: rgb(22, 22, 22);
+    color: whitesmoke;
+    text-shadow: 2px 2px deeppink;
+    font-family: "Quicksand", sans-serif;
+    font-size: 30px;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid;
+    border-color: whitesmoke;
+}
+
+.grid2x2 > div:nth-child(even) {
+    text-shadow: 2px 2px rgb(3, 155, 216);
+}
+
+.grid3x3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 5px;
+    grid-template-areas: 
+    "a b c"
+    "c d e";
+}
+
+.grid3x3 > div {
+    background-color: deeppink;
+    color: whitesmoke;
+    padding-top: 20px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+/* Forms */
+input{
+    font-family: "Chakra Petch";
+    font-size: 20px;
+
+}
+
+label {
+    font-family: "Chakra Petch";
+    font-size: 25px;
+    color: whitesmoke;
+}
+
+
+input[type=text] {
+    border-radius: 10px;
+    border-color: deeppink;
+    background-color: rgb(20, 20, 20);
+    color: whitesmoke;
+    padding: 12px 20px;
+    display: inline-block;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+
+    font-family: "Quicksand", sans-serif;
+    font-size: 20px;
+    width: 50%;
+
+}
+
+input[type=number] {
+    border-radius: 10px;
+    border-color: deeppink;
+    background-color: rgb(20, 20, 20);
+    color: whitesmoke;
+    padding: 10px;
+    margin-bottom: 10px;
+
+    font-family: "Chakra Petch";
+    font-size: 20px;
+}
+
+input[type=date] {
+    border-radius: 10px;
+    border-color: deeppink;
+    background-color: rgb(20, 20, 20);
+    color: whitesmoke;
+    padding: 10px;
+    margin-bottom: 10px;
+
+    font-family: "Chakra Petch";
+    font-size: 20px;
+}
+
+input[type=radio] {
+    font-family: "Quicksand", sans-serif;
+    font-size: 20px;
+    text-shadow: none;
+}
+
+input[type=submit] {
+    background-color: deeppink;
+    color: whitesmoke;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 20px;
+}
+
+input[type=submit]:hover {
+    background-color: rgb(158, 15, 98);
+}
+
+input[type="reset"] {
+    background-color: rgb(3, 155, 216);
+    color: whitesmoke;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="reset"]:hover {
+    background-color: rgb(8, 58, 78);
+}

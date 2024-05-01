@@ -1,0 +1,12 @@
+---
+:id: 83908961
+:submitters:
+- :name: Jay Mayberry
+  :email: janelle.mayberry@students.dominican.edu
+:created_at: !ruby/object:ActiveSupport::TimeWithZone
+  utc: 2021-07-16 22:56:49.833000000 Z
+  zone: !ruby/object:ActiveSupport::TimeZone
+    name: America/Los_Angeles
+  time: 2021-07-16 15:56:49.833000000 Z
+:status: processed
+:score: 10.0
