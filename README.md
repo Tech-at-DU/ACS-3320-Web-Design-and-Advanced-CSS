@@ -34,27 +34,34 @@ Beyond these you should be able to apply CSS like a boss and bring your ideas to
 
 ## Schedule
 
-**Course Dates:** October 18 – , December 7, 2023
+**Course Dates:** August 26 – , October 11, 2023
 
 **Class Times:** Monday, Wednesday at 9:30 AM PST – 12:15 PM PST
 
-| Class |    Date   |             Topics           | Assignment |
-|:-----:|:---------:|:-----------------------------|:-----------|
-|  1 |  Wed, Oct 18 | [Lesson 1 CSS Review]        | [CSS Zen Garden] |
-|  2 |  Mon, Oct 23 | [Lesson 2 Typography]        | - |
-|  3 |  Wed, Oct 25 | [Lesson 3 Box Model Flex] [Media Queries] | - |
-|  4 |  Mon, Oct 30 | [Lesson 4 Background Images] | [CSS Project Redesign] |
-|  5 |  Wed, Nov  1 | [Lesson 5 CSS Grid]          | - |
-|  6 |  Mon, Nov  6 | [Lesson CSS Position] | - |
-|  7 |  Wed, Nov  8 | [lesson-pseudo-elements] | - |
-|  8 |  Mon, Nov 13 | [Lesson 10 Animation] | [CSS Framework] |
-|  9 |  Wed, Nov 15 | [Lesson 11 Animation] | - |
-| 10 |  Mon, Nov 20 | [3D CSS] | - |
-| 11 |  Wed, Nov 22 | **Thanks Giving Holiday** | - |
-| 12 |  Mon, Nov 27 | [Lesson 11 CSS Preprocessors] | [Web Components] |
-| 13 |  Wed, Nov 29 | [Lesson 12 Web Components 1] | - |
-| 14 |  Mon, Dec  4 | [Lesson 13 Web Components 2] | - |
-| 15 |  Wed, Dec  6 | Final Assessment | [Style Lit Elements](https://www.youtube.com/watch?v=Xt7blcyuw5s) |
+| Class |    Date   |             Topics           | Assignment |  Assessment Due  |
+|:-----:|:---------:|:-----------------------------|:-----------|:-----------------|
+| -  | **Week 1** | - | - | - |
+|  1 |  Tue, Aug 27 | [Lesson 1 CSS Review]        | [CSS Zen Garden] | -          |
+|  2 |  Thu, Aug 28 | [Lesson 2 Typography]        | -          | -                |
+| -  | **Week 2**   | -                            | -          | -                |
+|  3 |  Tue, Sep  3 | [Lesson 3 Box Model Flex] [Media Queries] | - | -            |
+|  4 |  Thu, Sep  5 | [Lesson 4 Background Images] | [CSS Project Redesign] | [CSS Zen Garden] | - |
+| -  | **Week 3**   | -                            | -          | -                |
+|  5 |  Tue, Sep 10 | [Lesson 5 CSS Grid]          | -          | -                |
+|  6 |  Thu, Sep 12 | [Lesson CSS Position]        | -          | -                |
+| -  | **Week 4**   | -                            | -          | -                |
+|  7 |  Tue, Sep 17 | [lesson-pseudo-elements]     | -          | -                |
+|  8 |  Thu, Sep 19 | [Lesson 10 Animation]        | [CSS Framework] | [CSS Project Redesign] |
+| -  | **Week 5**   | -                            | -          | -                |
+|  9 |  Tue, Sep 24 | [Lesson 11 Animation]        | -          | -                |
+| 10 |  Thu, Sep 26 | [3D CSS]                     | -          | -                |
+| -  | **Week 6**   | -                            | -          | -                |
+| 11 |  Tue, Oct  1 | **Thanks Giving Holiday**    | -          | -                |
+| 12 |  Thu, Oct  3 | [Lesson 11 CSS Preprocessors] | [Web Components] | -         |
+| -  | **Week 7**   | -                            | -          | -                |
+| 13 |  Tue, Oct  8 | [Lesson 12 Web Components 1] | -          | -                |
+| 14 |  Thu, Oct  10 | [Lesson 13 Web Components 2] | -         | -                |
+<!-- | 15 |  Wed, Dec  6 | Final Assessment | [Style Lit Elements](https://www.youtube.com/watch?v=Xt7blcyuw5s) | -->
 
 <!-- Lessons -->
 [Lesson 1 CSS Review]: lessons/lesson-01.md
