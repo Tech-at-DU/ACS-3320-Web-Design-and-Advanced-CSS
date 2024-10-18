@@ -10,7 +10,8 @@ The simplified markup looks like this:
 <nav role="navigation">
 	<ul>
 		<li>
-			<a class="design-name">Mid Century Modern</a> by
+			<a class="design-name">Mid Century Modern</a> 
+			by
 			<a href="http://andrewlohman.com/" class="designer-name">Andrew Lohman</a>
 		</li> 
 	</ul>
@@ -247,29 +248,38 @@ body {
 }
 ```
 
-When using Google Fonts rules like these are included in the stylesheet you link to. 
+When using Google Fonts rules like these are included in the stylesheet you link to.
+
+https://fonts.google.com
+
+### Line height and line length
+The `line-height` property controls the vertical space between lines. 
+
+Try it here: https://developer.mozilla.org/en-US/docs/Web/CSS/line-height
+
+Longer lines of type are harder to read, and when lines are longer the space between lines needs to be increased. 
+
+Watch this video: https://pimpmytype.com/line-length-line-height/
+
+Setting `line-height` depends on your font choice and line length. A good starting point is 1.5. This is the same as 150%. (`line-height` is one of few properties that doesn't require a unit!)
 
 ### Pairing Fonts
-
 The creative process of using type has a lot to do with putting two fonts side by side usually with one font as headings titles and the other body text. 
 
-Here are a couple of strategies for pairing fonts:
+Here are some strategies for pairing fonts:
 
-- Use Font weight: Heavy vs Light font
-- Serif against Sans Serif
-- Styles use a display font for headings
-- Pair a font with itself. This works when the font family has a range of weights to choose from. 
+- Use Font weight: Heavy vs Light font. Use the same type face but chnage the weight for body and headings. 
+- Serif against Sans Serif. Contrast two different font families in the body and headings. 
+- Styles use a display font for headings. Display fonts are fonts that are meant to be used at a larger size: https://fonts.google.com/knowledge/glossary/display.
 
 Explore this site for font pairs. Look for combinations described above:
 
 https://www.fontpair.co
 
 ## Type Hierarchy
-
 **A majority of your content is text.** Your text needs to look good and read well. An important part of communication is the order in which you say things.
 
 **Design your type to control the order in which your content is read**.
-
 This image explains it all.
 
 - http://visual.ly/10-building-blocks-visual-hierarchy
@@ -283,7 +293,6 @@ You can use these design elements to create hierarchy in your type:
 - Weight
 
 ### Identify Hierarchy in the wild
-
 Take a look at websites that you use every day and ask yourself what you read first and why you see that item first?
 
 Since we're just working with type for now concentrate on the following properties: 
@@ -295,7 +304,6 @@ Since we're just working with type for now concentrate on the following properti
 - `font-family`
 
 ### CSS Units 
-
 CSS has the amazing ability to use a wide variety of units. To be a master of CSS you must understand these units!
 
 **Absolute Units**
@@ -331,8 +339,7 @@ These units change! They are relative to something else.
 While we're on the discussion fonts and typography let's focus on em and rem. These two units relate directly to fonts. Sizing elements on the page based on the size of your type makes your pages work more harmoniously! 
 
 #### em and rem
-
-An em is equal to the font size of the parent element, while rem is equal to the font size of the root element. 
+An em is equal to the font size of the parent element, while rem is equal to the font size of the **root** element. 
 
 Here is an example from the ZenGarden page.
 
@@ -370,18 +377,19 @@ body {
 
 .summary > p: nth-child(1) {
 	font-size: 2rem; /* 44px (22 * 2) */
-	/* font-size: 2em; 66px (33 * 2) */
+
+	/* If this were sized with em we get 66px (33 * 2) bog difference! */
+	/* font-size: 2em;  */
 }
 ```
 
 ## Challenges 
-
 Improve your typography follow these steps: 
 
 - Decide on a font
 	- Choose a system font or a custom font
 	- Define your font stack
-- Set the base font size. This is important! 
+- Set the base font size. This is important!
 	- Set the base font size in px on the body element. 
 	- Set the base line-height on the body. Start with 1.5  and adjust from there. 
 - Set the font size for all of your headings. 
@@ -392,7 +400,7 @@ Set margins for paragraphs and headings.
 
 ## After Class 
 
-Submit your work to GradeScope! 
+Submit your work to GradeScope!
 
 - Complete the challenges from lesson 1: [CSS Diner CSS ZenGarden Type](lesson-01.md#after-class)
 

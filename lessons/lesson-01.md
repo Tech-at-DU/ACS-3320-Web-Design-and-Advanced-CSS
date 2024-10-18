@@ -48,7 +48,6 @@ Link to a file using the link tag.
 ```
 
 #### Using the Style tag
-
 Anywhere in an HTML document. 
 
 ```HTML
@@ -60,7 +59,6 @@ Anywhere in an HTML document.
 ```
 
 #### Using Inline styles 
-
 Inline styles are added to any tag, these styles style that tag. 
 
 ```HTML
@@ -70,7 +68,6 @@ Inline styles are added to any tag, these styles style that tag.
 ```
 
 #### Styling with JS
-
 You can style elements with JS. All elements have a style property. All CSS properties exist on the style property using a camelcase name.
 
 ```JS
@@ -90,7 +87,6 @@ This will show up as an inline style!
 ```
 
 ### Writing CSS
-
 The CSS language is written blocks we call **Rules**. Each rule begins with a selector and contains a list of properties and values. 
 
 The properties and values are the styles applied to the element identified by the selector.
@@ -105,7 +101,6 @@ h1 {
 The rule above selects all h1 tags and makes them `32px` and `red`. 
 
 #### Selectors
-
 Review your selectors by playing this game: https://flukeout.github.io
 
 I expect you to know all of these selectors! You've looked at this before but I'm sure you don't remember them, time to review! 
@@ -165,7 +160,7 @@ div { /* selects all div tags */ }
 * { /* Selects every tag on the page! */ }
 ```
 
-This selector gets more useful when combined with the selectors below! 
+This selector gets more useful when combined with the selectors, see below! 
 
 **Compound selectors:** 
 
@@ -252,8 +247,39 @@ Did you get all that? This has more than a few options!
 
 Don't memorize the options! Instead, know that nth-child will select an element by it's index. Look up the options when you need them. 
 
-#### Properties
+**Attribute Selector**: The attribute selector targets an element based on its attributes. Remember an attribute is the `name="value"` pairs that defined inside the opening tag. For example: 
 
+```HTML
+<div class="summary" id="zen-summary" role="article">...</div>
+```
+
+In this example `class`, `id`, and `role` are attributes. 
+
+The ZenGarden page doesn't offer a lot of interesting opportunities for using the attribute selector. In other cases the attribute selector can be more useful. 
+
+```HTML
+<form>
+	<input type="text">
+	<input type="checkbox">
+	<input type="color">
+	<button type="submit">Submit</button>
+</form>
+```
+
+Consider the markup above. We could target various elements by their attributes. 
+
+```CSS
+/* Select all inputs with type */
+input[type] { ... }
+/* Select only the input with type="color" */
+input[type="color"] { ... }
+/* Select the element with an attribute that contains 'c' */
+input[type*="c"] { ... }
+/* Select the elements ending with 't' */
+input[type$="t"] { ... }
+```
+
+#### Properties
 properties are always written in the form:
 
 ```CSS
