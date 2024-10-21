@@ -137,19 +137,16 @@ To pass this course you must meet the following requirements:
 - Actively participate in class and abide by the attendance policy
 - Make up all classwork from all absences
 
-<!-- ##  Information Resources
+<!-- 
 
-Any additional resources you may need (online books, etc.) can be found here. You can also find additional resources through the library linked below:
+if this class was self directed
 
-- [make.sc/library](http://make.sc/library)
+- Assignments 
+    - CSSZenGarden
+    - Website Redesign 
+    - CSS Framework
+    - Web Component 
+- Exercises 
+    - 
 
-## Make School Course Policies
-
-- [Program Learning Outcomes](https://make.sc/program-learning-outcomes) - What you will achieve after finishing Make School, all courses are designed around these outcomes.
-- [Grading System](https://make.sc/grading-system) - How grading is done at Make School
-- [Diversity and Inclusion Statement](https://make.sc/diversity-and-inclusion-statement) - Learn about Diversity and Inclusion at Make School
-- [Academic Honesty](https://make.sc/academic-honesty-policy) - Our policies around plagerism, cheating, and other forms of academic misconduct 
-- [Attendance Policy](https://make.sc/attendance-policy) - What we expect from you in terms of attendance for all classes at Make School
-- [Course Credit Policy](https://make.sc/course-credit-policy) - Our policy for how you obtain credit for your courses
-- [Disability Services (Academic Accommodations)](https://make.sc/disability-services) - Services and accommodations we provide for students
-- [Student Handbook](https://make.sc/student-handbook) - Guidelines, policies, and resources for all Make School students -->
+-->
