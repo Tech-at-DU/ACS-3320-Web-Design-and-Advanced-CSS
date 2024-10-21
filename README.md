@@ -109,10 +109,10 @@ Beyond these you should be able to apply CSS like a boss and bring your ideas to
 [Your framework Navbars]: lessons/lesson-08.md#after-class
 [Lesson 9 Form Controls]: lessons/lesson-09.md#after-class
 
-[CSS Zen Garden]: assignments/assignment-01.md
-[CSS Project Redesign]: assignments/assignment-redesign.md 
-[CSS Framework]: projects/css-framework.md 
-[Web Components]: assignments/web-components.md
+[CSS Zen Garden]: ./assignments/css-zen-garden.md
+[CSS Project Redesign]: ./assignments/project-redesign.md 
+[CSS Framework]: ./assignments/css-framework.md 
+[Web Components]: ./assignments/web-components.md
 
 ## Assignments
 

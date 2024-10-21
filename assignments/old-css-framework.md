@@ -1,7 +1,5 @@
 # CSS Framework
 
-This is the first part of a larger assignment to create a CSS framework. 
-
 What is a CSS framework? A framework is a library of code that has opinion about how things should be done. Your CSS framework should supply basic styles and take an opinion about what looks good on the web and how styles should be applied. 
 
 ### Why this assignment?
