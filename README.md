@@ -45,25 +45,25 @@ Beyond these you should be able to apply CSS like a boss and bring your ideas to
 |  2 |  Thu, Oct 24 | [Lesson 2 Typography]        | -          | -                |
 | -  | **Week 2**   | -                            | -          | -                |
 |  3 |  Tue, Oct 29 | [Lesson 3 Box Model Flex] [Media Queries] | - | -            |
-|  4 |  Thu, Oct 31 | [Lesson 4 Background Images] | [CSS Project Redesign] | [CSS Zen Garden] | - |
+|  4 |  Thu, Oct 31 | [Lesson 4 Background Images] | -          | - |
 | -  | **Week 3**   | -                            | -          | -                |
-|  5 |  Tue, Nov  5 | [Lesson 5 CSS Grid]          | -          | -                |
+|  5 |  Tue, Nov  5 | [Lesson 5 CSS Grid]    | [CSS Project Redesign] |[CSS Zen Garden] |
 |  6 |  Thu, Nov  7 | [Lesson CSS Position]        | -          | -                |
 | -  | **Week 4**   | -                            | -          | -                |
 |  7 |  Tue, Nov 12 | [lesson-pseudo-elements]     | -          | -                |
-|  8 |  Thu, Nov 14 | [Lesson 10 Animation]        | [CSS Framework] | [CSS Project Redesign] |
+|  8 |  Thu, Nov 14 | [Lesson 10 Animation]        | -          | -                |
 | -  | **Week 5**   | -                            | -          | -                |
-|  9 |  Tue, Nov 19 | [Lesson 11 Animation]        | -          | -                |
+|  9 |  Tue, Nov 19 | [Lesson 11 Animation]  | [CSS Framework] | [CSS Project Redesign] |
 | 10 |  Thu, Nov 21 | [3D CSS]                     | -          | -                |
 | -  | **Week 6**   | -                            | -          | -                |
 | 11 |  Tue, Nov 26 | **Thanks Giving Holiday**    | -          | -                |
-| 12 |  Thu, Nov 28 | [Lesson 11 CSS Preprocessors] | [Web Components] | -         |
+| 12 |  Thu, Nov 28 | [Lesson 11 CSS Preprocessors] |  | -         |
 | -  | **Week 7**   | -                            | -          | -                |
-| 13 |  Tue, Dec  3 | [Lesson 12 Web Components 1] | -          | -                |
+| 13 |  Tue, Dec  3 | [Lesson 12 Web Components 1] | [Web Components] | [CSS Framework] |
 | 14 |  Thu, Dec  5 | [Lesson 13 Web Components 2] | -          | -                |
 | -  | **Week 8**   | -                            | -          | -                |
 | 13 |  Tue, Dec 10 | TBA                          | -          | -                |
-| 14 |  Thu, Dec 12 | TBA                          | -          | -                |
+| 14 |  Thu, Dec 12 | TBA                          | -          | [Web Components] |
 
 <!-- | 15 |  Wed, Dec  6 | Final Assessment | [Style Lit Elements](https://www.youtube.com/watch?v=Xt7blcyuw5s) | -->
 
