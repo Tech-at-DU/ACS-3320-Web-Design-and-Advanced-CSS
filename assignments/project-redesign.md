@@ -63,20 +63,23 @@ As you work on your redesign or new web page, focus on the following challenges 
    - Keep accessibility in mind throughout your design process. Use semantic HTML and ensure that all interactive elements are keyboard-navigable.
    - Add alternative text for images and consider using ARIA attributes where necessary to enhance accessibility for screen readers.
 
-Here’s a rubric for the redesign or new web page assignment, focusing on creativity, adherence to requirements, and the effective application of design principles:
+## Reflection on Process
+Write a short reflection on your process.
+
+1. **Goals**: Explain your goals and if they were met. 
+2. **Problems**: Talk about the problems encountered and how they were solved. 
+3. **Self Assessment**: Self assess the results.
 
 ---
 
-## **Web Design Redesign or New Page Assignment Rubric**
+## Web Design Redesign or New Page Assignment Rubric
 
 | **Criteria**                            | **Does Not Meet**                            | **Meets Expectations**                         | **Exceeds Expectations**                      | **Points** |
 |------------------------------------------|----------------------------------------------|-----------------------------------------------|------------------------------------------------|------------|
 | **Originality of Design**               | The design lacks originality or shows minimal effort. It closely resembles existing styles without any unique elements. | The design demonstrates some originality and creativity. It reflects personal style but may incorporate common design trends. | The design is highly original, showcasing creativity and a strong personal style. Unique elements enhance the overall experience. | /10        |
-| **Adherence to Project Requirements**    | Multiple requirements are not met, including a lack of necessary elements or modifications to the design process. | Most requirements are met, with all essential elements included. Minor oversights may exist. | All requirements are thoroughly met, with a clear understanding of project goals and elements. | /10        |
 | **Typography and Color Scheme**         | Typography and color choices are inappropriate or poorly applied, leading to a lack of readability or visual appeal. | Typography and color choices are mostly appropriate and enhance readability, though some areas may need improvement. | Typography and color choices are highly effective, contributing to excellent readability and visual harmony throughout the design. | /10        |
 | **Layout and Structure**                 | The overall layout is confusing or poorly structured. Elements do not align properly, and the design lacks cohesion. | The overall layout is functional and mostly well-structured. Elements are aligned appropriately, creating a cohesive design. | The overall layout is expertly structured, with a clear hierarchy and alignment. The design flows seamlessly, creating an engaging user experience. | /10        |
 | **Use of Design Tools**                  | Little or no effort is demonstrated in the use of design tools. Mockups are poorly executed or lack detail. | Adequate use of design tools is demonstrated. Mockups are clear and mostly detailed, though some areas could be refined. | Expert use of design tools is evident. Mockups are detailed, polished, and clearly convey the intended design vision. | /10        |
 | **Reflection on Design Process**         | The reflection is superficial or lacks detail about the design challenges faced and how they were addressed. | The reflection provides some insight into the design process, including challenges faced and solutions applied. | The reflection is thorough, offering deep insights into the design process, challenges faced, and thoughtful solutions. | /10        |
-| **Accessibility Considerations**         | Accessibility features are absent or poorly implemented, leading to potential barriers for users. | Basic accessibility considerations are included, such as semantic HTML and some attention to contrast and navigation. | Comprehensive accessibility considerations are evident, enhancing usability for all users, including those with disabilities. | /10        |
 
-### **Total Points: /70**
+### Total Points: /50
