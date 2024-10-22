@@ -383,6 +383,8 @@ button {
 
 This example shows how to use custom properties to create a button. Your goal is to expand this idea to all aspects of your frameowrk! 
 
+---
+
 ### CSS Framework Assignment Rubric
 
 | **Criteria**                            | **Does Not Meet**                            | **Meets Expectations**                         | **Exceeds Expectations**                      | **Points** |

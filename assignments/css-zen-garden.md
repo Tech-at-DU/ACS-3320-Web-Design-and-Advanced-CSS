@@ -66,8 +66,6 @@ Here are some resources to help you with styling the CSS Zen Garden page:
 - **Color Palettes**: Use tools like [Coolors](https://coolors.co/) or [Adobe Color](https://color.adobe.com/) to create or explore color palettes.
 - **Typography**: Check out [Google Fonts](https://fonts.google.com/) for a variety of free fonts you can use in your designs.
 
-Here’s a rubric for the CSS Zen Garden styling assignment, focusing on creativity, adherence to requirements, and the effective use of CSS:
-
 ---
 
 ### CSS Zen Garden Styling Assignment Rubric
