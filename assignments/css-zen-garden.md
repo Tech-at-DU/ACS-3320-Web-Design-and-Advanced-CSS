@@ -38,6 +38,10 @@ By completing this assignment, you will learn to:
 
 - **Iterate and Test**: Start with a few basic styles, then gradually build upon them. Test your styles frequently to ensure everything looks as intended across different browsers and devices.
 
+- **Start with Type**: Start by styling the type. Choose a font, or fonts, and set the size and line height. 
+
+- **Work from general to specific**: Work from general to specific. Start by styling general elements using the type (tag name) selector. Work your way to more detailed, and then specific elements. 
+
 ## What to Style
 
 When styling the CSS Zen Garden page, consider focusing on:

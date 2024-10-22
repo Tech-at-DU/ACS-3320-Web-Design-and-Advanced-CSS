@@ -1,59 +1,41 @@
 # Assignment: CSS Framework
 
-## **Assignment Title: Build a Classless CSS Framework**
+## Assignment Title: Build a Classless CSS Framework
 
-### **Objective:**
-Students will create a minimal CSS framework that automatically styles standard HTML elements without the need for custom class names. The focus will be on clean, accessible, and aesthetically pleasing designs that work out-of-the-box for semantic HTML.
+### Objective:
+Your goal is to create a minimal CSS framework that styles standard HTML elements without the need for custom class names. The focus will be on clean, accessible, and aesthetically pleasing designs that work out-of-the-box for semantic HTML.
 
-## **Assignment Outline:**
+## Assignment Outline:
 
-### **1. Requirements:**
-Students must:
-- **Style default HTML elements:** Provide consistent and responsive styles for standard HTML tags, including:
-  - Headings (`<h1>` - `<h6>`)
-  - Paragraphs (`<p>`)
-  - Lists (`<ul>`, `<ol>`, `<li>`)
-  - Links (`<a>`)
-  - Tables (`<table>`, `<thead>`, `<tbody>`, `<th>`, `<td>`)
-  - Forms (`<input>`, `<textarea>`, `<select>`, `<button>`)
-  - Media elements (`<img>`, `<video>`)
-- **Ensure a responsive design:** Use fluid typography and a responsive grid without requiring additional classes.
+### 1. Requirements:
+- **Style default HTML elements:** Provide consistent and responsive styles for standard HTML tags. Your stylesheet should style all of the tags in the sample HTML document below.
 - **Focus on simplicity:** Avoid requiring extra classes or IDs. All styling should be applied to default elements.
 - **Maintain accessibility:** Ensure good color contrast, focus styles, and screen reader-friendly elements.
 - **Typography and layout:** Establish a clear visual hierarchy with appropriate spacing, line heights, and font sizes.
 - **Global reset or normalization:** Use a CSS reset or normalize styles to ensure cross-browser consistency.
 - **Use CSS custom properties:** Define all of the important values as CSS custom properties. This will allow the framework to easily modified, and allow different "themes" to be provided (see notes below). 
 
-### **2. Optional Enhancements (Choose 2 or more):**
+### 2. Optional Enhancements (Choose 2 or more):
 - **Custom form field styling:** Make inputs, selects, and buttons visually cohesive and intuitive without extra markup.
 - **Theming support:** Use CSS variables to enable light/dark themes or color schemes.
 - **Print-friendly styles:** Include a basic print stylesheet that adapts the layout for printing.
 - **Minimal animations or transitions** for hover and focus states.
-- **Mobile-first approach:** Prioritize mobile layout in your CSS, making the design responsive from small to large screens.
 
-### **3. Submission Instructions:**
+### 3. Submission Instructions:
 - Submit a GitHub repository containing the framework files.
 - Include a demo page showcasing all the styled elements in action (e.g., a simple webpage with headings, forms, tables, lists, and images).
 - Provide a README file with instructions on how to integrate the framework into any project by linking the CSS file.
 
-### **4. Assessment Criteria:**
+### 4. Assessment Criteria:
 - **Styling completeness:** Default HTML elements are styled appropriately without needing class names.
 - **Responsiveness:** Framework adapts smoothly to various screen sizes.
 - **Code Quality:** Clean, well-organized CSS following best practices.
 - **Accessibility:** Good color contrast, focus styles, and keyboard navigation.
 - **Documentation:** Clear instructions for using the framework, plus a demo page that visually demonstrates the framework's features.
 
-### **5. Resources:**
+## Resources:
 - Examples of minimalist, classless frameworks like [MVP.css](https://andybrewer.github.io/mvp/), [Sakura](https://oxal.org/projects/sakura/), [Simple.css](https://simplecss.org/), and [Tacit](https://github.com/yegor256/tacit).
 - [A11y Project](https://www.a11yproject.com/) for accessibility resources.
-
-### **Stretch Challenge:**
-If you are looking for a challenge try one of these:
-
-- Write a **print-friendly** stylesheet. Use media query print: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Printing revise your styles so they look goo in print. This might: 
-  - Remove color, everything is black and white
-  - Adjust fonts, font size, and line height better readability in print. 
-- Implement **accessible custom form controls** (e.g., styling radio buttons, checkboxes, and selects while maintaining accessibility).
 
 ## Demo HTML
 Use the HTML below as a place to test your framework. 
@@ -277,17 +259,18 @@ The default button style is not very interesting it's also pretty small. Giving 
 
 ```css
 button {
-  padding: 0.5rem 0.75rem;
-  background-color: #fff;
-  border: 1px solid;
-  color: cornflowerblue;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  transition: 300ms;
+  padding: 0.5rem 0.75rem; /* Push the border away from the label */
+  background-color: #fff; 
+  border: 1px solid;     /* Set the border */
+  color: cornflowerblue; /* Set the color */
+  border-radius: 0.5rem; /* Round the corners */
+  font-size: 1rem;       /* Match the base font size */
+  transition: 300ms;     /* Add an animation */
 }
 
 button:hover {
-  background-color: cornflowerblue;
+  /* Invert the foreground and backgroud color on hover */
+  background-color: cornflowerblue; 
   color: #fff;
 }
 ```
@@ -302,19 +285,21 @@ Some custom properties will make this easier to manage. The button uses the same
 
 ```css
 button {
+  /* Define some custom properties for foreground and background colors */
   --bg-color: #fff;
   --fg-color: cornflowerblue;
 
   padding: 0.5rem 0.75rem;
-  background-color: var(--bg-color);
+  background-color: var(--bg-color); /* Background color */
   border: 1px solid;
-  color: var(--fg-color);
+  color: var(--fg-color); /* Foreground color */
   border-radius: 0.5rem;
   font-size: 1rem;
   transition: 300ms;
 }
 
 button:hover {
+  /* Invert the colors on hover */
   background-color: var(--fg-color);
   color: var(--bg-color);
 }
@@ -322,11 +307,11 @@ button:hover {
 
 Now the colors can be edited in one location. 
 
-You'll often want buttons with different colors for different purposes. Look at the button styles in Bootstrap. Your goal is to emulate some of these. 
+You'll often want buttons with different colors for different purposes. Look at the button styles in Bootstrap. You can emulate some of these. 
 
-To change the colors and other styles of buttons using custom properties become very flexible. 
+To change the colors and other styles using custom properties is very flexible. 
 
-Using a class name: 
+**Using a class name**: When a button as the class name `warning` the color is red (tomato). When a button has the class name `action` the color is green (yellowgreen). 
 
 ```css
 button.warning {
@@ -337,6 +322,8 @@ button.action {
   --fg-color: yellowgreen; /* Green button */
 }
 ```
+
+Use these new classes like this. 
 
 ```html
 <button>Login</button>
@@ -372,7 +359,7 @@ button.invert:hover {
 
 **Add an inverted style to your button styles**
 
-What if you want to customize the color of the button? You could write another class or you could set color properties inline.
+What if you want to customize the color of the button? You could write another class or you could set color properties inline. Using this technique devs using your framework could easily customize the appearance. 
 
 ```html
 <button style="--bg-color: violet; --fg-color: #fff">Use Locaton</button>
@@ -394,7 +381,9 @@ button {
 }
 ```
 
-### **CSS Framework Assignment Rubric**
+This example shows how to use custom properties to create a button. Your goal is to expand this idea to all aspects of your frameowrk! 
+
+### CSS Framework Assignment Rubric
 
 | **Criteria**                            | **Does Not Meet**                            | **Meets Expectations**                         | **Exceeds Expectations**                      | **Points** |
 |------------------------------------------|----------------------------------------------|-----------------------------------------------|------------------------------------------------|------------|
