@@ -56,8 +56,8 @@ Beyond these you should be able to apply CSS like a boss and bring your ideas to
 |  9 |  Tue, Nov 19 | [Lesson 11 Animation]  | [CSS Framework] | [CSS Project Redesign] |
 | 10 |  Thu, Nov 21 | [3D CSS]                     | -          | -                |
 | -  | **Week 6**   | -                            | -          | -                |
-| 11 |  Tue, Nov 26 | **Thanks Giving Holiday**    | -          | -                |
-| 12 |  Thu, Nov 28 | [Lesson 11 CSS Preprocessors] |  | -         |
+| 11 |  Tue, Nov 26 | [Lesson 11 CSS Preprocessors] | -          | -                |
+| 12 |  Thu, Nov 28 | **Thanks Giving Holiday** |  | -         |
 | -  | **Week 7**   | -                            | -          | -                |
 | 13 |  Tue, Dec  3 | [Lesson 12 Web Components 1] | [Web Components] | [CSS Framework] |
 | 14 |  Thu, Dec  5 | [Lesson 13 Web Components 2] | -          | -                |
