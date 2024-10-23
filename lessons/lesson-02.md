@@ -252,6 +252,28 @@ When using Google Fonts rules like these are included in the stylesheet you link
 
 https://fonts.google.com
 
+## Font Style strategies
+Here are a couple ideas that you should always use!
+
+1. Set a base font style on the `body`. Why? This styles all of the text on the page, it's easier than styling elements individually, its DRY! 
+	- Set the `font-family`. You should probably be using one of the system font stacks above, unless you have some special plan. 
+	- Set the `font-size`. All elements will pick up this font size, and headings will be a multiple of this size, for example `h1` will be 1.5em. 
+	- ALWAYS set your `line-height`! The default line height is too small. Start with `line-height: 1.5` and adjust from there. Longer lines need more line height.
+2. Set the background and fore ground colors. These are: `background-color` and `color`. Check the contrast with: https://webaim.org/resources/contrastchecker/ This will guarantee that your site is accessible. 
+3. Now look at the headings. You can adjust the `font-size` of each (h1-6). Use `rem` to do this. Something like: 
+	- `h1 { font-size: 3rem }`
+	- `h2 { font-size: 2.5rem }`
+	- `h3 { font-size: 2rem }`
+	- etc. 
+	- Your heading DO NOT have to graduate in size in a mathematical progression! (3, 2.5, 2, 1.5, 1, 0.5 etc.) You can adjust these by eye and decide what looks best. There is no rule that says a subsequent heading must be smaller than the previous heading! 
+4. Elements like: h1-6, p, blockquote, ul, ol all have some margin at the top and bottom. This is what is creating the vertical space between these elements. You should adjust this! Try this: 
+	- Remove the margins on everything with `* { margin: 0; }` Now you will have to set all margins yourself! 
+	- Start by giving all elements a margin on the bottom with something like: `h1, h2, ..., p, blockquote, ul, ol, ... { margin-bottom: 1rem; }` With this everything should have a reasonable margin on the bottom and no margin on the top. From here you can adjust things until they look good. You can also modify specific elements later. 
+
+With these ideas in place you will have styled a majority of your text content. You may need to now style individual items. 
+
+- https://www.wearetonic.uk/articles/choosing-typography-and-line-height-sizes-in-web-design
+
 ### Line height and line length
 The `line-height` property controls the vertical space between lines. 
 
