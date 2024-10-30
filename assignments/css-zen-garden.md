@@ -96,6 +96,7 @@ body#css-zen-garden
         p — CSS standards and compatibility
         p — Browser testing and compatibility guidance
         p — Copyright and content guidelines
+        p - Guidelines
         p[role=contentinfo] — Author credits and sponsor links
 
       footer
