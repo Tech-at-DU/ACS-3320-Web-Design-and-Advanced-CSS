@@ -10,6 +10,11 @@ https://www.youtube.com/playlist?list=PLoN_ejT35AEhF_M9vBuZgW0E4PiDb19oX
 
 Watch videos: lesson 04 1-6
 
+## Examples and notes
+Find the example including image files here:
+
+https://github.com/Tech-at-DU/background-images
+
 ## Background Images
 
 Images that appear in your web pages are either part of the content or part of the design.
