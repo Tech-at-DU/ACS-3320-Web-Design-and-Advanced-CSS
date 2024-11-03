@@ -11,9 +11,14 @@ In this assignment, you will either redesign a previous web project or create a 
    - Consider the purpose of the website, the target audience, and the key features you want to include.
    - Document your goals for the redesign or new design, outlining what improvements you aim to achieve.
 
-2. **Define Project Requirements**:
+2. **Define Project Goals**:
    - List the essential elements your web page must include (e.g., navigation, content sections, footer).
    - Consider any specific functionalities or interactive elements you want to implement.
+   - Consider what you are going to "redesign". Focusing on an area to improve is a good idea. Think about one of these:
+        - Focus on improving typography - Update and impove the typography of your site. adjust the type face, line height, font sizes, font weights, color etc. 
+        - Focus on layout - Improve the layout of your site, use a grid, use flex, think about the columns and structure, consider making a single page type site.
+        - Work on the color and background - Consider using backgroundimages, choose a color palette, use graients.
+    - Documentation! Important! - You must document the changes you are making. Take screenshots of the pages you are going to improve for comparison. 
 
 ## Mocking Up Your Design
 
