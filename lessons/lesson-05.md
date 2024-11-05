@@ -341,7 +341,7 @@ In the media query redefine the grid-template-areas to something like this:
 
 Notice the sidebar has been moved to the bottom! 
 
-## Nested Grids 
+## subgrid 
 The Zen Garden page has three main sections: intro, main, and sidebar. You can use a grid to arrange these but you'd need to define another grid to arrange the children of each of these sections. For example main contains the children: explantion, participation, benefits, requirements, and footer. 
 
 The power of grids fro design is that it gives everything a visual reference to work from. To align nested elements you'd need to define a new grid and make sure that grid used the same column structure as the parent grid. 
@@ -366,6 +366,8 @@ For example:
 ```
 
 This lets the child grid align directly with the parent’s grid lines, making it especially useful in designs where you want inner items to follow the parent grid’s structure.
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Subgrid
 
 ## Mapping grid items to columns
 CSS Grid relies on the line numbers generated automatically by the grid structure, rather than custom names. Here’s an example of the same layout but using numbered lines instead of named ones.
