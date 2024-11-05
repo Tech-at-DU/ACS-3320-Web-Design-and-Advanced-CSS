@@ -445,18 +445,22 @@ Try this example.
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-auto-rows: 100px;
-      gap: 10px;
-      margin: 20px;
+      gap: 1rem;
+      margin: 2rem;
     }
 
     /* Toggle this line for different grid-auto-flow effects */
     /* grid-auto-flow: row;  */
     /* grid-auto-flow: column; */
     .container.row-dense {
-      grid-auto-flow: row dense;
+      /* grid-auto-flow: row dense; */
+      /* grid-auto-flow: row;  */
+      /* grid-auto-flow: column;
+      grid-auto-flow: column dense; */
     }
 
     .container.column-dense {
+      grid-template-rows: 100px 100px 100px 100px;
       grid-auto-flow: column dense;
     }
 
@@ -466,12 +470,12 @@ Try this example.
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 1.2em;
+      font-size: 2em;
     }
 
     /* Larger items for gaps illustration */
     .item-1 { grid-row: span 2; }
-    .item-4 { grid-row: span 2; }
+    .item-4 { grid-row: span 3; }
   </style>
 </head>
 <body>
