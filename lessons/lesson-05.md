@@ -411,6 +411,106 @@ Here, the `item` spans from the `start` line to the `middle` line, making it cle
 
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Grid_layout_using_named_grid_lines
 
+## Fitting grid items to cells
+The `grid-auto-flow` property in CSS Grid controls how items are placed in the grid when there's no specific placement defined for them. It determines both the direction items flow and how they fill available spaces.
+
+- **`row`**: This is the default value. Items are placed in rows from left to right, wrapping into new rows as needed.
+- **`column`**: Items are placed in columns from top to bottom, creating new columns as needed.
+- **`dense`**: Works as an add-on to `row` or `column`. With `dense`, the grid tries to fill in any gaps left by larger items, making the layout more compact by backfilling available spaces with smaller items.
+
+### Example
+
+```css
+.container {
+  display: grid;
+  grid-auto-flow: row dense; /* Fills gaps in row-wise placement */
+}
+```
+
+In this example, items are laid out row by row, with the grid attempting to fit smaller items into any open spaces, optimizing the grid's compactness.
+
+Here's a simple HTML file that demonstrates `grid-auto-flow` with `row`, `column`, and `dense`. This example uses some basic CSS to show how items flow and fill in the gaps when `grid-auto-flow: row dense` is applied.
+
+Try this example. 
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Grid Auto Flow Example</title>
+  <style>
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 100px;
+      gap: 10px;
+      margin: 20px;
+    }
+
+    /* Toggle this line for different grid-auto-flow effects */
+    /* grid-auto-flow: row;  */
+    /* grid-auto-flow: column; */
+    .container.row-dense {
+      grid-auto-flow: row dense;
+    }
+
+    .container.column-dense {
+      grid-auto-flow: column dense;
+    }
+
+    .item {
+      background-color: #4CAF50;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2em;
+    }
+
+    /* Larger items for gaps illustration */
+    .item-1 { grid-row: span 2; }
+    .item-4 { grid-row: span 2; }
+  </style>
+</head>
+<body>
+
+<h1>CSS Grid Auto Flow Example</h1>
+
+<h2>Grid with <code>grid-auto-flow: row dense</code></h2>
+<div class="container row-dense">
+  <div class="item item-1">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+  <div class="item item-4">4</div>
+  <div class="item">5</div>
+  <div class="item">6</div>
+  <div class="item">7</div>
+</div>
+
+<h2>Grid with <code>grid-auto-flow: column dense</code></h2>
+<div class="container column-dense">
+  <div class="item item-1">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+  <div class="item item-4">4</div>
+  <div class="item">5</div>
+  <div class="item">6</div>
+  <div class="item">7</div>
+</div>
+
+</body>
+</html>
+```
+
+### Explanation
+
+- **`row dense`**: In the first example (`.row-dense`), items are placed row by row. The `dense` keyword backfills gaps created by the larger items (like 1 and 4), so smaller items can fill in those spaces.
+- **`column dense`**: In the second example (`.column-dense`), items are placed in columns, filling each column top to bottom before moving to the next. The `dense` keyword again helps fill gaps when possible, optimizing space vertically.
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow
+
 
 ## Resources 
 
