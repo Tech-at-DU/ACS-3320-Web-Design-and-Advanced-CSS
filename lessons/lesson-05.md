@@ -367,6 +367,45 @@ For example:
 
 This lets the child grid align directly with the parent’s grid lines, making it especially useful in designs where you want inner items to follow the parent grid’s structure.
 
+## Mapping grid items to columns
+CSS Grid relies on the line numbers generated automatically by the grid structure, rather than custom names. Here’s an example of the same layout but using numbered lines instead of named ones.
+
+### Using Numbered Lines
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.item {
+  grid-column: 1 / 2; /* Positions the item from column line 1 to line 2 */
+}
+```
+
+In this setup, `grid-column: 1 / 2;` positions `.item` between the first and second column lines. While this is straightforward for simple grids, it can become less readable in more complex layouts where specific sections are better referenced by name.
+
+## Naming columns 
+In CSS Grid, named columns let you assign names to grid lines, making it easier to position items within the grid. You can name grid lines in the `grid-template-columns` or `grid-template-rows` properties by placing names in square brackets. This helps you reference specific lines by name rather than by number, improving readability and maintainability.
+
+For example:
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: [start] 1fr [middle] 2fr [end];
+}
+
+.item {
+  grid-column: start / middle; /* Positions the item from 'start' to 'middle' */
+}
+```
+
+Here, the `item` spans from the `start` line to the `middle` line, making it clear where it should be positioned without relying on numeric line indexes.
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Grid_layout_using_named_grid_lines
+
+
 ## Resources 
 
 - [Complete Guide to CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
