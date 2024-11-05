@@ -385,6 +385,8 @@ CSS Grid relies on the line numbers generated automatically by the grid structur
 
 In this setup, `grid-column: 1 / 2;` positions `.item` between the first and second column lines. While this is straightforward for simple grids, it can become less readable in more complex layouts where specific sections are better referenced by name.
 
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Grid_layout_using_line-based_placement
+
 ## Naming columns 
 In CSS Grid, named columns let you assign names to grid lines, making it easier to position items within the grid. You can name grid lines in the `grid-template-columns` or `grid-template-rows` properties by placing names in square brackets. This helps you reference specific lines by name rather than by number, improving readability and maintainability.
 
