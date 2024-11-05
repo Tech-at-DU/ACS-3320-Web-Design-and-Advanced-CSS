@@ -375,7 +375,6 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Subgrid
 CSS Grid relies on the line numbers generated automatically by the grid structure, rather than custom names. Here’s an example of the same layout but using numbered lines instead of named ones.
 
 ### Using Numbered Lines
-
 ```css
 .container {
   display: grid;
@@ -390,6 +389,11 @@ CSS Grid relies on the line numbers generated automatically by the grid structur
 In this setup, `grid-column: 1 / 2;` positions `.item` between the first and second column lines. While this is straightforward for simple grids, it can become less readable in more complex layouts where specific sections are better referenced by name.
 
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Grid_layout_using_line-based_placement
+
+## span keyword
+When mapping a grid items to columns you can specify the columns. For example: `grid-column: 1 / 3` creates an item that starts at line 1 and ends at line 3, spanning two columns. 
+
+Use the `span` keyword to specify the number of columns. For example: `grid-column: 1 / span 2`, works same as the previous example, creating an item that starts at line 1 and spans two columns. 
 
 ## Naming columns 
 In CSS Grid, named columns let you assign names to grid lines, making it easier to position items within the grid. You can name grid lines in the `grid-template-columns` or `grid-template-rows` properties by placing names in square brackets. This helps you reference specific lines by name rather than by number, improving readability and maintainability.
