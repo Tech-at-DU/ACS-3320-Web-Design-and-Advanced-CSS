@@ -454,9 +454,10 @@ Try this example.
     /* grid-auto-flow: column; */
     .container.row-dense {
       /* grid-auto-flow: row dense; */
-      /* grid-auto-flow: row;  */
-      /* grid-auto-flow: column;
-      grid-auto-flow: column dense; */
+      grid-auto-flow: row;
+      /* grid-auto-flow: column; */
+      /* When auto columns is set extra columns are generated! */
+      /* grid-auto-flow: column dense; */
     }
 
     .container.column-dense {
