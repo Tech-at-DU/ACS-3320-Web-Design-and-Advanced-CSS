@@ -341,6 +341,32 @@ In the media query redefine the grid-template-areas to something like this:
 
 Notice the sidebar has been moved to the bottom! 
 
+## Nested Grids 
+The Zen Garden page has three main sections: intro, main, and sidebar. You can use a grid to arrange these but you'd need to define another grid to arrange the children of each of these sections. For example main contains the children: explantion, participation, benefits, requirements, and footer. 
+
+The power of grids fro design is that it gives everything a visual reference to work from. To align nested elements you'd need to define a new grid and make sure that grid used the same column structure as the parent grid. 
+
+This probably can be more easily solved with subgrid. Subgrid inherits the grid-template-columns and grid-template-rows from the parent grid. 
+
+CSS subgrid is a feature of CSS Grid Layout that allows a nested grid item (a grid inside a grid) to inherit the rows and columns from its parent grid, making it easier to create complex layouts that are aligned with the outer grid structure. When using subgrid, the child grid aligns its rows or columns with the parent grid, which can help maintain consistent alignment and spacing across nested elements without duplicating grid definitions. 
+
+For example:
+
+```css
+.parent {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto;
+}
+
+.child {
+  display: grid;
+  grid-template-columns: subgrid; /* Inherits columns from the parent */
+}
+```
+
+This lets the child grid align directly with the parent’s grid lines, making it especially useful in designs where you want inner items to follow the parent grid’s structure.
+
 ## Resources 
 
 - [Complete Guide to CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
