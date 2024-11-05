@@ -395,6 +395,8 @@ When mapping a grid items to columns you can specify the columns. For example: `
 
 Use the `span` keyword to specify the number of columns. For example: `grid-column: 1 / span 2`, works same as the previous example, creating an item that starts at line 1 and spans two columns. 
 
+This can be used in reverse also. For example: `grid-column: span 2 / 3`. This creates a two column item, ending at grid line 3. 
+
 ## Naming columns 
 In CSS Grid, named columns let you assign names to grid lines, making it easier to position items within the grid. You can name grid lines in the `grid-template-columns` or `grid-template-rows` properties by placing names in square brackets. This helps you reference specific lines by name rather than by number, improving readability and maintainability.
 
