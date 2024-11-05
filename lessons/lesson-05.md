@@ -399,6 +399,8 @@ This can be used in reverse also. For example: `grid-column: span 2 / 3`. This c
 
 `span` can also be used with `grid-area`, for example: `grid-area: span 6 / span 4;` here the element spans 6 columns and 4 rows! 
 
+https://css-tricks.com/almanac/properties/g/grid-column/
+
 ## Naming columns 
 In CSS Grid, named columns let you assign names to grid lines, making it easier to position items within the grid. You can name grid lines in the `grid-template-columns` or `grid-template-rows` properties by placing names in square brackets. This helps you reference specific lines by name rather than by number, improving readability and maintainability.
 
