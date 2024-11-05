@@ -244,6 +244,8 @@ Notice each element is assigned to a grid area by the letter assigned in the tem
 
 In other words `div.header` maps to the area defined by the `h`.
 
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Grid_template_areas
+
 ## Practice with CSS Grid
 
 Above I showed two ways to use CSS Grid. These examples work with only three properties: `grid-template-columns`, `grid-template-areas`, `grid-gap`, and `grid-area`. CSS Grid has a few more properties. 
