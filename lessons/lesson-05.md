@@ -48,6 +48,8 @@ https://www.youtube.com/playlist?list=PLoN_ejT35AEhF_M9vBuZgW0E4PiDb19oX
 
 Watch videos: lesson 05 1-5
 
+Grid Example: https://github.com/Tech-at-DU/grid
+
 ## What is a Grid? 
 
 In design, a grid is used to create a system that arranges things on a page. Think of this as visually organizing your content. 
