@@ -44,11 +44,11 @@ Beyond these you should be able to apply CSS like a boss and bring your ideas to
 |  1 |  Tue, Oct 22 | [Lesson 1 CSS Review]        | [CSS Zen Garden] | -          |
 |  2 |  Thu, Oct 24 | [Lesson 2 Typography]        | -          | -                |
 | -  | **Week 2**   | -                            | -          | -                |
-|  3 |  Tue, Oct 29 | [Lesson 3 Box Model Flex] [Media Queries] [Specificity] | - | -            |
+|  3 |  Tue, Oct 29 | [Lesson 3 Box Model Flex] [Media Queries] | - | -            |
 |  4 |  Thu, Oct 31 | [Lesson 4 Background Images] | -          | - |
 | -  | **Week 3**   | -                            | -          | -                |
 |  5 |  Tue, Nov  5 | [Lesson 5 CSS Grid]    | [CSS Project Redesign] |[CSS Zen Garden] |
-|  6 |  Thu, Nov  7 | [Lesson CSS Position]        | -          | -                |
+|  6 |  Thu, Nov  7 | [Lesson CSS Position] [Specificity]      | -          | -                |
 | -  | **Week 4**   | -                            | -          | -                |
 |  7 |  Tue, Nov 12 | [lesson-pseudo-elements]     | -          | -                |
 |  8 |  Thu, Nov 14 | [Lesson 10 Animation]        | -          | -                |
