@@ -42,6 +42,104 @@ https://www.youtube.com/playlist?list=PLoN_ejT35AEhF_M9vBuZgW0E4PiDb19oX
 
 Watch videos: lesson 03 1-6
 
+## Flex
+Flex is a tool that arranges child elements along a single axis. Use flex to arrange elements in rows or columns. If you are planning a more complex two dimensional layout prefer grid. 
+
+The example below explres the properties of: 
+- `flex-grow`
+- `flex-shrink`
+- `flex-basis`
+
+```HTML
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  border: 1px solid;
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin: 1rem;
+}
+
+button {
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  border-radius: 0.5rem;
+}
+
+
+/* 
+
+This example is about using flex to position these inputs and button. 
+Try the ideas below. Be sure to mix and match them to to see what 
+happens with different combinations.
+
+*/
+form {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid;
+  padding: 2rem;
+}
+
+/* Default properties for flex children */
+form > * {
+  flex: 0 0 auto;
+  /* Same as */
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+
+  /* Think of these as:
+  flex-grow:   max-size;
+  flex-shrink: min-size;
+  flex-basis:  base-size; 
+  */
+
+  /* Try this 
+  all grow equally and have min size of 200px */
+  
+  /* flex-grow: 1; */
+  /* flex-shrink: 0; */
+  /* flex-basis: 200px; */
+
+}
+
+input[placeholder="first name"] {
+  color: red;
+  /* Give all of the extra space to the first item */
+  /* flex-grow: 1; */
+}
+
+input[placeholder="last name"] {
+  color: red;
+  /* Give all of the extra space to the last item */
+  /* flex-grow: 1; */
+}
+
+
+button {
+  /* flex-grow: 1; */
+}
+```
+
+
+
+
+
 ## The Box Model
 
 The box model describes how everything is sized with CSS. 
