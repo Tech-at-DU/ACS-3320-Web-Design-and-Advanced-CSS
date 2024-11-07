@@ -44,7 +44,7 @@ Beyond these you should be able to apply CSS like a boss and bring your ideas to
 |  1 |  Tue, Oct 22 | [Lesson 1 CSS Review]        | [CSS Zen Garden] | -          |
 |  2 |  Thu, Oct 24 | [Lesson 2 Typography]        | -          | -                |
 | -  | **Week 2**   | -                            | -          | -                |
-|  3 |  Tue, Oct 29 | [Lesson 3 Box Model Flex] [Media Queries] | - | -            |
+|  3 |  Tue, Oct 29 | [Lesson 3 Box Model Flex] [Media Queries] [Specificity] | - | -            |
 |  4 |  Thu, Oct 31 | [Lesson 4 Background Images] | -          | - |
 | -  | **Week 3**   | -                            | -          | -                |
 |  5 |  Tue, Nov  5 | [Lesson 5 CSS Grid]    | [CSS Project Redesign] |[CSS Zen Garden] |
@@ -98,6 +98,7 @@ Beyond these you should be able to apply CSS like a boss and bring your ideas to
 [Lesson 18]: lessons/lesson-18.md
 [Lesson 19]: lessons/lesson-19.md
 [Media Queries]: lessons/media-queries.md
+[Specificity]: lessons/specificity.md
 
 <!-- Assignments -->
 [CSS Diner CSS ZenGarden Type]: lessons/lesson-01.md#after-class
