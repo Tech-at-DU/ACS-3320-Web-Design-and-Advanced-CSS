@@ -51,6 +51,17 @@ The example below explres the properties of:
 - `flex-basis`
 
 ```HTML
+<div>
+  <form>
+    <input type="text" placeholder="first name">
+    <input type="text" placeholder="last name">
+    <input type="date" placeholder="birth day">
+    <button type="submit">Submit</button>
+  </form>
+</div>
+```
+
+```CSS
 html, body {
   height: 100%;
 }
