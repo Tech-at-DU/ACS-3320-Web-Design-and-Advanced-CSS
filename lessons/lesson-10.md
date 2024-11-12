@@ -52,6 +52,8 @@ What is happening in these animations? Don't worry about the technical details j
 
 ## Video lessons 
 
+Download this repo and take a look at the examples here: https://github.com/Tech-at-DU/transition-examples
+
 - https://www.youtube.com/playlist?list=PLoN_ejT35AEg-xKnTgIjE5VU-3IHO2N6i
 
 ## Making things move
