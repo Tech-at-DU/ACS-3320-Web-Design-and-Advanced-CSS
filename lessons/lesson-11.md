@@ -13,6 +13,10 @@ All of the best applications use motion to their advantage! You want your applic
 - Use `@keyframes` define key frames
 - Use `animation` to make things move
 
+## Examples 
+
+Download these example files: https://github.com/Tech-at-DU/animation-examples
+
 ## key frames
 
 Animation is the creation of many still images that are played back quickly giving the appearance of smooth motion. 
