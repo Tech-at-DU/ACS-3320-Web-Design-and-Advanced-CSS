@@ -102,27 +102,26 @@ Why do this? If you want to create an animation that flips something over reveal
     animation-duration: 4000ms;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-  }
+    & > div {
+      /* This is a circle with the word front or back */
+      width: 100px;
+      height: 100px;
+      background-color: wheat;
+      font-size: 24px;
+      text-align: center;
+      line-height: 100px;
+      border-radius: 50%;
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
 
-  .box > div {
-    /* This is a circle with the word front or back */
-    width: 100px;
-    height: 100px;
-    background-color: wheat;
-    font-size: 24px;
-    text-align: center;
-    line-height: 100px;
-    border-radius: 50%;
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
-
-  .box > div:last-child {
-    /* The back circle is flipped 180deg */
-    transform: rotateY(180deg);
+   &> div:last-child {
+      /* The back circle is flipped 180deg */
+      transform: rotateY(180deg);
+    }
   }
 
   /* Notice we're animating the rotateY property! */
@@ -137,7 +136,7 @@ Why do this? If you want to create an animation that flips something over reveal
   }
 
   body, html {
-    heigh: 100%;
+    height: 100%;
   }
 
   body {
