@@ -155,68 +155,63 @@ The two divs inside of .box are positioned back to back and they are backface hi
 **Lets make that interactive!**
 
 ```HTML
-<div class="container">
-  <div class="box">
+<div class="container-2">
+  <div class="box-2">
     <div>Front</div>
     <div>Back</div>
   </div>
 </div>
 
 <style>
-  .container {
+  .container-2 {
     width: 200px;
     height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid;
+
+    & .box-2 {
+      width: 120px;
+      height: 120px;
+      background-color: cornflowerblue;
+      position: relative;
+      /* Required to preserve 3d transformations on children
+      This property determines whether children of the element
+      are flattened or transformed in 3d. See: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-style */
+      transform-style: preserve-3d;
+      /* For browser support and compatibility */
+      webkit-transform-style: preserve-3d;
+      transform: perspective(400px) rotateY(0deg);
+      transition: 1000ms;
+
+      & > div {
+        width: 100px;
+        height: 100px;
+        background-color: wheat;
+        font-size: 24px;
+        text-align: center;
+        line-height: 100px;
+        border-radius: 50%;
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        /* Hides the back side of 3d elements */
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+      }
+      
+
+      & > div:last-child {
+        /* Flip the back side element */
+        transform: translateZ(-1px) rotateY(180deg);
+      }
+    }
+    &:hover > .box-2 {
+      transform: perspective(400px) rotateY(180deg);
+    }
   }
-
-  .box {
-    width: 120px;
-    height: 120px;
-    background-color: tomato;
-    position: relative;
-    /* Required to preserve 3d transformations on children
-    This property determines whether children of the element
-    are flattened or transformed in 3d. See: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-style */
-    transform-style: preserve-3d;
-    /* For browser support and compatibility */
-    -webkit-transform-style: preserve-3d;
-    animation-name: spin;
-    animation-duration: 4000ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-
-    transform: perspective(400px) rotateY(0);
-    transition: 1000ms;
-  }
-
-  .container:hover>.box {
-    transform: perspective(400px) rotateY(180deg);
-  }
-
-  .box > div {
-    width: 100px;
-    height: 100px;
-    background-color: wheat;
-    font-size: 24px;
-    text-align: center;
-    line-height: 100px;
-    border-radius: 50%;
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    /* Hides the back side of 3d elements */
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
-
-  .box>div:last-child {
-    /* Flip the back side element */
-    transform: translateZ(-1px) rotateY(180deg);
-  }
-
+  
   body,
   html {
     height: 100%;
