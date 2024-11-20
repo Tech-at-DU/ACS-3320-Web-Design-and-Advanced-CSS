@@ -70,15 +70,17 @@ You want to cover as much this with your framework as you can but also recognize
     <p><strong>HTML</strong> and <strong>CSS</strong> are the foundation of every website. Start by mastering these two technologies to create well-structured and visually appealing web pages. <a href="#resources">Check out our recommended resources</a> for more.</p>
     <blockquote>“The best way to learn is to build. Start small, then build bigger.”</blockquote>
     <pre>
-      <!-- Sample HTML structure -->
-      <html>
-        <head>
-          <title>My First Web Page</title>
-        </head>
-        <body>
-          <h1>Welcome to My Website</h1>
-        </body>
-      </html>
+      <code>
+      &#x3C;!-- Sample HTML structure --&#x3E;
+        &#x3C;html&#x3E;
+          &#x3C;head&#x3E;
+            &#x3C;title&#x3E;My First Web Page&#x3C;/title&#x3E;
+          &#x3C;/head&#x3E;
+          &#x3C;body&#x3E;
+            &#x3C;h1&#x3E;Welcome to My Website&#x3C;/h1&#x3E;
+          &#x3C;/body&#x3E;
+        &#x3C;/html&#x3E;Foo &#xA9; bar &#x1D306; baz &#x2603; qux
+      </code>
     </pre>
   </section>
 
