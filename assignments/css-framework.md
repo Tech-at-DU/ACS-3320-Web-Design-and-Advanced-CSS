@@ -70,15 +70,17 @@ You want to cover as much this with your framework as you can but also recognize
     <p><strong>HTML</strong> and <strong>CSS</strong> are the foundation of every website. Start by mastering these two technologies to create well-structured and visually appealing web pages. <a href="#resources">Check out our recommended resources</a> for more.</p>
     <blockquote>“The best way to learn is to build. Start small, then build bigger.”</blockquote>
     <pre>
-      <!-- Sample HTML structure -->
-      <html>
-        <head>
-          <title>My First Web Page</title>
-        </head>
-        <body>
-          <h1>Welcome to My Website</h1>
-        </body>
-      </html>
+      <code>
+      &#x3C;!-- Sample HTML structure --&#x3E;
+        &#x3C;html&#x3E;
+          &#x3C;head&#x3E;
+            &#x3C;title&#x3E;My First Web Page&#x3C;/title&#x3E;
+          &#x3C;/head&#x3E;
+          &#x3C;body&#x3E;
+            &#x3C;h1&#x3E;Welcome to My Website&#x3C;/h1&#x3E;
+          &#x3C;/body&#x3E;
+        &#x3C;/html&#x3E;Foo &#xA9; bar &#x1D306; baz &#x2603; qux
+      </code>
     </pre>
   </section>
 
@@ -382,6 +384,135 @@ button {
 ```
 
 This example shows how to use custom properties to create a button. Your goal is to expand this idea to all aspects of your frameowrk! 
+
+
+
+
+
+## Cascading Varsity example
+
+```CSS
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <style>
+    :root {
+      /* Custom property names must begin with --
+
+      Defining custom proeprties in :root makes them available 
+      everywhere like global constants
+
+      Anything can be a value for a cusom property */
+
+      --color-action: tomato;
+      --font-size: 20px;
+      --number: 2;
+      --size: 200px;
+      --easing: cubic-bezier(0.075, 0.82, 0.165, 1);
+      --font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      /* Access the value of a custom property with var() */
+      font-family: var(--font-stack);
+      font-size: var(--font-size);
+    }
+  </style>
+
+  <p>Custom properties.</p>
+  
+  <style>
+    button {
+      background-color: var(--color-action);
+      width: var(--size);
+      font-size: var(--font-size);
+    }
+  </style>
+
+  <button>Button 1</button>
+
+
+  <p>This button uses the class "blue" which changes cascades a new 
+    value for --color-action. The button uses the color cornflowerblue instead.</p>
+  <style>
+    .blue {
+      --color-action: cornflowerblue;
+    }
+  </style>
+
+  <button class="blue">Blue Button</button>
+
+  <p>If a property might not be defined you can supply a fallback value.</p>
+
+  <style>
+    h1 {
+      color: var(--not-defined, gold);
+    }
+  </style>
+
+  <h1>Uses undefined var</h1>
+
+  <style>
+    .button {
+      /* Create a localy scoped var from some global vars */
+      /* Notice these have fallbacks to set a default */
+
+      --fg-color: var(--button-fg-color, cadetblue);
+      --bg-color: var(--button-bg-color, white);
+
+      display: inline-block;
+      color: var(--fg-color);
+      background-color: var(--bg-color);
+      border:1px solid;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      /* Here we use the local vars again */
+
+      background-color: var(--fg-color);
+      color: var(--bg-color);
+    }
+  </style>
+
+  <a class="button" href="#">Anchor tag</a>
+
+  <p>You can override the default colors in a few ways.</p>
+
+  <style>
+    .warning {
+      /* Use a class to set the fg and bg colors */
+
+      --button-fg-color: tomato;
+      --button-bg-color: rgb(251, 251, 216);
+    }
+  </style>
+
+  <a class="button warning" href="#">Anchor tag</a>
+
+  <!-- Use an inline style -->
+  <a class="button" style="--button-fg-color: purple; --button-bg-color: yellowgreen" href="#">Anchor tag</a>
+
+  <!-- It is also possible to override the default colors in other 
+   ways using the rules of selectors. -->
+
+</body>
+</html>
+```
+
+
+
+
+
 
 ---
 

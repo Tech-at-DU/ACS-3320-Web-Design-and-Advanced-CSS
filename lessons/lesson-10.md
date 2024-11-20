@@ -50,6 +50,10 @@ Explore some CSS animations and identify what properties are being animated.
 
 What is happening in these animations? Don't worry about the technical details just _identify which properties are changing_.
 
+## Example Code
+
+Download this repo and take a look at the examples here: https://github.com/Tech-at-DU/transition-examples
+
 ## Video lessons 
 
 - https://www.youtube.com/playlist?list=PLoN_ejT35AEg-xKnTgIjE5VU-3IHO2N6i
