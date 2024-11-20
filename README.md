@@ -53,7 +53,7 @@ Beyond these you should be able to apply CSS like a boss and bring your ideas to
 |  7 |  Tue, Nov 12 | [lesson-pseudo-elements]     | -          | -                |
 |  8 |  Thu, Nov 14 | [Lesson 10 Animation]        | -          | -                |
 | -  | **Week 5**   | -                            | -          | -                |
-|  9 |  Tue, Nov 19 | [Lesson 11 Animation]  | [CSS Framework] | [CSS Project Redesign] |
+|  9 |  Tue, Nov 19 | [Lesson 11 Animation] [Custom Properties] | [CSS Framework] | [CSS Project Redesign] |
 | 10 |  Thu, Nov 21 | [3D CSS]                     | -          | -                |
 | -  | **Week 6**   | -                            | -          | -                |
 | 11 |  Tue, Nov 26 | [Lesson 11 CSS Preprocessors] | -          | -                |
@@ -79,6 +79,8 @@ Beyond these you should be able to apply CSS like a boss and bring your ideas to
 [Lesson 9 Form Controls]: lessons/lesson-09.md
 [Lesson 10 Animation]: lessons/lesson-10.md
 [Lesson 11 Animation]: lessons/lesson-11.md
+
+[Custom Properties]: lessons/custom-properties.md
 
 [3D CSS]: lessons/3d-css.md
 

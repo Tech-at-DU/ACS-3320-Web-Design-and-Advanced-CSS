@@ -1,23 +1,17 @@
 # FEW 2.2 - Advanced CSS - CSS Custom Properties 
-
-CSS Custom properties are a feature that allows you to define variables that you can use in CSS. Custom properties are native in the browser. 
+CSS Custom properties are a feature that allows you to define variables that you can use in CSS. Custom properties are native in the browser, unlike variables in CSS preprocessors like SASS. 
 
 ## Why you should know this?
-
-CSS Custom Properties are a new game-changing feature. This expands what you can do with the CSS language immensely. 
-
-Besides making your CSS code skills up to date it will empower your projects with cutting edge CSS tech, save you time and make your CSS more flexible and powerful. 
+Custom properties will empower your projects, save you time and make your CSS more flexible and powerful. 
 
 ## Learning Objectives
-
-1. Explain CSS Custom Properties their features and use cases 
+1. Describe CSS Custom Properties their features and use cases 
 2. Use CSS Custom properties in real-world applications
 3. Use Math operations in CSS with calc()
 4. Use Reset CSS to remove browser inconsistencies
 
 ## Styling buttons 
-
-Before we start styling buttons we need to answer these questions:
+The examples presented will apply custom properties to the design of buttons. Before we start styling buttons we need to answer these questions:
 
 - What's a button? 
 - When do we use them? 
@@ -30,26 +24,13 @@ Before you start to design your buttons it's good to take a look at what other p
 - https://material.io/components/buttons
 
 Now answer these questions:
-
 - What properties do you see here? 
 - What different styles are offered?
 
-### Making your buttons
-
-Let's start by emulating the ideas in Bootstrap, Foundation, and Material. These are part of a larger language of what people consider "buttons". 
-
-Start with this Repl. 
-
-https://repl.it/join/evglxucp-mitchellhudson
-
-Using the Repl above create a style for the button. 
-
 ## CSS Custom Properties
-
-CSS Custom Properties let you define variables in CSS. You're defining a new CSS property, hence the name. In use, it feels like variables that you are familiar with from other languages. 
+CSS Custom Properties let you define variables in CSS. Unlike variables in other programming languages custom properties act like properties in CSS, and just like properties if the value of a custom property changes, the page updates to reflect that change. 
 
 ### Defining a custom property
-
 Properties names must begin with `--`, rest of the name can be anything that would normally work in CSS (think: kabob-case). 
 
 CSS Custom properties must be defined in a block. 
@@ -70,15 +51,17 @@ body {
   /* Accessible to body and it's descendants */
   --color-primary: rgba(123, 37, 44, 1.0); 
   --font-size: 18px;
+
 }
 
 h1 {
   /* Available to all h1 and their descendants */
   --font-size: 2em;
+
 }
 ```
 
-Assigning a value is like setting the value of a property in CSS.`:root` is a special selector that represents the root of your CSS scope. All other elements descendants `:root`. Defining variables here make them accessible to all other elements. Think of this as global scope. 
+Assigning a value is like setting the value of a property in CSS.`:root` is a special selector that represents the root of your CSS scope. All other elements are descendants `:root`. Defining variables here make them accessible to all other elements. Think of this as **global scope**. 
 
 ```CSS
 :root {
@@ -92,12 +75,14 @@ Assigning a value is like setting the value of a property in CSS.`:root` is a sp
 }
 ```
 
-### Values 
+Using custom properties like this is like defining global constants. 
 
+### Values 
 Any value that would work in CSS can be assigned to a property. 
 
 ```CSS
-:root { /* Define custom properties on :root */
+:root { 
+  /* Define custom properties on :root */
   --golden-ratio: 1.618; /* number no unit */
   --base-font-size: 16px; /* number with a unit */
   --bg-color: #333; /* Color */
@@ -106,7 +91,6 @@ Any value that would work in CSS can be assigned to a property.
 ```
 
 ## What's `:root`?
-
 `:root` is a pseudo-element that matches the root element of the document tree. This is identical to the `<html>` element. `:root` has a higher [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/:root).
 
 By declaring custom properties on `:root` they become global and available everywhere. 
@@ -114,7 +98,6 @@ By declaring custom properties on `:root` they become global and available every
 Otherwise declaring a custom property on an element makes it available to that element and inherited by the element's descendants, but unavailable to it's ancestors. 
 
 ### Accessing custom property values
-
 To access the value of a custom property use the `var()` function.
 
 ```CSS
@@ -151,11 +134,18 @@ For example, you might define some values in `:root` then use those values throu
 }
 ```
 
+The var function can also take a **fallback** value that is used if the custom property is not found. Here is an example: 
+
+```CSS
+:root {
+  --color: var(--undefined-var, tomato);
+}
+```
+
+In the example above `--color` is given the value `tomato` assuming that that the custom property `--undefined-var` is not defined. 
+
 ### Design a Button 
-
-Using your button take the ideas below to use custom properties to make your button code more flexible. 
-
-The default button style is not very interesting it's also pretty small. Giving the button some color and making it a little larger will make it easier to use. 
+The default button style is not very interesting and the text is too small. Giving the button some color and making it a little larger will make it easier to use. 
 
 ```css
 button {
@@ -194,17 +184,17 @@ button {
   border-radius: 0.5em;
   font-size: 1em;
   transition: 300ms;
-}
 
-button:hover {
-  background-color: var(--fg-color);
-  color: var(--bg-color);
+  &:hover {
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+  }
 }
 ```
 
 Now the colors can be edited in one location. 
 
-You'll often want buttons with different colors for different purposes. Look at the button styles in Bootstrap. Your goal is to emulate some of these. 
+You'll often want buttons with different colors for different purposes. Look at the [button styles in Bootstrap](https://getbootstrap.com/docs/4.0/components/buttons/). Your goal is to emulate some of these. 
 
 To change the colors and other styles of buttons using custom properties become very flexible. 
 
@@ -317,8 +307,194 @@ https://getbootstrap.com/docs/4.0/components/buttons/#disabled-state
 
 Implement a disabled state in your framework. 
 
-### Math with CSS calc()
+### Example with Custom properties
 
+```HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <style>
+    :root {
+      /* Custom property names must begin with --
+
+      Defining custom proeprties in :root makes them available 
+      everywhere like global constants
+
+      Anything can be a value for a cusom property */
+
+      --color-action: tomato;
+      --font-size: 20px;
+      --number: 2;
+      --size: 200px;
+      --easing: cubic-bezier(0.075, 0.82, 0.165, 1);
+      --font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
+      --color-primary: cadetblue;
+      --color-light: white;
+    
+    }
+
+    body {
+      /* Access the value of a custom property with var() */
+      font-family: var(--font-stack);
+      font-size: var(--font-size);
+    }
+
+    a {
+      color: var(--color-primary);
+    }
+  </style>
+
+  <p>Custom <a href="">properties</a>.</p>
+  
+  <style>
+    button {
+      background-color: var(--color-action);
+      width: var(--size);
+      font-size: var(--font-size);
+    }
+  </style>
+
+  <button>Button 1</button>
+
+
+  <p>This button uses the class "blue" which changes cascades a new 
+    value for --color-action. The button uses the color cornflowerblue instead.</p>
+  <style>
+    .blue {
+      --color-action: cornflowerblue;
+    }
+  </style>
+
+  <button class="blue">Blue Button</button>
+
+  <p>If a property might not be defined you can supply a fallback value.</p>
+
+  <style>
+    h1 {
+      /* color: var(--not-defined, gold); */
+    }
+  </style>
+
+  <h1>Uses undefined var</h1>
+
+  <style>
+    .button {
+      /* Create a localy scoped var from some global vars */
+      /* Notice these have fallbacks to set a default */
+
+      --fg-color: var(--button-fg-color, var(--color-primary));
+      --bg-color: var(--button-bg-color, var(--color-light));
+
+      display: inline-block;
+      color: var(--fg-color);
+      background-color: var(--bg-color);
+      border:1px solid;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      /* Here we use the local vars again */
+
+      background-color: var(--fg-color);
+      color: var(--bg-color);
+    }
+  </style>
+
+  <a class="button" href="#">Anchor tag</a>
+
+  <p>You can override the default colors in a few ways.</p>
+
+  <style>
+    .warning {
+      /* Use a class to set the fg and bg colors */
+
+      --button-fg-color: gold;
+      --button-bg-color: rgb(32, 154, 142);
+    }
+
+    .danger {
+      --button-fg-color: white;
+      --button-bg-color: tomato;
+    }
+  </style>
+
+  <a class="button warning" href="#">Anchor tag</a>
+  <a class="button danger" href="#">Anchor tag</a>
+
+  <!-- Use an inline style -->
+  <a 
+    class="button" 
+    style="--button-fg-color: purple; --button-bg-color: yellowgreen" 
+    href="#">Anchor tag</a>
+
+  <!-- It is also possible to override the default colors in other 
+   ways using the rules of selectors. -->
+
+   <style>
+    .card {
+      --fg-color: var(--some-color, #333);
+      --bg: var(--some-bg, #eee);
+
+      color: var(--fg-color);
+      background: var(--bg);
+
+      padding: 2rem;
+      margin: 1rem;
+      display: inline-block;
+    }
+
+
+    .dark {
+      --fg-color: #eee;
+      --bg: #333;
+    }
+
+    .grad {
+      --fg-color:#333;
+      --bg: linear-gradient(#eee, #ccc);
+    }
+
+    .grad.dark { /* 0 0 2 0 */
+      --fg-color:#eee;
+      --bg: linear-gradient(#333, #666);
+    }
+   </style>
+
+   <div class="card">
+    <h1>Hello</h1>
+    <p>This is an example card</p>
+  </div>
+
+  <div class="card dark">
+    <h1>World</h1>
+    <p>This is an example card</p>
+  </div>
+
+  <div class="card grad">
+    <h1>Foo</h1>
+    <p>This is an example card</p>
+  </div>
+
+  <div class="card grad dark">
+    <h1>Foo</h1>
+    <p>This is an example card</p>
+  </div>
+
+</body>
+</html>
+```
+
+### Math with CSS calc()
 CSS supports basic math through the `calc()` method. You can use `+`, `-`, `*`, and `/`. 
 
 ```CSS
@@ -368,41 +544,9 @@ Pro tip! If you have a value that is just a number without a unit you can conver
 
 The code sample above changes the value of `--size` from a unitless value of `100` into `100px`.
 
-
-## Fallback values 
-
-Use a fall back value when a property may not exist. 
-
-```CSS
-.box {
-  background-color: var(--bg-color, '#2478fe');
-}
-```
-
-You can use a custom property as a fallback value! 
-
-Imagine `--background-color` is sometimes defined inline. When it is you want to use it. When it is not you want to use `--primary-color` defined in `:root`. 
-
-```CSS
-:root {
-  --primary-color: #2478fe;
-}
-...
-.box {
-  background-color: var(--background-color, var(--primary-color));
-}
-```
-
-```html
-<div class="box"></div><!-- '#2478fe' -->
-<div class="box" style="--background-color: #ff8534"></div><!-- '#ff8534' -->
-```
-
-In the above example, the fallback value allows you to have a value that may not exist first div.box and use-value when it does exist in the second div.box. 
-
+CSS now has more math functions. [See the list here](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions/Using_CSS_math_functions). This includes: `min()`, `max()`, `clamp()`, `round()`, `mod()`, `rem()`, `sin()`, `cos()`, `tan()`, `atan()`, `asin()`, `acos()`, `atan2()`, `pow()`, `sqrt()`, `hypot()`, `log()`, `exp()`, `abs()`, and `sign()`. 
 
 ## Setting Custom properties with JS
-
 With JS you can set any CSS property on an element. 
 
 ```JavaScript
@@ -496,7 +640,7 @@ Clarify what you are doing by looking at what other people are doing who are doi
 1. https://css-tricks.com/css-custom-properties-theming/
 1. https://github.com/troxler/awesome-css-frameworks
 
-## Minute-by-Minute [OPTIONAL]
+<!-- ## Minute-by-Minute [OPTIONAL]
 
 | **Elapsed** | **Time** | **Activity** |
 | ----------- | --------- | ------------------------- |
@@ -505,5 +649,5 @@ Clarify what you are doing by looking at what other people are doing who are doi
 | 0:20 | 0:45 | In Class Activity I |
 | 1:05 | 0:10 | BREAK |
 | 1:15 | 0:45 | In Class Activity II |
-| TOTAL | 2:00 | |
+| TOTAL | 2:00 | | -->
 
