@@ -51,10 +51,10 @@ Beyond these you should be able to apply CSS like a boss and bring your ideas to
 |  6 |  Thu, Nov  7 | [Lesson CSS Position] [Specificity]      | -          | -                |
 | -  | **Week 4**   | -                            | -          | -                |
 |  7 |  Tue, Nov 12 | [lesson-pseudo-elements]     | -          | -                |
-|  8 |  Thu, Nov 14 | [Lesson 10 Transition]        | -          | -                |
+|  8 |  Thu, Nov 14 | [Lesson 10 Transition]       | -          | -                |
 | -  | **Week 5**   | -                            | -          | -                |
-|  9 |  Tue, Nov 19 | [Lesson 11 Animation] [Custom Properties] | [CSS Framework] | [CSS Project Redesign] |
-| 10 |  Thu, Nov 21 | [3D CSS]                     | -          | -                |
+|  9 |  Tue, Nov 19 | [Lesson 11 Animation]        | [CSS Framework] | [CSS Project Redesign] |
+| 10 |  Thu, Nov 21 | [3D CSS] [Custom Properties] | -          | -                |
 | -  | **Week 6**   | -                            | -          | -                |
 | 11 |  Tue, Nov 26 | [Lesson 11 CSS Preprocessors] | -          | -                |
 | 12 |  Thu, Nov 28 | **Thanks Giving Holiday** |  | -         |
