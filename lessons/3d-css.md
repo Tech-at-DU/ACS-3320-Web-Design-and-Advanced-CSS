@@ -61,7 +61,11 @@ When things are drawn in 3d there is some foreshortening. You see this when thin
 - https://developer.mozilla.org/en-US/docs/Web/CSS/perspective
 - https://css-tricks.com/almanac/properties/p/perspective/
 
-Smaller numbers for perspective will make the foreshortening more extreme and larger numbers will make the effect more mild. 
+Smaller numbers for perspective will make the foreshortening more extreme and larger numbers will make the effect more mild.
+
+## Examples
+
+Get these example files: https://github.com/Tech-at-DU/3d-css
 
 ## Other 3d properties
 

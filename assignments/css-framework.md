@@ -33,6 +33,9 @@ Your goal is to create a minimal CSS framework that styles standard HTML element
 - **Accessibility:** Good color contrast, focus styles, and keyboard navigation.
 - **Documentation:** Clear instructions for using the framework, plus a demo page that visually demonstrates the framework's features.
 
+### 5. Naming conventions:
+You'll be creating custom properties and class names, a good naming convention will help! There are a few established naming conventions used with CSS: BEM, OOCSS, SUIT CSS, and SMACSS. Read about them here: https://www.frontendmentor.io/articles/understanding-css-naming-conventions-bem-oocss-smacss-and-suit-css-V6ZZUYs1xz
+
 ## Resources:
 - Examples of minimalist, classless frameworks like [MVP.css](https://andybrewer.github.io/mvp/), [Sakura](https://oxal.org/projects/sakura/), [Simple.css](https://simplecss.org/), and [Tacit](https://github.com/yegor256/tacit).
 - [A11y Project](https://www.a11yproject.com/) for accessibility resources.
