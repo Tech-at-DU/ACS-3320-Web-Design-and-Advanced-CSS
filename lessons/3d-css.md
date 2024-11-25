@@ -14,6 +14,10 @@ Adding a 3rd dimension we add the z axis. The z axis cross the x and y axis at 9
 
 As objects move forward in space they appear to be larger, and as the move backward in space they get smaller with greater distance from the picture plane. 
 
+## Examples
+
+Get these examples: https://github.com/Tech-at-DU/3d-css
+
 ## CSS in 3d
 
 To transform an object in 3d you need do the following:
