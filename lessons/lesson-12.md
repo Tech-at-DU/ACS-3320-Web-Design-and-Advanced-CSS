@@ -878,6 +878,8 @@ Use mixins for **generating reusable blocks of CSS**, and functions for
 **returning single values** like calculated numbers, colors, or measurements. 
 Together, they make SASS a powerful tool for creating dynamic and maintainable styles.
 
+--- 
+
 ## Follow up: Apply SASS to your CSS Framework
 Use the idea above, especially partials in your CSS Framework. This will allow you 
 to divide your style sheet into separate managable files, which will be compiled 
