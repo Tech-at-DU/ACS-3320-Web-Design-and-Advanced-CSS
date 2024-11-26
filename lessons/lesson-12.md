@@ -121,7 +121,7 @@ We’ll cover some of these features in this lesson. For a complete reference, e
 ### 1. Getting Started
 In this section, you will set up the HTML file and connect it to a SASS-generated CSS file. This will serve as the foundation for the rest of the project.
 
-### Example: Setting Up the Project*
+### Example: Setting Up the Project
 1. **Create the Folder Structure**:
    - Create a project folder named `sass-profile-showcase`.
    - Inside this folder, create the following:
@@ -519,7 +519,7 @@ In this section, you will learn how to organize your styles into smaller, reusab
 
 			p {
 				font-size: 1.25rem;
-				color: lighten($text-color, 40%);
+				color: lighten($text-color, 70%);
 			}
 
 			&:hover {
@@ -732,9 +732,214 @@ In this section, you will learn how to use SASS mixins to create reusable blocks
 
 ### Final Thoughts on Mixins
 
-Mixins allow you to avoid repetition and keep your styles DRY (Don't Repeat Yourself). By completing this section, you've added reusable styles for buttons, shadows, and responsiveness, making your webpage more flexible and easier to maintain.
+Mixins allow you to avoid repetition and keep your styles DRY (Don't Repeat Yourself). 
+By completing this section, you've added reusable styles for buttons, shadows, and 
+responsiveness, making your webpage more flexible and easier to maintain.
 
-## Follow up
-Use the idea above, especially partials in your CSS Framework. This will allow you to divide your style sheet into separate managable files, which will be compiled into a single stylesheet for publication. 
+### SASS Mixins: Description and Use Cases
 
-Mixins, and some of the other features of SASS might also be useful. Look for opportunities to use these features as you work. 
+#### What Are Mixins?
+In SASS, mixins are reusable blocks of code that allow you to write CSS styles that can 
+be included in multiple places with customizable parameters. They are particularly useful 
+for avoiding repetition and maintaining consistency across your stylesheets.
+
+---
+
+### How Are Mixins Different from Functions?
+
+| Feature                | Mixins                                          | Functions                                      |
+|------------------------|------------------------------------------------|-----------------------------------------------|
+| **Purpose**            | Output reusable CSS rules/styles.              | Perform a calculation or return a single value. |
+| **Output**             | Generates CSS code directly in the stylesheet. | Returns a value (e.g., a color, size, or number) that can be used in styles. |
+| **Includes CSS Rules** | Yes, mixins can output multiple CSS rules.      | No, functions cannot directly generate CSS rules. |
+| **Use Case**           | Use when you need reusable CSS blocks or complex rules. | Use when you need a computed value (e.g., color adjustments, math). |
+
+---
+
+### When to Use Mixins
+Mixins are ideal for styles that are:
+- **Reusable**: You have the same set of styles applied in multiple places (e.g., button designs).
+- **Customizable**: You want to apply similar styles but with slight variations (e.g., button colors).
+- **Dynamic**: You want to generate CSS that depends on specific parameters (e.g., 
+responsive designs or custom box shadows).
+
+---
+
+### Typical Use Cases for Mixins
+
+1. **Reusable Component Styles**
+   - Example: Buttons
+   ```scss
+   @mixin button($bg-color, $text-color) {
+     background-color: $bg-color;
+     color: $text-color;
+     padding: 10px 20px;
+     border-radius: 4px;
+     border: none;
+     cursor: pointer;
+
+     &:hover {
+       background-color: lighten($bg-color, 10%);
+     }
+   }
+
+   .primary-btn {
+     @include button(#3498db, white);
+   }
+
+   .secondary-btn {
+     @include button(#2ecc71, white);
+   }
+   ```
+
+2. **Media Queries for Responsiveness**
+   - Example: Creating a mixin to handle breakpoints
+   ```scss
+   @mixin responsive($breakpoint) {
+     @if $breakpoint == small {
+       @media (max-width: 600px) {
+         @content;
+       }
+     } @else if $breakpoint == medium {
+       @media (max-width: 1024px) {
+         @content;
+       }
+     }
+   }
+
+   .profile-grid {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+
+     @include responsive(small) {
+       grid-template-columns: 1fr;
+     }
+   }
+   ```
+
+3. **Adding Vendor Prefixes**
+   - Example: Ensuring cross-browser compatibility
+   ```scss
+   @mixin transform($value) {
+     -webkit-transform: $value;
+     -ms-transform: $value;
+     transform: $value;
+   }
+
+   .rotated {
+     @include transform(rotate(45deg));
+   }
+   ```
+
+4. **Theming and Customization**
+   - Example: Dynamic border radius and box shadow
+   ```scss
+   @mixin theme-card($radius, $shadow-color) {
+     border-radius: $radius;
+     box-shadow: 0 4px 6px $shadow-color;
+   }
+
+   .card {
+     @include theme-card(10px, rgba(0, 0, 0, 0.2));
+   }
+   ```
+
+---
+
+### When to Use Functions Instead
+- **Perform Calculations**: When you need to calculate values (e.g., converting `px` to `rem` or adjusting colors).
+- Example:
+  ```scss
+  @function calculate-rem($px) {
+    @return $px / 16px * 1rem;
+  }
+
+  body {
+    font-size: calculate-rem(18px);
+  }
+  ```
+
+- **Manipulate Colors**: When you want to dynamically adjust colors.
+- Example:
+  ```scss
+  @function adjust-color($color, $amount) {
+    @return lighten($color, $amount);
+  }
+
+  h1 {
+    color: adjust-color(#3498db, 20%);
+  }
+  ```
+
+---
+
+### Key Takeaway
+Use mixins for **generating reusable blocks of CSS**, and functions for 
+**returning single values** like calculated numbers, colors, or measurements. 
+Together, they make SASS a powerful tool for creating dynamic and maintainable styles.
+
+## Follow up: Apply SASS to your CSS Framework
+Use the idea above, especially partials in your CSS Framework. This will allow you 
+to divide your style sheet into separate managable files, which will be compiled 
+into a single stylesheet for publication. 
+
+Mixins, and some of the other features of SASS might also be useful. Look for 
+opportunities to use these features as you work. 
+
+SASS has many more features not covered here. For example lists and loops. 
+
+Here is an example that creates a list of colors in tints and shades as CSS custom properties. 
+
+```SCSS
+
+$colors: (
+	'gray': rgb(128, 128, 128),	
+	'primary': #007bff,
+	'info': #17a2b8,
+	'success': #28a745,
+	'danger': #dc3545,
+	'callout': #ffa107,
+	'secondary': #ffcd07,
+	'other': #ca5ae1,
+	'alternate': #a45ae1
+);
+
+:root {
+	@each $key, $value in $colors {
+		/* Tints */
+		@for $i from 4 through 1 {
+			--color-#{$key}-lighter-#{$i}: #{lighten($value, 12% * $i)};
+		}
+
+		--color-#{$key}: #{$value};
+
+		/* Shades */
+		@for $i from 1 through 4 {
+			--color-#{$key}-darker-#{$i}: #{darken($value, 10% * $i)};
+		}
+	}
+
+	/* **** base Color names **** */
+  --color-background: var(--color-gray-lighter-4);
+  --color-foreground: var(--color-gray-darker-4);
+  --color-dark: var(--color-gray-darker-2);
+  --color-light: var(--color-gray-lighter-2);
+
+  --color-md-light: var(--color-gray);
+  --color-md-dark: var(--color-gray-darker-1);
+
+	--color-lightest: var(--color-gray-lighter-4);
+}
+```
+
+Points of interest in this code snippet. 
+- The variables at the top are defined in SASS, these don't exist after this file is processed. 
+- The SASS vars at the top are in a list `$colors: ( .... )`
+- `@each $key, $value in $colors { ... }` loops over each item in the list as key and value. 
+- `@for $i from 4 through 1 { ... }` repeats with a count from 4 to 1.
+- You can write custom properties and concatenate theit names using `#{}`. For example: `--color-#{$key}-lighter-#{$i}` creates a customproperty with a name like `--color-gray-lighter-1`
+- `lighten($value, 12% * $i)` is a SASS function that takes in a color and a % and returns a color that % lighter. 
+  - Note! SASS recommends using `color.scale()` instead of `lighten()` as the changes are more "proportional"
+  - Challenge! change the code above to work with `scale()` https://sass-lang.com/documentation/modules/color/#scale
+  
+
