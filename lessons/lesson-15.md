@@ -52,7 +52,7 @@ For an example think about the carousel in BootStrap. The markup looks like this
 
 - https://getbootstrap.com/docs/4.0/components/carousel/
 
-What does this have to do with web components? In a nutshell web components are new tags that you define and encapsulate with built-in functionality. 
+What does this have to do with web components? In a nutshell web components are new tags that you define,thse tags encapsulate new built-in functionality. 
 
 Imagine creating the carousel above with a custom carousel tag like this: 
 
@@ -66,6 +66,8 @@ Imagine creating the carousel above with a custom carousel tag like this:
   <img src="./images/kitten-5.jpeg" width="275" height="183">
 </frmwrk-slides>
 ```
+
+Usign a web component no extra markup is needed, and all of the styles are encapsulated.
 
 - See the code examples for todays lesson for an example of this web component carousel
 
