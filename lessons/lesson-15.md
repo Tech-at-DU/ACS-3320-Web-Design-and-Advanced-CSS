@@ -13,7 +13,6 @@ Web Components could be the most important new and emerging web technology. Many
 
 ## What are web components?
 
-- https://medium.com/geekculture/web-components-what-are-they-pros-cons-and-more-77ad56711e49
 - https://kinsta.com/blog/web-components/
 - https://dev.to/steveblue/the-state-of-web-components-in-2022-1ip3
 - https://www.webcomponents.org/introduction
