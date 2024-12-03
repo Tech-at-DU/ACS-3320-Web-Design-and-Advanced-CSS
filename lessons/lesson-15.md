@@ -1,4 +1,4 @@
-# FEW 2.2 - Advanced CSS - Exploring Web Components
+# ACS 3320 - Advanced CSS - Exploring Web Components
 
 Discussion of Web Components from lesson 8. 
 
