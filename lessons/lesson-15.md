@@ -1,12 +1,8 @@
 # ACS 3320 - Advanced CSS - Exploring Web Components
 
-Discussion of Web Components from lesson 8. 
-
 ## Why you should know this?
 
-Web Components are probably the most important new and emerging web technology. They will take some practice to master. They are also not complete and will evolve. Learning this now will give important background into this new realm. 
-
-Building web component will also show how we can style HTML element with JavaScript, which is always useful! 
+Web Components could be the most important new and emerging web technology. Many large companies are using web components right now and more could follow in the future. Libraries and frameworks built around web components are also emerging. Web components are a core web technology. 
 
 ## Learning Objectives 
 
