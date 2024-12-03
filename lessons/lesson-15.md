@@ -78,8 +78,21 @@ Here the tag `<frmwrk-slides>` defines the carousel, and all of the children bec
 
 While the two examples are similar the second has less required markup and doesn't require that you add the correct class names in the correct places through out. 
 
-## Shadow DOM
+### Library of Web Components
 
+Check out this library of web components: https://shoelace.style. This library is built around web components. Be sure to check the source code in the examples. Answer these questions: 
+
+- How Components used? 
+- What types of components are provided? 
+- Do these components work with React or Vue? 
+- Can you style these components? 
+
+## What is a web component? 
+Web Components is a suite of different technologies allowing you to create reusable custom elements — with their functionality encapsulated away from the rest of your code — and utilize them in your web apps.
+
+What is a custom element? Notice that all of the Showlace components are used by writing tags with custom names. A custom element is a new tag/element that you have defined. These elements all have styles and JS that back them. 
+
+### Shadow DOM
 A core feature of web components is the Shadow DOM. The Shadow DOM is another DOM that is hidden from rest of your HTML document. Often you will need to add extra markup to support complex elements and interactions. The shadow DOM allows you to create these elements and hide them from the rest of the HTML document. 
 
 The shadow DOM is in use by many existing HTML elements like the `<input>`. Inspect this for yourself. Create an HTML document with:
