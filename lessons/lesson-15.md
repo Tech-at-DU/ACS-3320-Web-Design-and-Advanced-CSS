@@ -67,11 +67,9 @@ Imagine creating the carousel above with a custom carousel tag like this:
 </frmwrk-slides>
 ```
 
-Usign a web component no extra markup is needed, and all of the styles are encapsulated.
+Usign a web component no extra markup is needed, and all of the styles are encapsulated. (See the code examples for todays lesson for an example of this web component carousel)
 
-- See the code examples for todays lesson for an example of this web component carousel
-
-Here the tag `<frmwrk-slides>` defines the carousel, and all of the children become a carousel item. The `time` attribute determines the time between slides. 
+Here the tag `<frmwrk-slides>` defines the carousel, and all of the children become a carousel items. The `time` attribute determines the time between slides. 
 
 While the two examples are similar the second has less required markup and doesn't require that you add the correct class names in the correct places through out. 
 
