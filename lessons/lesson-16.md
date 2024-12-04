@@ -229,8 +229,9 @@ Challenges:
 
 - Define a template and use it your component examples. 
 - Define styles in the template. 
-- Use attributes to comfigure your component. 
+- Use attributes to comfigure your component.
 
+<!-- 
 ## Minute-by-Minute [OPTIONAL]
 
 | **Elapsed** | **Time**  | **Activity**              |
@@ -241,3 +242,5 @@ Challenges:
 | 1:05        | 0:10      | BREAK                     |
 | 1:15        | 0:45      | In Class Activity II      |
 | TOTAL       | 2:00      |                           |
+
+-->
