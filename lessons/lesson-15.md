@@ -71,7 +71,7 @@ Usign a web component no extra markup is needed, and all of the styles are encap
 
 Here the tag `<frmwrk-slides>` defines the carousel, and all of the children become a carousel items. The `time` attribute determines the time between slides. 
 
-While the two examples are similar the second has less required markup and doesn't require that you add the correct class names in the correct places through out. 
+While the two examples are similar the second has less required markup and doesn't require that you add the correct class names in the correct places through out, you also do not have to link to an external styles sheet to guarantee it functions. 
 
 ### Library of Web Components
 
