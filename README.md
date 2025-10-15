@@ -65,6 +65,8 @@ Beyond these you should be able to apply CSS like a boss and bring your ideas to
 | 13 |  Tue, Dec  9 | TBD                          | -          | -                |
 | 14 |  Thu, Dec 11 | TBD                          | -          | [Web Components] |
 
+TBD = @function, attr(), if() and other not ready for prime time 
+TBD = clamp(), calc(), @property
 
 <!-- | 15 |  Wed, Dec  6 | Final Assessment | [Style Lit Elements](https://www.youtube.com/watch?v=Xt7blcyuw5s) | -->
 
