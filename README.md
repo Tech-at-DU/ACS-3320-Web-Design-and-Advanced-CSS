@@ -46,8 +46,8 @@ Beyond these you should be able to apply CSS like a boss and bring your ideas to
 | -  | **Week 2**   | **Drawing with CSS**         | Make a Picture with CSS | [CSS Zen Garden] |
 |  3 |  Tue, Oct 28 | [Position], transform, gradient, clip-path | - | -           |
 |  4 |  Thu, Oct 30 | shadows [3D CSS]             | -          | -                |
-| -  | **Week 3**   | **CSS Custom Properties**    | -          | -                |
-|  5 |  Tue, Nov  4 | [Custom Properties]          | Parameterize Your Picture | Make a Picture with CSS |
+| -  | **Week 3**   | **CSS Custom Properties**    | Parameterize Your Picture | - |
+|  5 |  Tue, Nov  4 | [Custom Properties]          | -          | Make a Picture with CSS |
 |  6 |  Thu, Nov  6 | [Lesson CSS Position]        | -          | -                |
 | -  | **Week 4**   | **CSS Motion & Microinteractions** | Microinteractions | -   |
 |  7 |  Tue, Nov 11 | [Transition]                 | -          | Parameterize Your Picture |
