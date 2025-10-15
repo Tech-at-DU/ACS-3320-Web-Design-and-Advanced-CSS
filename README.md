@@ -38,56 +38,59 @@ Beyond these you should be able to apply CSS like a boss and bring your ideas to
 
 **Class Times:** Tuesday, Thursday at 4:00 PM PST – 6:45 PM PST
 
+
+
 | Class |    Date   |             Topics           | Assignment |  Assessment Due  |
 |:-----:|:---------:|:-----------------------------|:-----------|:-----------------|
-| -  | **Week 1**   | -                            | -          | -                |
-|  1 |  Tue, Oct 21 | [Lesson 1 CSS Review]        | [CSS Zen Garden] | -          |
-|  2 |  Thu, Oct 23 | [Lesson 2 Typography]        | -          | -                |
-| -  | **Week 2**   | -                            | -          | -                |
-|  3 |  Tue, Oct 28 | [Lesson 3 Box Model Flex] [Media Queries] | - | -            |
-|  4 |  Thu, Oct 30 | [Lesson 4 Background Images] | -          | -                |
-| -  | **Week 3**   | -                            | -          | -                |
-|  5 |  Tue, Nov  4 | [Lesson 5 CSS Grid]    | [CSS Project Redesign] |[CSS Zen Garden] |
-|  6 |  Thu, Nov  6 | [Lesson CSS Position] [Specificity] | -   | -                |
-| -  | **Week 4**   | -                            | -          | -                |
-|  7 |  Tue, Nov 11 | [lesson-pseudo-elements]     | -          | -                |
-|  8 |  Thu, Nov 13 | [Lesson 10 Transition]       | -          | -                |
-| -  | **Week 5**   | -                            | -          | -                |
-|  9 |  Tue, Nov 18 | [Lesson 11 Animation]        | [CSS Framework] | [CSS Project Redesign] |
-| 10 |  Thu, Nov 20 | [3D CSS] [Custom Properties] | -          | -                |
-| -  | **Week 6**   | -                            | -          | -                |
-| 11 |  Tue, Nov 25 | [Lesson 11 CSS Preprocessors] | -         | -                |
+| -  | **Week 1**   | **CSS Selectors & Specificity** | [CSS Zen Garden] | -       |
+|  1 |  Tue, Oct 21 | Mastering selectors, [specificity] | -    | -                |
+|  2 |  Thu, Oct 23 | [Pseudo-elements], [Typography], [Background Images] | - | - |
+| -  | **Week 2**   | **Drawing with CSS**         | Make a Picture with CSS | [CSS Zen Garden] |
+|  3 |  Tue, Oct 28 | [Position], transform, gradient, clip-path | - | -           |
+|  4 |  Thu, Oct 30 | shadows [3D CSS]             | -          | -                |
+| -  | **Week 3**   | **CSS Custom Properties**    | -          | -                |
+|  5 |  Tue, Nov  4 | [Custom Properties]          | Parameterize Your Picture | Make a Picture with CSS |
+|  6 |  Thu, Nov  6 | [Lesson CSS Position]        | -          | -                |
+| -  | **Week 4**   | **CSS Motion & Microinteractions** | Microinteractions | -   |
+|  7 |  Tue, Nov 11 | [Transition]                 | -          | Parameterize Your Picture |
+|  8 |  Thu, Nov 13 | [Animation]                  | -          | -                |
+| -  | **Week 5**   | **CSS Preprocessors**.       | [CSS Framework] | -           |
+|  9 |  Tue, Nov 18 | [CSS Preprocessors] Variables, nesting, loops, partials | - | Microinteractions |
+| 10 |  Thu, Nov 20 | Functions and mixins.        | -          | -                |
+| -  | **Week 6**   | **Web Components**           | [Web Components] | -          |
+| 11 |  Tue, Nov 25 | [Web Components Part 1] | -         | -                |
 | 12 |  Thu, Nov 27 | **Thanks Giving Holiday**    | -          | -                |
 | -  | **Week 7**   | -                            | -          | -                |
-| 13 |  Tue, Dec  2 | [Lesson 12 Web Components 1] | [Web Components] | [CSS Framework] |
-| 14 |  Thu, Dec  4 | [Lesson 13 Web Components 2] | -          | -                |
+| 13 |  Tue, Dec  2 | [Web Components part 2] | -  | [CSS Framework] |
+| 14 |  Thu, Dec  4 | - | -          | -                |
 | -  | **Week 8**   | -                            | -          | -                |
 | 13 |  Tue, Dec  9 | TBA                          | -          | -                |
 | 14 |  Thu, Dec 11 | TBA                          | -          | [Web Components] |
+
 
 <!-- | 15 |  Wed, Dec  6 | Final Assessment | [Style Lit Elements](https://www.youtube.com/watch?v=Xt7blcyuw5s) | -->
 
 <!-- Lessons -->
 [Lesson 1 CSS Review]: lessons/lesson-01.md
-[Lesson 2 Typography]: lessons/lesson-02.md
+[Typography]: lessons/lesson-02.md
 [Lesson 3 Box Model Flex]: lessons/lesson-03.md
-[Lesson 4 Background Images]: lessons/lesson-04.md
+[Background Images]: lessons/lesson-04.md
 [Lesson 5 CSS Grid]: lessons/lesson-05.md
 [Lesson 6 CSS Frameworks]: lessons/lesson-06.md
 [Lesson 7 Make a CSS Framework]: lessons/lesson-07.md
 [Lesson 8 Styling Navbars]: lessons/lesson-08.md
 [Lesson 9 Form Controls]: lessons/lesson-09.md
-[Lesson 10 Transition]: lessons/lesson-10.md
-[Lesson 11 Animation]: lessons/lesson-11.md
+[Transition]: lessons/lesson-10.md
+[Animation]: lessons/lesson-11.md
 
 [Custom Properties]: lessons/custom-properties.md
 
 [3D CSS]: lessons/3d-css.md
 
-[Lesson 11 CSS Preprocessors]: lessons/lesson-12.md
-[Lesson 12 Web Components 1]: lessons/lesson-15.md
-[Lesson 13 Web Components 2]: lessons/lesson-16.md
-[Lesson CSS Position]: lessons/lesson-position.md
+[CSS Preprocessors]: lessons/lesson-12.md
+[Web Components part 1]: lessons/lesson-15.md
+[Web Components part 2]: lessons/lesson-16.md
+[Position]: lessons/lesson-position.md
 [Site Redesign]: assignments/assignment-redesign.md
 [lesson-pseudo-elements]: lessons/lesson-pseudo-elements.md
 
