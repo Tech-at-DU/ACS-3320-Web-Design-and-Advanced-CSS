@@ -62,8 +62,8 @@ Beyond these you should be able to apply CSS like a boss and bring your ideas to
 | 13 |  Tue, Dec  2 | [Web Components part 2] | -  | [CSS Framework] |
 | 14 |  Thu, Dec  4 | - | -          | -                |
 | -  | **Week 8**   | -                            | -          | -                |
-| 13 |  Tue, Dec  9 | TBA                          | -          | -                |
-| 14 |  Thu, Dec 11 | TBA                          | -          | [Web Components] |
+| 13 |  Tue, Dec  9 | TBD                          | -          | -                |
+| 14 |  Thu, Dec 11 | TBD                          | -          | [Web Components] |
 
 
 <!-- | 15 |  Wed, Dec  6 | Final Assessment | [Style Lit Elements](https://www.youtube.com/watch?v=Xt7blcyuw5s) | -->
