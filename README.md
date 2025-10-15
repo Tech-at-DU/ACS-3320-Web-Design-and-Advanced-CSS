@@ -38,8 +38,6 @@ Beyond these you should be able to apply CSS like a boss and bring your ideas to
 
 **Class Times:** Tuesday, Thursday at 4:00 PM PST – 6:45 PM PST
 
-
-
 | Class |    Date   |             Topics           | Assignment |  Assessment Due  |
 |:-----:|:---------:|:-----------------------------|:-----------|:-----------------|
 | -  | **Week 1**   | **CSS Selectors & Specificity** | [CSS Zen Garden] | -       |
