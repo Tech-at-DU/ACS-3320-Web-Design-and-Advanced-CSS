@@ -1,37 +1,5 @@
 # FEW-2.2: Advanced CSS and Visual Design
 
-## Course Description
-
-This course is a deep exploration of CSS. Students take a close look at rendering web pages with CSS, using CSS for motion and interaction, optimizing CSS for use with CSS variables and working with modern CSS frameworks.
-
-### Why Learn advanced CSS? 
-
-CSS is a language that is responsible for the appearance of you web apps. To make great looking web apps that gather great user base you'll need to know it. 
-
-## Prerequisites:
-
-- [ACS 1700 Web Foundations](https://github.com/Tech-at-DU/ACS-1700-WEB-Web-Foundations)
-
-## Course Specifics
-
-**Course Delivery**: online | 7 weeks | 14 sessions
-
-**Course Credits**: 3 units | 37.5 Seat Hours | 75 Total Hours
-
-## Learning Outcomes
-
-Students by the end of the course will be able to:
-
-1. Write CSS in the CSS language
-1. Use grid systems for layout
-1. Use CSS preprocessors
-1. Implement CSS variables to make more modular stylesheets
-1. Apply principles of typography and color theory
-1. Apply advanced CSS concepts including transform, transition, and keyframes
-1. Implement industry best practices
-
-Beyond these you should be able to apply CSS like a boss and bring your ideas to the large and small screen! Students will also explore new bleeding edge concepts that are the future of the web. 
-
 ## Schedule
 
 **Course Dates:** Ocober 20 – , December 12, 2025
@@ -43,30 +11,42 @@ Beyond these you should be able to apply CSS like a boss and bring your ideas to
 | -  | **Week 1**   | **CSS Selectors & Specificity** | [CSS Zen Garden] | -       |
 |  1 |  Tue, Oct 21 | Mastering selectors, [specificity] | -    | -                |
 |  2 |  Thu, Oct 23 | [Pseudo-elements], [Typography], [Background Images] | - | - |
-| -  | **Week 2**   | **Drawing with CSS**         | Make a Picture with CSS | [CSS Zen Garden] |
+| -  | **Week 2**   | **Drawing with CSS**         | [Make a Picture with CSS] | [CSS Zen Garden] |
 |  3 |  Tue, Oct 28 | [Position], transform, gradient, clip-path | - | -           |
 |  4 |  Thu, Oct 30 | shadows [3D CSS]             | -          | -                |
-| -  | **Week 3**   | **CSS Custom Properties**    | Parameterize Your Picture | - |
-|  5 |  Tue, Nov  4 | [Custom Properties]          | -          | Make a Picture with CSS |
+| -  | **Week 3**   | **CSS Custom Properties**    | [Parameterize Your Picture] | - |
+|  5 |  Tue, Nov  4 | [Custom Properties]          | -          | [Make a Picture with CSS] |
 |  6 |  Thu, Nov  6 | [Lesson CSS Position]        | -          | -                |
-| -  | **Week 4**   | **CSS Motion & Microinteractions** | Microinteractions | -   |
-|  7 |  Tue, Nov 11 | [Transition]                 | -          | Parameterize Your Picture |
+| -  | **Week 4**   | **CSS Motion & Microinteractions** | [Microinteractions] | -   |
+|  7 |  Tue, Nov 11 | [Transition]                 | -          | [Parameterize Your Picture] |
 |  8 |  Thu, Nov 13 | [Animation]                  | -          | -                |
 | -  | **Week 5**   | **CSS Preprocessors**.       | [CSS Framework] | -           |
-|  9 |  Tue, Nov 18 | [CSS Preprocessors] Variables, nesting, loops, partials | - | Microinteractions |
+|  9 |  Tue, Nov 18 | [CSS Preprocessors] Variables, nesting, loops, partials | - | [Microinteractions] |
 | 10 |  Thu, Nov 20 | Functions and mixins.        | -          | -                |
 | -  | **Week 6**   | **Web Components**           | [Web Components] | -          |
-| 11 |  Tue, Nov 25 | [Web Components Part 1] | -         | -                |
+| 11 |  Tue, Nov 25 | [Web Components Part 1]      | -         | -                |
 | 12 |  Thu, Nov 27 | **Thanks Giving Holiday**    | -          | -                |
 | -  | **Week 7**   | -                            | -          | -                |
-| 13 |  Tue, Dec  2 | [Web Components part 2] | -  | [CSS Framework] |
-| 14 |  Thu, Dec  4 | - | -          | -                |
+| 13 |  Tue, Dec  2 | [Web Components part 2]      | -  | [CSS Framework] |
+| 14 |  Thu, Dec  4 | -                            | -          | -                |
 | -  | **Week 8**   | -                            | -          | -                |
 | 13 |  Tue, Dec  9 | TBD                          | -          | -                |
 | 14 |  Thu, Dec 11 | TBD                          | -          | [Web Components] |
 
 TBD = @function, attr(), if() and other not ready for prime time 
 TBD = clamp(), calc(), @property
+
+## Assignments
+
+You are responsible for solving the the following homework challenges. There is roughly one challenge per week each on a disticnt topic.  
+
+- Week 1 - [CSS Zen Garden]
+- Week 2 - [Make a Picture with CSS]
+- Week 3 - [Parameterize Your Picture]
+- Week 4 - [Microinteractions]
+- Week 5 - [CSS Framework]
+- Week 6 - [Web Components]
+
 
 <!-- | 15 |  Wed, Dec  6 | Final Assessment | [Style Lit Elements](https://www.youtube.com/watch?v=Xt7blcyuw5s) | -->
 
@@ -116,22 +96,47 @@ TBD = clamp(), calc(), @property
 [Lesson 9 Form Controls]: lessons/lesson-09.md#after-class
 
 [CSS Zen Garden]: ./assignments/css-zen-garden.md
+[Make a Picture with CSS]: ./assessments/make-a-picture.md
+[Parameterize Your Picture]: ./assignments/parameterize-your-picture.md
 [CSS Project Redesign]: ./assignments/project-redesign.md 
 [CSS Framework]: ./assignments/css-framework.md 
 [Web Components]: ./assignments/web-components.md
 
-## Assignments
+<!-- Follow this playlist:
 
-These are the assignments you will be responsible for this term: 
+https://www.youtube.com/playlist?list=PLoN_ejT35AEhF_M9vBuZgW0E4PiDb19oX -->
 
-- [CSS Zen Garden] <!-- You style the CSS Zen Garden -->
-- [CSS Project Redesign] <!-- Restyle one of your past projects -->
-- [CSS Framework] <!-- Your CSS Framework -->
-- [Web Components] <!-- You invent a web component -->
+## Course Description
 
-Follow this playlist:
+This course is a deep exploration of CSS. Students take a close look at rendering web pages with CSS, using CSS for motion and interaction, optimizing CSS for use with CSS variables and working with modern CSS frameworks.
 
-https://www.youtube.com/playlist?list=PLoN_ejT35AEhF_M9vBuZgW0E4PiDb19oX
+### Why Learn advanced CSS? 
+
+CSS is a language that is responsible for the appearance of you web apps. To make great looking web apps that gather great user base you'll need to know it. 
+
+## Prerequisites:
+
+- [ACS 1700 Web Foundations](https://github.com/Tech-at-DU/ACS-1700-WEB-Web-Foundations)
+
+## Course Specifics
+
+**Course Delivery**: online | 7 weeks | 14 sessions
+
+**Course Credits**: 3 units | 37.5 Seat Hours | 75 Total Hours
+
+## Learning Outcomes
+
+Students by the end of the course will be able to:
+
+1. Write CSS in the CSS language
+1. Use grid systems for layout
+1. Use CSS preprocessors
+1. Implement CSS variables to make more modular stylesheets
+1. Apply principles of typography and color theory
+1. Apply advanced CSS concepts including transform, transition, and keyframes
+1. Implement industry best practices
+
+Beyond these you should be able to apply CSS like a boss and bring your ideas to the large and small screen! Students will also explore new bleeding edge concepts that are the future of the web. 
 
 ## Evaluation
 
