@@ -98,6 +98,7 @@ You are responsible for solving the the following homework challenges. There is 
 [CSS Zen Garden]: ./assignments/css-zen-garden.md
 [Make a Picture with CSS]: ./assessments/make-a-picture.md
 [Parameterize Your Picture]: ./assignments/parameterize-your-picture.md
+[Microinteractions]: ./assignments/microinteractions.md
 [CSS Project Redesign]: ./assignments/project-redesign.md 
 [CSS Framework]: ./assignments/css-framework.md 
 [Web Components]: ./assignments/web-components.md
