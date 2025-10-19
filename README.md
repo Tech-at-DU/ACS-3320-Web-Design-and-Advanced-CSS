@@ -1,4 +1,4 @@
-# FEW-2.2: Advanced CSS and Visual Design
+# ACS 3320 Advanced CSS and Visual Design
 
 ## Schedule
 
