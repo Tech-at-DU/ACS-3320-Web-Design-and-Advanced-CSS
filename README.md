@@ -6,7 +6,7 @@
 
 **Class Times:** Tuesday, Thursday at 4:00 PM PST – 6:45 PM PST
 
-| Class |    Date   |             Topics           | Assignment |  Assessment Due  |
+| Class |    Date   |             Topics           | Assignment | Due |
 |:-----:|:---------:|:-----------------------------|:-----------|:-----------------|
 | -  | **Week 1**   | **CSS Selectors & Specificity** | [CSS Zen Garden] | -       |
 |  1 |  Tue, Oct 21 | Mastering selectors, [specificity] | -    | -                |
