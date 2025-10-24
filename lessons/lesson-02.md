@@ -304,7 +304,7 @@ https://www.fontpair.co
 **Design your type to control the order in which your content is read**.
 This image explains it all.
 
-- http://visual.ly/10-building-blocks-visual-hierarchy
+https://designshack.net/articles/typography/what-is-hierarchy-in-typography/
 
 You can use these design elements to create hierarchy in your type:
 
