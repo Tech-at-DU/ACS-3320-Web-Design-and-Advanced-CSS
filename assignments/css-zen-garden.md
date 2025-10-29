@@ -4,6 +4,8 @@
 
 In this assignment, you will create your own original style for the CSS Zen Garden page. This project focuses on the creative application of CSS, allowing you to explore various design techniques without needing to be a professional designer. 
 
+https://csszengarden.com
+
 ## What You Will Learn
 
 By completing this assignment, you will learn to:

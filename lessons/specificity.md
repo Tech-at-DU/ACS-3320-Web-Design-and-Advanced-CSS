@@ -225,13 +225,13 @@ Here are the answers and explanations for each of the specificity problems.
 ### Problem 1
 **Selectors**:
 1. `#header .nav-item.active` → **0-1-2-0**
-2. `.header .nav-item.active:hover` → **0-0-3-0**
+2. `.header .nav-item.active:hover` → **0-0-4-0**
 3. `ul li a.nav-link` → **0-0-1-3**
 
 **Answers**:
 - Specificity scores:
   - `#header .nav-item.active`: **0-1-2-0**
-  - `.header .nav-item.active:hover`: **0-0-3-0**
+  - `.header .nav-item.active:hover`: **0-0-4-0**
   - `ul li a.nav-link`: **0-0-1-3**
 - **Most specific**: `#header .nav-item.active` (because of the ID selector).
   
@@ -261,15 +261,15 @@ Here are the answers and explanations for each of the specificity problems.
 ### Problem 3
 **Selectors**:
 1. `#primary-header` → **0-1-0-0**
-2. `header .logo img` → **0-0-2-1**
-3. `header.logo img` → **0-0-2-1**
+2. `header .logo img` → **0-0-1-2**
+3. `header.logo img` → **0-0-1-2**
 4. `img.logo` → **0-0-1-1**
 
 **Answers**:
 - Specificity scores:
   - `#primary-header`: **0-1-0-0**
-  - `header .logo img`: **0-0-2-1**
-  - `header.logo img`: **0-0-2-1**
+  - `header .logo img`: **0-0-1-2**
+  - `header.logo img`: **0-0-1-2**
   - `img.logo`: **0-0-1-1**
 - **Most specific**: `#primary-header` (because of the ID selector).
 - If all target the same element, **`#primary-header`** will apply due to its highest specificity.
@@ -278,7 +278,7 @@ Here are the answers and explanations for each of the specificity problems.
 
 ### Problem 4
 **Selectors**:
-1. `body .main-content #unique-section h2` → **0-1-2-1**
+1. `body .main-content #unique-section h2` → **0-1-1-2**
 2. `#container .main-content h2` → **0-1-1-1**
 3. `.main-content h2` → **0-0-1-1**
 4. `h2` → **0-0-0-1**
@@ -298,14 +298,14 @@ Here are the answers and explanations for each of the specificity problems.
 1. `a:focus` → **0-0-1-1**
 2. `a.button:hover` → **0-0-2-1**
 3. `#menu a.button:hover` → **0-1-2-1**
-4. `nav .menu a.button:hover` → **0-0-3-1**
+4. `nav .menu a.button:hover` → **0-0-3-2**
 
 **Answers**:
 - Specificity scores:
   - `a:focus`: **0-0-1-1**
   - `a.button:hover`: **0-0-2-1**
   - `#menu a.button:hover`: **0-1-2-1**
-  - `nav .menu a.button:hover`: **0-0-3-1**
+  - `nav .menu a.button:hover`: **0-0-3-2**
 - **Most specific**: `#menu a.button:hover` due to the ID selector.
 
 ---
