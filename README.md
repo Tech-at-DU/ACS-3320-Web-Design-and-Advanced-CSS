@@ -63,6 +63,9 @@ You are responsible for solving the the following homework challenges. There is 
 [Transition]: lessons/lesson-10.md
 [Animation]: lessons/lesson-11.md
 
+[Pseudo-elements]: ./lessons/lesson-pseudo-elements.md
+
+
 [Custom Properties]: lessons/custom-properties.md
 
 [3D CSS]: lessons/3d-css.md
