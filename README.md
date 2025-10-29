@@ -96,7 +96,7 @@ You are responsible for solving the the following homework challenges. There is 
 [Lesson 9 Form Controls]: lessons/lesson-09.md#after-class
 
 [CSS Zen Garden]: ./assignments/css-zen-garden.md
-[Make a Picture with CSS]: ./assessments/make-a-picture.md
+[Make a Picture with CSS]: ./assignments/make-a-picture.md
 [Parameterize Your Picture]: ./assignments/parameterize-your-picture.md
 [Microinteractions]: ./assignments/microinteractions.md
 [CSS Project Redesign]: ./assignments/project-redesign.md 
