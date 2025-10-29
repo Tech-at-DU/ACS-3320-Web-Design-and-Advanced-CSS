@@ -1,8 +1,13 @@
-# Assignment 2 – Create a Picture with CSS
+# Assignment 2 - Create a Picture with CSS
 
 ## Overview
 
 In this assignment, you will create an original picture or illustration made entirely with CSS — no images allowed! The goal is to explore the expressive and creative potential of CSS by combining shapes, colors, gradients, and layout techniques. You’ll experiment with positioning, transforms, and other properties to bring your design to life while building a deeper understanding of how CSS renders elements on the page.
+
+Here are some articles that will give you an idea of what you will be doing: 
+
+- https://blog.prototypr.io/how-i-started-drawing-css-images-3fd878675c89
+- https://medium.com/@juliet.brown/creative-coding-learning-to-draw-with-css-96a49bccd7a5
 
 ## What You Will Learn
 
@@ -32,7 +37,7 @@ By completing this assignment, you will learn to:
      * `transform` (`translate`, `rotate`, `scale`, `skew`)
      * `clip-path` for creating complex shapes
      * Gradients (`linear`, `radial`, `conic`) for shading or texture
-     * Borders, border-radius, and box-shadow for dimension
+     * Borders, `border-radius`, and `box-shadow` for dimension
 
 4. **Code Organization and Comments**
 
