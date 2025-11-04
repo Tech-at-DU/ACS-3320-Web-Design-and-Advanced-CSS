@@ -37,6 +37,7 @@ By completing this assignment, you will learn to:
 
    * Include **at least two themes** (for example, light/dark or day/night).
    * Demonstrate theme switching by defining another group of variables in a class such as `.dark-theme` or `.alt-theme`.
+   * Use fall back values and allow for these to overwritten with an external stylesheet. 
 
 5. **Submission**
 
