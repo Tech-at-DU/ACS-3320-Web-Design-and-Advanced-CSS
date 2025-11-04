@@ -1,4 +1,4 @@
-# FEW 2.2 Lesson 5 - CSS Grid
+# CSS Grid
 
 <!-- ## Review 
 

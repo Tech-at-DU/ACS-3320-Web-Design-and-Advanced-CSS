@@ -1,4 +1,4 @@
-# FEW 2.2 Lesson 3 - Box Model Flex
+# Box Model Flex
 
 ## Review 
 

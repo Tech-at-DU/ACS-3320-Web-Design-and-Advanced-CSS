@@ -1,10 +1,10 @@
-# FEW 2.2 - Advanced CSS - Animation
+# Animation
 
 Making things move.
 
 ## Why you should know this
 
-Engagment is important. Things that move are much more interesting. Adding motion adds another dimension to your content. All of your favorite apps probably have little bits of animation.
+Engagment is important. Things that move are much more interesting. They attract attract attention and lead the eye. Adding motion adds another dimension to your content. All of your favorite apps probably have little bits of animation.
 
 ## Learning Objectives
 

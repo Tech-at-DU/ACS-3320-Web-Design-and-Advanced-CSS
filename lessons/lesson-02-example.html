@@ -32,6 +32,11 @@
 
 
 
+
+
+
+
+
     <!-- ******************************************* -->
     <!-- You can animation any property -->
     <div>
@@ -48,27 +53,33 @@
         height: 100px;
         border: 1px solid #000;
         position: relative;
-      }
       
-      .b > div {
-        width: 60px;
-        height: 60px;
-        background-color: red;
-        position: absolute;
-        left: 20px;
-        top: 20px;
-        transition: 400ms;
-        border-radius: 0;
-      }
-      
-      /* Change the radius on a hover */
-      .b > div:hover {
-        border-radius: 50%;
-        background-color: cornflowerblue;
+        & > div {
+          width: 60px;
+          height: 60px;
+          background-color: red;
+          position: absolute;
+          left: 20px;
+          top: 20px;
+          transition: 400ms;
+          border-radius: 0;
+        }
+
+        /* Change the radius on a hover */
+        & > div:hover {
+          border-radius: 50%;
+          background-color: cornflowerblue;
+        }
       }
   
     </style>
     <!-- ******************************************* -->
+
+
+
+
+
+
 
 
 
@@ -137,6 +148,13 @@
 
 
 
+
+
+
+
+
+
+
     <!-- ******************************************* -->
     <!-- Timing function linear -->
     <div>
@@ -171,6 +189,13 @@
   
     </style>
     <!-- ******************************************* -->
+
+
+
+
+
+
+
 
 
 
@@ -230,6 +255,13 @@
 
 
 
+
+
+
+
+
+
+
     <!-- ******************************************* -->
     <!-- Active -->
     <div>
@@ -251,7 +283,7 @@
         position: relative;
       }
       
-      .f>div {
+      .f > div {
         width: 60px;
         height: 60px;
         background-color: red;
@@ -277,11 +309,17 @@
       
       /* :checked */
       .f:active > div {
-        background-color: blue;
+        background-color: cornflowerblue;
+        transform: scale(1.5) rotate(0) !important;
       }
     </style>
     <!-- ******************************************* -->
   
+
+
+
+
+
 
 
 
@@ -331,6 +369,12 @@
     </style>
     <!-- ******************************************* -->
   
+
+
+
+
+
+
 
 
 
@@ -399,6 +443,12 @@
 
 
 
+
+
+
+
+
+
     <!-- ******************************************* -->
     <!-- Switch with Click -->
     <div>
@@ -428,8 +478,12 @@
           cursor: pointer;
         }
 
+        .switch-2:active {
+          background-color: #cccccc;
+        }
+
         .switch-2 > input {
-          /* display: none; */
+          display: none;
         }
         
         .switch-2 > div {
@@ -458,6 +512,12 @@
       </style>
     <!-- ******************************************* -->
   
+
+
+
+
+
+
 
 
 
@@ -521,6 +581,11 @@
     </style>
     <!-- ******************************************* -->
   
+
+
+
+
+
 
 
 
@@ -597,6 +662,11 @@
 
 
 
+
+
+
+
+
     <!-- ******************************************* -->
     <!-- Hamburger X 3 -->
     <div>
@@ -667,6 +737,12 @@
     </style>
     <!-- ******************************************* -->
   
+
+
+
+
+
+
 
 
 
@@ -747,6 +823,11 @@
 
 
 
+
+
+
+
+
     <!-- ******************************************* -->
     <!-- Filters - blur -->
     <div>
@@ -773,6 +854,12 @@
     </style>
     <!-- ******************************************* -->
   
+
+
+
+
+
+
 
 
 
@@ -805,6 +892,11 @@
 
 
 
+
+
+
+
+
     <!-- ******************************************* -->
     <!-- Filters - brightness -->
     <div>
@@ -831,6 +923,12 @@
     </style>
     <!-- ******************************************* -->
   
+
+
+
+
+
+
 
 
 
@@ -863,6 +961,11 @@
 
 
 
+
+
+
+
+
     <!-- ******************************************* -->
     <!-- Filters - Contrast -->
     <div>
@@ -889,6 +992,11 @@
     </style>
     <!-- ******************************************* -->
   
+
+
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-# FEW 2.2 - Animation part 2
+# Animation part 2
 
 Use @keyframes to create more complex animations.  
 

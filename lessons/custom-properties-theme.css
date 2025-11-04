@@ -1,0 +1,7 @@
+:root {
+  --my-color-bg: rgb(42, 42, 42);
+  --my-color-fg: #e0e0e0;
+  --my-color-accent: tomato;
+  --my-radius: 0.25rem;
+  --my-padding: 1em;
+}

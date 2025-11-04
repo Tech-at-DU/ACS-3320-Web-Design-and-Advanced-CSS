@@ -1,4 +1,4 @@
-# FEW 2.2 - Advanced CSS - Styling form Controls
+# Styling form Controls
 
 Styling controls like buttons and form elements provide some extra challenges and opportunities.
 

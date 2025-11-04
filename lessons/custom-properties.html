@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="custom-properties-theme.css">
+</head>
+<body>
+
+  <h1>Example 1</h1>
+
+  <button>Hello World</button>
+
+  <style>
+    button {
+      padding: 0.5em 0.75em;
+      background-color: #fff;
+      border: 1px solid;
+      color: cornflowerblue;
+      border-radius: 0.5em;
+      font-size: 1em;
+      transition: 300ms;
+    }
+    button:hover {
+      background-color: cornflowerblue;
+      color: #fff;
+    }
+    </style>
+
+    <h2>Refactored with Custom Properties</h2>
+
+    <button>Hello World</button>
+
+    <style>
+      button {
+        --bg-color: #fff;
+        --fg-color: cornflowerblue;
+
+        padding: 0.5em 0.75em;
+        background-color: var(--bg-color);
+        border: 1px solid;
+        color: var(--fg-color);
+        border-radius: 0.5em;
+        font-size: 1em;
+        transition: 300ms;
+      }
+
+      button:hover {
+        background-color: var(--fg-color);
+        color: var(--bg-color);
+      }
+    </style>
+
+    <h3>Button Variants</h3>
+
+    <button class="success">Save</button>
+    <button class="warning">Delete</button>
+    <button class="dark">Cancel</button>
+
+    <style>
+      button.success {
+        --fg-color: white;
+        --bg-color: seagreen;
+      }
+
+      button.warning {
+        --fg-color: white;
+        --bg-color: tomato;
+      }
+
+      button.dark {
+        --fg-color: white;
+        --bg-color: #222;
+      }
+    </style>
+
+    <h3>Inverted Buttons</h3>
+
+    <button class="warning invert">Delete</button>
+
+    <style>
+      button.invert {
+        color: var(--bg-color);
+        background-color: var(--fg-color);
+      }
+
+      button.invert:hover {
+        background-color: var(--bg-color);
+        color: var(--fg-color);
+      }
+    </style>
+
+    <h3>Inline Customization</h3>
+  
+    <button style="--bg-color: violet; --fg-color: #fff;">Use Location</button>
+
+    <h2>Custom Properties Card example</h2>
+
+    <div class="card">
+      <h2>Custom Property Magic ✨</h2>
+      <p>Change a few variables and the entire theme updates!</p>
+    </div>
+
+    <style>
+
+    </style>
+
+    <style>
+      :root {
+        --color-bg: var(--my-color-bg, white);
+        --color-fg: var(--my-color-fg, #222);
+        --color-accent: var(--my-color-accent, cornflowerblue);
+        --radius: var(--my-radius, 0.5rem);
+        --padding: var(--my-padding, 1em);
+      }
+
+      .card {
+        background-color: var(--color-bg);
+        color: var(--color-fg);
+        border-radius: var(--radius);
+        padding: var(--padding);
+        border: 1px solid var(--color-accent);
+      }
+    </style>
+</body>
+</html>

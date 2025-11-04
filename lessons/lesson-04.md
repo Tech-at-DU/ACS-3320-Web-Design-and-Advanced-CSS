@@ -1,4 +1,4 @@
-# FEW 2.2 Lesson 4 - Background Images
+# Background Images
 
 ## Learning Objectives 
 
