@@ -95,6 +95,8 @@
   
     <button style="--bg-color: violet; --fg-color: #fff;">Use Location</button>
 
+    <button style="--bg-color: purple; --fg-color: yellow;">Use Location</button>
+
     <h2>Custom Properties Card example</h2>
 
     <div class="card">
@@ -108,6 +110,9 @@
 
     <style>
       :root {
+
+        --my-prop: var(--some-var, 20px);
+
         --color-bg: var(--my-color-bg, white);
         --color-fg: var(--my-color-fg, #222);
         --color-accent: var(--my-color-accent, cornflowerblue);

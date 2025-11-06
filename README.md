@@ -16,7 +16,7 @@
 |  4 |  Thu, Oct 30 | shadows [3D CSS]             | -          | -                |
 | -  | **Week 3**   | **CSS Custom Properties**    | [Parameterize Your Picture] | - |
 |  5 |  Tue, Nov  4 | [Custom Properties]          | -          | [Make a Picture with CSS] |
-|  6 |  Thu, Nov  6 | [Lesson CSS Position]        | -          | -                |
+|  6 |  Thu, Nov  6 | [3d Mini Hackathon]          | -          | -                |
 | -  | **Week 4**   | **CSS Motion & Microinteractions** | [Microinteractions] | -   |
 |  7 |  Tue, Nov 11 | [Transition]                 | -          | [Parameterize Your Picture] |
 |  8 |  Thu, Nov 13 | [Animation]                  | -          | -                |
@@ -24,10 +24,10 @@
 |  9 |  Tue, Nov 18 | [CSS Preprocessors] Variables, nesting, loops, partials | - | [Microinteractions] |
 | 10 |  Thu, Nov 20 | Functions and mixins.        | -          | -                |
 | -  | **Week 6**   | **Web Components**           | [Web Components] | -          |
-| 11 |  Tue, Nov 25 | [Web Components Part 1]      | -         | -                |
+| 11 |  Tue, Nov 25 | [Web Components Part 1]      | -          | -                |
 | 12 |  Thu, Nov 27 | **Thanks Giving Holiday**    | -          | -                |
 | -  | **Week 7**   | -                            | -          | -                |
-| 13 |  Tue, Dec  2 | [Web Components part 2]      | -  | [CSS Framework] |
+| 13 |  Tue, Dec  2 | [Web Components part 2]      | -          | [CSS Framework]  |
 | 14 |  Thu, Dec  4 | -                            | -          | -                |
 | -  | **Week 8**   | -                            | -          | -                |
 | 13 |  Tue, Dec  9 | TBD                          | -          | -                |
@@ -62,6 +62,8 @@ You are responsible for solving the the following homework challenges. There is 
 [Lesson 9 Form Controls]: lessons/lesson-09.md
 [Transition]: lessons/lesson-10.md
 [Animation]: lessons/lesson-11.md
+
+[3d Mini Hackathon]: https://github.com/Tech-at-DU/3d-css
 
 [Pseudo-elements]: ./lessons/lesson-pseudo-elements.md
 

@@ -1,130 +1,74 @@
-# ACS 3320 Advanced CSS
 
-This class is about you having fun with CSS. CSS is getting more powerful every year, the more you know, the more you can leverage its power!
 
-Do not compare your art and design skills against anyone else. Just have fun and be creative!
 
-## Week 1 – CSS Selectors & Specificity
+Mini Hackathon
+- book with turning pages
+- solar system
+- zoetrope
+- a forest
 
-**Assignment:** *CSS Zen Garden Remix*
-Your goal is to redesign the CSS Zen Garden page.
-**Rules:** You can only add CSS — you are not allowed to modify the HTML.
-That means you must find selectors that identify elements since you can’t add new class names.
 
-**Tuesday**
-* Mastering selectors, specificity, pseudo-elements, inheritance.
-* What is the CSS Zen Garden?
-* Review Selectors – *CSS Diner*
-* Explore Zen Garden
-* Show examples
+---
 
-**Thursday**
-* Pseudo-elements `::before` and `::after`
-* CSS typography best practices
-* Background image
+:is()
 
-## Week 2 – Drawing with CSS (Art & Composition)
+:has()
 
-**Assignment:** *Make a Picture with CSS*
-Your goal is to create a picture with CSS.
-**Rules:** You can only use HTML and CSS — no imported image files.
-Your picture can be anything you like. Avoid preconceptions and worrying about what others will think — have fun!
+:where()
 
-**Tuesday**
-* CSS positioning, transforms, gradients, clip-path
-* Show some examples of what’s possible
-* Clip-path generator
-* Relative vs absolute position, z-index, and positioning context
+---
 
-**Thursday**
-* CSS gradients and box-shadow
-* Gradient syntax and relevant properties
-* Gradient generator
-* Box-shadow and stacking shadows
-* When and why to use multiple shadows
+Color 
 
-## Week 3 – CSS Custom Properties
+hex #rgb #rrggbb #rrggbbaa
+rgb(r, g, b) rgba(r, g, b, a)
+hsl(h, s, l) hsla(h, s, l, a)
+hwb(h w b / a)
+lab(l, a, b)
+oklch(lightness chroma hue / alpha)
 
-**Assignment:** *Parameterize Your Picture*
-Take your Week 2 picture and refactor it to use **CSS custom properties**.
-Use variables to define the colors, sizes, and positions of your elements.
-**Goal:** Make your design themeable by changing only a few properties at the top of your CSS file.
+color-mix()
 
-**Tuesday**
-* Using custom properties
-* Setting defaults, fallbacks, and dynamic values
 
-**Thursday**
-* Scope and inheritance of custom properties
-* Theming with `:root`, containers, and media queries
+CSS provides a variety of color functions that allow developers to define colors in different color spaces, offering more control, predictability, and access to wider color gamuts than traditional hexadecimal or color keywords. 
 
-## **Week 4 – CSS Motion & Microinteractions**
+CSS Color Functions | CSS-Tricks
 
-**Assignment:** *Interactive Icon or Button Set*
-Create three animated elements:
+The main color functions include:
 
-1. **Logo or progress timer** (looping keyframe animation)
-2. **Button, icon, or link** that responds to both hover and active (click) states
-3. **Triggered or timed animation** that plays from start to finish (like a loading bar, reveal, or notification)
+sRGB Color Space (Standard) 
+These functions use the standard Red, Green, Blue (sRGB) color space, which is the default for most web displays. 
+rgb(): Defines a color using red, green, and blue components. An optional alpha channel can be included for opacity.
+Syntax: rgb(red green blue / alpha)
+Examples: rgb(255 0 0) (red), rgb(100% 0% 0% / 0.5) (50% opaque red).
+Values for red, green, and blue can be integers (0-255) or percentages (0%-100%).
+hsl(): Defines a color using the Hue, Saturation, and Lightness model, which is often more intuitive for humans.
+Syntax: hsl(hue saturation lightness / alpha)
+Examples: hsl(120deg 100% 50%) (green), hsl(0 100% 50% / 25%) (25% opaque red).
+Hue: An angle on the color wheel (0-360 degrees, or other angle units).
+Saturation: A percentage (0% is grayscale, 100% is full color).
+Lightness: A percentage (0% is black, 100% is white, 50% is normal).
+hwb(): Defines a color using Hue, Whiteness, and Blackness. This allows you to pick a base hue and mix in amounts of white or black.
+Syntax: hwb(hue whiteness blackness / alpha)
+Examples: hwb(120deg 0% 0%) (pure green), hwb(0 50% 0%) (pink). 
+Wide-Gamut Color Spaces (Modern)
+These newer functions (part of CSS Color Module Level 4) enable access to a wider range of colors, including those outside the sRGB gamut, and offer better perceptual uniformity. 
+lab(): Specifies colors in the CIELAB color space, using lightness, an a-axis (green to red), and a b-axis (blue to yellow).
+Syntax: lab(lightness a-axis b-axis / alpha)
+Examples: lab(50% 0 0).
+lch(): Specifies colors in the CIELAB color space using the cylindrical coordinates: Lightness, Chroma (color intensity), and Hue.
+Syntax: lch(lightness chroma hue / alpha)
+Examples: lch(50% 50 150deg).
+oklab(): Similar to lab(), but uses an optimized Oklab color space which provides more perceptually uniform results, especially for gradients and color mixing.
+Syntax: oklab(lightness a-axis b-axis / alpha)
+oklch(): The cylindrical equivalent of oklab(), providing perceptual lightness, chroma, and hue.
+Syntax: oklch(lightness chroma hue / alpha)
+oklch() is recommended for most modern color work due to its predictability and access to wide gamuts.
+color(): This generic function allows you to specify colors within explicit color spaces, such as display-p3, a98-rgb, or rec2020.
+Syntax: color(colorspace value1 value2 value3 / alpha)
+Examples: color(display-p3 1 0.5 0). 
+Utility Functions
+color-mix(): Mixes two colors together by a specified amount in a given color space.
+light-dark(): Allows specifying two colors, one for light mode and one for dark mode, automatically selecting the appropriate one based on user preference or the color-scheme property.
+Relative color syntax: A general syntax using the from keyword that enables taking an existing color, modifying its channels (e.g., lightening, darkening, or changing the hue), and outputting a new color using any of the color functions above. 
 
-**Tuesday**
-* Transitions, keyframe animations, `@property`, easing functions
-
-**Thursday**
-* Combining custom properties with motion and interaction
-* Accessibility considerations for animation (`prefers-reduced-motion`)
-
-## **Week 5 – CSS Preprocessors (SASS)**
-
-**Assignment:** *Design Tokens — Build-Time vs Run-Time*
-Create a **theme system** that demonstrates the difference between SASS variables (compile-time) and CSS custom properties (run-time).
-Use SASS to generate utility classes and design scales (spacing, color, typography), and CSS variables to implement runtime theming (light/dark modes).
-
-**Tuesday**
-* Variables, nesting, loops, partials
-* Generating utility classes from maps and loops
-
-**Thursday**
-* Functions and mixins
-* Comparing SASS variables vs CSS custom properties
-* Building a small token system: SASS for structure, CSS vars for themes
-
-## **Week 6 – Web Components & Scoped Styles**
-
-**Assignment:** *Design a Custom Web Component with Lit*
-Build a reusable, stylized component (e.g., `<ui-card>`, `<toast-message>`, or `<user-badge>`) using Lit.
-Apply scoped CSS, animations, and theming with custom properties.
-
-**Tuesday**
-* Encapsulation, Shadow DOM, and style scoping
-* How CSS variables penetrate Shadow DOM boundaries
-
-**Thursday**
-* Slots and component composition
-* Reactive properties and dynamic styling
-* Styling strategies for components in a design system
-
-## **Week 7 – CSS Frameworks & Design Systems**
-
-**Assignment:** *Build Your Own CSS Framework*
-Start developing your own mini CSS framework that combines your work so far — SASS utilities, CSS custom properties, animations, and component styles.
-
-**Tuesday**
-* Framework architecture: folder structure, naming conventions, and build process
-* Combining SASS + custom properties + utility classes
-* Planning core utilities (layout, spacing, colors, typography)
-
-**Thursday**
-* Component-driven thinking
-* Building documentation pages and live examples
-* Accessibility and reduced-motion variants for your framework
-
-## **Week 8 – Capstone: Brand + Motion System**
-
-**Tuesday**
-* Final assessment and code review
-* Framework cleanup, documentation, and versioning
-
-**Thursday**
-* Present your CSS framework
-* Peer review and showcase
