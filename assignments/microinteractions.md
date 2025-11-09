@@ -41,7 +41,7 @@ Bonus challenge: Incorporate all of the requirements into a form with animated e
 * **Plan First** – Sketch or storyboard your three interactions before coding. Think about *how the user triggers* each one (hover, click, or automatic).
 * **Start Simple** – Begin with color, scale, or rotation changes. Then layer on complexity using transforms, opacity, or timing functions.
 * **Think about Structure** – Consider the elements you will need. Will you need an extra div or can you use `::before` and `::after` pseudo elements? 
-* **Which Selectors?** – Think about which selectors you will need, this is related to structure. Will you need a nested selector or a parent selector? Is motion triggered from the parent, or a child? This is probably the most important question on this list. If you are unclear what it is asking please study the lesson example files: https://github.com/Tech-at-DU/transition-examples
+* **Which Selectors?** – Think about which selectors you will need, this is related to structure. Will you need a nested selector or a parent selector? Is motion triggered from the parent, or a child? This is probably the most important question on this list. If you are unclear what it is asking study the lesson example files: https://github.com/Tech-at-DU/transition-examples
 * **Use Pseudo-Classes** – Try combining `:hover`, `:active`, and `:focus` to handle interaction states. 
 * **Experiment with Timing** – Play with `animation-duration`, `animation-delay`, and `cubic-bezier()` easing to give your animations personality.
 * **Keep It Purposeful** – Each animation should reinforce usability or provide feedback — not distract from it.
