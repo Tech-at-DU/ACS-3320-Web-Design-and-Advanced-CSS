@@ -25,10 +25,16 @@ You will create **three animated elements**, each demonstrating a different type
 Additional Requirements:
 
 * Use only **HTML and CSS** — no JavaScript.
-* Include at least one **@keyframes** animation.
-* Include at least one **transition** with custom duration and easing.
+* Include at least one **`@keyframes`** animation.
+* Include at least one **`transition`** with custom duration and easing (`timing-function`).
 * Keep your code clean, organized, and well-documented with comments.
 * Each element should be distinct and demonstrate a unique interaction or animation concept.
+
+Bonus challenge: Incorporate all of the requirements into a form with animated elements. You can use `:focus` and `:checked` to trigger motion effects. See these examples for ideas: 
+- https://codepen.io/dsenneff/pen/2d338b0adf97472ebc5d473cf1fa910b
+- https://www.npmjs.com/login
+- https://codepen.io/Mr_Dzi/pen/WpeYNQ
+- https://codepen.io/jakegilesphillips/pen/MveNLe (not a form but could be...)
 
 ## Strategies
 

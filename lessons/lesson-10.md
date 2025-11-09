@@ -8,23 +8,14 @@ Engagment is important. Things that move are much more interesting. They attract
 
 ## Learning Objectives
 
+TODO: Update this list
 1. Use `transition`
 2. Create interactive animations
 3. Use the `:hover` pseudo class
 4. Define CSS Custom Properties
 5. Use CSS Custom Properties
 
-<!-- ## Slides
-
-https://docs.google.com/presentation/d/1SAP_Xz5_25VRa41kBmzncHtekSXodDt2WGRSjcy7FZI/edit?usp=sharing -->
-
 ## Identify some Examples of motion
-
-Look for motion in apps and website that you use. 
-
-Pair and share these with your partner. 
-
-## Initial Exercise
 
 Animation is everywhere on the computer. Even your code editor has some animation. Small animations can be informative and engaging. 
 
@@ -32,23 +23,31 @@ When you see motion on the computer what is happening? Most often that motion is
 
 Explore some CSS animations and identify what properties are being animated.
 
-1. https://codepen.io/FabioG/full/QjLreK
-2. https://codepen.io/dsenneff/pen/2d338b0adf97472ebc5d473cf1fa910b
-3. https://codepen.io/donovanh/full/pvMeeB
-4. https://codepen.io/yoannhel/full/sJpDj
-5. https://codepen.io/Manoz/full/pydxK
-6. https://codepen.io/Venerons/full/BvHbK
-7. https://codepen.io/MarioDesigns/full/woJgeo
-8. https://codepen.io/u1tralord/full/pvXwza
-9. https://codepen.io/Zaku/full/YjRqzB
-10. https://codepen.io/pcameron/pen/rVmera
-11. https://codepen.io/valhead/full/rfump
-12. https://codepen.io/stefcharle/full/Gydvbx
-13. https://codepen.io/nathantaylor/full/PJGqdE
-14. https://codepen.io/oliviale/full/jxPgKv
-15. https://codepen.io/antho-fsy/pen/wJqWKj
+Transition Examples: 
+1. https://codepen.io/dsenneff/pen/2d338b0adf97472ebc5d473cf1fa910b
+2. https://codepen.io/stefcharle/full/Gydvbx
+3. https://codepen.io/valhead/full/rfump
+4. https://codepen.io/Noor_Spoty/pen/pooyOgd
+5. https://codepen.io/lisilinhart/pen/OJRoRJe
+6. https://codepen.io/t_afif/pen/PoEebrz
+7. https://codepen.io/pcameron/pen/rVmera
+8. https://codepen.io/xx_uan/pen/JmYMEy
+9. https://codepen.io/nathantaylor/full/PJGqdE
+10. https://codepen.io/oliviale/full/jxPgKv
 
-What is happening in these animations? Don't worry about the technical details just _identify which properties are changing_.
+
+<!-- Animation Examples -->
+<!-- 1. https://codepen.io/FabioG/full/QjLreK -->
+<!-- 5. https://codepen.io/t_afif/pen/PoJavbw -->
+<!-- 3. https://codepen.io/donovanh/full/pvMeeB -->
+<!-- 4. https://codepen.io/yoannhel/full/sJpDj -->
+<!-- 5. https://codepen.io/Manoz/full/pydxK -->
+<!-- 6. https://codepen.io/Venerons/full/BvHbK -->
+<!-- 7. https://codepen.io/MarioDesigns/full/woJgeo -->
+<!-- 8. https://codepen.io/u1tralord/full/pvXwza -->
+<!-- 15. https://codepen.io/antho-fsy/pen/wJqWKj -->
+
+What is happening in these animations? Don't worry about the technical details just _identify which CSS properties are changing_. For example: scale, rotation, background-color, etc. 
 
 ## Example Code
 
