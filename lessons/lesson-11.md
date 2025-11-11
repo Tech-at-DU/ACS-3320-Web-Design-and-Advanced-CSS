@@ -646,4 +646,8 @@ Submit your loading animation to gradescope.
 1. https://www.smashingmagazine.com/2011/07/learning-to-use-the-before-and-after-pseudo-elements-in-css/
 1. https://codersblock.com/blog/diving-into-the-before-and-after-pseudo-elements/
 1. https://dev.to/ruppysuppy/css-decoded-before-and-after-1o56
+- https://thoughtbot.com/blog/css-animation-for-beginners
+1. https://css-tricks.com/almanac/properties/a/animation/
+1. https://www.mockplus.com/blog/post/css-animation-examples
+1. https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations
 

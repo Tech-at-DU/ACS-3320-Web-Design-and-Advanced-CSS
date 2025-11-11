@@ -231,11 +231,6 @@ See Example 14
 ## Additional Resources
 
 - https://css-tricks.com/almanac/properties/a/animation/
-- https://thoughtbot.com/blog/css-animation-for-beginners
-1. https://www.youtube.com/watch?v=9UeVeH5ZzP0&list=PLoN_ejT35AEg-xKnTgIjE5VU-3IHO2N6i
-1. https://css-tricks.com/almanac/properties/a/animation/
-1. https://www.mockplus.com/blog/post/css-animation-examples
-1. https://uicookies.com/css-animation-examples/
-1. https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions
-1. https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations
-
+- https://www.youtube.com/watch?v=9UeVeH5ZzP0&list=PLoN_ejT35AEg-xKnTgIjE5VU-3IHO2N6i
+- https://uicookies.com/css-animation-examples/
+- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions
