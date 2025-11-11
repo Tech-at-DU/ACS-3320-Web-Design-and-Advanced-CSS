@@ -60,7 +60,7 @@ You are responsible for solving the the following homework challenges. There is 
 [Lesson 7 Make a CSS Framework]: lessons/lesson-07.md
 [Lesson 8 Styling Navbars]: lessons/lesson-08.md
 [Lesson 9 Form Controls]: lessons/lesson-09.md
-[Transition]: lessons/lesson-10.md
+[Transition]: ./lessons/lesson-10.md
 [Animation]: lessons/lesson-11.md
 
 [3d Mini Hackathon]: https://github.com/Tech-at-DU/3d-css

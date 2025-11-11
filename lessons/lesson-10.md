@@ -53,6 +53,10 @@ What is happening in these animations? Don't worry about the technical details j
 
 Download this repo and take a look at the examples here: https://github.com/Tech-at-DU/transition-examples
 
+Look at the code samples here. Start with example-1.html. Look for the `TODO`s and follow the instructions. 
+
+There are three challenge problems in the readme. Solve these and submit your work to gradescope. 
+
 ## Video lessons 
 
 - https://www.youtube.com/playlist?list=PLoN_ejT35AEg-xKnTgIjE5VU-3IHO2N6i
@@ -64,9 +68,7 @@ There are a couple of ways to make things move with CSS.
 - `transition`
 - `@keyframe` and `animation`
 
-In a nutshell animation is the changing of property values over time. 
-
-In a nutshell `transition` causes changes to CSS properties to change over time instead of changing instantly, `@keyframe` defines changes that are mapped out over time. Transition animates a change to a property, keyframes map out changes that are then applied to properties. 
+Motion is the changing of property values over time.  
 
 ## Transition
 
