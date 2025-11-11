@@ -15,6 +15,17 @@ All of the best applications use motion to their advantage! You want your applic
 
 ## Examples 
 
+<!-- Animation Examples -->
+<!-- 1. https://codepen.io/FabioG/full/QjLreK -->
+<!-- 5. https://codepen.io/t_afif/pen/PoJavbw -->
+<!-- 3. https://codepen.io/donovanh/full/pvMeeB -->
+<!-- 4. https://codepen.io/yoannhel/full/sJpDj -->
+<!-- 5. https://codepen.io/Manoz/full/pydxK -->
+<!-- 6. https://codepen.io/Venerons/full/BvHbK -->
+<!-- 7. https://codepen.io/MarioDesigns/full/woJgeo -->
+<!-- 8. https://codepen.io/u1tralord/full/pvXwza -->
+<!-- 15. https://codepen.io/antho-fsy/pen/wJqWKj -->
+
 Download these example files: https://github.com/Tech-at-DU/animation-examples
 
 ## key frames
