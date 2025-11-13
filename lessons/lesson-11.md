@@ -16,23 +16,21 @@ All of the best applications use motion to their advantage! You want your applic
 ## Examples 
 
 <!-- Animation Examples -->
-<!-- 1. https://codepen.io/FabioG/full/QjLreK -->
-<!-- 5. https://codepen.io/t_afif/pen/PoJavbw -->
-<!-- 3. https://codepen.io/donovanh/full/pvMeeB -->
-<!-- 4. https://codepen.io/yoannhel/full/sJpDj -->
-<!-- 5. https://codepen.io/Manoz/full/pydxK -->
-<!-- 6. https://codepen.io/Venerons/full/BvHbK -->
-<!-- 7. https://codepen.io/MarioDesigns/full/woJgeo -->
-<!-- 8. https://codepen.io/u1tralord/full/pvXwza -->
-<!-- 15. https://codepen.io/antho-fsy/pen/wJqWKj -->
+1. https://codepen.io/FabioG/full/QjLreK -->
+5. https://codepen.io/t_afif/pen/PoJavbw
+3. https://codepen.io/donovanh/full/pvMeeB
+4. https://codepen.io/yoannhel/full/sJpDj
+5. https://codepen.io/Manoz/full/pydxK
+6. https://codepen.io/Venerons/full/BvHbK
+7. https://codepen.io/MarioDesigns/full/woJgeo
+8. https://codepen.io/u1tralord/full/pvXwza
+15. https://codepen.io/antho-fsy/pen/wJqWKj
 
 Download these example files: https://github.com/Tech-at-DU/animation-examples
 
 ## key frames
 
-Animation is the creation of many still images that are played back quickly giving the appearance of smooth motion. 
-
-In animation the concept of key frames is the idea of drawing the extremes of a motion. For example a ball bouncing the extremes would the ball at the highest point and the ball at the highest point. 
+In animation the concept of key frames is the idea of drawing the extremes of a motion. For example a ball bouncing the extremes would the ball at the highest point and the ball at the lowest point of the bounce. 
 
 ![Key frames](images/keyframes-1.png)
 
@@ -49,27 +47,27 @@ You could define these key frames with `@keyframe` in CSS like this:
 }
 ```
 
-The extremes of the animation are 0 and 200px. The values between these numbers are the in betweens. 
+The extremes of the animation are 0 and 200px. The values between these numbers are the in-betweens. 
 
-Inbetweens are the frames that need to be generated between the key frames! 
+In-betweens are the frames that need to be generated between the key frames! For example between 0 and 200 the object would pass through all of the values inbetween.
 
 This applies to every property that needs to be animated. 
 
-Notice that you have placed keyframes along the length of the animation using %. The time has not been set yet but the first key frame applies at 0% of the length of the animation and the last key frame applies at the end or 100% the length of the animation! 
+Notice that you have placed keyframes along the length of the animation using %. The time has not been set yet. The first key frame applies at 0% of the length of the animation and the last key frame applies at the end or 100% the length of the animation! 
 
 To apply this key frame to an object use the animation properties: 
 
 ```CSS
 .ball {
-  animation-name: bounce; /* Set the key frames */
-  animation-duration: 2s; /* Set the duration  */
+  animation-name: bounce;              /* Set the key frames */
+  animation-duration: 2s;              /* Set the duration  */
   animation-iteration-count: infinite; /* Set the repeats */
-  animation-direction: alternate; /* Set the direction */
-  animation-timing-function: ease-out;
+  animation-direction: alternate;      /* Set the direction */
+  animation-timing-function: ease-out; 
 }
 ```
 
-Animation has more than a few properties. Try and remember the concepts, look up the property names if you forget them. 
+Animation has more than a few properties. Its easier to remember the concepts, look up the property names if you forget them. 
 
 The process of using animation: 
 
@@ -97,7 +95,7 @@ Define the value for properties along the length of the animation. Here `transfo
 ```CSS
 @keyframes scaleAndRotate {
   0% { transform: scale(0.5) rotate(0); } /* state at 0% of the duration */
-  50% { background-color: blue; } /* state at 50% of the duration */
+  50% { background-color: blue; }         /* state at 50% of the duration */
   100% { transform: scale(1.0) rotate(23deg); } /* state at 100% of the duration */
 }
 ```
@@ -142,19 +140,7 @@ Here is a list of animation properties:
 - `animation-play-state` Is the animation playing or not? 
 - `animation-timing-function` Easing function to apply to this animation
 
-
-
-## Challenges
-
-The challenge for today is open ended. You will design your own loading animation. This can be anything you like. Take a look at the examples. 
-
-You'll submit this to Gradescope! 
-
-## Examples
-
-Try these examples. 
-
-### Example 0 
+### Example 
 
 Basic animation that repeats for ever. 
 
@@ -232,7 +218,7 @@ One of the most confusing properties is `animation-fill-mode`. This property det
     animation-duration: 5s;
     animation-iteration-count: 1;
 
-    /* The most confusing property!
+    /* The most confusing property is animation-fill-mode.
     Without this property the element "jumps"
     back to it's starting values at the end of 
     the animation. 
