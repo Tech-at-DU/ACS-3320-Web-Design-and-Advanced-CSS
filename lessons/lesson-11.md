@@ -16,7 +16,7 @@ All of the best applications use motion to their advantage! You want your applic
 ## Examples 
 
 <!-- Animation Examples -->
-1. https://codepen.io/FabioG/full/QjLreK -->
+1. https://codepen.io/FabioG/full/QjLreK 
 5. https://codepen.io/t_afif/pen/PoJavbw
 3. https://codepen.io/donovanh/full/pvMeeB
 4. https://codepen.io/yoannhel/full/sJpDj
