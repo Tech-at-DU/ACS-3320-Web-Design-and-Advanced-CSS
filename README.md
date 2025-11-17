@@ -21,7 +21,7 @@
 |  7 |  Tue, Nov 11 | [Transition]                 | -          | [Parameterize Your Picture] |
 |  8 |  Thu, Nov 13 | [Animation]                  | -          | -                |
 | -  | **Week 5**   | **CSS Preprocessors**.       | [CSS Framework] | -           |
-|  9 |  Tue, Nov 18 | [CSS Preprocessors] Variables, nesting, loops, partials | - | [Microinteractions] |
+|  9 |  Tue, Nov 18 | [CSS Layers] - [CSS Framework Notes] | - | [Microinteractions] |
 | 10 |  Thu, Nov 20 | Functions and mixins.        | -          | -                |
 | -  | **Week 6**   | **Web Components**           | [Web Components] | -          |
 | 11 |  Tue, Nov 25 | [Web Components Part 1]      | -          | -                |
@@ -67,10 +67,12 @@ You are responsible for solving the the following homework challenges. There is 
 
 [Pseudo-elements]: ./lessons/lesson-pseudo-elements.md
 
-
 [Custom Properties]: lessons/custom-properties.md
 
 [3D CSS]: lessons/3d-css.md
+
+[CSS Layers]: ./lessons/css-layers.md
+[CSS Framework Notes]: https://github.com/Tech-at-DU/css-framework-notes
 
 [CSS Preprocessors]: lessons/lesson-12.md
 [Web Components part 1]: lessons/lesson-15.md
