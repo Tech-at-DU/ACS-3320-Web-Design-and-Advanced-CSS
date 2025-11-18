@@ -136,7 +136,7 @@ Your framework **must** include at least:
 
 ---
 
-# Color in CSS
+# Defining a Color Palette
 
 A framework needs a consistent, reusable color system.
 We’ll use **modern color tools** to build one.
@@ -158,7 +158,7 @@ OKLCH describes a color with three main values:
 
 * **l** – lightness, from 0 (black) to 1 (white)
 * **c** – chroma (intensity), from gray to vivid
-* **h** – hue, as an angle from `0deg` to `360deg`
+* **h** – hue, as an angle from `0deg` to `360deg` (or a number from 0 to 1)
 * **(optional)** alpha for transparency
 
 Why use it?
@@ -343,213 +343,18 @@ Choose a modular ratio (e.g., `1.25`, `1.333`, `1.5`, or `1.618`) and:
 * Define a base font size (e.g., `var(--font-size-0)` for body).
 * Calculate heading sizes based on that ratio.
 
+```CSS
+:root {
+  --font-base-size: 16px;
+  --font-ratio: 1.5;
+}
+
+h5 {
+  /* 24px */
+  font-size: calc(var(--font-base-size) * var(--font-ratio));
+}
+```
+
 Use `headings.html` to experiment until your headings:
 
-* form a smooth visual progression
-* don’t jump too aggressively between levels
-* still work on small screens
-
----
-
-## 3. 3-Hour Lesson Plan (Active Learning)
-
-Here’s a concrete plan for a single 3-hour block using the lesson above.
-
-### 0:00–0:15 — Setup & Motivation
-
-* **Goal slide**: “By the end of today, you’ll have the skeleton of your own CSS framework: layers + tokens + first base styles.”
-* Quick discussion:
-
-  * “Who has used Bootstrap/Tailwind/etc.?”
-  * “What annoys you when customizing them?”
-* Show a tiny example of:
-
-  * same HTML
-  * browser default vs your minimal framework
-
-**Micro-task**:
-Students skim your project page for 3 minutes and underline/highlight the words “tokens”, “layers”, and “themeable”.
-Ask 2–3 students to paraphrase each term.
-
----
-
-### 0:15–0:40 — Cascade & Layers (Guided Demo)
-
-* Short explanation of cascade, then jump into **live coding** using your simplified `@layer` example.
-* Show:
-
-  * Rule in `layer A` vs rule in `layer B`
-  * How changing layer order flips the result.
-
-**In-class challenge** (paired):
-
-* Give them a CodePen/stackblitz with:
-
-  * prewritten HTML with `.btn` and `button.btn`
-  * two layers declared
-* Tasks:
-
-  1. Make the button red using only layer order.
-  2. Make it blue using only **selectors** (no `!important`).
-  3. Explain which one feels easier to maintain in a framework.
-
-Debrief: “This is why we’re using layers for the framework.”
-
----
-
-### 0:40–1:10 — Framework Skeleton Lab
-
-Students:
-
-1. Create `<framework-name>.css`.
-
-2. Add:
-
-   ```css
-   @layer tokens, base, components, utilities, overrides;
-   ```
-
-3. Add a minimal `tokens` and `base` example (body text color, bg color).
-
-4. Link it to a provided `sample.html` (or `colors.html`/`headings.html`).
-
-**Instructor walk-around**:
-Check that everyone has the file wired up and the layer line correct.
-
-**Mini exit check before break**:
-Ask three students: “Which layer should be the least powerful?” → `tokens`.
-
----
-
-### 1:10–1:20 — Break
-
----
-
-### 1:20–1:45 — Color System Mini-Lecture + Guided Practice
-
-* Show OKLCH briefly: one slide, one example.
-* Show `color-mix()` and/or relative syntax with **one** ramp as example.
-* Emphasize the outcome, not the math: “We want systematic tints/shades.”
-
-**Guided coding (follow-along)**:
-
-* Start from:
-
-  ```css
-  @layer tokens {
-    :root {
-      --primary: oklch(0.6 0.15 250);
-    }
-  }
-  ```
-
-* Students add `--primary-light` and `--primary-dark` with you.
-
-* Quickly preview in `colors.html`.
-
----
-
-### 1:45–2:20 — Color System Lab (Core Challenge)
-
-Students work on:
-
-> **3 tints + 3 shades for each of 5 main colors**, all in `tokens`.
-
-Scaffold:
-
-* Provide a list of suggested semantic names: `primary`, `secondary`, `accent`, `neutral`, `danger` OR similar.
-* Require a consistent naming scheme (e.g. `-1` … `-7`).
-
-**Checkpoints**:
-
-* At 10 minutes: they must have chosen their 5 base colors.
-* At 20 minutes: at least one full ramp is visible in `colors.html`.
-
-Optional: have them swap laptops with a neighbor and answer: “Can you tell which color is primary/secondary/etc. just by the naming?”
-
----
-
-### 2:20–2:50 — Base Layer Typography & Links
-
-* Very short explanation: browser defaults are ugly, we’ll replace them.
-* Students use their tokens to style:
-
-  * `body`, `p`
-  * `h1–h3` (at least) with a type scale
-  * `a`, including `:hover` and `:focus-visible`
-
-Prompt them to use **only** token variables for:
-
-* font sizes
-* colors
-* spacing
-
-**Micro-challenge**:
-Ask them to search their CSS for raw numbers (`16px`, `1.5rem`, etc.).
-Any repeated value should be turned into a token.
-
----
-
-### 2:50–3:00 — Wrap-up & Exit Ticket
-
-* Quick gallery walk: have 3–4 students show their heading scales.
-* Exit ticket (written or verbal):
-
-  1. “In one sentence, what does `@layer` give you that specificity does not?”
-  2. “Name one token you defined today and where you used it.”
-
----
-
-## 4. Assignment Framing (Suggested Text)
-
-Right now you have “See the assignment description here.” but nothing concrete in this doc. Here’s a terse version you can paste into Canvas/Notion and link from this lesson.
-
----
-
-### Assignment: CSS Framework — Layers & Tokens (Week X)
-
-**Goal**:
-Start your own CSS framework with:
-
-* a clear **layer architecture**
-* a robust **color token system**
-* basic **typography & link** styles
-
-**Requirements (for this checkpoint)**
-
-1. **Framework file**
-
-   * A single CSS file named `<framework-name>.css`.
-   * `@layer tokens, base, components, utilities, overrides;` declared at the top.
-
-2. **Tokens layer**
-
-   * At least **5 base colors** (e.g., primary, secondary, accent, neutral, danger).
-   * For each base color, at least **3 tints** and **3 shades** using `color-mix()` and/or relative colors.
-   * Tokens for:
-
-     * base font size
-     * 4+ spacing values (`--space-xs` … `--space-lg`)
-     * at least 3 border radii (`--radius-sm`, `--radius-md`, `--radius-lg`)
-
-3. **Base layer**
-
-   * Styles for `body`, `p`, `h1–h6`, `a`, `code`, `pre`, `blockquote`, `strong`, `em`.
-   * Headings use a consistent modular scale.
-   * All colors, sizes, and radii come from tokens (no magic numbers except one base size).
-
-4. **Demo HTML**
-
-   * At least one sample page (`typography.html` or similar) that imports your framework and shows:
-
-     * headings
-     * paragraphs
-     * links (including hover & focus)
-     * code and blockquote
-
-**Grading focus**
-
-* Does your layer structure make sense?
-* Are your tokens reused consistently?
-* Does your color system look intentional and coherent?
-* Can I change a few tokens and see the theme update?
+Explore these ideas and get started with your CSS framework here: https://github.com/Tech-at-DU/css-framework-notes
