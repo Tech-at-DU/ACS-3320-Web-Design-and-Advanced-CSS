@@ -143,16 +143,16 @@ We’ll use **modern color tools** to build one.
 
 ## Color formats to know
 
-* **Hex:** `#rrggbb`, `#rrggbbaa`
-* **RGB:** `rgb(255 0 0 / 0.5)`
-* **HSL:** `hsl(210 50% 40%)`
-* **OKLCH:** `oklch(l c h)` — perceptually uniform, great for ramps
+* **Hex:** `#rrggbb`, `#rrggbbaa` (red, green, and blue as hexidecimal 0 to F)
+* **RGB:** `rgb(255 0 0 / 0.5)` (red, green, and blue, as 0 to 255)
+* **HSL:** `hsl(210 50% 40%)` (hue (0 to 360), saturation, and lightness)
+* **OKLCH:** `oklch(l c h)` — perceptually uniform, great for ramps (lightness, chroma, and hue)
 
 We’ll prefer **OKLCH** for tokens because it makes tints and shades more predictable.
 
 ---
 
-## OKLCH in one minute
+## OKLCH 
 
 OKLCH describes a color with three main values:
 
@@ -203,6 +203,8 @@ Example with OKLCH:
 
 Relative colors let you define a new color **based on an existing one** by tweaking its channels.
 
+Relative colors work with all of the color models (rgb, hsl, lab, ...), here you will focus on oklch. 
+
 You can:
 
 * make a color lighter or darker
@@ -226,7 +228,7 @@ What happens:
 * It changes only `l` (lightness) using `calc()`.
 * Chroma (`c`) and hue (`h`) stay the same.
 
-You can repeat this pattern to create a whole ramp:
+You can repeat this pattern to create a whole palette of colors:
 
 ```css
 --secondary-3: oklch(0.7 0.12 250);
