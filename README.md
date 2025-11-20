@@ -22,7 +22,7 @@
 |  8 |  Thu, Nov 13 | [Animation]                  | -          | -                |
 | -  | **Week 5**   | **CSS Preprocessors**.       | [CSS Framework] | -           |
 |  9 |  Tue, Nov 18 | [CSS Layers] - [CSS Framework Notes] | - | [Microinteractions] |
-| 10 |  Thu, Nov 20 | Components classes and utilities | -          | -                |
+| 10 |  Thu, Nov 20 | [css components]             | -          | -                |
 | -  | **Week 6**   | **Web Components**           | [Web Components] | -          |
 | 11 |  Tue, Nov 25 | [Web Components Part 1]      | -          | -                |
 | 12 |  Thu, Nov 27 | **Thanks Giving Holiday**    | -          | -                |
@@ -68,6 +68,8 @@ You are responsible for solving the the following homework challenges. There is 
 [Pseudo-elements]: ./lessons/lesson-pseudo-elements.md
 
 [Custom Properties]: lessons/custom-properties.md
+
+[css components]: ./lessons/css-components.md
 
 [3D CSS]: lessons/3d-css.md
 
