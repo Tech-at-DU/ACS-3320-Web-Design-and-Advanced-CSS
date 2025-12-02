@@ -27,7 +27,7 @@
 | 11 |  Tue, Nov 25 | [Web Components Part 1]      | -          | -                |
 | 12 |  Thu, Nov 27 | **Thanks Giving Holiday**    | -          | -                |
 | -  | **Week 7**   | -                            | -          | -                |
-| 13 |  Tue, Dec  2 | [Web Components part 2]      | -          | [CSS Framework]  |
+| 13 |  Tue, Dec  2 | [Web Components part 2]      | [Web Components] | [CSS Framework]  |
 | 14 |  Thu, Dec  4 | -                            | -          | -                |
 | -  | **Week 8**   | -                            | -          | -                |
 | 13 |  Tue, Dec  9 | TBD                          | -          | -                |
