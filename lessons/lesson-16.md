@@ -1,246 +1,218 @@
-# FEW 2.2 - Advanced CSS - Web Components part 2
+# ACS 3320 — Advanced CSS
 
-Getting started building your own components. 
+## Web Components, Part 2: Lifecycle, Attributes & Slots
 
-## Why you should know this?
+### Why this lesson matters
 
-Web Components are a new and possibly game changing web technology. They sit in the center of frontend development. If you want to be a frontend developer experience with Web Components will be useful. 
+Now that you’ve met the core ideas behind Web Components, it’s time to deepen your understanding. Modern custom elements have lifecycle events, attribute APIs, and slotting features that allow you to build real UI widgets—not just decorative demos.
 
-## Learning Objectives 
+This lesson builds directly on your Part 1 work and prepares you to build components that cooperate cleanly with your CSS framework.
 
-1. Build simple web components
-1. Define custom tags that encapsulate functionality
-1. Use attributes to configure components
-1. Reflect properties and attributes 
-1. Use Web Component Lifecycle methods
+## Warm-Up Review
 
-## Web Components
+Before continuing, make sure these ideas feel familiar:
 
-Web Components allow you to define new tags with encapsulated functionality. The goal of this class is to begin exploring web components by creating your own.
+* A Web Component = **a custom HTML tag** you define with `customElements.define()`.
+* Custom elements **must include a hyphen** in the name.
+* Every custom tag is backed by a **class** that extends `HTMLElement`.
+* Elements may create a **shadow root** that encapsulates markup and CSS.
+* The **light DOM** is your page’s main document; the **shadow DOM** is internal to the component.
 
-A good start to getting a handle on what Web Components are and how they work is to make a few simple components for yourself!
+**Challenge:**
+In pairs:
+Explain to each other why a `<input type="range">` needs hidden internal DOM to function.
+Then inspect one in DevTools.
 
-### Isolating your Code
+# 1. Lifecycle Methods
 
-Before you start writing libraries of your own custom components you will want to isolate your code from other code that you might be using. 
+Every custom element has lifecycle callbacks—hooks that let you run code when the element appears on the page or disappears from it.
 
-Since all elements in JS are global it's possible that code from other files might interfere with the code you have written. This problem can be prevented by wrapping your code in a self executing anonymous function. 
-
-```JS
-function myCode() {
-	// Your code here
-	const x = 99
-	// Variables defined here are scoped to this function
-	function otherFunction() {
-		// Other functions can be defined in other other functions
-	}
-	// ...
-}
-
-myCode() // Must call this function!
-```
-
-For the code to run you'll have to call that function. You could also call the function more than once, which might cause problems. Solve these issues with a Immediately Invoked Function Expression.
-
-```JS 
-// Start with two sets of parenthesis
-()() 
-
-// Put a function in the first 
-(function() { 
-	// ... Code here ... 
-})()
-```
-
-**Challenge**
-
-Start creating a new web component and place it in an IIFE. Include the class and element definition. Imagine you're making a component that displays the date. 
-
-### Templates
-
-One of the problems with Web Components is creating elements and styling those elements. 
-
-Web Components provides a solution: templates. 
-
-You may not need this if the markup in your component is simple. 
-
-Think of a template as some markup your page can duplicate and append anywhere in the DOM. Templates can also contain styles in a style tag. Which means they can bring their own styles with them.  
-
-A template is an HTML element that is not displayed. You'll have to clone it and append it to a DOM node before it becomes visible on a page. 
-
-Best practice: define a template in a variable outside of your class inside the IFFE.
-
-```JS 
-(function() {
-	// Create a template
-	const template = document.createElement('template')
-	// Set the content of the template
-  template.innerHTML = `
-    <style>
-      /* some styles ... */
-    </style>
-    <div class="container">
-      <!-- some markup ... -->
-    </div>
-	`
-	
-  class MyComponent extends HTMLElement {
-		constructor() {
-			super() 
-			// Create a shadow root node
-			const tempNode = template.content.cloneNode(true)
-			this._shadowRoot = this.attachShadow({ mode: 'open' });
-			this._shadowRoot.appendChild(tempNode)
-			// Get a reference to an element from your template
-			this._container = this._shadowroot.queryselector('.container')
-		}
-	}
-
-})()
-```
-
-What happened here? 
-
-- At the top you defined a template element. This inclduded a style tag and markup.
-- In the constructor of MyComponent you cloned the template, created the shadow root, and appended the cloned node to the shadow root. This created the HTML markup that will be used by this component. 
-- The last line shows how to access elements in the shadow root create from a template. It's same methods you have used in the past: `querySelector()`, `getElementById()` etc. 
-
-You can see a live example of templates working with a web component here: 
-
-https://github.com/Tech-at-DU/simple-component/tree/master/02-simple-components-templates/01-counter-template
-
-You can also use the `<template>` tag to define templates in an HTML document. 
-
-https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
-
-**Challenge**
-
-Use the idea above to add HTML markup to you example component. The mark in your template can be as simple as a single tag. 
-
-Include the style tag in the template. You can fill this in later. 
-
-### Lifecycle methods 
-
-Use these to setup and take down your components. Lifecycel methods are used to initialize resources, and free up those  resources when you're done using them. Like the name implies lifecycle methods are triggered over the life of a component.
-
-- `constructor()` - this is called when your component is initialized. 
-- `connectedCallback()` - this is called when the component is added to the DOM tree. 
-- `disconnectedCallback()` - this is called when the component is removed from the DOM tree. 
-- `attributeChangedCallback()` - this is invoked when an attribute on the element is changed. 
-
-Use the constructor to initialize class properties and create the shadow root. 
-
-Use `connectedCallback()` to handle things that should happen when the component is added to the DOM. For example adding a timer. 
-
-Use `disconnectedCallback()` to clean up when a component is removed from the DOM. For example remving a timer. 
-```JS 
-...
+```js
 class MyComponent extends HTMLElement {
-	...
-	connectedCallback() {
-		// Create a timer and save a reference 
-		this._timer = setInterval(() => {
-			this._nextImg()
-		}, 3000)
-	}
+  constructor() {
+    super();
+    // Runs when the instance is created (not yet in the DOM)
+  }
 
-	disconnectedCallback() {
-		// Clear your timer
-		clearInterval(this._timer)
-	}
-	...
+  connectedCallback() {
+    // Runs when inserted into the DOM (rendering begins)
+  }
+
+  disconnectedCallback() {
+    // Runs when removed from the DOM (cleanup time)
+  }
 }
 ```
 
-**Challenge**
+### When to use which?
 
-Add the lifecycle methods to your examples component. For now, use these methods to log a message to the console. 
+| Method                   | Use for                                               |
+| ------------------------ | ----------------------------------------------------- |
+| `constructor()`          | Base initialization, create shadow root, set defaults |
+| `connectedCallback()`    | Start timers, attach listeners, measure layout        |
+| `disconnectedCallback()` | Stop timers, remove listeners, release resources      |
 
-Implement your example web component in a web page and check the console. 
+### Active Challenge
 
-### Attributes 
+Open: `01-simple-component/04-blink-text`
 
-From outside you only have the tag itself to work with. It's not a good solution to edit source code if you need to make changes to a component. In other words you shouldn't expect developers to edit the .js file. 
+* Read the comments.
+* Implement the blinking behavior using timers and lifecycle methods.
 
-Developers using your components will use the tag and they can configure the tag with attributes. For example: 
+# 2. Working with Attributes
 
-`<my-counter value="5" min="0" max="10" step="1"></my-counter>`
+Attributes allow the outside world to configure your element:
 
-Internally your component can access attribute values with `this.getAttribute(name)`. It's probably best to store these in properties rather than get them with `getAttribute()` each time they are needed. For example: 
-
-```JS 
-...
-class MyComponent extends HTMLElement {
-	constructor() {
-		this._value = this.getAttribute('value')
-		this._min = this.getAttribute('min')
-		this._max = this.getAttribute('max')
-		this._step = this.getAttribute('step')
-	}
-}
+```html
+<blink-text time="1000" min="0.2" max="1"></blink-text>
 ```
 
-Attributes can change. They can be set from outside the component. Your component observe these changes with: `attributeChangedCallback(name, oldValue, newValue)`
-
-If you are using attributes to confgure your component. You'll need to list the attribute names that are being observed and listen for changes.
+To make attributes *reactive*, a component declares which ones it observes:
 
 ```js
 static get observedAttributes() {
-	return ['value', 'min', 'max', 'step'];
-}  
+  return ['time', 'min', 'max'];
+}
+
+attributeChangedCallback(name, oldValue, newValue) {
+  // Decide what to update based on name
+}
 ```
 
-Listening for changes and look at the name of the property that changed with `attributeChangedCallback(name, oldValue, newValue)`. 
+> Note! A static method is a method owned by the class, not by an instance.
 
-```js
-class MyCounter extends HTMLElement {
-  ...
-  static get observableAttibutes() {
-    return ['value', 'min', 'max', 'step']
-  }
-  ...
-   attributeChangedCallback(name, oldValue, newValue) {
-    if (name === 'value') {
-			this._value = parseInt(newValue)
-			this._update()
-    } else if (name === 'min') {
-			this._min = parseInt(newValue)
-		} else if (name === 'max') {
-			this._max = parseInt(newValue)
-		} else if (name === 'step') {
-			this._step = newValue
-		}
-  }
-  ...
+### Key Rules
+
+* Only attributes listed in `observedAttributes` trigger `attributeChangedCallback()`.
+* Attribute values come in as **strings**, so you must convert them when necessary.
+* If an attribute controls timing, listeners, or layout, you will update internal state.
+
+### Active Challenge
+
+Open: `01-simple-component/05-blink-text-2`
+
+* Add support for `min` and `max` attributes.
+* Make the blink fade between these values.
+
+# 3. Slots: Placing User Content Inside Your Component
+
+Slots allow your component to render user-provided content inside a template.
+
+### Example Structure (you’ll see this in the exercises)
+
+```html
+<slot></slot>                <!-- default slot -->
+<slot name="title"></slot>   <!-- named slot -->
 ```
 
-You can see these methods at work in a live example here: 
+### Why slots matter
 
-[Simple Component Template Examples](https://github.com/Tech-at-DU/simple-component/tree/master/02-simple-components-templates)
+* They allow **content projection**, similar to React children or Vue slots.
+* They allow your component to control layout, while the user controls content.
+* They work beautifully with templates.
 
-All of the examples are here:
+### Active Challenge
 
-[Simple Component Examples](https://github.com/Tech-at-DU/simple-component)
+Open: `03-simple-components-slots`.
 
+1. Inspect the HTML and match each visible part of `<fancy-box>` to the slots.
 
-## Activity 
+2. Open `fancy-box.js` and identify:
 
-Challenges: 
+   * Template
+   * Named slot
+   * Unnamed slot
+   * Styles using `:host`
 
-- Define a template and use it your component examples. 
-- Define styles in the template. 
-- Use attributes to comfigure your component.
+3. Modify the component:
 
-<!-- 
-## Minute-by-Minute [OPTIONAL]
+   * Add a new named slot (e.g., `<slot name="footer">`).
+   * Update the HTML demo to supply content for it.
+   * Change styles to confirm your edits appear on the page.
 
-| **Elapsed** | **Time**  | **Activity**              |
-| ----------- | --------- | ------------------------- |
-| 0:00        | 0:05      | Objectives                |
-| 0:05        | 0:15      | Overview                  |
-| 0:20        | 0:45      | In Class Activity I       |
-| 1:05        | 0:10      | BREAK                     |
-| 1:15        | 0:45      | In Class Activity II      |
-| TOTAL       | 2:00      |                           |
+# 4. Shadow DOM vs Light DOM
 
--->
+Choosing whether to use Shadow DOM is one of the biggest design decisions in Web Components.
+
+### Shadow DOM Pros
+
+* Encapsulated markup + styles
+* No CSS leakage (your framework won’t accidentally style internal elements)
+* Predictable internal structure
+
+### Shadow DOM Cons
+
+* Harder to override internal styles from the outside
+* More boilerplate for templates + styling
+* You may need `::part()` if you want to expose stylable pieces
+
+### Light DOM Pros
+
+* Simpler
+* Internal elements inherit global styles
+* Works well for components that want to fully integrate with your CSS framework
+
+### Light DOM Cons
+
+* Global CSS can break your internal structure
+* No encapsulation
+
+### Active Challenge
+
+Open: `02-simple-components-template/04-simple-slides-template`.
+
+There are **two slideshow components**:
+
+* One using a shadow root
+* One using the light DOM
+
+Try this:
+
+1. Add a CSS rule to the HTML page:
+
+   ```css
+   img { border: 5px solid red; }
+   ```
+2. Observe which slideshow is affected.
+3. Explain why.
+
+# **5. Putting It All Together**
+
+By now, you’ve seen:
+
+* Lifecycle methods
+* Attribute handling
+* Slots
+* Shadow vs light DOM
+* Templates
+
+All of these tools will come together when you build a component that integrates with your CSS framework.
+
+# Homework
+
+Work through the component challenges in the repo:
+
+**01-simple-component**
+
+* 01-hello-world
+* 02-rainbow-text
+* 03-ransom-note
+* 04-blink-text
+* 05-blink-text-2
+
+**02-simple-component-template**
+
+* 01-company-logo
+* 02-toggle-tag
+* 03-counter-template
+
+**03-simple-components-slots**
+
+* fancy-box + extensions
+
+Focus on internalizing:
+
+* lifecycle callbacks
+* attributes → internal state
+* templates + slots
+* shadow vs light DOM tradeoffs
