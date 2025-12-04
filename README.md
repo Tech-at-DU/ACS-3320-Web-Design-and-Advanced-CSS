@@ -28,7 +28,7 @@
 | 12 |  Thu, Nov 27 | **Thanks Giving Holiday**    | -          | -                |
 | -  | **Week 7**   | -                            | -          | -                |
 | 13 |  Tue, Dec  2 | [Web Components part 2]      | [Web Components] | [CSS Framework]  |
-| 14 |  Thu, Dec  4 | [Lit Element]                | -          | -                |
+| 14 |  Thu, Dec  4 | [Styling Web Components], [Lit Element] | -          | -                |
 | -  | **Week 8**   | -                            | -          | -                |
 | 13 |  Tue, Dec  9 | TBD                          | -          | -                |
 | 14 |  Thu, Dec 11 | TBD                          | -          | [Web Components] |
@@ -64,6 +64,7 @@ You are responsible for solving the the following homework challenges. There is 
 [Animation]: lessons/lesson-11.md
 
 [Lit Element]: ./lessons/lit-element.md
+[Styling Web Components]: ./lessons/styling-web-components.md
 
 [3d Mini Hackathon]: https://github.com/Tech-at-DU/3d-css
 
