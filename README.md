@@ -28,7 +28,7 @@
 | 12 |  Thu, Nov 27 | **Thanks Giving Holiday**    | -          | -                |
 | -  | **Week 7**   | -                            | -          | -                |
 | 13 |  Tue, Dec  2 | [Web Components part 2]      | [Web Components] | [CSS Framework]  |
-| 14 |  Thu, Dec  4 | -                            | -          | -                |
+| 14 |  Thu, Dec  4 | [Lit Element]                | -          | -                |
 | -  | **Week 8**   | -                            | -          | -                |
 | 13 |  Tue, Dec  9 | TBD                          | -          | -                |
 | 14 |  Thu, Dec 11 | TBD                          | -          | [Web Components] |
@@ -62,6 +62,8 @@ You are responsible for solving the the following homework challenges. There is 
 [Lesson 9 Form Controls]: lessons/lesson-09.md
 [Transition]: ./lessons/lesson-10.md
 [Animation]: lessons/lesson-11.md
+
+[Lit Element]: ./lessons/lit-element.md
 
 [3d Mini Hackathon]: https://github.com/Tech-at-DU/3d-css
 
