@@ -28,9 +28,9 @@
 | 12 |  Thu, Nov 27 | **Thanks Giving Holiday**    | -          | -                |
 | -  | **Week 7**   | -                            | -          | -                |
 | 13 |  Tue, Dec  2 | [Web Components part 2]      | [Web Components] | [CSS Framework]  |
-| 14 |  Thu, Dec  4 | [Styling Web Components], [Lit Element] | -          | -                |
+| 14 |  Thu, Dec  4 | [Styling Web Components], [Lit Element] | - | -              |
 | -  | **Week 8**   | -                            | -          | -                |
-| 13 |  Tue, Dec  9 | TBD                          | -          | -                |
+| 13 |  Tue, Dec  9 | [View Transitions]           | -          | -                |
 | 14 |  Thu, Dec 11 | TBD                          | -          | [Web Components] |
 
 TBD = @function, attr(), if() and other not ready for prime time 
@@ -62,6 +62,9 @@ You are responsible for solving the the following homework challenges. There is 
 [Lesson 9 Form Controls]: lessons/lesson-09.md
 [Transition]: ./lessons/lesson-10.md
 [Animation]: lessons/lesson-11.md
+
+[View Transitions]: ./lessons/view-transitions.md
+
 
 [Lit Element]: ./lessons/lit-element.md
 [Styling Web Components]: ./lessons/styling-web-components.md
