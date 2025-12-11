@@ -31,7 +31,7 @@
 | 14 |  Thu, Dec  4 | [Styling Web Components], [Lit Element] | - | -              |
 | -  | **Week 8**   | -                            | -          | -                |
 | 13 |  Tue, Dec  9 | [View Transitions]           | -          | -                |
-| 14 |  Thu, Dec 11 | TBD                          | -          | [Web Components] |
+| 14 |  Thu, Dec 11 | [View Transistions SPA]      | -          | [Web Components] |
 
 TBD = @function, attr(), if() and other not ready for prime time 
 TBD = clamp(), calc(), @property
@@ -64,6 +64,7 @@ You are responsible for solving the the following homework challenges. There is 
 [Animation]: lessons/lesson-11.md
 
 [View Transitions]: ./lessons/view-transitions.md
+[View Transistions SPA]: ./lessons/view-transitions-spa.md
 
 
 [Lit Element]: ./lessons/lit-element.md
