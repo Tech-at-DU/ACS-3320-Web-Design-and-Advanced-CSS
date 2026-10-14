@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trailhead – Find Your Hiking Crew</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="logo">⛰️ Trailhead</div>
+    <nav>
+      <a href="#">Hikes</a>
+      <a href="#">Groups</a>
+      <a href="#">About</a>
+      <a href="#" class="current">Sign in</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Find Your Hiking Crew</h1>
+    <p>Trailhead connects hikers of every level with local groups, guided trips, and weekend adventures. Whether you're a beginner looking for an easy loop or an experienced hiker chasing summits, there's a group for you near you right now.</p>
+    <div class="hero-buttons">
+      <div class="btn btn-red" onclick="location.href='#join'">Join Now</div>
+      <div class="btn btn-blue" onclick="location.href='#hikes'">Browse Hikes</div>
+    </div>
+    <div class="scroll-hint">↓</div>
+  </section>
+
+  <section id="features">
+    <h2>Why Trailhead?</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🥾</div>
+        <h3>All Levels Welcome</h3>
+        <p class="card-text">Filter hikes by distance, elevation gain, and pace so you always find a group that matches your experience.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🗺️</div>
+        <h3>Local Experts</h3>
+        <p class="card-text">Every group is led by a verified local who knows the trails, the weather, and the best spots for lunch.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <h3>Safe &amp; Social</h3>
+        <p class="card-text">Check-ins, emergency contacts, and a buddy system come built in, so you can focus on the views.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="upcoming" id="hikes">
+    <h2>Upcoming Hikes</h2>
+    <ul class="hike-list">
+      <li>
+        <span class="hike-name">Mount Tam Sunrise Loop</span>
+        <span class="hike-meta">Sat, Oct 24 · 6.2 mi · Moderate</span>
+        <button class="small-btn">RSVP</button>
+      </li>
+      <li>
+        <span class="hike-name">Lands End Coastal Walk</span>
+        <span class="hike-meta">Sun, Oct 25 · 3.4 mi · Easy</span>
+        <button class="small-btn">RSVP</button>
+      </li>
+      <li>
+        <span class="hike-name">Mission Peak Night Hike</span>
+        <span class="hike-meta">Fri, Oct 30 · 6.0 mi · Hard · Full</span>
+        <button class="small-btn" disabled>RSVP</button>
+      </li>
+    </ul>
+  </section>
+
+  <section class="signup" id="join">
+    <h2>Join Trailhead</h2>
+    <p>Create a free account to RSVP, join groups, and get trail updates.</p>
+    <form>
+      <input type="text" placeholder="Name">
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit">Create Account</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2026 Trailhead. Made for people who'd rather be outside.</p>
+    <p><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Contact</a></p>
+  </footer>
+
+</body>
+</html>

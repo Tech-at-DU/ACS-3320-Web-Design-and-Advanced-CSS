@@ -1,88 +1,98 @@
-# Assignment 3 – Microinteractions: Interactive Icon or Button Set
+# Assignment: Microinteractions
 
 ## Overview
 
-In this assignment, you will design and build a set of **three interactive or animated interface elements** using CSS. These small animations — called *microinteractions* — enhance user experience by providing feedback, delight, and visual cues during interaction. You will explore how to use CSS animations, transitions, and keyframes to make web interfaces feel more alive and responsive.
+Design and build a set of **three interactive or animated interface elements** using CSS. These small animations, called *microinteractions*, give users feedback ("your click worked"), orientation ("this panel came from over there"), and occasionally delight.
+
+Good microinteractions are mostly invisible. Users don't notice them, but they notice when they're missing. That's why this assignment cares as much about **states** and **purpose** as it does about animation technique.
 
 ## What You Will Learn
 
-By completing this assignment, you will learn to:
+- Create and control animations with `@keyframes` and `animation`
+- Use `transition` to smooth changes between states
+- Choose durations and easing with the motion formula
+- Plan components with a **state matrix**
+- Trigger motion from parents, siblings, and form state with `:hover`, `:focus-visible`, `:checked`, and `:has()`
+- Respect `prefers-reduced-motion`
 
-* Create and control animations using **CSS keyframes**.
-* Apply **CSS transitions** to smooth changes between hover and active states.
-* Use **timing functions**, **delays**, and **iterations** to fine-tune animation behavior.
-* Combine **interactivity** and **motion design** principles for a more engaging UI.
-* Develop confidence using animation tools in CSS for real-world interface design.
+## Before You Start
+
+Review:
+
+- [UI States & Motion](../lessons/ui-states.md)
+- [Transition](../lessons/lesson-10.md)
+- [Animation](../lessons/lesson-11.md)
+- Example code: https://github.com/Tech-at-DU/transition-examples
 
 ## Requirements
 
-You will create **three animated elements**, each demonstrating a different type of microinteraction:
+Create **three animated elements**, each showing a different type of microinteraction:
 
-1. **Logo or Progress Timer** – A looping keyframe animation that repeats continuously (e.g., a rotating logo, pulsing icon, or circular progress indicator).
-2. **Button, Icon, or Link** – An interactive element that visually responds to both **hover** and **active (click)** states using transitions and transforms.
-3. **Triggered or Timed Animation** – An animation that plays from **start to finish** (e.g., a loading bar that fills, a notification that appears and fades, or a reveal animation).
+1. **Looping animation:** a logo, loading indicator, or progress timer built with `@keyframes` that repeats.
+2. **Interactive control:** a button, icon button, toggle, or link that responds to **hover, focus-visible, active, and disabled** states using transitions and transforms.
+3. **Triggered animation:** something that plays from start to finish when triggered: a notification that slides in and fades, a checkbox that animates its check, a form field that shakes on error, an accordion that opens.
 
-Additional Requirements:
+### For every element
 
-* Use only **HTML and CSS** — no JavaScript.
-* Include at least one **`@keyframes`** animation.
-* Include at least one **`transition`** with custom duration and easing (`timing-function`).
-* Keep your code clean, organized, and well-documented with comments.
-* Each element should be distinct and demonstrate a unique interaction or animation concept.
+- **State matrix:** include a state matrix (see the [UI States lesson](../lessons/ui-states.md#formula-2-the-state-matrix)) in your design log listing every state and what changes.
+- **Motion has a job:** in a comment, name the job: feedback, orientation, attention, or delight.
+- **Motion tokens:** durations and easing come from custom properties (e.g., `--duration-fast`, `--ease-out`), following the motion formula.
+- **Cheap properties:** animate `transform` and `opacity` wherever possible.
 
-Bonus challenge: Incorporate all of the requirements into a form with animated elements. You can use `:focus` and `:checked` to trigger motion effects. See these examples for ideas: 
+### Overall
+
+- **HTML and CSS only.** No JavaScript.
+- At least one `@keyframes` animation and at least one `transition` with custom duration and easing.
+- At least one interaction triggered from a **parent or sibling** (e.g., `.card:hover .icon`, `input:checked + label`, `.field:has(:user-invalid)`).
+- Visible `:focus-visible` styles on everything interactive.
+- A `@media (prefers-reduced-motion: reduce)` block that removes or replaces motion. Looping animations must stop or become a gentle fade.
+- Use your design tokens (or create a small set) for color and spacing.
+- Include a [Design Log](design-log.md).
+
+### Bonus challenge
+
+Build all three inside a **form**: an animated sign-up or login form. Use `:focus-visible`, `:checked`, `:user-invalid`, and `:has()` to trigger motion. Ideas:
+
 - https://codepen.io/dsenneff/pen/2d338b0adf97472ebc5d473cf1fa910b
 - https://www.npmjs.com/login
 - https://codepen.io/Mr_Dzi/pen/WpeYNQ
-- https://codepen.io/jakegilesphillips/pen/MveNLe (not a form but could be...)
+- https://codepen.io/jakegilesphillips/pen/MveNLe (not a form, but could be)
 
 ## Strategies
 
-* **Plan First** – Sketch or storyboard your three interactions before coding. Think about *how the user triggers* each one (hover, click, or automatic).
-* **Start Simple** – Begin with color, scale, or rotation changes. Then layer on complexity using transforms, opacity, or timing functions.
-* **Think about Structure** – Consider the elements you will need. Will you need an extra div or can you use `::before` and `::after` pseudo elements? 
-* **Which Selectors?** – Think about which selectors you will need, this is related to structure. Will you need a nested selector or a parent selector? Is motion triggered from the parent, or a child? This is probably the most important question on this list. If you are unclear what it is asking study the lesson example files: https://github.com/Tech-at-DU/transition-examples
-* **Use Pseudo-Classes** – Try combining `:hover`, `:active`, and `:focus` to handle interaction states. 
-* **Parameterize** – Parameterize your work. Use CSS custom properties where you can to improve the quality and keep your code DRY. 
-* **Experiment with Timing** – Play with `animation-duration`, `animation-delay`, and `cubic-bezier()` easing to give your animations personality.
-* **Keep It Purposeful** – Each animation should reinforce usability or provide feedback — not distract from it.
-* **Test in Multiple Browsers** – Confirm your animations behave consistently across Chrome, Firefox, and Safari.
+- **State matrix first.** Fill in the table before writing CSS. It tells you exactly which selectors you need.
+- **Which selectors?** Is the motion triggered by the element itself, its parent, or a sibling? This is the most important question on this list. If it's unclear, study the [transition examples](https://github.com/Tech-at-DU/transition-examples).
+- **Structure.** Do you need an extra element, or can `::before` and `::after` do the job?
+- **Start subtle.** Small changes in scale (0.97–1.05), short durations (150–250ms), and `ease-out` feel professional. Big, slow, bouncy motion feels like a toy, unless that's the goal.
+- **Parameterize.** Custom properties for durations, distances, and colors keep it DRY and make tuning fast.
+- **Test reduced motion** in DevTools → Rendering → "Emulate CSS media feature prefers-reduced-motion."
+- **AI tip:** ask an AI to review your component against the state checklist and list missing states. Don't ask it to "make a cool animation." You'll get something generic and you won't learn the timing yourself.
 
-## What to Include
+## Submission
 
-Your submission should include:
+Submit your GitHub repo to Gradescope with:
 
-* **Three separate animated elements** (logo/timer, button/icon, triggered animation).
-* **HTML and CSS files** with clear class names and comments.
-* **At least one looping animation** and one triggered animation.
-* **At least one hover/active interaction**.
-* **A brief description** (in comments or a separate text file) explaining what each element demonstrates.
-
-## Document Your Work
-
-Use comments in your CSS to describe:
-
-* The purpose of each animation.
-* Key properties or techniques used.
-* Any challenges you faced or creative choices made.
+- HTML and CSS files
+- `DESIGN-LOG.md` with a state matrix for each element
+- `README.md` with a link to the live page (GitHub Pages)
 
 ## Resources
 
-* **MDN Web Docs** – [CSS Animations](https://developer.mozilla.org/en-US/docs/Web/CSS/animation), [CSS Transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/transition), [Keyframes](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes).
-* **CSS Tricks** – [A Complete Guide to CSS Transitions](https://css-tricks.com/almanac/properties/t/transition/), [A Complete Guide to CSS Animation](https://css-tricks.com/almanac/properties/a/animation/).
-* **Easings.net** – [Easing Functions](https://easings.net/) for inspiration on timing curves.
-* **CodePen** – Search for “CSS Microinteractions” for examples of interactive buttons and icons.
+- [MDN: CSS Animations](https://developer.mozilla.org/en-US/docs/Web/CSS/animation), [Transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/transition), [@keyframes](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes)
+- [MDN: prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
+- [Easings.net](https://easings.net/) and [cubic-bezier.com](https://cubic-bezier.com) for timing curves
+- CodePen: search "CSS microinteractions"
 
 ---
 
-### Microinteractions Assignment Rubric
+## Rubric
 
-| **Criteria**                                      | **Does Not Meet**                                                  | **Meets Expectations**                                                      | **Exceeds Expectations**                                                                         | **Points** |
-| ------------------------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ---------- |
-| **Adherence to Requirements**                     | Fails to include all three required animations or uses JavaScript. | All three animations included and function as intended using CSS only.      | All requirements met with polish, clear distinction, and thoughtful execution of each animation. | /10        |
-| **Effective Use of CSS Animation and Transition** | Animations are abrupt or poorly implemented.                       | Uses CSS keyframes and transitions effectively to create smooth animations. | Demonstrates mastery of timing, easing, and motion for fluid, professional animations.           | /10        |
-| **Interactivity and Feedback**                    | Limited interactivity or unclear user feedback.                    | Interactions respond appropriately to hover and click states.               | Interactions feel dynamic, intuitive, and delightful, showing attention to user experience.      | /10        |
-| **Creativity and Design Quality**                 | Animations are generic, repetitive, or lack visual appeal.         | Animations are well-designed, balanced, and visually appealing.             | Animations are highly creative, expressive, and elevate the visual experience.                   | /10        |
-| **Code Quality and Documentation**                | CSS is disorganized and lacks comments.                            | Code is mostly clean and partially documented.                              | Code is well-structured, commented, and demonstrates best practices.                             | /10        |
+| **Criteria** | **Does Not Meet** | **Meets Expectations** | **Exceeds Expectations** | **Points** |
+|:--|:--|:--|:--|:--:|
+| **Requirements** | Missing an element, uses JavaScript, or no parent/sibling trigger. | All three elements work with CSS only; keyframes, transition, and parent/sibling trigger present. | Each element is distinct and polished; bonus form attempted. | /10 |
+| **Motion Quality** | Abrupt, sluggish, or animates expensive properties for no reason. | Durations and easing follow the motion formula and come from tokens; mostly transform/opacity. | Timing feels natural and refined; easing chosen deliberately for entering, leaving, and moving. | /10 |
+| **States & Accessibility** | Missing focus or disabled states; no reduced-motion handling. | Full state coverage per the matrix; visible focus; reduced motion handled. | States are clear and consistent; reduced motion swaps in thoughtful alternatives instead of just turning motion off. | /10 |
+| **Purpose & Design** | Motion is decorative or distracting; visually generic. | Every animation has a named job and supports usability; visually cohesive. | Interactions feel intuitive and delightful without getting in the way. | /10 |
+| **Code Quality & Design Log** | Disorganized; no state matrices. | Clean, commented CSS; state matrix and job for each element in the log. | Very readable, DRY code; log explains timing decisions and what was tried and rejected. | /10 |
 
 ### Total Points: /50

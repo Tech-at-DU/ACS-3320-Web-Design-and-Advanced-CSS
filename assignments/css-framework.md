@@ -111,6 +111,15 @@ Then consume them everywhere else:
 
 **Rule of thumb:** if you type the same literal value more than once, it probably should be a token.
 
+Build your tokens with the design formulas from earlier in the term:
+
+* **Type:** a type scale (base + ratio) from [Type & Spacing](../lessons/design-type-spacing.md)
+* **Spacing:** the spacing scale from the same lesson
+* **Color:** a neutral ramp + one accent in OKLCH, exposed as **role** tokens (`--color-bg`, `--color-surface`, `--color-fg`, `--color-fg-muted`, `--color-border`, `--color-accent`, `--color-on-accent`, `--color-focus`), from [Color](../lessons/design-color.md)
+* **Motion:** duration and easing tokens from [UI States & Motion](../lessons/ui-states.md)
+
+Components and base styles use **role** tokens, never raw ramp values. That's what makes theming work.
+
 #### 1.4 Accessibility Requirements
 
 Your framework must:
@@ -156,7 +165,7 @@ Goal:
 
 ### 4. Submission Instructions
 
-Submit via Gradscope:
+Submit via Gradescope:
 
 Your repository must contain:
 
@@ -168,6 +177,19 @@ Your repository must contain:
 * How to use it (link tag, expected markup).
 * A short explanation of your layer structure and token system.
 * Any optional features you implemented (themes, utilities, components, etc.).
+
+4. `DESIGN-LOG.md`: see the [Design Log](design-log.md) template. Include your token decisions and a **state matrix** for the button component.
+
+## Using AI on this project
+
+A framework is a great place to use AI **for the tedious parts**, as long as you stay in charge of the design decisions:
+
+* **Audit:** "List every literal value in this CSS that should be a token. Output selector | property | value | suggested token."
+* **Coverage:** "Here is the demo HTML and my base layer. Which elements are still using browser defaults?"
+* **States:** "For my button, card, and alert components, list missing states using this checklist: hover, focus-visible, active, disabled, selected."
+* **Docs:** "Write a usage example for each component class in this file." (Then check that the examples are correct!)
+
+Avoid asking AI to "write a CSS framework." You'll get a generic Bootstrap clone that doesn't use your tokens, and you won't be able to explain it. Log the prompts you use in your design log.
 
 ## Homework
 
@@ -440,14 +462,15 @@ Choose from:
 * **Sizing utilities** (e.g., `.w-100`, `.h-auto`)
 * **Color utilities** (e.g., `.bg-primary`, `.fg-muted`)
 
-### 6. Grading Rubric (50 pts)
+## Rubric
 
-| **Criteria**                       | **Does Not Meet**                                                                                               | **Meets Expectations**                                                                                             | **Exceeds Expectations**                                                                                                                | **Pts** |
-| ---------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| **Base HTML Styling**              | Many elements from the demo HTML are unstyled or obviously using browser defaults. Visual hierarchy is unclear. | Most elements are styled with a coherent look. Hierarchy and spacing are mostly intentional; minor rough edges.    | All elements are styled with a clear, consistent visual system. The page feels like a small, polished design system.                    | /15     |
-| **Tokens & Layers**                | Little or no use of custom properties. `@layer` is missing or misused. Tokens are inconsistent or unused.       | `@layer` is correctly declared. Tokens exist for key values and are used in base styles. Some duplication remains. | Thoughtful token system (colors, spacing, typography, radii, etc.) with clean use across layers. Layer roles are clearly separated.     | /15     |
-| **Accessibility & Responsiveness** | Poor contrast, missing focus states, or layout breaks on mobile. Keyboard navigation is painful.                | Contrast is generally acceptable. Focus styles exist. Layout works on mobile and desktop with only small issues.   | Strong contrast choices, clear focus states, and robust behavior across a range of viewport sizes. Accessibility is clearly considered. | /10     |
-| **Enhancements (2+ chosen)**       | Fewer than 2 enhancements, or enhancements are broken / poorly integrated.                                      | At least 2 enhancements implemented and working (e.g., theming, form styling, print, micro-interactions).          | Enhancements are polished, well integrated, and clearly documented. They demonstrate extra care and real-world thinking.                | /5      |
-| **Documentation**   | README is missing or unhelpful. File structure is confusing.                                                    | README explains what the framework is, how to use it, and what features exist. Repo is reasonably organized.       | README is clear and professional, with examples and notes about limitations. Repo is clean, with logical structure and naming.          | /5      |
+| **Criteria** | **Does Not Meet** | **Meets Expectations** | **Exceeds Expectations** | **Pts** |
+| :-- | :-- | :-- | :-- | :--: |
+| **Base HTML Styling** | Many elements unstyled or on browser defaults; unclear hierarchy. | All demo elements styled coherently; readable type; spacing follows Inside < Between. | The plain HTML page looks like a polished, intentional design system. | /10 |
+| **Tokens & Layers** | Few tokens; `@layer` missing or misused. | `@layer` order declared and respected; type, spacing, color-role, and motion tokens used throughout. | Thoughtful token system built from the formulas; switching `--hue` or theme re-skins everything with no other changes. | /10 |
+| **Components & Utilities** | Required components missing or hard-coded. | All 4 required components + 2 optional, plus 6+ utilities in 3 categories, all token-driven and consistently named. | Components have complete states and variants; utilities complement them cleanly. | /10 |
+| **Accessibility & Responsiveness** | Contrast failures, missing focus, or breaks on mobile. | AA contrast, visible focus states, full button state matrix, works from 320 to 1440px. | Accessibility clearly designed in (reduced motion, dark theme contrast checked, keyboard-friendly components). | /10 |
+| **Enhancements** | Fewer than 2 enhancements, or broken. | At least 2 enhancements working. | Enhancements polished and documented. | /5 |
+| **Documentation & Design Log** | README or log missing or unhelpful. | README explains purpose, usage, layers, and tokens; log records decisions and AI use. | Professional README with examples; log shows clear reasoning and verification. | /5 |
 
 **Total: /50**

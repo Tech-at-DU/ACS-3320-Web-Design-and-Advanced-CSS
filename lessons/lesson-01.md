@@ -1,9 +1,12 @@
 # ACS 3320 Web Design and Advanced CSS
 
-This class will cover two main topics. 
+This class covers three main topics:
 
-- CSS - We will review CSS you already knew and continue into some CSS that you may not be familiar with. We will cover animation, position, 3D, and more. 
-- Web Components - Web components are a native components that allow you to create your own custom tags that are backed up by JS functionality. 
+- **Design formulas for developers:** repeatable rules for type, spacing, color, layout, and UI states that make interfaces look clean and work for everyone. You don't need to be a designer, only to follow the formulas. See the [Design Formulas cheat sheet](design-formulas.md).
+- **Advanced CSS:** selectors and specificity, custom properties, motion, cascade layers, and building your own token-driven CSS framework.
+- **Web Components:** native custom elements that plug into your design system.
+
+Along the way you'll learn to use AI as a design assistant, and to judge and fix what it produces.
 
 # ACS 3320 Lesson 1 - CSS Review
 
@@ -15,9 +18,9 @@ Understanding CSS the language and the syntax is the gateway to using CSS. CSS i
 
 Note! You can also use CSS selectors with JavaScript! Things like `querySelector()` and `matches()` both use a CSS selector! The selector language is a foundational part of the system!
 
-### Disclaimer: 
+### Disclaimer:
 
-This may seem like a class about design and creative visual ideas, and you may feel like you don't have any of these. If this is the case I want you to find ideas that you see on the web and try and recreate these in your projects for this class. 
+This may seem like a class about design and creative visual ideas, and you may feel like you don't have any of these. That's fine. This class gives you **formulas**: rules for type, spacing, color, and layout that produce clean results without "talent." When you want inspiration, find designs you like on the web and borrow the *ideas* (not the code) for your projects.
 
 ## Review 
 
@@ -432,7 +435,8 @@ Dense blocks of type are hard to read. Adding space between lines makes them eas
 ## After Class
 
 - Solve the CSS Diner problems: https://flukeout.github.io
-- [Start assignment 1](../assignments/assignment-01.md)
+- Start the [CSS Zen Garden](../assignments/css-zen-garden.md) assignment
+- Read [Type & Spacing](design-type-spacing.md) before next class
 
 Assess your work
 

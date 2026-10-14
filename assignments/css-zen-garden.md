@@ -1,63 +1,89 @@
-# Assignment 1 - CSS Zen Garden
+# Assignment: CSS Zen Garden
 
 ## Overview
 
-In this assignment, you will create your own original style for the CSS Zen Garden page. This project focuses on the creative application of CSS, allowing you to explore various design techniques without needing to be a professional designer. 
+Create your own original design for the [CSS Zen Garden](https://csszengarden.com) page using only CSS. You can't change the HTML.
 
-https://csszengarden.com
+This assignment does two things:
+
+1. It sharpens your **selector** skills. You'll have to reach every element through the existing markup, the way you would on a real project where you can't (or shouldn't) change the HTML.
+2. It's your first chance to use the **design formulas**: type scale, spacing scale, hierarchy, and a color system. You don't need to be a designer. Follow the formulas and the page will look intentional.
 
 ## What You Will Learn
 
-By completing this assignment, you will learn to:
-
-- Apply CSS styling techniques to enhance the visual presentation of an HTML page.
-- Understand how to work within an existing HTML structure without modification.
-- Develop skills in creating layouts, utilizing color schemes, and applying typography.
-- Experiment with responsive design principles to ensure your styles work across different devices.
+- Write precise selectors using structure, attributes, pseudo-classes, and pseudo-elements
+- Manage specificity without `!important`
+- Apply a type scale and spacing scale with custom properties
+- Create hierarchy with size, weight, color, and space
+- Build an accessible color system in OKLCH
+- Make a layout that works from 320px to 1440px
+- Use AI as a critique partner, and decide for yourself what to change
 
 ## Requirements
 
-1. **Original Style**: You must create a unique CSS stylesheet that styles the CSS Zen Garden page. You are encouraged to experiment with different layouts, colors, and typographic choices.
-   
-2. **No HTML Modifications**: You **must not** modify the provided HTML structure of the Zen Garden page. Your styles should only be applied through your CSS file.
+### Rules
 
-3. **Use of CSS**: Utilize various CSS properties, including but not limited to:
-   - Color and background properties
-   - Typography (font families, sizes, weights)
-   - Box model (margins, padding, borders)
-   - Flexbox or Grid for layout
-   - Transitions and animations (if applicable)
+1. **Don't modify the HTML.** All styling comes from your CSS file.
+2. **No `!important`** (except inside a `prefers-reduced-motion` block). Solve specificity problems with better selectors.
 
-4. **Submission**: Submit your CSS file along with a screenshot of the styled Zen Garden page.
+### Design system (from the formulas)
+
+3. A `:root` block at the top of your CSS defining:
+   - A **type scale** (base + ratio). Use no more than **6 font sizes** on the page.
+   - A **spacing scale.** All margins, padding, and gaps come from it.
+   - A **color system** in OKLCH: a neutral ramp, one accent, and role tokens (`--color-bg`, `--color-fg`, `--color-fg-muted`, `--color-accent`, `--color-border`).
+4. **Readable body text:** at least 16px, line height 1.4–1.6, line length ≤ 75ch.
+5. **Hierarchy:** headings, body, and secondary text (like the sidebar and footer) are clearly different. Your page passes the squint test.
+6. **Contrast:** all text passes WCAG AA (4.5:1, or 3:1 for large text). Verify in DevTools.
+7. **Focus:** links have a visible `:focus-visible` style.
+
+### Selectors & CSS
+
+8. Use at least **one** of each:
+   - An attribute selector (e.g., `[role="article"]`)
+   - A structural pseudo-class (`:nth-child()`, `:first-of-type`, etc.)
+   - `::before` or `::after` with generated content or decoration
+   - `:has()` or `:not()`
+9. Layout with **grid or flex**. The page must work from **320px to 1440px** with no horizontal scroll.
+10. Use at least one `background-image` (a gradient counts, or an image file).
+11. Use the `.extra1`–`.extra6` divs or pseudo-elements for at least one decorative element.
+
+### AI critique loop
+
+12. Once you have a working first version:
+    1. Take a screenshot at desktop width.
+    2. Give the screenshot to an AI tool with this prompt:
+       ```
+       Critique this page design using these passes: hierarchy (what do you see first?),
+       alignment, spacing consistency, typography, color and contrast.
+       Write each point as Observation → Impact → Fix. List at most 8 points.
+       Don't write code.
+       ```
+    3. Choose **at least 3** points to act on and **at least 1** to reject. Record all of them in your design log with your reasons.
+
+### Documentation
+
+13. Comment your CSS by section (header, intro, main, sidebar, footer). Briefly explain non-obvious choices.
+14. Include a [Design Log](design-log.md) (`DESIGN-LOG.md`).
 
 ## Strategies
 
-- **Analyze the HTML Structure**: Before starting, take some time to explore the provided HTML structure. Understand how elements are nested and how CSS selectors can be applied effectively.
+- **Start with type and spacing only.** No colors, no layout. Get the text readable and grouped first (see the [Type & Spacing lesson](../lessons/design-type-spacing.md)). This alone will make the page look 80% better.
+- **Then color.** Add your color roles (see the [Color lesson](../lessons/design-color.md)). Mostly neutral, one accent.
+- **Then layout.** Pick a pattern: centered column with the sidebar below, or a two-column sidebar layout (see the [Layout lesson](../lessons/design-layout.md)).
+- **Then decoration.** Backgrounds, `.extra` divs, pseudo-elements, a little motion.
+- **Work from general to specific.** Style tag selectors first (`h3`, `p`, `a`), then sections (`.preamble h3`), then individual elements.
+- **Use DevTools constantly.** Inspect the structure, test selectors in the console with `document.querySelectorAll('...')`, and check contrast with the color picker.
+- **Borrow ideas, not code.** Browse designs on csszengarden.com and note what you like ("big serif headings", "sidebar on the left"). Then implement those ideas yourself.
 
-- **Sketch Your Design**: Consider creating rough sketches of your design ideas. Think about the overall layout, color palette, and typography before you start coding.
+## Submission
 
-- **Use Browser DevTools**: Use the browser's Developer Tools to inspect elements on the Zen Garden page. This can help you test styles in real-time and see how changes affect the layout.
+Submit your GitHub repo to Gradescope with:
 
-- **Iterate and Test**: Start with a few basic styles, then gradually build upon them. Test your styles frequently to ensure everything looks as intended across different browsers and devices.
-
-- **Start with Type**: Start by styling the type. Choose a font, or fonts, and set the size and line height. 
-
-- **Work from general to specific**: Work from general to specific. Start by styling general elements using the type (tag name) selector. Work your way to more detailed, and then specific elements. 
-
-## What to Style
-
-When styling the CSS Zen Garden page, consider focusing on:
-
-- **Header**: Style the header section, including the title and any navigation links.
-- **Main Content Area**: Apply styles to the main content, including text elements, images, and any other visual components.
-- **Footer**: Create a visually appealing footer that complements your overall design.
-- **Typography**: Experiment with font styles, sizes, line heights, and letter spacing for better readability and aesthetic appeal.
-- **Color Scheme**: Develop a cohesive color palette that enhances the visual hierarchy of the page.
-
-## Document your work
-Use comments to document your work. 
-- **Identify what is being styled**: Use comments to identify what is being styled. 
-- **Explain your choices**: In a few words to explain your choices for styles.
+- Your CSS file and the Zen Garden HTML file linked to it
+- Screenshots at **375px** and **1280px** wide
+- `DESIGN-LOG.md`
+- A `README.md` with a link to the live page (GitHub Pages)
 
 ## Resources
 
@@ -151,21 +177,23 @@ body#css-zen-garden
 
 Here are some resources to help you with styling the CSS Zen Garden page:
 
+- **[Design Formulas cheat sheet](../lessons/design-formulas.md)**: every rule from class on one page.
+
 - **CSS Tricks**: [CSS Tricks](https://css-tricks.com/) has a wealth of articles and tutorials on various CSS techniques and properties.
 - **MDN Web Docs**: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS) provides comprehensive documentation on CSS, including examples and best practices.
-- **Color Palettes**: Use tools like [Coolors](https://coolors.co/) or [Adobe Color](https://color.adobe.com/) to create or explore color palettes.
+- **Color**: [oklch.com](https://oklch.com) for picking OKLCH colors and [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) for verifying contrast.
 - **Typography**: Check out [Google Fonts](https://fonts.google.com/) for a variety of free fonts you can use in your designs.
 
 ---
 
-### CSS Zen Garden Styling Assignment Rubric
+## Rubric
 
-| **Criteria**                            | **Does Not Meet**                            | **Meets Expectations**                         | **Exceeds Expectations**                      | **Points** |
-|------------------------------------------|----------------------------------------------|-----------------------------------------------|------------------------------------------------|------------|
-| **Adherence to Requirements** | Multiple requirements are not met, including modifications to the HTML structure or failure to use CSS effectively. | Most requirements are met, including no modifications to the HTML. Styles are applied as specified, with minor oversights. | All requirements are thoroughly met, including no modifications to the HTML. Styles are applied effectively throughout the project. | /10 |
-| **Effective Use of CSS** | CSS is poorly applied, lacking organization, clarity, and best practices. Styles do not enhance the visual presentation. | CSS is applied effectively with some organization. Most styles are clear and functional, enhancing the visual presentation. | CSS is expertly applied, demonstrating a strong understanding of best practices. Styles are well-organized, clear, and significantly enhance the visual presentation. | /10 |
-| **Typography and Color Scheme** | Typography and color choices are inappropriate or poorly applied, leading to a lack of readability or visual appeal. | Typography and color choices are mostly appropriate and enhance readability, though some areas may need improvement. | Typography and color choices are highly effective, contributing to excellent readability and visual harmony throughout the design. | /10 |
-| **Overall Layout and Structure** | The overall layout is confusing or poorly structured. Elements do not align properly, and the design lacks cohesion. | The overall layout is functional and mostly well-structured. Elements are aligned appropriately, creating a cohesive design. | The overall layout is expertly structured, with a clear hierarchy and alignment. The design flows seamlessly, creating an engaging user experience. | /10 |
-| **Documentation and Clarity** | Little or no documentation is provided. It is difficult to understand the design choices or how to apply the styles. | Adequate documentation is provided, explaining some design choices and how to apply the styles. Clarity may be lacking in certain areas. | Thorough and clear documentation is provided, offering detailed explanations of design choices and CSS usage. It enhances the understanding of the project. | /10 |
+| **Criteria** | **Does Not Meet** | **Meets Expectations** | **Exceeds Expectations** | **Points** |
+|:--|:--|:--|:--|:--:|
+| **Selectors & Requirements** | HTML modified, `!important` used, or required selector types missing. | All rules followed; required selector types used correctly; specificity under control. | Elegant, precise selectors; creative use of `:has()`, pseudo-elements, and `.extra` divs. | /10 |
+| **Type & Spacing System** | Values hard-coded or random; more than 6 font sizes; text hard to read. | Type and spacing scales defined and used throughout; body text readable; Inside < Between applied. | Spacing and type create a clear rhythm; fluid type with `clamp()`; the page passes the squint test easily. | /10 |
+| **Color & Accessibility** | Contrast failures; random colors; no focus styles. | OKLCH color system with roles; all text passes AA; visible focus states. | Restrained, intentional palette; dark theme or other enhancements; accessibility clearly considered. | /10 |
+| **Layout & Hierarchy** | Layout breaks on mobile or has no clear structure. | Clear hierarchy and alignment; works from 320 to 1440px without overflow. | Distinctive, well-aligned layout that adapts gracefully; few edges, one clear focal point. | /10 |
+| **Design Log & Code Quality** | No log, or the AI critique loop is missing; CSS disorganized. | Log covers decisions and the AI critique loop (3 kept, 1 rejected, with reasons); CSS commented by section. | Log shows clear reasoning tied to formulas; CSS is clean and easy to follow. | /10 |
 
 ### Total Points: /50

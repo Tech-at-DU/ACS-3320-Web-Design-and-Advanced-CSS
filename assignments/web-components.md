@@ -16,6 +16,13 @@ You will design **three Web Components** that complement the CSS framework you b
 * Use templates, attributes, lifecycle callbacks, and (if appropriate) shadow DOM
 * Think like a **design system author**, not just a JS implementer
 
+# Vanilla or Lit?
+
+You may build your components with **vanilla Web Components** (`class extends HTMLElement`) or with **[Lit](https://lit.dev)**, a small library that removes most of the boilerplate (rendering, attribute syncing, scoped styles) while producing standard custom elements. See the [Lit lesson](../lessons/lit-element.md).
+
+* Build **at least one** component in vanilla JS so you understand what the platform does.
+* Use either approach for the others.
+
 # Requirements
 
 You must build **three web components**, each meeting specific constraints:
@@ -114,6 +121,16 @@ Doesn’t need to be perfect, but consider:
 * Focus handling
 * Visible states (focus, hover, pressed)
 
+# Using AI on this project
+
+AI tools are good at Web Component boilerplate and bad at making components that fit **your** design system. Use them for:
+
+* Explaining lifecycle and shadow DOM behavior you don't understand
+* Reviewing a component against the state checklist and for keyboard accessibility
+* Generating a demo page skeleton
+
+You must write the styling yourself using your tokens, and you must be able to explain every line. Log the prompts you use in your design log.
+
 # Submission Expectations
 
 Submit:
@@ -126,6 +143,7 @@ Submit:
    * Why it belongs in your design system
    * How it uses your framework’s styles
    * Any future improvements you would make
+4. A `DESIGN-LOG.md` (see [Design Log](design-log.md)) with a **state matrix** for your interactive component
 
 # Stretch Challenges (Optional, Highly Recommended)
 
@@ -142,3 +160,15 @@ This assignment is more than practice:
 you’re creating the beginnings of a **design system**.
 
 Your CSS framework + your Web Component library together form a complete **UI toolkit**—something real teams ship, maintain, and evolve.
+
+# Rubric
+
+| **Criteria** | **Does Not Meet** | **Meets Expectations** | **Exceeds Expectations** | **Points** |
+|:--|:--|:--|:--|:--:|
+| **Component Requirements** | Fewer than three components, or required features missing (slots, events, lifecycle, attributes). | All three components meet their requirements; one is vanilla. | Components are robust, configurable with attributes, and clean up after themselves. | /15 |
+| **Design System Integration** | Hard-coded styles; components don't match the framework. | Components use framework tokens through the shadow boundary (custom properties) and share its look. | Theming works automatically (dark mode, `--hue`); `::part()` and variants expose a clean styling API. | /10 |
+| **States & Accessibility** | Not keyboard usable; no focus states. | Keyboard accessible, visible focus, appropriate ARIA, full state matrix for the interactive component. | Accessibility is thoughtful (focus management, announcements, reduced motion). | /10 |
+| **Demo & Documentation** | No demo or usage docs. | Demo page shows every component and variant; usage examples and write-ups included. | Demo reads like real design system docs; published live. | /10 |
+| **Design Log** | Missing. | Decisions, state matrix, and AI use recorded. | Clear reasoning, including what was tried and rejected. | /5 |
+
+### Total Points: /50

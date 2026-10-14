@@ -1427,12 +1427,11 @@ Q: What happened here?
 Q: Was it useful? 
 Q: Does this make a better CSS code?
 
-## Homework: Start your Framework - Fonts 
+## Homework: Themeable CSS Picture
 
-The goal of this assignment is to start your CSS Framework. This assignment will continue through the next few classes. You'll be adding features with each new assignment until it is complete. 
+Apply custom properties to the [Themeable CSS Picture](../assignments/css-picture.md) assignment. Every color, size, and angle should come from a variable, and switching themes should only change variables.
 
-[Start your Framework: Fonts ](../Assignments/assignment-05-framework-fonts.md) 
-Clarify what you are doing by looking at what other people are doing who are doing the same thing. Check out this awesome list of CSS Frameworks. 
+When you build your CSS framework later in the term, you'll use the same approach as design tokens. Clarify what you are doing by looking at what other people are doing who are doing the same thing. Check out this awesome list of CSS Frameworks. 
 
 - https://github.com/troxler/awesome-css-frameworks
 

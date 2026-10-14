@@ -1,0 +1,242 @@
+/* Trailhead landing page */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.1;
+  color: #3a3a3a;
+}
+
+a, button, input {
+  outline: none;
+}
+
+/* Header */
+
+.site-header {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 13px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: bold;
+  color: #444;
+}
+
+nav a {
+  margin-left: 37px;
+  color: #aaa;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+nav a.current {
+  color: #aaa;
+}
+
+/* Hero */
+
+.hero {
+  background: linear-gradient(135deg, #c9b8ff, #a8e6ff);
+  text-align: center;
+  padding: 90px 20px 70px;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 54px;
+  font-weight: 800;
+  margin-bottom: 17px;
+}
+
+.hero p {
+  font-size: 19px;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 13px;
+}
+
+.btn {
+  padding: 15px 34px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.btn-red {
+  background: #e53935;
+  color: white;
+}
+
+.btn-blue {
+  background: #1e88e5;
+  color: white;
+}
+
+.scroll-hint {
+  margin-top: 40px;
+  font-size: 30px;
+  animation: bounce 0.6s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Features */
+
+#features {
+  width: 1100px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+h2 {
+  font-size: 34px;
+  text-align: center;
+  margin: 40px 0 40px;
+  color: #333;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 340px);
+  gap: 40px;
+}
+
+.card {
+  position: relative;
+  left: 0;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: left 0.5s linear;
+}
+
+.card:hover {
+  left: 10px;
+}
+
+.card-icon {
+  font-size: 40px;
+  margin-bottom: 7px;
+}
+
+.card h3 {
+  font-size: 22px;
+  margin-bottom: 7px;
+  color: #444;
+}
+
+#features .card p {
+  color: #999;
+}
+
+.card-text {
+  font-size: 14px;
+  color: #555 !important;
+}
+
+/* Upcoming */
+
+.upcoming {
+  width: 90%;
+  margin: 0 auto;
+  padding: 25px;
+}
+
+.upcoming p {
+  text-align: center;
+}
+
+.hike-list {
+  list-style: none;
+}
+
+.hike-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 0;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.hike-name {
+  font-size: 16px;
+  color: #3a3a3a;
+}
+
+.hike-meta {
+  font-size: 12px;
+  color: #bbb;
+}
+
+.small-btn {
+  background: #43a047;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* Signup */
+
+.signup {
+  background: #f7f7f7;
+  padding: 50px;
+  text-align: center;
+}
+
+.signup p {
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+form input {
+  display: block;
+  width: 400px;
+  margin: 0 auto 10px;
+  padding: 12px;
+  border: 1px solid #eee;
+  font-size: 14px;
+}
+
+form button {
+  width: 426px;
+  padding: 14px;
+  background: #e53935;
+  color: white;
+  border: none;
+  font-size: 16px;
+}
+
+/* Footer */
+
+footer {
+  background: #222;
+  color: #555;
+  text-align: center;
+  padding: 20px;
+  font-size: 12px;
+}
+
+footer a {
+  color: #555;
+}
