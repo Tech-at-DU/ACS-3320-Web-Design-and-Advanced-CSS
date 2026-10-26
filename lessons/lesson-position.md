@@ -3,7 +3,7 @@
 ## Objectives 
 
 - Position objects anywhere with absolute position
-- Define a context origina with position relative 
+- Define a context origin with position relative 
 - Use relative position to offset 
 - Transform objects with translate, rotate, and skew
 - Set the stacking order of elements with z-index
