@@ -51,6 +51,79 @@ Every critique point has three parts:
 
 Critique the **work**, not the person. Start with one thing that works well.
 
+### Practice: Find the Problems (25 min)
+
+**1. Fernwood Community Garden (as a class or in pairs, 15 min)**
+
+Open [critique-sample/index.html](critique-sample/index.html) in your browser. (Clone or download the course repo, then open the file. GitHub won't render it.) This page has **at least 3 problems for every one of the 7 passes**.
+
+Work through the passes **in order**, spending about 2 minutes on each. Write each problem you find as Observation → Impact → Fix. Use the tools in the table: DevTools, the contrast picker, the Tab key, and device mode.
+
+Then open the answer key below and compare. What did you miss? Which pass found the most problems?
+
+<details>
+<summary><strong>Answer key: Fernwood Community Garden</strong> (try first!)</summary>
+
+**1. Squint**
+- The red script "Grow Together" is the loudest thing on the page, but the main job is reserving a plot.
+- Three equally loud buttons (green, orange, purple) compete. There's no primary action.
+- The tagline is a long paragraph in ALL CAPS, which is hard to read and shouts.
+- Prices are the smallest text in the plot cards (13px), even though they're the key decision info.
+
+**2. Alignment**
+- At least 6 different left edges: header (1000px centered), hero (centered text), about (60px padding), plots (120px padding), workshops (900px centered), footer (30px padding).
+- Hero text, plot cards, and the signup form are centered; everything else is left-aligned.
+- Plot card text is centered while the section heading above it is left-aligned.
+
+**3. Spacing**
+- `h2` has `margin: 30px 0`, the same space above and below, so headings float between sections.
+- Plot cards have `padding: 24px` and `gap: 24px`, so space inside equals space between (breaks Inside < Between).
+- Off-scale values everywhere: 6, 7, 10, 18, 22, 28, 45, 50, 70px.
+
+**4. Type**
+- **4 font families:** Arial, Georgia, Brush Script, Courier New.
+- **12 font sizes:** 10, 11, 12, 13, 14, 15, 16, 17, 19, 26, 30, 64px.
+- Body `line-height: 1.2` is too tight for paragraphs.
+- The About paragraph has no `max-width`. At 1440px it runs well past 75 characters per line.
+- Plot `h3` is `font-weight: normal`, so titles barely differ from body text.
+
+**5. Color**
+- White on yellow announcement bar: about **1.3:1**.
+- About paragraph `#b0b0b0` on white: about **2.2:1**.
+- Fine print `#ccc` on light purple: about **1.3:1**. Table headers `#bbb` on white: about **1.9:1**.
+- White on orange buttons: about **2.4:1**. White on green: about **3.3:1**, failing at this size.
+- **Red headings**: red usually means error or danger, and here it's used for normal headings.
+- Green, orange, and purple buttons don't mean anything different. That's three accents and no system.
+
+**6. States & Access**
+- `outline: none` on links, buttons, and inputs, with no replacement. Keyboard users can't see focus.
+- Hero buttons and "Subscribe" are `div`s with `onclick`. You can't Tab to them or activate them with a keyboard.
+- Links have no underline and the same color as body text. You can't tell they're links.
+- No hover states anywhere.
+- Inputs have placeholders but no `<label>`s.
+- "Composting 101" has **0 spots left** but its Sign up button is still enabled.
+- Table buttons are 11px text with 3px padding, far below a 44px touch target.
+- The announcement bar scrolls forever with no `prefers-reduced-motion` alternative.
+
+**7. Responsive**
+- `header { width: 1000px }`, `.workshops` and `table { width: 900px }` all overflow on phones.
+- The plot grid is `repeat(4, 230px)` plus 120px padding, so it needs about 1230px and scrolls horizontally on most laptops.
+- `nav { white-space: nowrap }`: six links won't wrap.
+- `.announce { white-space: nowrap }` plus the animation causes horizontal overflow.
+
+</details>
+
+**2. Real sites (10 min, pick one)**
+
+Real sites are messier: problems are mixed together and there's no answer key. Run the 7 passes and see how many you can find.
+
+| Site | What it's good for |
+|:--|:--|
+| [W3C BAD demo: "before" version](https://www.w3.org/WAI/demos/bad/before/home.html) | A site built badly **on purpose** by the W3C to teach accessibility. Strong on passes 5–6. When you're done, compare it with the [fixed version](https://www.w3.org/WAI/demos/bad/after/home.html). W3C's own reports on both are linked from the demo. |
+| [Arngren.net](https://arngren.net) | A real Norwegian store famous for extreme density. Great for passes 1–4: try the squint test and count edges. |
+| [User Inyerface](https://userinyerface.com) | A game built to be frustrating on purpose. Every UI convention is broken. Good for pass 6. Try to fill out the form, then list every state and convention it breaks. |
+
+
 ---
 
 ## Part 2: Recognizing the AI Default
@@ -219,25 +292,112 @@ The log is where your design thinking becomes visible. A polished page with no r
 
 ---
 
-## In-class activity (60 min)
+## In-class activity (75 min)
 
-**Round 1: Generate (10 min).** Use any AI tool with exactly this prompt:
+Today you'll start the [Fix the AI Page] assignment. You'll generate a generic page, critique it, then practice steering AI away from the generic look. By the end of class you'll have assignment Steps 1–3 mostly done.
 
-```
-Make a landing page for a neighborhood tool-lending library.
-Single HTML file with embedded CSS. Make it look modern.
-```
+| Round | Time | What you do | Techniques |
+|:--|:--|:--|:--|
+| 1. Generate | 10 min | Make your "before" page | — |
+| 2. Critique | 20 min | Find what's wrong with it | 7 passes |
+| 3. Brief | 15 min | Describe what it *should* be | 1, 2, 3, 9 |
+| 4. Explore | 15 min | Try 3 directions, pick one, regenerate | 4, 5 |
+| 5. Compare | 15 min | Judge the new version | 7, 8 |
 
-**Round 2: Critique (20 min).** In pairs, swap pages. Run the 7 passes on your partner's page. Write at least 8 Observation → Impact → Fix points. Count how many "AI defaults" from Part 2 you find.
+Technique 6 (iterate with design vocabulary) is for after class, when you build your real "after" page.
 
-**Round 3: Brief (15 min).** Write a full design brief for the same product using Technique 1. Use an analogy from outside software and at least two hard constraints.
+### Round 1: Generate (10 min)
 
-**Round 4: Regenerate (15 min).** Run your brief. Compare the two pages side by side. What changed? What didn't? Share the most surprising result with the class.
+**Goal:** a generic AI page to work on.
+
+1. Create a new repo for the assignment with a `before/` folder.
+2. Pick a product from the list in [Step 1](../assignments/fix-the-ai-page.md#step-1-generate-the-before-page) of the assignment.
+3. Paste the Step 1 prompt into any AI tool **exactly as written**, filling in your product. Don't add anything, and don't regenerate.
+4. Save the result as `before/index.html` and open it in your browser.
+5. Take screenshots at **375px** and **1280px** wide (DevTools device mode). Save them as `before/mobile.png` and `before/desktop.png`.
+
+**Done when:** `before/` has `index.html` and two screenshots.
+
+### Round 2: Critique (20 min)
+
+**Goal:** a list of what's wrong, in your own words. **No AI in this round.**
+
+1. Create `CRITIQUE.md`. At the top, write **2 things that work well** on the page.
+2. Run the 7 passes from [Part 1](#part-1-the-7-pass-critique), **in order**, about 2 minutes each. Write each problem as Observation → Impact → Fix.
+3. Under a heading `## AI Defaults`, list every default from [Part 2](#part-2-recognizing-the-ai-default) you can spot.
+4. **Partner check (last 4 min):** show your page to the person next to you. They add **2 problems** you missed, marked `(found by partner)`.
+
+**Done when:** `CRITIQUE.md` has 8+ problems and an AI Defaults list. (You'll finish the full 12+ after class.)
+
+### Round 3: Brief (15 min)
+
+**Goal:** a description of what the page *should* feel like, before anyone writes code.
+
+Use **Techniques 1, 2, 3, and 9**:
+
+1. Create `DESIGN-LOG.md` from the [Design Log template](../assignments/design-log.md). Fill in the **Brief** section (Technique 1):
+   - Product, audience, and the **one job** a visitor should do
+   - **Feel:** 3 adjectives + "it should feel like ___", using something **outside software**
+2. Add an **Avoid** line (Technique 2): copy at least 4 items from your `## AI Defaults` list.
+3. Add a **Constraints** line (Technique 3): pick at least 2 hard constraints from the Technique 3 list, or invent your own.
+4. Keep the brief in the file, not just in the chat (Technique 9). You'll paste it into every AI conversation from now on.
+5. Paste the full brief into your AI tool and end with: *"Output a written design spec only: type, color roles, spacing, and layout at 375px and 1280px. No code."*
+6. Read the spec. Does it follow your Avoid and Constraints lines? If not, tell it which line it broke and ask again.
+
+**Done when:** `DESIGN-LOG.md` has a complete brief, and you have a spec that respects it.
+
+### Round 4: Explore (15 min)
+
+**Goal:** see more than one possibility, then make a real choice.
+
+Use **Techniques 4 and 5**:
+
+1. Pick a style from the [Technique 4 table](#technique-4-borrow-a-style-with-concrete-traits) that could fit your brief.
+2. Send this (Technique 5), with your brief pasted above it:
+   ```
+   Give me 3 design directions for this brief. Make them genuinely different:
+   1. The safe, conventional option
+   2. A [style from step 1] option. Use these traits: [paste its traits]
+   3. Something a typical site for this product would never do
+   For each: 3 sentences, a font pairing, an accent color in OKLCH,
+   and the one layout idea that defines it. No code.
+   ```
+3. **Choose one direction**, or combine two. In `DESIGN-LOG.md`, add a decision entry: which one, and **why** it fits your brief's job and feel.
+4. Ask the AI to build it: *"Build direction [N] as a single HTML file with embedded CSS. Follow the brief's Avoid and Constraints lines."*
+5. Save it as `experiments/regenerated.html`. This is **not** your "after" page; you'll build that yourself.
+
+**Done when:** your log records a chosen direction and why, and `experiments/regenerated.html` exists.
+
+### Round 5: Compare (15 min)
+
+**Goal:** judge the AI's second attempt as critically as its first.
+
+Use **Techniques 7 and 8**:
+
+1. Open `before/index.html` and `experiments/regenerated.html` side by side at 1280px.
+2. Take a screenshot of the regenerated page. Attach it (Technique 7) and ask the AI to critique its own work (Technique 8):
+   ```
+   Here is a screenshot of the page you built, and my brief.
+   Review it with these passes: squint, alignment, spacing, type, color,
+   states & accessibility, responsive. List problems as
+   Observation → Impact → Fix. Also list anything that breaks my brief.
+   Don't fix anything.
+   ```
+3. Check at least **2 of its claims yourself** (contrast in DevTools, press Tab, drag to 375px). Was the AI right?
+4. In `DESIGN-LOG.md`, under **AI Use**, answer:
+   - What got better compared with the "before" page?
+   - Which AI defaults crept back in anyway?
+   - What did the AI's self-critique miss, or get wrong?
+5. **Share:** each table shows its before and regenerated pages to the class (1 minute per table). Which brief made the biggest difference?
+
+**Done when:** your log has the three answers from step 4.
 
 ## After Class
 
-- Continue the [Fix the AI Page] assignment.
-- Start your [Design Log](../assignments/design-log.md) for it.
+- Finish `CRITIQUE.md`: **12+ problems** covering all 7 passes, with 3+ measurements (assignment Step 2).
+- Copy `before/index.html` to `after/index.html`. Next class you'll fix its layout **by hand**.
+- When you start refining your "after" page, use **Technique 6**: one change per prompt, in design vocabulary.
+- Keep logging in `DESIGN-LOG.md` as you go.
 
 ## Additional Resources
 

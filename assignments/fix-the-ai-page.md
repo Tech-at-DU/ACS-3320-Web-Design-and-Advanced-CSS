@@ -17,6 +17,18 @@ This is the most realistic project in the course. On the job, you'll often be th
 - Use AI as an assistant while staying in charge of the design decisions
 - Verify accessibility and responsiveness with real tools
 
+## Timeline
+
+| When | Work |
+|:--|:--|
+| **Class 5: Critique & AI** (Tue, Nov 3) | Step 1 (generate), Step 2 (critique, started in class), Step 3 (brief) |
+| **Before Class 6** | Finish `CRITIQUE.md` and the brief; copy `before/index.html` to `after/index.html` |
+| **Class 6: Layout** (Thu, Nov 5) | Step 5, layout first: patterns, container, edges, focal point, container query |
+| **Nov 5 – Nov 12** | Step 4 (tokens), the rest of Step 5, Step 6 (verify) |
+| **Due Thu, Nov 12** | Submit |
+
+You'll write tokens after the layout session. That's fine: put temporary values in place during class and replace them with tokens afterward.
+
 ## Before You Start
 
 Review these lessons:
@@ -132,6 +144,7 @@ after/
   mobile.png
   desktop.png
   desktop-dark.png
+experiments/       ← optional: regenerated pages from class (not graded)
 CRITIQUE.md
 DESIGN-LOG.md
 README.md        ← 1 paragraph: the product, your design direction, and a link to the live page

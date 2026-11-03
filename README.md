@@ -26,9 +26,9 @@ AI tools can generate a working page in seconds. What they can't do reliably is 
 | - | **Week 2** | **Drawing with CSS & Custom Properties** | | |
 | 3 | Tue, Oct 27 | [Position], transform, gradient, clip-path, shadows | [CSS Picture] | - |
 | 4 | Thu, Oct 29 | [Custom Properties], theming, `light-dark()` | - | [CSS Zen Garden] |
-| - | **Week 3** | **Layout & Critique** | | |
-| 5 | Tue, Nov 3 | [Layout]: grid, `clamp()`, container queries | [Fix the AI Page] | - |
-| 6 | Thu, Nov 5 | [Critique & AI as a Design Assistant] | - | [CSS Picture] |
+| - | **Week 3** | **Critique & Layout: diagnose, then fix** | | |
+| 5 | Tue, Nov 3 | [Critique & AI as a Design Assistant] | [Fix the AI Page] | - |
+| 6 | Thu, Nov 5 | [Layout]: grid, `clamp()`, container queries | - | [CSS Picture] |
 | - | **Week 4** | **Motion & UI States** | | |
 | 7 | Tue, Nov 10 | [UI States & Motion], [Transition] | [Microinteractions] | - |
 | 8 | Thu, Nov 12 | [Animation], reduced motion | - | [Fix the AI Page] |

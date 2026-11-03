@@ -15,9 +15,35 @@ Layout bugs are the ones users actually notice: content that overflows on a phon
 5. Make components respond to their container with container queries
 6. Test layouts at the sizes that matter
 
-## Warm-up (10 min)
+## Warm-up (15 min)
 
-Open any two sites you like. For each one, sketch the layout as boxes on paper (no detail, just rectangles). Then label each box with one of these: **column, sidebar, grid, split, stack**.
+Study two sites:
+
+1. **One from this list.** Each shows its patterns clearly:
+
+| Site | Look at | Patterns to find |
+|:--|:--|:--|
+| [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/clamp) | Any reference page | Sidebar, centered column, stack |
+| [Wikipedia](https://en.wikipedia.org/wiki/Bauhaus) | Any article | Sidebar, column, infobox |
+| [GitHub](https://github.com/microsoft/vscode) | A repository home page | Sidebar, cluster, stack |
+| [The Guardian](https://www.theguardian.com) | Home page | Card grid, strict alignment to a few edges |
+| [Etsy](https://www.etsy.com/search?q=mug) | Search results | Card grid, cluster (filters) |
+| [Apple](https://www.apple.com/macbook-air/) | A product page | Split, centered column, one focal point per section |
+| [Stripe Docs](https://docs.stripe.com) | Any guide | Sidebar, column, split (text and code side by side) |
+| [Craigslist](https://sfbay.craigslist.org) | Home page | Columns of lists, almost no decoration |
+
+2. **One site you use every day** (your bank, a news site, a game wiki, your school portal).
+
+For each site:
+
+- Sketch the layout as boxes on paper at **desktop** width: no detail, just rectangles.
+- Label each box with a pattern: **column, sidebar, grid, split, stack, cluster**.
+- Shrink the window to phone width. What happens to each box? Did the sidebar move below the content, or disappear? How many columns does the grid have now?
+- Count the vertical edges at desktop width.
+
+Now do the same for the "before" page you generated last class in [Critique & AI](design-critique-ai.md#in-class-activity-75-min) (Step 1 of [Fix the AI Page]). Which patterns did the AI choose? Are they the right ones for the content? How does your everyday site compare?
+
+> Missed last class? Run [Step 1](../assignments/fix-the-ai-page.md#step-1-generate-the-before-page) now. It takes about 5 minutes.
 
 Most pages are just a few of these patterns nested inside each other.
 
@@ -223,19 +249,23 @@ Then confirm each one by actually resizing the page. AI can't see your rendered 
 
 ---
 
-## In-class challenge (45 min)
+## In-class challenge (60 min)
 
-Starting from your Zen Garden page:
+Work on your [Fix the AI Page] `after/` page. Start by pulling your layout critique points (passes 2 and 7) from `CRITIQUE.md`.
 
-1. Wrap your layout in a single `.container` width (you may need to target existing wrappers like `.page-wrapper`, since you can't edit the HTML).
-2. Pick a pattern for the main content and the sidebar. Implement it with grid.
-3. Count your vertical edges at 1280px. Get it to 3 or fewer.
-4. Drag from 320px to 1440px. Fix every overflow.
-5. Replace at least one media query with `clamp()` or `auto-fit`.
+1. **Label the patterns.** Sketch the "before" page as boxes and label each section: column, sidebar, grid, split, stack, or cluster. Is each one the right pattern for its content? Change any that aren't.
+2. **One container.** Give the header, every section, and the footer the same `.container` width. You can edit the HTML in this assignment.
+3. **Few edges.** Count your vertical edges at 1280px. Get it to 3 or fewer. Left-align anything longer than a line.
+4. **One focal point.** Find the hero's competing buttons (AI pages almost always have two). Make one primary and the other secondary or a text link.
+5. **No-breakpoint grid.** Rebuild the features or cards section with `repeat(auto-fit, minmax(min(16rem, 100%), 1fr))`.
+6. **Container query.** Make the card (or list item) switch layout based on its container width.
+7. **Stress test.** Drag from 320px to 1440px and try 200% zoom. Fix every overflow.
+
+For each change, add a line to your design log naming the critique point it fixes.
 
 ## After Class
 
-- Read the [Fix the AI Page] assignment. You'll use every formula so far.
+- Continue the [Fix the AI Page] assignment: **Step 4** (tokens) and **Step 5** (redesign). Due Thursday, Nov 12.
 - Review [CSS Grid](lesson-05.md) and [Media Queries](media-queries.md) if grid syntax is rusty.
 
 ## Additional Resources
