@@ -1,279 +1,302 @@
-# Design Formulas: Layout
+# Layout: Redesign One Section
 
-Layout feels open-ended, but almost every screen on the web is built from five or six patterns. In this lesson you'll learn those patterns, the alignment rules that make them look clean, and the modern CSS (grid, `clamp()`, container queries) that makes them responsive with very few media queries.
+Your AI-generated page probably looks good. It also looks like **every other AI page**: a centered hero, three equal cards with icons, sections stacked one after another, everything centered. Nothing is broken. It's just **generic**.
 
-## Why you should know this
+Layout is one of the strongest ways to give a page its own character. Last class you wrote a design brief that says how your page should **feel**. Today you'll make one section's layout match that brief.
 
-Layout bugs are the ones users actually notice: content that overflows on a phone, a sidebar that crushes the main column, a card grid with one orphan floating in the last row. Front-end developers own these problems, and a designer's mockup usually shows only two screen sizes. You'll be the one deciding what happens at the other 1,400.
+**Today's problem:** pick **one section** of your page, replace the AI's default layout with a layout that fits your brief, and make it work on desktop and phone.
 
 ## Learning Objectives
 
-1. Choose a layout pattern that fits the content
-2. Align a page to a small number of edges
-3. Build responsive grids without media queries using `auto-fit` and `minmax()`
-4. Use `clamp()` for fluid widths, spacing, and type
-5. Make components respond to their container with container queries
-6. Test layouts at the sizes that matter
+1. Recognize the layout patterns an AI uses by default
+2. Choose a layout pattern based on a design brief, not habit
+3. Override existing CSS by using the cascade
+4. Build a layout with grid that works at 375px and 1280px
 
-## Warm-up (15 min)
+## How this works
 
-Study two sites:
-
-1. **One from this list.** Each shows its patterns clearly:
-
-| Site | Look at | Patterns to find |
-|:--|:--|:--|
-| [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/clamp) | Any reference page | Sidebar, centered column, stack |
-| [Wikipedia](https://en.wikipedia.org/wiki/Bauhaus) | Any article | Sidebar, column, infobox |
-| [GitHub](https://github.com/microsoft/vscode) | A repository home page | Sidebar, cluster, stack |
-| [The Guardian](https://www.theguardian.com) | Home page | Card grid, strict alignment to a few edges |
-| [Etsy](https://www.etsy.com/search?q=mug) | Search results | Card grid, cluster (filters) |
-| [Apple](https://www.apple.com/macbook-air/) | A product page | Split, centered column, one focal point per section |
-| [Stripe Docs](https://docs.stripe.com) | Any guide | Sidebar, column, split (text and code side by side) |
-| [Craigslist](https://sfbay.craigslist.org) | Home page | Columns of lists, almost no decoration |
-
-2. **One site you use every day** (your bank, a news site, a game wiki, your school portal).
-
-For each site:
-
-- Sketch the layout as boxes on paper at **desktop** width: no detail, just rectangles.
-- Label each box with a pattern: **column, sidebar, grid, split, stack, cluster**.
-- Shrink the window to phone width. What happens to each box? Did the sidebar move below the content, or disappear? How many columns does the grid have now?
-- Count the vertical edges at desktop width.
-
-Now do the same for the "before" page you generated last class in [Critique & AI](design-critique-ai.md#in-class-activity-75-min) (Step 1 of [Fix the AI Page]). Which patterns did the AI choose? Are they the right ones for the content? How does your everyday site compare?
-
-> Missed last class? Run [Step 1](../assignments/fix-the-ai-page.md#step-1-generate-the-before-page) now. It takes about 5 minutes.
-
-Most pages are just a few of these patterns nested inside each other.
+- Work **at your own pace**, top to bottom.
+- You'll edit **one file**, `after/index.html`, and add **one entry** to `DESIGN-LOG.md` at the end.
+- Each step ends with **Done when**. Don't move on until that's true.
+- Steps 1–6 take about **75 minutes**. When you finish, do the **Stretch** challenges.
+- Stuck for 10 minutes? Ask a classmate or your instructor.
 
 ---
 
-## Formula 1: Pick a Pattern
+## Setup (5 min)
 
-| Pattern | Use for | Core CSS |
-|:--|:--|:--|
-| **Centered column** | Articles, forms, settings, docs | `max-width` + `margin-inline: auto` |
-| **Sidebar** | Docs, dashboards, filters | `grid-template-columns: minmax(12rem, 16rem) 1fr` |
-| **Card grid** | Products, projects, search results | `repeat(auto-fit, minmax(16rem, 1fr))` |
-| **Split** | Hero sections, sign-up pages | `grid-template-columns: 1fr 1fr` |
-| **Stack** | Everything inside a component | `display: flex; flex-direction: column; gap` |
-| **Cluster** | Tags, buttons, nav links | `display: flex; flex-wrap: wrap; gap` |
+1. In your Fix the AI Page repo, copy `before/index.html` to `after/index.html`. (Skip this if you already did it.)
+2. Open `after/index.html` in your editor and in your browser.
+3. Open `DESIGN-LOG.md` and reread your **Brief**, especially the **Feel** line.
 
-### Centered column
+**Done when:** your page is open in the browser and you can say your brief's 3 feel words without looking.
+
+---
+
+## Step 1: Map the page (10 min)
+
+Name the pattern the AI used for each section. At the **top** of the `<style>` tag, add this comment and fill it in:
 
 ```css
-.container {
-  width: min(100% - 2 * var(--space-md), 72rem);
-  margin-inline: auto;
-}
-
-.prose {
-  max-width: 65ch;   /* reading width, from the Type formula */
-}
+/* LAYOUT MAP
+   Header:   
+   Hero:     
+   Features: 
+   Cards:    
+   Form:     
+   Footer:   
+*/
 ```
 
-`min()` gives a full-width layout with a gutter on phones and caps the width on big screens, all in one line.
+Use these names:
 
-### Card grid (no media queries)
+| Pattern | Looks like |
+|:--|:--|
+| **Centered stack** | Everything centered, one item above another |
+| **Card grid** | Equal boxes in a row |
+| **Split** | Two halves side by side |
+| **Sidebar** | A narrow column next to a wide one |
+| **Column** | One left-aligned column of content |
+| **Cluster** | Items in a row that wrap (nav links, tags, buttons) |
+
+**Done when:** every line has a pattern name. Count how many say **centered stack** or **card grid**. That's the AI default.
+
+---
+
+## Step 2: Choose your section and its new pattern (10 min)
+
+1. Pick **one** section to redesign: the **hero** or the **features** section. These are where the AI default is most obvious.
+2. Read the menu below. Pick the option whose **feel** is closest to your brief.
+
+| Option | Layout | Feels | Good for a brief that says... |
+|:--|:--|:--|:--|
+| **A. Split** | Text on one side, image or form on the other | Direct, practical | "useful", "get to the point" |
+| **B. Editorial** | Big left-aligned headline, a narrow text column, lots of empty space | Calm, confident, bookish | "quiet", "literary", "thoughtful" |
+| **C. Label + content** | A heading in a narrow left column, content in a wide right column | Organized, catalog-like | "organized", "trustworthy", "like a library catalog" |
+| **D. Ruled list** | Items as rows separated by lines instead of cards | Plain, honest, no fluff | "utilitarian", "no-nonsense", "like a hardware store" |
+| **E. Feature + supporting** | One large item, with the others smaller beside it | Clear priority | "focused", "one thing matters most" |
+
+3. Sketch your section as rectangles on paper, once at **desktop** width and once at **phone** width. No detail, just boxes.
+
+**Done when:** you can finish this sentence out loud: *"I'm changing my **[section]** from **[AI pattern]** to **[option]**, because my brief says **[feel word]**."*
+
+---
+
+## Step 3: Find the section's code (10 min)
+
+1. In the browser, right-click the section → **Inspect**. Find the section's outer element and its class, for example `<section class="features">`.
+2. Click the elements **inside** the section, one at a time. For each one, note in the Styles panel which properties control **layout**:
+   - `display`, `grid-template-columns`, `flex-direction`, `justify-content`, `align-items`
+   - `text-align: center`
+   - `max-width`, `margin: 0 auto`
+3. Find those same rules in your `<style>` tag.
+
+**Done when:** you can point to the CSS rules that make the section look the way it does now.
+
+---
+
+## Step 4: Build the new layout (30 min)
+
+You won't delete the AI's CSS. You'll **override** it. Add your new rules at the **very bottom** of the `<style>` tag, using the **same selectors** as the AI. When two rules are equally specific, the one that comes later wins.
 
 ```css
-.grid {
+/* ===== MY LAYOUT: features → ruled list ===== */
+```
+
+Start from the recipe for your option. Change the class names to match your HTML.
+
+> **Which element gets the rule?** A grid arranges an element's **direct children**. Put the rule on the element whose children are the boxes in your sketch. AI pages often wrap a section's contents in a single `<div class="container">`. If yours does, target `.hero .container`, not `.hero`.
+
+### A. Split
+
+```css
+.hero {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
-  gap: var(--space-xl);
+  grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr));
+  gap: 3rem;
+  align-items: center;
+  text-align: left;
 }
 ```
 
-Read it as: "fit as many columns as you can, each at least 16rem, and stretch them to fill the row." The inner `min(16rem, 100%)` prevents overflow on very narrow screens.
+A split needs **two children** inside the section. If your hero has only text, add a second element: an image, the sign-up form moved up from below, or a short list of facts.
 
-### Sidebar
-
-```css
-.with-sidebar {
-  display: grid;
-  gap: var(--space-xl);
-}
-
-@media (width >= 48rem) {
-  .with-sidebar {
-    grid-template-columns: 16rem 1fr;
-  }
-}
-```
-
-### Stack and cluster
+### B. Editorial
 
 ```css
-.stack   { display: flex; flex-direction: column; gap: var(--space-md); }
-.cluster { display: flex; flex-wrap: wrap; gap: var(--space-sm); align-items: center; }
-```
-
-These two utilities handle most of the layout *inside* components.
-
----
-
-## Formula 2: Few Edges
-
-Draw vertical lines down the page wherever content starts. **Fewer lines = cleaner design.**
-
-```
- Messy (7 edges)              Clean (2 edges)
- |  Logo         Nav |        | Logo          Nav |
- |    Heading        |        | Heading           |
- |  Text text text   |        | Text text text    |
- |      [Button]     |        | [Button]          |
- |   Card  Card      |        | Card   Card  Card |
-```
-
-Rules:
-- **One container width** for the whole page. Header, sections, and footer all use the same `.container`.
-- **Left-align text.** Centered paragraphs are hard to read because every line starts at a different spot. Center only short items: a hero headline, a single button, an empty-state message.
-- **Line up the insides too.** Card text should start where the card's title starts. Form labels should line up with their inputs.
-
-Check alignment in DevTools: select the grid or flex container and turn on the grid/flex overlay. Or temporarily add:
-
-```css
-* { outline: 1px solid rgb(255 0 0 / 0.3); }
-```
-
----
-
-## Formula 3: One Focal Point
-
-Every screen should have **one** thing that's clearly most important. Usually it's the main heading or the primary action.
-
-- **One primary button per view.** Other actions are secondary (outline) or tertiary (text link).
-- If two things compete for attention, make one of them smaller, lighter, or quieter.
-
-```
- Competing                       Clear
- [ Sign up ] [ Learn more ]      [ Sign up ]  Learn more →
-   (solid)     (solid)             (solid)     (text link)
-```
-
----
-
-## Formula 4: Fluid with `clamp()`
-
-`clamp(min, preferred, max)` lets a value grow with the viewport between two limits.
-
-```css
-.section {
-  padding-block: clamp(var(--space-2xl), 8vw, var(--space-4xl));
+.hero {
+  text-align: left;
 }
 
 .hero h1 {
-  font-size: clamp(2rem, 1.25rem + 3vw, 3.052rem);
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  max-width: 14ch;      /* a few words per line, set big */
+}
+
+.hero p {
+  max-width: 45ch;      /* a narrow text column */
 }
 ```
 
-Use it for section padding, hero type, and gaps. Fewer media queries means fewer awkward in-between sizes.
-
----
-
-## Formula 5: Components Respond to Their Container
-
-A card in a wide main column and the same card in a narrow sidebar need different layouts. Media queries only know the **viewport**. Container queries know the **space the component actually has**.
+### C. Label + content
 
 ```css
-.card-wrapper {
-  container-type: inline-size;
-}
-
-.card {
+.features {
   display: grid;
-  gap: var(--space-md);
+  gap: 2rem;
 }
 
-/* When the card's container is at least 30rem wide, put the image beside the text */
-@container (width >= 30rem) {
-  .card {
-    grid-template-columns: 10rem 1fr;
+@media (width >= 48rem) {
+  .features {
+    grid-template-columns: 1fr 2fr;   /* heading left, content right */
   }
 }
 ```
 
-**Rule of thumb:** media queries for **page** layout, container queries for **component** layout. This matters a lot when you build your CSS framework and Web Components later in the term: components shouldn't care where they're placed.
+The section needs **two children**: the heading, and a wrapper around everything else. Add a `<div>` around the content if there isn't one.
 
----
-
-## Formula 6: Test the Sizes That Matter
-
-Open DevTools device mode and drag the width slowly from **320px to 1440px**. Watch for:
-
-- **Horizontal scroll:** never acceptable. Usually a fixed `width`, a long URL, or an image without `max-width: 100%`.
-- **Orphans:** one card alone on the last row of a grid
-- **Crushed columns:** text squeezed into 3 words per line
-- **Huge line lengths** on wide screens
-- **Touch targets** smaller than about 44×44px on mobile
-
-Also test **200% browser zoom**. It's an accessibility requirement and catches the same bugs.
-
-A good base reset prevents half of these bugs:
+### D. Ruled list
 
 ```css
-*, *::before, *::after { box-sizing: border-box; }
-img, svg, video { max-width: 100%; height: auto; display: block; }
-body { margin: 0; }
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;   /* one item per row */
+  gap: 0;
+}
+
+.feature-card {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1.5rem;
+  text-align: left;
+  padding-block: 1.5rem;
+  border-bottom: 1px solid currentColor;
+  /* remove the card look */
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+}
 ```
+
+The `3rem` column holds the icon or a number. Put the icon in its own column so the text lines up.
+
+### E. Feature + supporting
+
+```css
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+  gap: 1.5rem;
+}
+
+@media (width >= 48rem) {
+  .feature-card:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+}
+```
+
+Make the first card the most important one: move it to the top of the HTML, and give it a larger heading or more text.
 
 ---
 
-## Using AI here
+**If your new rule doesn't work:** inspect the element. In the Styles panel, a rule that's **crossed out** has lost to another rule. Look at which rule won. Usually the AI's selector is more specific (`.features .grid` beats `.grid`). Copy the AI's exact selector into your rule.
 
-**Prompt: layout options in words first**
-
-```
-Here is my page content as an outline:
-[paste headings and a one-line description of each section]
-
-The main job of this page is [job]. Propose 3 different layout approaches
-using only these patterns: centered column, sidebar, card grid, split, stack.
-For each, describe the layout at 375px and at 1280px in words, and say what
-it prioritizes. No code.
-```
-
-Choosing between three described options is much faster than choosing between three blobs of generated code, and it keeps you in charge of the decision.
-
-**Prompt: find responsive bugs**
-
-```
-Here is my CSS. List anything likely to cause horizontal overflow or
-crushed layouts between 320px and 1440px wide: fixed widths, missing
-min-width: 0 on grid/flex children, images without max-width, etc.
-Point to the selector and the line.
-```
-
-Then confirm each one by actually resizing the page. AI can't see your rendered page unless you give it a screenshot, and even then it can miss things.
+**Done when:** at **1280px**, the section uses the pattern you chose, and it no longer looks like the AI default.
 
 ---
 
-## In-class challenge (60 min)
+## Step 5: Check it on a phone (10 min)
 
-Work on your [Fix the AI Page] `after/` page. Start by pulling your layout critique points (passes 2 and 7) from `CRITIQUE.md`.
+1. Turn on DevTools device mode and set the width to **375px**.
+2. Check that:
+   - nothing scrolls sideways
+   - text isn't squeezed into 3–4 words per line
+   - the order still makes sense (heading first, then content)
+3. Drag slowly from 375px to 1280px. Fix anything that breaks along the way.
 
-1. **Label the patterns.** Sketch the "before" page as boxes and label each section: column, sidebar, grid, split, stack, or cluster. Is each one the right pattern for its content? Change any that aren't.
-2. **One container.** Give the header, every section, and the footer the same `.container` width. You can edit the HTML in this assignment.
-3. **Few edges.** Count your vertical edges at 1280px. Get it to 3 or fewer. Left-align anything longer than a line.
-4. **One focal point.** Find the hero's competing buttons (AI pages almost always have two). Make one primary and the other secondary or a text link.
-5. **No-breakpoint grid.** Rebuild the features or cards section with `repeat(auto-fit, minmax(min(16rem, 100%), 1fr))`.
-6. **Container query.** Make the card (or list item) switch layout based on its container width.
-7. **Stress test.** Drag from 320px to 1440px and try 200% zoom. Fix every overflow.
+**Done when:** your section looks intentional at **375px** and at **1280px**, and at every width in between.
 
-For each change, add a line to your design log naming the critique point it fixes.
+---
+
+## Step 6: Record your decision (5 min)
+
+Take a screenshot of the section at 1280px and save it as `after/section-layout.png`. Then add this entry to the Decisions section of `DESIGN-LOG.md`:
+
+```markdown
+### Layout: [section]
+- **What:** changed from [AI pattern] to [option]
+- **Why:** my brief says "[feel word]" because [one sentence]
+- **Verified:** checked at 375px and 1280px, no sideways scroll
+- Screenshot: after/section-layout.png
+```
+
+Commit and push.
+
+**Done when:** the entry is in your log and your work is pushed.
+
+**You've finished the lesson.** 🎉
+
+---
+
+## Stretch challenges
+
+Do these in any order.
+
+**A. A second section.** Redesign another section with a **different** option from the menu. Two sections with the same pattern will look generic again.
+
+**B. Few edges.** At 1280px, hold a ruler against the screen and count the distinct left edges where content starts, across the whole page. Get it down to **3 or fewer** by giving every section the same container and left-aligning paragraphs.
+
+**C. One focal point.** Does your hero have two buttons with equal weight? Make one the primary button and turn the other into a text link.
+
+**D. Container query.** Make one card or list item change its layout based on its **own** width, not the screen's:
+
+```css
+.feature-card-wrapper { container-type: inline-size; }
+
+@container (width >= 24rem) {
+  .feature-card { grid-template-columns: 4rem 1fr; }
+}
+```
+
+A container query can only style the container's **children**, so you may need to add a wrapper `<div>` in the HTML. The assignment requires one container query, so this one is worth doing.
+
+**E. Ask for options, not code.** Paste your brief and your page's section list into an AI tool:
+
+```
+Here is my design brief and my page's sections. Propose 3 different
+layouts for my [section], using only these patterns: split, editorial,
+label + content, ruled list, feature + supporting. For each, describe
+it at 375px and 1280px in words, and explain how it fits my brief.
+No code.
+```
+
+Do you agree with its choice? Log the prompt in your design log.
+
+---
+
+## Quick reference
+
+| Pattern | Core CSS |
+|:--|:--|
+| Container | `width: min(100% - 2rem, 72rem); margin-inline: auto` |
+| Card grid | `repeat(auto-fit, minmax(min(18rem, 100%), 1fr))` |
+| Split | `repeat(auto-fit, minmax(min(22rem, 100%), 1fr))` |
+| Label + content / sidebar | `grid-template-columns: 1fr 2fr` inside a media query |
+| Stack | `display: flex; flex-direction: column; gap` |
+| Cluster | `display: flex; flex-wrap: wrap; gap` |
+| Fluid size | `clamp(min, preferred, max)` |
 
 ## After Class
 
-- Continue the [Fix the AI Page] assignment: **Step 4** (tokens) and **Step 5** (redesign). Due Thursday, Nov 12.
-- Review [CSS Grid](lesson-05.md) and [Media Queries](media-queries.md) if grid syntax is rusty.
+- Continue [Fix the AI Page]: Step 4 (tokens) and Step 5 (redesign the rest of the page). Due Thursday, Nov 12.
 
 ## Additional Resources
 
-- [Every Layout](https://every-layout.dev): layout primitives (stack, cluster, sidebar, switcher) explained brilliantly
+- [Every Layout](https://every-layout.dev): layout primitives explained brilliantly
 - [MDN: Container queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries)
 - [MDN: clamp()](https://developer.mozilla.org/en-US/docs/Web/CSS/clamp)
-- [Grid by Example](https://gridbyexample.com)
 - [CSS Grid Garden](https://cssgridgarden.com), a game for practicing grid
 
 [Fix the AI Page]: ../assignments/fix-the-ai-page.md

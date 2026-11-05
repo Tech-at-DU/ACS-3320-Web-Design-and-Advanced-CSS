@@ -23,7 +23,7 @@ This is the most realistic project in the course. On the job, you'll often be th
 |:--|:--|
 | **Class 5: Critique & AI** (Tue, Nov 3) | Step 1 (generate), Step 2 (critique, started in class), Step 3 (brief) |
 | **Before Class 6** | Finish `CRITIQUE.md` and the brief; copy `before/index.html` to `after/index.html` |
-| **Class 6: Layout** (Thu, Nov 5) | Step 5, layout first: patterns, container, edges, focal point, container query |
+| **Class 6: Layout** (Thu, Nov 5) | Step 5, layout first: redesign one section's layout to fit your brief |
 | **Nov 5 – Nov 12** | Step 4 (tokens), the rest of Step 5, Step 6 (verify) |
 | **Due Thu, Nov 12** | Submit |
 
