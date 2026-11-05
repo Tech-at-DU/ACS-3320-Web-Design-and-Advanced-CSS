@@ -28,7 +28,7 @@ AI tools can generate a working page in seconds. What they can't do reliably is 
 | 4 | Thu, Oct 29 | [Custom Properties], theming, `light-dark()` | - | [CSS Zen Garden] |
 | - | **Week 3** | **Critique & Layout: diagnose, then fix** | | |
 | 5 | Tue, Nov 3 | [Critique & AI as a Design Assistant] | [Fix the AI Page] | - |
-| 6 | Thu, Nov 5 | [Layout]: grid, `clamp()`, container queries | - | [CSS Picture] |
+| 6 | Thu, Nov 5 | [Layout]: fix and redesign the AI page | - | [CSS Picture] |
 | - | **Week 4** | **Motion & UI States** | | |
 | 7 | Tue, Nov 10 | [UI States & Motion], [Transition] | [Microinteractions] | - |
 | 8 | Thu, Nov 12 | [Animation], reduced motion | - | [Fix the AI Page] |
@@ -64,7 +64,7 @@ The [Design Formulas cheat sheet] puts every design rule from this class on one 
 
 - [Type & Spacing]
 - [Color]
-- [Layout]
+- [Layout Formulas]
 - [UI States & Motion]
 - [Critique & AI as a Design Assistant]
 
@@ -133,6 +133,7 @@ These lessons aren't on the schedule but cover background material you can use a
 [Type & Spacing]: lessons/design-type-spacing.md
 [Color]: lessons/design-color.md
 [Layout]: lessons/design-layout.md
+[Layout Formulas]: lessons/layout-formulas.md
 [Critique & AI as a Design Assistant]: lessons/design-critique-ai.md
 [UI States & Motion]: lessons/ui-states.md
 [Design Formulas cheat sheet]: lessons/design-formulas.md

@@ -70,7 +70,7 @@ This assignment does two things:
 
 - **Start with type and spacing only.** No colors, no layout. Get the text readable and grouped first (see the [Type & Spacing lesson](../lessons/design-type-spacing.md)). This alone will make the page look 80% better.
 - **Then color.** Add your color roles (see the [Color lesson](../lessons/design-color.md)). Mostly neutral, one accent.
-- **Then layout.** Pick a pattern: centered column with the sidebar below, or a two-column sidebar layout (see the [Layout lesson](../lessons/design-layout.md)).
+- **Then layout.** Pick a pattern: centered column with the sidebar below, or a two-column sidebar layout (see [Layout Formulas](../lessons/layout-formulas.md)).
 - **Then decoration.** Backgrounds, `.extra` divs, pseudo-elements, a little motion.
 - **Work from general to specific.** Style tag selectors first (`h3`, `p`, `a`), then sections (`.preamble h3`), then individual elements.
 - **Use DevTools constantly.** Inspect the structure, test selectors in the console with `document.querySelectorAll('...')`, and check contrast with the color picker.

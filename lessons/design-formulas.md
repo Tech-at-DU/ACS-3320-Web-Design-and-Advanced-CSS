@@ -6,7 +6,7 @@ Each formula has a full lesson:
 
 - [Type & Spacing](design-type-spacing.md)
 - [Color](design-color.md)
-- [Layout](design-layout.md)
+- [Layout](layout-formulas.md)
 - [UI States & Motion](ui-states.md)
 - [Critique & AI as a Design Assistant](design-critique-ai.md)
 

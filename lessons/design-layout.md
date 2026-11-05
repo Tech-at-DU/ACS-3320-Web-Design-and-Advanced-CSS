@@ -1,302 +1,207 @@
-# Layout: Redesign One Section
+# Fix and Redesign the AI Page
 
-Your AI-generated page probably looks good. It also looks like **every other AI page**: a centered hero, three equal cards with icons, sections stacked one after another, everything centered. Nothing is broken. It's just **generic**.
+Your AI-generated page looks good at first glance. Look closer and you'll find low-contrast text, small inconsistencies, and a layout that looks like every other AI page.
 
-Layout is one of the strongest ways to give a page its own character. Last class you wrote a design brief that says how your page should **feel**. Today you'll make one section's layout match that brief.
+Today has two parts:
 
-**Today's problem:** pick **one section** of your page, replace the AI's default layout with a layout that fits your brief, and make it work on desktop and phone.
-
-## Learning Objectives
-
-1. Recognize the layout patterns an AI uses by default
-2. Choose a layout pattern based on a design brief, not habit
-3. Override existing CSS by using the cascade
-4. Build a layout with grid that works at 375px and 1280px
+1. **Fix:** use tools to find real problems, then fix them.
+2. **Redesign:** give one section a layout that fits your design brief.
 
 ## How this works
 
-- Work **at your own pace**, top to bottom.
-- You'll edit **one file**, `after/index.html`, and add **one entry** to `DESIGN-LOG.md` at the end.
-- Each step ends with **Done when**. Don't move on until that's true.
-- Steps 1–6 take about **75 minutes**. When you finish, do the **Stretch** challenges.
+- Work **at your own pace**, top to bottom. Each step ends with **Done when**.
+- **Never edit `before/index.html`.** All changes go in `after/index.html`, so anyone can compare the two.
+- Each part takes about **45 minutes**. If you finish early, do the **Stretch** challenges.
 - Stuck for 10 minutes? Ask a classmate or your instructor.
-
----
 
 ## Setup (5 min)
 
-1. In your Fix the AI Page repo, copy `before/index.html` to `after/index.html`. (Skip this if you already did it.)
-2. Open `after/index.html` in your editor and in your browser.
-3. Open `DESIGN-LOG.md` and reread your **Brief**, especially the **Feel** line.
+1. Copy `before/index.html` to `after/index.html` (skip this if you already did it).
+2. Open both files in Chrome, in two tabs.
+3. Install the [WAVE extension](https://wave.webaim.org/extension/) for Chrome or Firefox. If you open your pages as files (the URL starts with `file://`), go to the extension's settings and turn on **Allow access to file URLs**.
+4. In `CRITIQUE.md`, add this table at the bottom:
 
-**Done when:** your page is open in the browser and you can say your brief's 3 feel words without looking.
+```markdown
+## Fixes
 
----
-
-## Step 1: Map the page (10 min)
-
-Name the pattern the AI used for each section. At the **top** of the `<style>` tag, add this comment and fill it in:
-
-```css
-/* LAYOUT MAP
-   Header:   
-   Hero:     
-   Features: 
-   Cards:    
-   Form:     
-   Footer:   
-*/
+| # | Problem | Where | Found with | Fix | Fixed? |
+|:-:|:--|:--|:--|:--|:-:|
+| 1 | | | | | |
 ```
 
-Use these names:
-
-| Pattern | Looks like |
-|:--|:--|
-| **Centered stack** | Everything centered, one item above another |
-| **Card grid** | Equal boxes in a row |
-| **Split** | Two halves side by side |
-| **Sidebar** | A narrow column next to a wide one |
-| **Column** | One left-aligned column of content |
-| **Cluster** | Items in a row that wrap (nav links, tags, buttons) |
-
-**Done when:** every line has a pattern name. Count how many say **centered stack** or **card grid**. That's the AI default.
+**Done when:** both pages are open, WAVE is installed, and the table is in `CRITIQUE.md`.
 
 ---
 
-## Step 2: Choose your section and its new pattern (10 min)
+## Part 1: Find and fix (45 min)
 
-1. Pick **one** section to redesign: the **hero** or the **features** section. These are where the AI default is most obvious.
-2. Read the menu below. Pick the option whose **feel** is closest to your brief.
+### Step 1: Get a baseline (5 min)
 
-| Option | Layout | Feels | Good for a brief that says... |
-|:--|:--|:--|:--|
-| **A. Split** | Text on one side, image or form on the other | Direct, practical | "useful", "get to the point" |
-| **B. Editorial** | Big left-aligned headline, a narrow text column, lots of empty space | Calm, confident, bookish | "quiet", "literary", "thoughtful" |
-| **C. Label + content** | A heading in a narrow left column, content in a wide right column | Organized, catalog-like | "organized", "trustworthy", "like a library catalog" |
-| **D. Ruled list** | Items as rows separated by lines instead of cards | Plain, honest, no fluff | "utilitarian", "no-nonsense", "like a hardware store" |
-| **E. Feature + supporting** | One large item, with the others smaller beside it | Clear priority | "focused", "one thing matters most" |
+1. Open `before/index.html` and click the **WAVE** icon in the toolbar.
+2. The **Summary** panel shows counts for **Errors**, **Contrast Errors**, and **Alerts**.
+3. Write them at the top of your Fixes table: `WAVE before: 2 errors, 14 contrast errors, 6 alerts`
 
-3. Sketch your section as rectangles on paper, once at **desktop** width and once at **phone** width. No detail, just boxes.
+**Done when:** the before counts are recorded.
 
-**Done when:** you can finish this sentence out loud: *"I'm changing my **[section]** from **[AI pattern]** to **[option]**, because my brief says **[feel word]**."*
+### Step 2: Find problems (15 min)
+
+Use each tool below on `before/index.html`. Add every problem you find as a row in your Fixes table.
+
+| Tool | How | What it finds |
+|:--|:--|:--|
+| **WAVE** | The **Details** tab lists every problem. Click one to jump to it on the page. The **Contrast** tab shows each failing color pair and its ratio. | Low contrast, missing labels, missing alt text, skipped heading levels |
+| **Contrast checker** | Inspect any gray or light text → click the color swatch in the Styles panel. Look for the ✓ or ✗ next to "Contrast ratio". | Text below **4.5:1** (fails WCAG AA) |
+| **CSS Overview** | DevTools → ⋮ menu → More tools → **CSS Overview** → Capture overview | Too many colors, too many font sizes, contrast issues |
+| **Keyboard** | Click the address bar, then press **Tab** through the whole page. | Missing or invisible focus styles |
+| **Your eyes** | Compare things that should match: all the buttons, all the cards, all the section headings. | Inconsistent padding, radius, sizes, and colors |
+
+Common AI problems to look for:
+
+- light gray text on white, or white text on a light gradient
+- placeholder text too faint to read
+- nearly identical colors that should be the same (`#6b7280` and `#64748b`)
+- 10 or more different font sizes
+- buttons or cards with slightly different padding or border-radius
+- hover effects with no matching focus style
+- Style inconsistencies. Hover states that that are different for similar elements. 
+
+**Done when:** your table has at least **6 problems**, each with a **Where** (the selector or section) and a **Found with**.
+
+### Step 3: Fix them (20 min)
+
+Work through your table in `after/index.html`. For each problem:
+
+1. Fix it in the CSS.
+2. Check it with the same tool that found it.
+3. Fill in the **Fix** column (for example, `color #9ca3af → #4b5563, now 7.1:1`) and mark it ✅.
+
+Tips:
+
+- **Contrast:** in WAVE's **Contrast** tab, click a contrast error and use the **lightness slider** to find the nearest color that passes. Copy that color into your CSS. You can also drag the DevTools color picker until the ✗ turns into ✓.
+- **Too many colors or sizes:** pick one value and use it everywhere. Search the CSS for the others and replace them.
+- **Focus:** add a style everyone can see:
+  ```css
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 3px;
+  }
+  ```
+
+**Done when:** at least **6 rows** are marked ✅.
+
+### Step 4: Measure again (5 min)
+
+Run WAVE on `after/index.html`. Add the counts below the first line: `WAVE after: 0 errors, 0 contrast errors, 3 alerts`
+
+**Done when:** **Errors** and **Contrast Errors** are both **0**. Alerts are warnings to review, not failures.
 
 ---
 
-## Step 3: Find the section's code (10 min)
+## Part 2: Redesign one section (45 min)
 
-1. In the browser, right-click the section → **Inspect**. Find the section's outer element and its class, for example `<section class="features">`.
-2. Click the elements **inside** the section, one at a time. For each one, note in the Styles panel which properties control **layout**:
-   - `display`, `grid-template-columns`, `flex-direction`, `justify-content`, `align-items`
-   - `text-align: center`
-   - `max-width`, `margin: 0 auto`
-3. Find those same rules in your `<style>` tag.
+AI pages all use the same layouts: a centered hero and three equal cards with icons. Change one section so its layout fits your brief.
 
-**Done when:** you can point to the CSS rules that make the section look the way it does now.
+### Step 5: Choose (10 min)
 
----
+1. Reread the **Feel** line of the brief in `DESIGN-LOG.md`.
+2. Pick **one** section: the **hero** or the **features**.
+3. Pick the layout that best matches your feel words. For more ideas, browse the [Layout Formulas](layout-formulas.md) page and its list of real sites.
 
-## Step 4: Build the new layout (30 min)
+| Layout | Looks like | Feels |
+|:--|:--|:--|
+| **Split** | Text on one side, image or form on the other | Direct, practical |
+| **Editorial** | Big left-aligned headline, narrow text, lots of space | Calm, confident, bookish |
+| **Label + content** | Heading in a narrow left column, content on the right | Organized, catalog-like |
+| **Ruled list** | Rows separated by lines instead of cards | Plain, honest, no fluff |
+| **Feature + supporting** | One big item, the others smaller beside it | Clear priority |
 
-You won't delete the AI's CSS. You'll **override** it. Add your new rules at the **very bottom** of the `<style>` tag, using the **same selectors** as the AI. When two rules are equally specific, the one that comes later wins.
+**Done when:** you can say: *"I'm changing my **[section]** to **[layout]** because my brief says **[feel word]**."*
+
+### Step 6: Build it (25 min)
+
+Add your rules at the **bottom** of the `<style>` tag. Copy the recipe for your layout, then change the class names to match your HTML.
 
 ```css
-/* ===== MY LAYOUT: features → ruled list ===== */
-```
-
-Start from the recipe for your option. Change the class names to match your HTML.
-
-> **Which element gets the rule?** A grid arranges an element's **direct children**. Put the rule on the element whose children are the boxes in your sketch. AI pages often wrap a section's contents in a single `<div class="container">`. If yours does, target `.hero .container`, not `.hero`.
-
-### A. Split
-
-```css
-.hero {
+/* Split: put this on the element that holds the text and the image */
+.hero .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr));
   gap: 3rem;
   align-items: center;
   text-align: left;
 }
-```
 
-A split needs **two children** inside the section. If your hero has only text, add a second element: an image, the sign-up form moved up from below, or a short list of facts.
+/* Editorial */
+.hero { text-align: left; }
+.hero h1 { font-size: clamp(2.5rem, 7vw, 5rem); max-width: 14ch; }
+.hero p { max-width: 45ch; }
 
-### B. Editorial
-
-```css
-.hero {
-  text-align: left;
-}
-
-.hero h1 {
-  font-size: clamp(2.5rem, 7vw, 5rem);
-  max-width: 14ch;      /* a few words per line, set big */
-}
-
-.hero p {
-  max-width: 45ch;      /* a narrow text column */
-}
-```
-
-### C. Label + content
-
-```css
-.features {
-  display: grid;
-  gap: 2rem;
-}
-
+/* Label + content: the section's two children are the heading and a wrapper div */
 @media (width >= 48rem) {
-  .features {
-    grid-template-columns: 1fr 2fr;   /* heading left, content right */
-  }
-}
-```
-
-The section needs **two children**: the heading, and a wrapper around everything else. Add a `<div>` around the content if there isn't one.
-
-### D. Ruled list
-
-```css
-.features-grid {
-  display: grid;
-  grid-template-columns: 1fr;   /* one item per row */
-  gap: 0;
+  .features .container { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; }
 }
 
+/* Ruled list */
+.features-grid { display: grid; grid-template-columns: 1fr; gap: 0; }
 .feature-card {
   display: grid;
-  grid-template-columns: 3rem 1fr;
+  grid-template-columns: 3rem 1fr;   /* icon | text */
   gap: 1.5rem;
   text-align: left;
   padding-block: 1.5rem;
   border-bottom: 1px solid currentColor;
-  /* remove the card look */
-  background: none;
-  box-shadow: none;
-  border-radius: 0;
-}
-```
-
-The `3rem` column holds the icon or a number. Put the icon in its own column so the text lines up.
-
-### E. Feature + supporting
-
-```css
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
-  gap: 1.5rem;
+  background: none; box-shadow: none; border-radius: 0;
 }
 
+/* Feature + supporting */
 @media (width >= 48rem) {
-  .feature-card:first-child {
-    grid-column: span 2;
-    grid-row: span 2;
-  }
+  .feature-card:first-child { grid-column: span 2; grid-row: span 2; }
 }
 ```
 
-Make the first card the most important one: move it to the top of the HTML, and give it a larger heading or more text.
+**If a rule doesn't work:** inspect the element. A crossed-out rule in the Styles panel has lost to a more specific one. Copy the winning rule's selector into your rule.
 
----
+**Done when:** at **1280px**, the section uses your new layout and no longer looks like the AI default.
 
-**If your new rule doesn't work:** inspect the element. In the Styles panel, a rule that's **crossed out** has lost to another rule. Look at which rule won. Usually the AI's selector is more specific (`.features .grid` beats `.grid`). Copy the AI's exact selector into your rule.
+### Step 7: Check and record (10 min)
 
-**Done when:** at **1280px**, the section uses the pattern you chose, and it no longer looks like the AI default.
+1. In device mode, check **375px**. Nothing should scroll sideways or be squeezed. Drag up to 1280px and fix anything that breaks.
+2. Save screenshots of the full page as `after/mobile.png` (375px) and `after/desktop.png` (1280px).
+3. Add an entry to `DESIGN-LOG.md`:
+   ```markdown
+   ### Layout: [section]
+   - **What:** [AI layout] → [new layout]
+   - **Why:** my brief says "[feel word]"
+   - **Verified:** checked at 375px and 1280px
+   ```
+4. Commit and push.
 
----
-
-## Step 5: Check it on a phone (10 min)
-
-1. Turn on DevTools device mode and set the width to **375px**.
-2. Check that:
-   - nothing scrolls sideways
-   - text isn't squeezed into 3–4 words per line
-   - the order still makes sense (heading first, then content)
-3. Drag slowly from 375px to 1280px. Fix anything that breaks along the way.
-
-**Done when:** your section looks intentional at **375px** and at **1280px**, and at every width in between.
-
----
-
-## Step 6: Record your decision (5 min)
-
-Take a screenshot of the section at 1280px and save it as `after/section-layout.png`. Then add this entry to the Decisions section of `DESIGN-LOG.md`:
-
-```markdown
-### Layout: [section]
-- **What:** changed from [AI pattern] to [option]
-- **Why:** my brief says "[feel word]" because [one sentence]
-- **Verified:** checked at 375px and 1280px, no sideways scroll
-- Screenshot: after/section-layout.png
-```
-
-Commit and push.
-
-**Done when:** the entry is in your log and your work is pushed.
-
-**You've finished the lesson.** 🎉
+**Done when:** your screenshots and log entry are pushed. **You're finished.** 🎉
 
 ---
 
 ## Stretch challenges
 
-Do these in any order.
-
-**A. A second section.** Redesign another section with a **different** option from the menu. Two sections with the same pattern will look generic again.
-
-**B. Few edges.** At 1280px, hold a ruler against the screen and count the distinct left edges where content starts, across the whole page. Get it down to **3 or fewer** by giving every section the same container and left-aligning paragraphs.
-
-**C. One focal point.** Does your hero have two buttons with equal weight? Make one the primary button and turn the other into a text link.
-
-**D. Container query.** Make one card or list item change its layout based on its **own** width, not the screen's:
-
-```css
-.feature-card-wrapper { container-type: inline-size; }
-
-@container (width >= 24rem) {
-  .feature-card { grid-template-columns: 4rem 1fr; }
-}
-```
-
-A container query can only style the container's **children**, so you may need to add a wrapper `<div>` in the HTML. The assignment requires one container query, so this one is worth doing.
-
-**E. Ask for options, not code.** Paste your brief and your page's section list into an AI tool:
-
-```
-Here is my design brief and my page's sections. Propose 3 different
-layouts for my [section], using only these patterns: split, editorial,
-label + content, ruled list, feature + supporting. For each, describe
-it at 375px and 1280px in words, and explain how it fits my brief.
-No code.
-```
-
-Do you agree with its choice? Log the prompt in your design log.
-
----
-
-## Quick reference
-
-| Pattern | Core CSS |
-|:--|:--|
-| Container | `width: min(100% - 2rem, 72rem); margin-inline: auto` |
-| Card grid | `repeat(auto-fit, minmax(min(18rem, 100%), 1fr))` |
-| Split | `repeat(auto-fit, minmax(min(22rem, 100%), 1fr))` |
-| Label + content / sidebar | `grid-template-columns: 1fr 2fr` inside a media query |
-| Stack | `display: flex; flex-direction: column; gap` |
-| Cluster | `display: flex; flex-wrap: wrap; gap` |
-| Fluid size | `clamp(min, preferred, max)` |
+- **More fixes:** review every WAVE **Alert** and fix the ones that are real problems, then fix **4 more** consistency problems.
+- **Second section:** redesign another section with a **different** layout.
+- **Container query:** make a card change its layout based on its own width. The assignment requires one.
+  ```css
+  .card-wrapper { container-type: inline-size; }
+  @container (width >= 24rem) { .card { display: grid; grid-template-columns: 4rem 1fr; } }
+  ```
+- **One focal point:** if the hero has two equal buttons, make one primary and turn the other into a text link.
 
 ## After Class
 
-- Continue [Fix the AI Page]: Step 4 (tokens) and Step 5 (redesign the rest of the page). Due Thursday, Nov 12.
+Continue [Fix the AI Page]: Step 4 (tokens) and Step 5 (redesign the rest of the page). Due Thursday, Nov 12.
 
-## Additional Resources
+## Resources
 
-- [Every Layout](https://every-layout.dev): layout primitives explained brilliantly
+- [WAVE browser extension](https://wave.webaim.org/extension/)
+- [Layout Formulas](layout-formulas.md): patterns, few edges, focal point, `clamp()`, container queries
+- [Chrome DevTools: CSS Overview](https://developer.chrome.com/docs/devtools/css-overview)
+- [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
+- [Every Layout](https://every-layout.dev)
 - [MDN: Container queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries)
-- [MDN: clamp()](https://developer.mozilla.org/en-US/docs/Web/CSS/clamp)
-- [CSS Grid Garden](https://cssgridgarden.com), a game for practicing grid
 
 [Fix the AI Page]: ../assignments/fix-the-ai-page.md

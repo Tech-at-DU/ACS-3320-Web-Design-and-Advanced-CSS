@@ -23,7 +23,7 @@ This is the most realistic project in the course. On the job, you'll often be th
 |:--|:--|
 | **Class 5: Critique & AI** (Tue, Nov 3) | Step 1 (generate), Step 2 (critique, started in class), Step 3 (brief) |
 | **Before Class 6** | Finish `CRITIQUE.md` and the brief; copy `before/index.html` to `after/index.html` |
-| **Class 6: Layout** (Thu, Nov 5) | Step 5, layout first: redesign one section's layout to fit your brief |
+| **Class 6: Fix & Redesign** (Thu, Nov 5) | Find and fix problems with WAVE and DevTools; redesign one section's layout to fit your brief |
 | **Nov 5 – Nov 12** | Step 4 (tokens), the rest of Step 5, Step 6 (verify) |
 | **Due Thu, Nov 12** | Submit |
 
@@ -35,7 +35,7 @@ Review these lessons:
 
 - [Type & Spacing](../lessons/design-type-spacing.md)
 - [Color](../lessons/design-color.md)
-- [Layout](../lessons/design-layout.md)
+- [Layout Formulas](../lessons/layout-formulas.md)
 - [Critique & AI as a Design Assistant](../lessons/design-critique-ai.md)
 - [Design Formulas cheat sheet](../lessons/design-formulas.md)
 
@@ -124,7 +124,7 @@ Complete the verification checklist in your design log. Take **after** screensho
 
 - `after/mobile.png`, `after/desktop.png`, `after/desktop-dark.png`
 
-Run Lighthouse → Accessibility on both pages. Record both scores in `CRITIQUE.md`.
+Run [WAVE](https://wave.webaim.org/extension/) on both pages. Record the Errors and Contrast Errors counts for both in `CRITIQUE.md`.
 
 ---
 
@@ -167,7 +167,7 @@ Publish the `after/` page with GitHub Pages and link it in your README.
 | **Critique** | Fewer than 12 points, vague ("looks bad"), or missing passes. | 12+ points covering all 7 passes in Observation → Impact → Fix format, with 3+ measurements. | Sharp, specific critique. Measurements throughout, AI defaults clearly identified, and the fixes prioritized by impact. | /10 |
 | **Brief & Tokens** | Brief missing or generic. Tokens incomplete, or values hard-coded in styles. | Brief has a clear feel, avoids, and constraints. Complete type, spacing, color (with roles and dark theme), and motion tokens. | Brief gives the page a distinct identity that clearly differs from the AI default. Tokens are thoughtful and consistently used. | /10 |
 | **Redesign Quality** | Little visible improvement. Hierarchy, spacing, or alignment problems remain. | Clear hierarchy, consistent spacing, few edges, readable type, and a coherent color system. Critique fixes applied. | The page looks intentional and distinct. Each formula is visibly applied and the result follows the brief. | /15 |
-| **Accessibility & Responsiveness** | Contrast failures, missing focus states, or broken layouts at mobile sizes. | AA contrast, visible focus, full state coverage, form errors, reduced motion, no overflow from 320 to 1440px, a container query used. | Lighthouse accessibility near 100, polished states, and layout that adapts gracefully at every width. | /10 |
+| **Accessibility & Responsiveness** | Contrast failures, missing focus states, or broken layouts at mobile sizes. | AA contrast, visible focus, full state coverage, form errors, reduced motion, no overflow from 320 to 1440px, a container query used. | Zero WAVE errors and contrast errors, polished states, and layout that adapts gracefully at every width. | /10 |
 | **Design Log & AI Use** | Missing, or lists changes with no reasons. AI use undisclosed. | Decisions linked to formulas or critique points. AI prompts logged with kept/rejected. Verification recorded. | The log shows real judgment: rejected ideas, reasoning, and changes made by hand. Reads like a professional case study. | /5 |
 
 ### Total Points: /50
