@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI States: Custom Styles</title>
+  <style>
+    /* ==========================================================
+       TOKENS
+       ========================================================== */
+    :root {
+      --color-bg: oklch(98% 0.01 90);
+      --color-surface: white;
+      --color-fg: oklch(25% 0.02 260);
+      --color-fg-muted: oklch(45% 0.02 260);
+      --color-border: oklch(85% 0.02 260);
+      --color-accent: oklch(50% 0.13 155);
+      --color-on-accent: white;
+      --color-focus: oklch(50% 0.2 260);
+      --color-error: oklch(50% 0.19 25);
+      --color-disabled-bg: oklch(92% 0.01 260);
+      --color-disabled-fg: oklch(55% 0.01 260);
+
+      --radius: 0.5rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+
+      /* Motion tokens: small feedback = fast, bigger changes = base */
+      --duration-fast: 150ms;
+      --duration-base: 250ms;
+      --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    /* ==========================================================
+       BASE
+       ========================================================== */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      line-height: 1.5;
+      color: var(--color-fg);
+      background: var(--color-bg);
+    }
+
+    header, main {
+      width: min(100% - 2rem, 40rem);
+      margin-inline: auto;
+    }
+
+    main { padding-block: var(--space-lg) var(--space-xl); }
+    section { margin-top: var(--space-xl); }
+
+    /* ==========================================================
+       FOCUS: one rule for every interactive element.
+       :focus-visible shows the ring when the browser thinks it's
+       useful: always for keyboard, and for text fields on click too.
+       ========================================================== */
+    :focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 3px;
+    }
+
+    /* ==========================================================
+       LINKS
+       default: underlined | hover: thicker underline | focus: ring
+       ========================================================== */
+    main a {
+      color: var(--color-accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.2em;
+      transition: text-decoration-thickness var(--duration-fast) var(--ease-out);
+    }
+
+    /* Only devices with a real mouse get hover effects,
+       so they don't "stick" after a tap on a phone. */
+    @media (hover: hover) {
+      main a:hover { text-decoration-thickness: 3px; }
+    }
+
+    /* ==========================================================
+       NAV
+       current page: accent bar | hover: gray bar
+       ========================================================== */
+    nav {
+      display: flex;
+      gap: var(--space-lg);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    nav a {
+      color: var(--color-fg);
+      text-decoration: none;
+      padding-block: var(--space-md);
+      border-bottom: 3px solid transparent;
+      transition: border-color var(--duration-fast) var(--ease-out);
+    }
+
+    @media (hover: hover) {
+      nav a:hover { border-bottom-color: var(--color-border); }
+    }
+
+    nav a[aria-current="page"] {
+      font-weight: 600;
+      border-bottom-color: var(--color-accent);
+    }
+
+    /* ==========================================================
+       BUTTONS
+       Each state changes the private --_bg and --_fg variables.
+       The transition is on the BASE rule, so it runs both ways.
+       ========================================================== */
+    button {
+      --_bg: var(--color-accent);
+      --_fg: var(--color-on-accent);
+      --_border: var(--color-accent);
+
+      font: inherit;
+      font-weight: 600;
+      padding: 0.625rem 1.25rem;
+      color: var(--_fg);
+      background: var(--_bg);
+      border: 2px solid var(--_border);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition:
+        background-color var(--duration-fast) var(--ease-out),
+        transform var(--duration-fast) var(--ease-out);
+    }
+
+    button.secondary {
+      --_bg: transparent;
+      --_fg: var(--color-accent);
+    }
+
+    @media (hover: hover) {
+      button:hover {
+        --_bg: color-mix(in oklch, var(--color-accent), black 15%);
+        --_border: color-mix(in oklch, var(--color-accent), black 15%);
+      }
+
+      button.secondary:hover {
+        --_bg: color-mix(in oklch, var(--color-accent), transparent 88%);
+        --_border: var(--color-accent);
+      }
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    /* Disabled comes LAST so it beats hover and active. */
+    button:disabled {
+      --_bg: var(--color-disabled-bg);
+      --_fg: var(--color-disabled-fg);
+      --_border: var(--color-disabled-bg);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ==========================================================
+       CARD: hover the PARENT, move the CHILD
+       The whole card is clickable: the link's ::after covers it.
+       ========================================================== */
+    .card {
+      position: relative;
+      padding: var(--space-lg);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      transition: border-color var(--duration-base) var(--ease-out);
+    }
+
+    .card h3 { margin-top: 0; }
+    .card p { margin-bottom: 0; color: var(--color-fg-muted); }
+
+    .card a {
+      color: var(--color-fg);
+      text-decoration: none;
+    }
+
+    .card a::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+
+    .card .arrow {
+      display: inline-block;   /* transform doesn't work on inline elements */
+      color: var(--color-accent);
+      transition: transform var(--duration-base) var(--ease-out);
+    }
+
+    /* Mouse: hover the card. Keyboard: the card :has a focused link. */
+    .card:hover,
+    .card:has(a:focus-visible) {
+      border-color: var(--color-accent);
+    }
+
+    .card:hover .arrow,
+    .card:has(a:focus-visible) .arrow {
+      transform: translateX(0.5rem);
+    }
+
+    /* Move the focus ring from the small link to the whole card. */
+    .card a:focus-visible { outline: none; }
+    .card:has(a:focus-visible) {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 3px;
+    }
+
+    /* ==========================================================
+       FORM FIELDS
+       :user-invalid only matches AFTER the user has interacted,
+       so the form doesn't start out covered in red.
+       ========================================================== */
+    form {
+      display: grid;
+      gap: var(--space-lg);
+    }
+
+    .field {
+      display: grid;
+      gap: var(--space-sm);
+    }
+
+    .field label { font-weight: 600; }
+
+    .field input {
+      font: inherit;
+      padding: 0.625rem 0.75rem;
+      background: var(--color-surface);
+      border: 2px solid var(--color-fg-muted);
+      border-radius: var(--radius);
+      transition: border-color var(--duration-fast) var(--ease-out);
+    }
+
+    .error-msg { margin: 0; }
+
+    .field:has(:user-invalid) label,
+    .field:has(:user-invalid) .error-msg {
+      color: var(--color-error);
+    }
+
+    .field:has(:user-invalid) input {
+      border-color: var(--color-error);
+    }
+
+    /* The message has the hidden attribute. This rule overrides it. */
+    .field:has(:user-invalid) .error-msg {
+      display: block;
+    }
+
+    /* ==========================================================
+       SWITCH: a checkbox restyled with appearance: none
+       ========================================================== */
+    .switch {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-md);
+      cursor: pointer;
+      width: fit-content;
+    }
+
+    .switch input {
+      appearance: none;
+      position: relative;
+      margin: 0;
+      width: 3rem;
+      height: 1.75rem;
+      border-radius: 999px;
+      background: var(--color-fg-muted);
+      cursor: pointer;
+      transition: background-color var(--duration-base) var(--ease-out);
+    }
+
+    .switch input::before {
+      content: "";
+      position: absolute;
+      top: 0.25rem;
+      left: 0.25rem;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+      background: white;
+      transition: transform var(--duration-base) var(--ease-out);
+    }
+
+    .switch input:checked { background: var(--color-accent); }
+    .switch input:checked::before { transform: translateX(1.25rem); }
+
+    /* :has() styles the PARENT label based on the checkbox inside it. */
+    .switch:has(input:checked) { font-weight: 600; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+    }
+
+    /* ==========================================================
+       REDUCED MOTION
+       Replace movement with a non-moving change. Don't just delete it.
+       ========================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      /* The arrow no longer slides. The card border still shows the state. */
+      .card:hover .arrow,
+      .card:has(a:focus-visible) .arrow {
+        transform: none;
+      }
+
+      /* No press-down. The color change is enough feedback. */
+      button:active { transform: none; }
+
+      /* The knob jumps instead of sliding. The color still fades. */
+      .switch input::before { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav aria-label="Main">
+      <a href="#" aria-current="page">Home</a>
+      <a href="#">Tools</a>
+      <a href="#">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>UI States: Custom Styles</h1>
+    <p>
+      Same HTML as the <a href="default.html">browser defaults page</a>, with every state styled.
+      Press <kbd>Tab</kbd>, hover, click, and submit the form empty. Then view the source:
+      the CSS is organized by component and state.
+    </p>
+
+    <section>
+      <h2>Card</h2>
+      <article class="card">
+        <h3><a href="#">Cordless drill</a> <span class="arrow" aria-hidden="true">→</span></h3>
+        <p>Borrow it for up to 7 days. Battery and charger included.</p>
+      </article>
+    </section>
+
+    <section>
+      <h2>Form</h2>
+      <form action="#">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" required autocomplete="name">
+          <p class="error-msg" hidden>Please enter your name.</p>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required autocomplete="email">
+          <p class="error-msg" hidden>Enter an email like name@example.com.</p>
+        </div>
+
+        <label class="switch">
+          <input type="checkbox" role="switch" name="updates">
+          Email me about new tools
+        </label>
+
+        <div class="actions">
+          <button type="submit">Sign up</button>
+          <button type="button" class="secondary">Cancel</button>
+          <button type="button" disabled>Disabled</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+</body>
+</html>

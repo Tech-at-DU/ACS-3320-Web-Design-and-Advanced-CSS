@@ -30,8 +30,8 @@ AI tools can generate a working page in seconds. What they can't do reliably is 
 | 5 | Tue, Nov 3 | [Critique & AI as a Design Assistant] | [Fix the AI Page] | - |
 | 6 | Thu, Nov 5 | [Layout]: fix and redesign the AI page | - | [CSS Picture] |
 | - | **Week 4** | **Motion & UI States** | | |
-| 7 | Tue, Nov 10 | [UI States & Motion], [Transition] | [Microinteractions] | - |
-| 8 | Thu, Nov 12 | [Animation], reduced motion | - | [Fix the AI Page] |
+| 7 | Tue, Nov 10 | [UI States & Motion]: states, transitions, microinteractions | [Microinteractions] | [Fix the AI Page] |
+| 8 | Thu, Nov 12 | [Animation], reduced motion | - | - |
 | - | **Week 5** | **CSS Framework** | | |
 | 9 | Tue, Nov 17 | [CSS Layers], design tokens - [CSS Framework Notes] | [CSS Framework] | - |
 | 10 | Thu, Nov 19 | [CSS Components], utilities | - | [Microinteractions] |
@@ -156,7 +156,7 @@ These lessons aren't on the schedule but cover background material you can use a
 [CSS Zen Garden]: assignments/css-zen-garden.md
 [CSS Picture]: assignments/css-picture.md
 [Fix the AI Page]: assignments/fix-the-ai-page.md
-[Microinteractions]: assignments/microinteractions.md
+[Microinteractions]: lessons/ui-states.md#part-3-homework-microinteractions
 [CSS Framework]: assignments/css-framework.md
 [Web Components]: assignments/web-components.md
 [Design Log]: assignments/design-log.md

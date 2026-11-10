@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI States: Browser Defaults</title>
+</head>
+<body>
+
+  <header>
+    <nav aria-label="Main">
+      <a href="#" aria-current="page">Home</a>
+      <a href="#">Tools</a>
+      <a href="#">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>UI States: Browser Defaults</h1>
+    <p>
+      This page has <strong>no CSS</strong>. Every state you see comes from the browser.
+      Press <kbd>Tab</kbd> to move through the page, hover over everything, and click the buttons.
+      Then compare it with the <a href="custom.html">custom styled version</a>.
+    </p>
+
+    <section>
+      <h2>Card</h2>
+      <article class="card">
+        <h3><a href="#">Cordless drill</a> <span class="arrow" aria-hidden="true">→</span></h3>
+        <p>Borrow it for up to 7 days. Battery and charger included.</p>
+      </article>
+    </section>
+
+    <section>
+      <h2>Form</h2>
+      <form action="#">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" required autocomplete="name">
+          <p class="error-msg" hidden>Please enter your name.</p>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required autocomplete="email">
+          <p class="error-msg" hidden>Enter an email like name@example.com.</p>
+        </div>
+
+        <label class="switch">
+          <input type="checkbox" role="switch" name="updates">
+          Email me about new tools
+        </label>
+
+        <div class="actions">
+          <button type="submit">Sign up</button>
+          <button type="button" class="secondary">Cancel</button>
+          <button type="button" disabled>Disabled</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+</body>
+</html>
