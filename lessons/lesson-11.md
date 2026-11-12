@@ -1,639 +1,318 @@
-# Animation part 2
+# Animation with @keyframes
 
-Use @keyframes to create more complex animations.  
+A **transition** moves between two states when something changes, like on a hover. An **animation** plays a sequence you define with `@keyframes`, on its own: once, several times, or forever. Use it for loading indicators, attention-getters, and things that enter the page.
 
-## Why you should know this?
+The rules from [UI States & Motion](ui-states.md) still apply: every animation needs a **job**, timing comes from **motion tokens**, and **reduced motion** gets a replacement.
 
-All of the best applications use motion to their advantage! You want your applications and the applications you are building to stand out!
+## Today
+
+| Time | What |
+|:--|:--|
+| 35 min | **Part 1: Concepts.** Read and try the examples |
+| 10 min | Break |
+| 80 min | **Part 2: In-class challenges** (self-paced) |
+| 30 min | **Part 3: Homework.** Your Microinteractions looping animation |
+| 10 min | Wrap up |
 
 ## Learning Objectives
 
-- Describing key framing
-- Describe in betweening
-- Use `@keyframes` define key frames
-- Use `animation` to make things move
+1. Describe keyframes and in-betweens
+2. Define an animation with `@keyframes` and apply it with `animation`
+3. Control timing with duration, delay, iteration count, fill mode, and easing
+4. Stagger several elements with one set of keyframes
+5. Replace motion for `prefers-reduced-motion`, and let users pause looping motion
 
-## Examples 
+---
 
-<!-- Animation Examples -->
-1. https://codepen.io/FabioG/full/QjLreK 
-5. https://codepen.io/t_afif/pen/PoJavbw
-3. https://codepen.io/donovanh/full/pvMeeB
-4. https://codepen.io/yoannhel/full/sJpDj
-5. https://codepen.io/Manoz/full/pydxK
-6. https://codepen.io/Venerons/full/BvHbK
-7. https://codepen.io/MarioDesigns/full/woJgeo
-8. https://codepen.io/u1tralord/full/pvXwza
-15. https://codepen.io/antho-fsy/pen/wJqWKj
+## Part 1: Concepts (35 min)
 
-Download these example files: https://github.com/Tech-at-DU/animation-examples
+### See it first
 
-## key frames
+Open both pages. They have the **same HTML**:
 
-In animation the concept of key frames is the idea of drawing the extremes of a motion. For example a ball bouncing the extremes would the ball at the highest point and the ball at the lowest point of the bounce. 
+- [starter.html](animation-examples/starter.html): six components, nothing moves
+- [finished.html](animation-examples/finished.html): all six animated
+
+On the finished page: watch each animation, open the accordion, reload to replay the toast, and check **Pause all animations**. Then turn on reduced motion (DevTools → ⋮ → More tools → **Rendering** → "Emulate CSS media feature prefers-reduced-motion" → `reduce`) and see what changes.
+
+> Clone or download the course repo to open these. GitHub shows the code, not the page.
+
+### 1. Keyframes and in-betweens
+
+In animation, **keyframes** are the important poses. For a bouncing ball, that's the top of the bounce and the bottom.
 
 ![Key frames](images/keyframes-1.png)
 
-Most often you are animating numeric values and these numbers represent your key frames. 
+In CSS, keyframes are property values, like `translate: 0 -120px` and `translate: 0 0`.
 
 ![Key frames](images/keyframes-2.png)
 
-You could define these key frames with `@keyframe` in CSS like this: 
+The browser draws all the **in-betweens**. Between `-120px` and `0`, the ball passes through every value in between. The **easing** decides how those values are spread out over time: evenly (`linear`), bunched at the end (`ease-out`), or bunched at the start (`ease-in`).
 
-```CSS
+### 2. Define the keyframes
+
+```css
+@keyframes drop {
+  0%   { translate: 0 -120px; }   /* start of the animation */
+  100% { translate: 0 0; }        /* end of the animation */
+}
+```
+
+- Percentages are positions along the animation's **length**. The length itself is set later.
+- `from` means `0%` and `to` means `100%`.
+- Add as many steps as you need: `0%`, `40%`, `100%`. Steps that share values can share a line: `0%, 100% { opacity: 0.4; }`
+
+### 3. Implicit keyframes
+
+If a property **isn't** set at `0%` or `100%`, the browser uses the element's own value. This keeps keyframes short:
+
+```css
+@keyframes pulse {
+  50% { scale: 1.25; }   /* 0% and 100% use the element's normal scale: 1 */
+}
+
+@keyframes spin {
+  to { rotate: 1turn; }  /* no "from": it starts at the element's own rotation */
+}
+```
+
+### 4. Apply the animation
+
+```css
+.badge {
+  animation: pulse 600ms var(--ease-in-out) 3;
+  /*         name  duration easing           how many times */
+}
+```
+
+| Property | What it does | Example values |
+|:--|:--|:--|
+| `animation-name` | Which `@keyframes` to play | `pulse` |
+| `animation-duration` | How long one cycle takes | `600ms`, `1.2s` |
+| `animation-timing-function` | Easing | `var(--ease-out)`, `linear` |
+| `animation-delay` | Wait before starting | `1s` |
+| `animation-iteration-count` | How many cycles | `1`, `3`, `infinite` |
+| `animation-direction` | Which way each cycle plays | `normal`, `alternate` |
+| `animation-fill-mode` | Use the keyframe values before and after playing | `none`, `forwards`, `backwards`, `both` |
+| `animation-play-state` | Pause it | `running`, `paused` |
+
+You don't need to memorize these. Remember the ideas and look up the names.
+
+### 5. Fill mode: before and after
+
+Without a fill mode, an animation only affects the element **while it's playing**. Before a delay and after the last cycle, the element snaps back to its normal styles.
+
+```css
+.toast {
+  animation: slide-up 400ms var(--ease-out) 1s both;
+}
+```
+
+- `backwards`: during the 1s delay, show the **first** keyframe (hidden)
+- `forwards`: after it ends, keep the **last** keyframe (visible)
+- `both`: do both. It's usually what you want for one-time entrances.
+
+### 6. Use `translate`, `rotate`, and `scale` separately
+
+`translate`, `rotate`, and `scale` are separate properties. Each can be animated on its own without overwriting the others:
+
+```css
+/* ❌ transform is one property. Each keyframe must repeat every function. */
+@keyframes old { 50% { transform: translateY(-1rem) rotate(10deg) scale(1.1); } }
+
+/* ✅ Separate properties: set only what changes */
+@keyframes new { 50% { translate: 0 -1rem; } }
+```
+
+They're still cheap to animate, just like `transform` and `opacity`.
+
+### 7. Easing per keyframe
+
+Set `animation-timing-function` **inside** a keyframe. It controls the motion from that keyframe to the next one:
+
+```css
 @keyframes bounce {
-	0% { top: 0; }
-	100% { top: 200px; }
+  0%   { translate: 0 -7.5rem; animation-timing-function: var(--ease-in); }   /* falling: speeds up */
+  50%  { translate: 0 0;       animation-timing-function: var(--ease-out); }  /* rising: slows down */
+  100% { translate: 0 -7.5rem; }
 }
 ```
 
-The extremes of the animation are 0 and 200px. The values between these numbers are the in-betweens. 
+### 8. Stagger with a custom property
 
-In-betweens are the frames that need to be generated between the key frames! For example between 0 and 200 the object would pass through all of the values inbetween.
+Several elements can share **one** set of keyframes. Give each element its own delay:
 
-This applies to every property that needs to be animated. 
+```html
+<span style="--i: 0"></span>
+<span style="--i: 1"></span>
+<span style="--i: 2"></span>
+```
 
-Notice that you have placed keyframes along the length of the animation using %. The time has not been set yet. The first key frame applies at 0% of the length of the animation and the last key frame applies at the end or 100% the length of the animation! 
-
-To apply this key frame to an object use the animation properties: 
-
-```CSS
-.ball {
-  animation-name: bounce;              /* Set the key frames */
-  animation-duration: 2s;              /* Set the duration  */
-  animation-iteration-count: infinite; /* Set the repeats */
-  animation-direction: alternate;      /* Set the direction */
-  animation-timing-function: ease-out; 
+```css
+.dots span {
+  animation: dot 1.2s var(--ease-in-out) infinite;
+  animation-delay: calc(var(--i) * 160ms);
 }
 ```
 
-Animation has more than a few properties. Its easier to remember the concepts, look up the property names if you forget them. 
+### 9. Transition or animation?
 
-The process of using animation: 
+| Use a **transition** when... | Use an **animation** when... |
+|:--|:--|
+| A state changes: hover, focus, checked | Something plays on its own: loading, attention |
+| There are two values: before and after | There are several steps |
+| It should reverse when the state reverses | It should loop, or play once on load |
 
-- Define some key frames with `@keyframes`
-- Assign your keyframes to an object with `animation-name`
-- Set the duration of the animation with `animation-duration`
-- set the number of times the animation should repeat with `animation-iteration-count`
+### 10. Reduced motion and pausing
 
-From there you might use other properties to modify the animation you created. 
+Looping motion is the hardest kind of motion for people with vestibular disorders, and it's distracting for everyone. Two rules:
 
-- Use `animation-direction` to play the animation forward, backward, alternate (back and forth)
-- Use `animation-timing-function` to change the "quality" of the motion. This chnages the math function that generates the inbetween values. 
-- Use `animation-delay` to create a pause before the animation starts. 
-- Use `animation-fill-mode` to determine what happens before and after the animation. Often you'll use this to make an object stop at the end point of the animation instead of snapping back to it's starting value.
+**Replace motion when users ask for less.** Keep the meaning, and remove the movement:
 
-## @Keyframes and animation example
-
-Use these properties to create longer more complex animations that can be looped and repeated. 
-
-To create keyframe animations define some keyframes. A keyframe describes the values for CSS properties at a point in time. 
-
-Assign keyframe animation a name, `scaleAndRotate` in the example below. 
-
-Define the value for properties along the length of the animation. Here `transform: scale(0.5) rotate(0)` happens at the beginning `0%`, `background-color: blue` happens at the half way point `50%`, and `transform: scale(1.0) rotate(23deg)` happens at the end of the animation `100%`.
-```CSS
-@keyframes scaleAndRotate {
-  0% { transform: scale(0.5) rotate(0); } /* state at 0% of the duration */
-  50% { background-color: blue; }         /* state at 50% of the duration */
-  100% { transform: scale(1.0) rotate(23deg); } /* state at 100% of the duration */
+```css
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation: fade 1.5s var(--ease-in-out) infinite; }  /* fades instead of spinning */
+  .badge   { animation: none; }                                    /* the red color is enough */
 }
 ```
 
-The code above defines the animation. Below the animation is applied to an element. 
+You can even redefine keyframes inside the media query. Then everything that uses them changes at once:
 
-The `animation` property applies an animation to an element. The line: `animation: scaleAndRotate 5s infinite` sets the animation to `scaleAndRotate` (matches the name above), sets the length of the animation 5 secs (`5s`), and repeat infinitely (`infinite`).
-
-```CSS
-div {
-  width: 100px;
-  height: 100px;
-  background: red;
-  position :relative;
-  
-  animation-name: scaleAndRotate;
-  animation-duration: 5s;
-  animation-iteration-count: infinite;
+```css
+@media (prefers-reduced-motion: reduce) {
+  @keyframes slide-up { from { opacity: 0; } }   /* fade only, no slide */
 }
 ```
 
-You could also write this as: 
+**Let users stop looping motion.** If something moves for more than 5 seconds, users need a way to pause it (WCAG 2.2.2). One way to do it with CSS only:
 
-```CSS
-div {
-  width: 100px;
-  height: 100px;
-  background: red;
-  position :relative;
-  /* name duration iteration-count */
-  animation: scaleAndRotate 5s infinite;
+```css
+body:has(#pause:checked) * {
+  animation-play-state: paused !important;
 }
 ```
 
-Here is a list of animation properties: 
-
-- `animation-delay` Time to wati before starting the animation
-- `animation-duration` Length of animation in seconds oe milliseconds
-- `animation-fill-mode` The state of the element when the animation ends
-- `animation-iteration-count` Number of times to repeat the animation
-- `animation-name` Name of the keyframes
-- `animation-play-state` Is the animation playing or not? 
-- `animation-timing-function` Easing function to apply to this animation
-
-### Example 
-
-Basic animation that repeats for ever. 
-
-```HTML
-<div></div>
-
-<style>
-  html, body {
-    height: 100%;
-  }
-
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  div {
-    width: 120px;
-    height: 120px;
-    background-color: #000;
-  }
-
-  @keyframes spin {
-    0% { transform: rotate(0); }
-    100% { transform: rotate(1turn); }
-  }
-
-  div {
-    animation-name: spin;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-  }
-</style>
-```
-
-### Example 1 
-
-One of the most confusing properties is `animation-fill-mode`. This property determines how the object appears at the end of an animation. See the comments below. 
-
-```HTML
-<div></div>
-
-<style>
-  html, body {
-    height: 100%;
-  }
-
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  div {
-    width: 120px;
-    height: 120px;
-    background-color: #000;
-    border-radius: 60px 60px 60px 0;
-  }
-
-  @keyframes spin {
-    0% { 
-      transform: rotate(0); 
-      background-color: #000;
-    }
-    100% { 
-      transform: rotate(180deg); 
-      background-color: #f0f;
-    }
-  }
-
-  div {
-    animation-name: spin;
-    animation-duration: 5s;
-    animation-iteration-count: 1;
-
-    /* The most confusing property is animation-fill-mode.
-    Without this property the element "jumps"
-    back to it's starting values at the end of 
-    the animation. 
-    Uncommenting the line below forces the 
-    element to stay at the ending values of the 
-    animation. */
-
-    /* animation-fill-mode: forwards; */
-  }
-</style>
-```
-
-### Example 2
-
-This example shows how keyframes can be shared across multiple objects. Thos objects can set their own options like duration. 
-
-```HTML
-<div></div>
-<div></div>
-<div></div>
-
-<style>
-  html, body {
-    height: 100%;
-  }
-
-  body {
-    position: relative;
-  }
-
-  div {
-    position: absolute;
-    /* Pay attention to calc here! */
-    left: calc(50% - 60px);
-    top: calc(50% - 60px);
-    width: 120px;
-    height: 120px;
-  }
-
-  @keyframes spin {
-    0% { 
-      transform: rotate(0); 	
-    }
-    100% { 
-      transform: rotate(360deg); 
-    }
-  }
-
-  /* 
-    Here each element uses the same animation but they 
-    each apply a different duration!
-    Key frames can be shared!
-  */
-
-  div {
-    animation-name: spin;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-  }
-
-  div:nth-child(1) {
-    background-color: rgba(255, 64, 30, 0.511);
-    animation-duration: 1s;
-  }
-
-  div:nth-child(2) {
-    background-color: rgba(253, 220, 31, 0.66);
-    animation-duration: 2s;
-  }
-
-  div:nth-child(3) {
-    background-color: rgba(50, 118, 244, 0.712);
-    animation-duration: 3s;
-  }
-</style>
-```
-
-### Example 3
-
-Like the last example but here we have 6 objects all using the same keyframes. 
-
-This example also shows how nested elements inherit the transformation of their parent element. Notice the inner boxes all rotate on their own but also orbit their parent, since the parent is rotating. 
-
-```HTML
-<div class="box">
-  <div class="inner-box"></div>
-</div>
-<div class="box">
-  <div class="inner-box"></div>
-</div>
-<div class="box">
-  <div class="inner-box"></div>
-</div>
-
-<style>
-  html, body {
-    height: 100%;
-  }
-
-  body {
-    position: relative;
-  }
-
-  .box {
-    position: absolute;
-    /* Pay attention to calc here! */
-    left: calc(50% - 60px);
-    top: calc(50% - 60px);
-    width: 120px;
-    height: 120px;
-  }
-
-  .inner-box {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    left: -90px;
-    top: 30px;
-    background-color: #000;
-  }
-
-  @keyframes spin {
-    0% { 
-      transform: rotate(0); 	
-    }
-    100% { 
-      transform: rotate(360deg); 
-    }
-  }
-
-  /* 
-    Here each element uses the same animation but they 
-    each apply a different duration!
-    Key frames can be shared!
-  */
-
-  .box, .inner-box {
-    animation-name: spin;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-  }
-
-  .box:nth-child(1) {
-    background-color: rgba(255, 64, 30, 0.511);
-    animation-duration: 4s;
-  }
-
-  .box:nth-child(2) {
-    background-color: rgba(253, 220, 31, 0.66);
-    animation-duration: 5s;
-  }
-
-  .box:nth-child(3) {
-    background-color: rgba(50, 118, 244, 0.712);
-    animation-duration: 7s;
-  }
-
-  .box:nth-child(1) > .inner-box {
-    background-color: rgba(22, 223, 32, 0.511);
-    animation-duration: 1s;
-  }
-
-  .box:nth-child(2) > .inner-box {
-    background-color: rgba(31, 253, 231, 0.66);
-    animation-duration: 2s;
-  }
-
-  .box:nth-child(3) > .inner-box {
-    background-color: rgba(244, 50, 231, 0.712);
-    animation-duration: 2s;
-  }
-</style>
-```
-
-### Example 4
-
-This example shows how more complex animations can be created using many key frames. The animation implemented below defines key frames across 0% to 100% of the animation duration. 
-
-Notcie that values that are "held" across keyframes need to be defined with the same values across keyframe steps. 
-
-```HTML
-<div class="box"></div>
-
-<style>
-  html, body {
-    height: 100%;
-  }
-
-  body {
-    position: relative;
-  }
-
-  .box {
-    position: absolute;
-    /* Pay attention to calc here! */
-    left: calc(50% - 60px);
-    top: calc(50% - 60px);
-    width: 120px;
-    height: 120px;
-    background-color: #000;
-    animation-name: spin;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-  }
-
-  /* 
-    
-  A longer sequence of steps can be created.
-    You'll need pay close attention to the 
-    properties that you set!
-    If a property has the same value across
-    two key frame steps it will not change!
-  
-  Note! transform can only be set once!
-    To carry the transform over you need
-    to set all of the properties: scale, 
-    rotate, translate etc. 
-  */
-  @keyframes spin{
-    0% { 
-      transform: rotate(0) scale(0); 
-      border-radius: 0 0 0 0;	
-      background-color: tomato;
-    }
-    10% { 
-      transform: rotate(0) scale(1); 
-      border-radius: 0 0 0 0;
-      background-color: tomato;
-    }
-    20% { 
-      transform: rotate(00deg) scale(1); 
-      border-radius: 0 0 0 0;
-      background-color: tomato;
-    }
-
-    30% {
-      transform: rotate(90deg) scale(1); 
-      border-radius: 0 60px 0 0;
-      background-color: tomato;
-    }
-
-    40% {
-      transform: rotate(180deg) scale(1); 
-      border-radius: 0 60px 0 0;
-      background-color: cornflowerblue;
-    }
-
-    50% {
-      transform: rotate(180deg) scale(1); 
-      border-radius: 0 60px 0 60px;
-      background-color: cornflowerblue;
-    }
-
-    60% {
-      transform: rotate(270deg) scale(1); 
-      border-radius: 0 60px 0 60px;
-      background-color: limegreen;
-    }
-
-    70% {
-      transform: rotate(270deg) scale(1); 
-      border-radius: 0 60px 0 60px;
-      background-color: limegreen;
-    }
-
-    80% {
-      transform: rotate(360deg) scale(1); 
-      border-radius: 60px 60px 0 60px;
-      background-color: fuchsia;
-    }
-
-    90% {
-      transform: rotate(360deg) scale(1); 
-      border-radius: 60px 60px 60px 60px;
-      background-color: fuchsia;
-    }
-
-    100% {
-      transform: rotate(360deg) scale(0); 
-      border-radius: 60px 60px 60px 60px;
-      background-color: fuchsia;
-    }
-
-  }
-</style>
-```
-
-### Example 5
-
-This example reprises the previous example but uses CSS custom properties to define values that throughout the code here. This allows us to easily resize, change the colors and duration of the animation. 
-
-```HTML
-<div class="box"></div>
-
-<style>
-  /* This example is the same as the previous example 
-  but this time using custom properties to define the 
-  values used. */
-
-  :root {
-    --color-a: tomato;
-    --color-b: cornflowerblue;
-    --color-c: limegreen;
-    --color-d: gold;
-    --color-e: fuchsia;
-    --color-f: cyan;
-    
-    --size: 120px;
-    --size-2: calc(var(--size) / 2);
-    --time: 5s;
-  }
-
-  html, body {
-    height: 100%;
-  }
-
-  body {
-    position: relative;
-  }
-
-  .box {
-    position: absolute;
-    /* Pay attention to calc here! */
-    left: calc(50% - var(--size-2));
-    top: calc(50% - var(--size-2));
-    width: var(--size);
-    height: var(--size);
-    background-color: #000;
-    animation-name: spin;
-    animation-duration: var(--time);
-    animation-iteration-count: infinite;
-  }
-
-  @keyframes spin{
-    0% { 
-      transform: rotate(0) scale(0); 
-      border-radius: 0 0 0 0;	
-      background-color: var(--color-a);
-    }
-    10% { 
-      transform: rotate(0) scale(1); 
-      border-radius: 0 0 0 0;
-      background-color: var(--color-a);
-    }
-    20% { 
-      transform: rotate(00deg) scale(1); 
-      border-radius: 0 0 0 0;
-      background-color: var(--color-a);
-    }
-
-    30% {
-      transform: rotate(90deg) scale(1); 
-      border-radius: 0 var(--size-2) 0 0;
-      background-color: var(--color-a);
-    }
-
-    40% {
-      transform: rotate(180deg) scale(1); 
-      border-radius: 0 var(--size-2) 0 0;
-      background-color: var(--color-b);
-    }
-
-    50% {
-      transform: rotate(180deg) scale(1); 
-      border-radius: 0 var(--size-2) 0 var(--size-2);
-      background-color: var(--color-b);
-    }
-
-    60% {
-      transform: rotate(270deg) scale(1); 
-      border-radius: 0 var(--size-2) 0 var(--size-2);
-      background-color: var(--color-c);
-    }
-
-    70% {
-      transform: rotate(270deg) scale(1); 
-      border-radius: 0 var(--size-2) 0 var(--size-2);
-      background-color: var(--color-c);
-    }
-
-    80% {
-      transform: rotate(360deg) scale(1); 
-      border-radius: var(--size-2) var(--size-2) 0 var(--size-2);
-      background-color: var(--color-d);
-    }
-
-    90% {
-      transform: rotate(360deg) scale(1); 
-      border-radius: var(--size-2) var(--size-2) var(--size-2) var(--size-2);
-      background-color: var(--color-d);
-    }
-
-    100% {
-      transform: rotate(360deg) scale(0); 
-      border-radius: var(--size-2) var(--size-2) var(--size-2) var(--size-2);
-      background-color: var(--color-d);
-    }
-
-  }
-</style>
-```
-
-## After Class 
-
-Continue working on your redesign project. 
-
-Submit your loading animation to gradescope. 
-
-## Additional Resources
-
-1. https://www.smashingmagazine.com/2011/07/learning-to-use-the-before-and-after-pseudo-elements-in-css/
-1. https://codersblock.com/blog/diving-into-the-before-and-after-pseudo-elements/
-1. https://dev.to/ruppysuppy/css-decoded-before-and-after-1o56
-- https://thoughtbot.com/blog/css-animation-for-beginners
-1. https://css-tricks.com/almanac/properties/a/animation/
-1. https://www.mockplus.com/blog/post/css-animation-examples
-1. https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations
+A loading spinner that disappears when loading finishes doesn't need a pause control. A decorative loop does.
 
+---
+
+## Part 2: In-class challenges (80 min)
+
+**Goal:** animate the starter page, one component at a time. Each challenge ends with **Done when**.
+
+**Try each one yourself first.** If you're stuck for 10 minutes, read the matching section of [finished.html](animation-examples/finished.html), close it, and write your own version.
+
+### Setup (5 min)
+
+1. Copy [starter.html](animation-examples/starter.html) into your `microinteractions` repo as `animation.html`.
+2. Open it in your browser. Find the `YOUR ANIMATIONS GO HERE` comment at the bottom of the `<style>` tag. All your CSS goes there.
+
+The motion tokens are already in `:root`.
+
+**Done when:** `animation.html` is open in your browser.
+
+### Challenge 1: Spinner (10 min)
+
+Make `.spinner` rotate forever.
+
+1. Write `@keyframes spin` that rotates to `1turn`.
+2. Apply it to `.spinner`: about `800ms`, `linear`, `infinite`.
+
+`linear` is right for a spinner: it should turn at a steady speed. It's one of the few times `linear` is a good choice.
+
+**Done when:** the spinner turns smoothly, with no pause or jump at the end of each turn.
+
+### Challenge 2: Loading dots (15 min)
+
+Make the three dots pulse one after another.
+
+1. Write `@keyframes dot`: small and faded (`scale: 0.6; opacity: 0.4`) at `0%, 80%, 100%`, full size at `40%`.
+2. Apply it to `.dots span:not(.visually-hidden)` with `infinite`.
+3. Stagger the dots with `animation-delay` and the `--i` custom property (concept 8).
+
+**Done when:** the dots pulse in a wave, left to right, and all three use the **same** keyframes.
+
+### Challenge 3: Toast (15 min)
+
+Make the "Saved ✓" toast slide up and fade in **once**, 1 second after the page loads.
+
+1. Write `@keyframes slide-up` from `opacity: 0; translate: 0 1rem` to `opacity: 1; translate: 0 0`.
+2. Apply it with `var(--duration-slow)`, `var(--ease-out)`, and a `1s` delay.
+3. Reload. The toast is visible during the delay, then jumps. Fix it with `animation-fill-mode` (concept 5).
+
+**Done when:** after a reload, the toast is **invisible** for 1 second, slides in, and **stays**.
+
+### Challenge 4: Badge (10 min)
+
+Make the inbox badge pulse to get attention, then **stop**.
+
+1. Write `@keyframes pulse` with only a `50%` step (concept 3).
+2. Apply it so it plays **3 times**.
+
+**Done when:** the badge pulses 3 times after a reload, then stays still. In a comment, name its job: attention.
+
+### Challenge 5: Reduced motion and pause (20 min)
+
+1. Turn on reduced-motion emulation.
+2. Add a `@media (prefers-reduced-motion: reduce)` block:
+   - **Spinner:** fade in and out instead of spinning
+   - **Dots:** fade only, no scaling
+   - **Badge:** no animation
+   - **Toast:** fade only, no slide
+3. Turn emulation off. Make the **Pause all animations** checkbox work with `:has()` and `animation-play-state` (concept 10).
+
+**Done when:**
+
+- [ ] With emulation on, nothing moves or changes size, but the spinner and dots still show that something is loading.
+- [ ] Checking **Pause all animations** freezes everything, and unchecking it resumes everything.
+
+### Stretch challenges
+
+- **Accordion:** animate `details[open] .panel` so the content fades and slides down each time it opens. Why does it replay every time?
+- **Bouncing ball:** use easing per keyframe (concept 7). Add a squash at the bottom with `scale: 1.15 0.85` and `transform-origin: bottom`.
+- **Tune it:** change one duration at a time by 100ms. When does the spinner feel anxious? When do the dots feel sleepy?
+- **Your own loop:** animate your logo or an icon from your Fix the AI Page. Give it a job, a reduced-motion version, and a pause.
+
+---
+
+## Part 3: Homework: Microinteractions (30 min in class)
+
+Today's work is **element 3, the looping animation**, of the [Microinteractions homework](ui-states.md#part-3-homework-microinteractions). It's due **Thursday, Nov 19**.
+
+Use the rest of class to choose and start your looping animation:
+
+1. Pick one: a loading indicator, a pulsing notification, or an animated logo. It should be **your own design**, not a copy of today's examples.
+2. Add a **state matrix** for it to `DESIGN-LOG.md`. For an animation, list the keyframes instead of states: what it looks like at each step.
+3. Name its **job** in a CSS comment.
+4. Build it with your motion tokens.
+5. Add its **reduced-motion** replacement.
+6. If it loops for more than 5 seconds, add a **pause** control.
+
+**Done when:** your looping animation plays, has a reduced-motion version, and is committed to your `microinteractions` repo.
+
+---
+
+## Study real animations
+
+Pick two and answer: **which properties change?** Translate, rotate, scale, opacity, color? What's the job of each animation?
+
+- https://codepen.io/FabioG/full/QjLreK
+- https://codepen.io/t_afif/pen/PoJavbw
+- https://codepen.io/donovanh/full/pvMeeB
+- https://codepen.io/yoannhel/full/sJpDj
+- https://codepen.io/Manoz/full/pydxK
+- https://codepen.io/Venerons/full/BvHbK
+- https://codepen.io/MarioDesigns/full/woJgeo
+- https://codepen.io/u1tralord/full/pvXwza
+- https://codepen.io/antho-fsy/pen/wJqWKj
+
+More examples to download: [animation-examples repo](https://github.com/Tech-at-DU/animation-examples)
+
+## Resources
+
+- [MDN: Using CSS animations](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations)
+- [MDN: animation](https://developer.mozilla.org/en-US/docs/Web/CSS/animation)
+- [MDN: prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
+- [WCAG 2.2.2: Pause, Stop, Hide](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html)
+- [thoughtbot: CSS animation for beginners](https://thoughtbot.com/blog/css-animation-for-beginners)
+- [cubic-bezier.com](https://cubic-bezier.com) for designing easing curves

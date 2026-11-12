@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animation: Finished</title>
+  <style>
+    /* ==========================================================
+       TOKENS
+       ========================================================== */
+    :root {
+      --color-bg: oklch(98% 0.01 90);
+      --color-surface: white;
+      --color-fg: oklch(25% 0.02 260);
+      --color-fg-muted: oklch(45% 0.02 260);
+      --color-border: oklch(85% 0.02 260);
+      --color-accent: oklch(50% 0.13 155);
+      --color-alert: oklch(55% 0.2 25);
+      --color-focus: oklch(50% 0.2 260);
+
+      --radius: 0.5rem;
+
+      /* Motion tokens */
+      --duration-fast: 150ms;
+      --duration-base: 250ms;
+      --duration-slow: 400ms;
+      --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+      --ease-in: cubic-bezier(0.4, 0, 1, 1);
+      --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ==========================================================
+       BASE
+       ========================================================== */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      line-height: 1.5;
+      color: var(--color-fg);
+      background: var(--color-bg);
+    }
+
+    main {
+      width: min(100% - 2rem, 40rem);
+      margin-inline: auto;
+      padding-block: 1.5rem 4rem;
+    }
+
+    section {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+    }
+
+    h2 { margin-top: 0; font-size: 1.125rem; }
+
+    :focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 3px;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .pause {
+      display: inline-flex;
+      gap: 0.5rem;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    /* ==========================================================
+       COMPONENTS (how they look standing still)
+       ========================================================== */
+
+    /* 1. Spinner: a circle with one colored side */
+    .spinner {
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 4px solid var(--color-border);
+      border-top-color: var(--color-accent);
+      border-radius: 50%;
+    }
+
+    /* 2. Dots */
+    .dots {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .dots span:not(.visually-hidden) {
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      background: var(--color-accent);
+    }
+
+    /* 3. Badge */
+    .inbox {
+      font: inherit;
+      font-weight: 600;
+      display: inline-flex;
+      gap: 0.5rem;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      background: var(--color-surface);
+      color: var(--color-fg);
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+
+    .badge {
+      display: inline-grid;
+      place-items: center;
+      min-width: 1.5rem;
+      height: 1.5rem;
+      padding-inline: 0.375rem;
+      border-radius: 999px;
+      background: var(--color-alert);
+      color: white;
+      font-size: 0.875rem;
+    }
+
+    /* 4. Toast */
+    .toast {
+      width: fit-content;
+      margin: 0;
+      padding: 0.75rem 1.25rem;
+      background: var(--color-fg);
+      color: white;
+      border-radius: var(--radius);
+      font-weight: 600;
+    }
+
+    /* 5. Accordion */
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .panel p { margin-bottom: 0; }
+
+    /* 6. Ball on a floor */
+    .stage {
+      height: 10rem;
+      display: flex;
+      align-items: flex-end;
+      border-bottom: 2px solid var(--color-fg);
+    }
+
+    .ball {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background: var(--color-accent);
+    }
+
+    /* ==========================================================
+       ANIMATIONS
+       ========================================================== */
+
+    /* 1. Spinner. Job: feedback ("still working").
+       linear is right here: a spinner should turn at a steady speed. */
+    @keyframes spin {
+      to { rotate: 1turn; }   /* no "from": it starts at the element's own value, 0 */
+    }
+
+    .spinner {
+      animation: spin 800ms linear infinite;
+    }
+
+    /* 2. Dots. Job: feedback.
+       Same keyframes for every dot. A custom property staggers the delay. */
+    @keyframes dot {
+      0%, 80%, 100% { scale: 0.6; opacity: 0.4; }
+      40%           { scale: 1;   opacity: 1; }
+    }
+
+    .dots span:not(.visually-hidden) {
+      animation: dot 1.2s var(--ease-in-out) infinite;
+      animation-delay: calc(var(--i) * 160ms);
+    }
+
+    /* 3. Badge. Job: attention.
+       Pulses 3 times, then stops. Endless pulsing becomes noise. */
+    @keyframes pulse {
+      50% { scale: 1.25; }    /* 0% and 100% use the element's own scale: 1 */
+    }
+
+    .badge {
+      animation: pulse 600ms var(--ease-in-out) 3;
+    }
+
+    /* 4. Toast. Job: feedback ("your save worked").
+       Plays once, 1s after the page loads. Reload to see it again.
+       fill-mode "both": hidden during the delay (backwards),
+       stays visible at the end (forwards). */
+    @keyframes slide-up {
+      from { opacity: 0; translate: 0 1rem; }
+      to   { opacity: 1; translate: 0 0; }
+    }
+
+    .toast {
+      animation: slide-up var(--duration-slow) var(--ease-out) 1s both;
+    }
+
+    /* 5. Accordion. Job: orientation (the content comes from the summary).
+       The panel goes from display: none to visible each time the details
+       opens, and that restarts its animation. */
+    details[open] .panel {
+      animation: slide-down var(--duration-base) var(--ease-out);
+    }
+
+    @keyframes slide-down {
+      from { opacity: 0; translate: 0 -0.5rem; }
+    }
+
+    /* 6. Bouncing ball. Job: delight.
+       Easing PER KEYFRAME: the timing function set inside a keyframe
+       controls the motion from that keyframe to the next one. */
+    @keyframes bounce {
+      0% {
+        translate: 0 -7.5rem;
+        animation-timing-function: var(--ease-in);    /* falling: speeds up */
+      }
+      50% {
+        translate: 0 0;
+        scale: 1.15 0.85;                              /* squash on the floor */
+        animation-timing-function: var(--ease-out);   /* rising: slows down */
+      }
+      100% {
+        translate: 0 -7.5rem;
+      }
+    }
+
+    .ball {
+      animation: bounce 1s infinite;
+      transform-origin: bottom;
+    }
+
+    /* ==========================================================
+       PAUSE: looping motion needs a way to stop it (WCAG 2.2.2).
+       ========================================================== */
+    body:has(#pause:checked) *,
+    body:has(#pause:checked) *::before,
+    body:has(#pause:checked) *::after {
+      animation-play-state: paused !important;
+    }
+
+    /* ==========================================================
+       REDUCED MOTION: replace movement, don't just delete it.
+       Turn on in DevTools > Rendering > prefers-reduced-motion.
+       ========================================================== */
+    @keyframes fade {
+      50% { opacity: 0.4; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      /* Spinner: no spinning. It gently fades so it still looks busy. */
+      .spinner {
+        animation: fade 1.5s var(--ease-in-out) infinite;
+      }
+
+      /* Dots: fade only, no growing. */
+      .dots span:not(.visually-hidden) {
+        animation-name: fade;
+      }
+
+      /* Badge: no pulse. The red color is attention enough. */
+      .badge {
+        animation: none;
+      }
+
+      /* Toast and accordion: fade in, no sliding. */
+      @keyframes slide-up   { from { opacity: 0; } }
+      @keyframes slide-down { from { opacity: 0; } }
+
+      /* Ball: decoration only, so it stops. */
+      .ball {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <h1>Animation: Finished</h1>
+    <p>Every animation here has a job, uses motion tokens, and has a reduced-motion version. Reload the page to replay the toast. View the source: the CSS is commented. Back to the <a href="starter.html">starter</a>.</p>
+
+    <label class="pause">
+      <input type="checkbox" id="pause"> Pause all animations
+    </label>
+
+    <section>
+      <h2>1. Spinner</h2>
+      <div class="spinner" role="status">
+        <span class="visually-hidden">Loading</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>2. Loading dots</h2>
+      <div class="dots" role="status">
+        <span style="--i: 0"></span>
+        <span style="--i: 1"></span>
+        <span style="--i: 2"></span>
+        <span class="visually-hidden">Loading</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>3. Notification badge</h2>
+      <button class="inbox" type="button">
+        Inbox <span class="badge">3</span>
+      </button>
+    </section>
+
+    <section>
+      <h2>4. Toast</h2>
+      <p class="toast" role="status">Saved ✓</p>
+    </section>
+
+    <section>
+      <h2>5. Accordion</h2>
+      <details>
+        <summary>What can I borrow?</summary>
+        <div class="panel">
+          <p>Drills, saws, ladders, and garden tools. Most items can be borrowed for 7 days.</p>
+        </div>
+      </details>
+    </section>
+
+    <section>
+      <h2>6. Bouncing ball</h2>
+      <div class="stage">
+        <div class="ball"></div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
