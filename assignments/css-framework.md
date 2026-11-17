@@ -63,7 +63,7 @@ Keep the layer order from the starter:
 
 ### Tokens
 
-Start from the `tokens.css` you built for Fix the AI Page. Paste it into the `tokens` layer and fill in any gaps:
+The starter's tokens layer lists the token **names** used in every course example, with placeholder values. **Keep the names and replace the values** with yours, from the `tokens.css` you built for Fix the AI Page. It must include:
 
 - **Type:** a type scale (base + ratio), in `rem`
 - **Spacing:** a spacing scale
@@ -99,6 +99,8 @@ Style **every element** in `demo.html`, in the `base` layer, with no classes. Wo
 - No horizontal scroll from 320px to 1440px
 - Buttons have default, hover, focus-visible, active, and disabled states
 
+Forms, tables, and code blocks have browser quirks that everyone fixes the same way. Use the [base layer recipes](../lessons/css-layers.md#base-layer-recipes-for-v02), then make them look like yours.
+
 **v0.2 is done when:** nothing on `demo.html` uses browser default styling. Check it at 375px and 1280px.
 
 ---
@@ -124,7 +126,7 @@ Plus **one** of these:
 - **Form group:** label + input + help text + error message, with `:user-invalid`
 - **Progress bar:** a track, a fill, and 1 variant
 
-Use one **naming convention** for every class (see the [Components lesson](../lessons/css-components.md)).
+Use one **naming convention** for every class (see the [Components lesson](../lessons/css-components.md)). Show every component and variant on a test page, `components.html`.
 
 ### Utilities (in `@layer utilities`)
 
@@ -146,7 +148,7 @@ Pick **one**:
 - **Dark theme** with `light-dark()` that passes AA contrast in both themes
 - **Motion:** transitions on interactive states, with `prefers-reduced-motion` handled
 - **Fluid type:** headings and spacing scale with `clamp()`
-- **Print styles:** a `@media print` block that produces a clean printout
+- **Print styles:** a `@media print` block that produces a clean printout (see the [print recipe](../lessons/css-layers.md#print-if-you-choose-the-print-enhancement))
 
 ### The real-world test
 
@@ -163,6 +165,7 @@ Write it for a developer who has never seen your framework:
 
 - **What it is:** one paragraph, including its look and feel
 - **Install:** the `<link>` tag
+- **Naming:** your naming convention, with an example
 - **Tokens:** the 5–10 most important tokens, and how to re-theme by changing them
 - **Components:** each class, with a short HTML example
 - **Utilities:** a list
@@ -179,6 +182,7 @@ Submit your repo to Gradescope. It must contain:
 ```
 your-framework.css
 demo.html
+components.html
 test.html
 test.png
 README.md

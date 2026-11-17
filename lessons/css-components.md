@@ -1,430 +1,399 @@
-# Adding components
+# CSS Framework 2: Components and Utilities
 
-From Base to Components: Patterns for Designing Reusable UI
+Your framework's base layer makes plain HTML look good. Today you add the **opt-in** parts: **components** (`.btn`, `.card`, `.alert`) for UI pieces that need more than one element or more than one look, and **utilities** (`.text-center`) for small one-off adjustments. These are the classes other developers will type, so their names are your framework's **public API**.
 
-## Lesson Goal
+## Today
 
-Build a **structured, scalable components layer** using:
+| Time | What |
+|:--|:--|
+| 30 min | **Show and tell:** your framework v0.1 |
+| 15 min | **Part 1: Choose a naming convention** |
+| 15 min | **Part 2: Concepts** |
+| 10 min | Break |
+| 75 min | **Part 3: Challenges** (self-paced) |
+| 20 min | **Wrap up:** plan v0.2 |
 
-* `@layer components`
-* tokens (colors, spacing, typography, radii)
-* low specificity selectors
-* consistent class naming
-* component architecture that mirrors real design systems
+## Learning Objectives
 
-# 1. Why Components?
+1. Decide whether a style belongs in base, components, or utilities
+2. Name components consistently with a naming convention
+3. Build variants by changing local custom properties
+4. Give every component its full set of states
+5. Write single-purpose, token-driven utilities
 
-* All modern systems (Bootstrap, Tailwind, Shoelace, USWDS, Material) define reusable components: buttons, alerts, cards, navbars, tabs, etc.
-* This is where frameworks differentiate—they stop being classless resets and become actual tools.
+---
 
-# 2. Component Requirements
+## Show and tell (30 min)
 
-A good component:
+Each person gets about **1 minute**:
 
-* has a clear API (a class name)
-* is reusable across pages
-* uses tokens, never raw values
-* supports variants (e.g., color or size variants)
-* works across light/dark themes
-* has visible focus states (accessibility)
-* degrades cleanly when tokens change
-* is not hard-coupled to markup structure unless you explicitly design it that way (e.g., `.card > header`)
+1. Show `demo.html` with your framework v0.1 linked.
+2. Name **one token decision**: your type ratio, your accent hue, or your fonts. Why that one?
 
-## Review of Token & Base Layers
+---
 
-* Quick check:
+## Part 1: Choose a naming convention (15 min)
 
-  * Are tokens controlling colors, spacing, radii, and typography?
-  * Base styles apply to every element in your demo page?
+Components have **parts** (a card's header), **variants** (a secondary button), and **states** (disabled). A naming convention gives each of these a predictable spelling, so another developer can guess your class names.
 
-**Base:**
-Styling element selectors (no classes).
+| Convention | Base | Part | Variant |
+|:--|:--|:--|:--|
+| **BEM** | `.card` | `.card__header` | `.card--elevated` |
+| **SUIT CSS** | `.Card` | `.Card-header` | `.Card--elevated` |
+| **Minimal** (your own rules) | `.card` | `.card-header` | `.card-elevated` |
 
-**Components:**
-Reusable blocks with one or more class names.
+States use attributes or pseudo-classes, not new names: `:disabled`, `:focus-visible`, `[aria-current="page"]`, `[aria-disabled="true"]`.
 
-**Utilities:**
-Single-purpose helpers (alignment, spacing, display, etc.).
+The examples in this lesson use **BEM**. For background, skim [Understanding CSS naming conventions](https://www.frontendmentor.io/articles/understanding-css-naming-conventions-bem-oocss-smacss-and-suit-css-V6ZZUYs1xz).
 
-Use direct examples:
+**Do:** pick one convention. In your README, add a **Naming** section and write the class names you'll use for:
 
-* `button` styling belongs in **base**.
-* `.btn` belongs in **components**.
-* `.btn-primary` is a component **variant**.
-* `.btn-lg` is either a component variant **or** a utility depending on your architecture.
-* `.mt-2` (margin-top 2 units) is a utility.
-* `.card` is a **component**.
-* `.text-center` is a utility.
-* `blockquote` styling in base.
-* `.quote-card` (a card with a blockquote) would be a **component**.
+- **Button:** the base, 2 color variants, 1 size variant
+- **Card:** the base, header, body, footer, image, 1 variant
+- **Alert:** the base, a title, 2 variants
 
-## Components
+**Done when:** your README lists every class name above, all following one convention. Another developer could guess the class for a "large button" without asking you.
 
-### Explore Real World Components
+---
 
-Take a look at some real world components. 
+## Part 2: Concepts (15 min)
 
-- https://m3.material.io/components
-- https://tailwindcss.com/plus/ui-blocks
-- https://getbootstrap.com/docs/5.3/getting-started/introduction/
+### 1. Base, component, or utility?
 
-### Name some components
+| Style | Layer | Why |
+|:--|:--|:--|
+| `button { ... }` | base | The plain default for every button |
+| `.btn--secondary { ... }` | components | An opt-in variant |
+| `blockquote { ... }` | base | An element |
+| `.card { ... }` | components | A pattern made of several elements |
+| `.text-center { ... }` | utilities | One property, one job |
 
-Take a few minutes and think of the class names you would use for the following components.
+The base `button` and the `.btn` component work together. The base gives **every** button a decent look with all its states. `.btn` adds variants and sizes, and works on links too: `<a class="btn">` looks like a button. The components layer comes later, so `.btn` rules beat `button` rules without any extra specificity.
 
-For each component, imagine it has:
+### 2. Variants: change local custom properties
 
-- variants – different visual styles of the same component
-- sub-components – parts inside the component that may need their own styles
-- state classes – conditions like “disabled,” “active,” “warning,” etc.
- 
-Your job is to create the class names you would naturally use, based on your own instincts.
-
-Write class names for these components:
-
-1. **Button** - Create names for:
-  - a base button
-  - two variants: large and outline
-  - a disabled state
-  - a sub-component: the inner label/text
-
-Hints: Buttons often have size variations, color/style variations, and internal text/icons.
-
-2. **Card** - Create names for:
-  - a base card
-  - one variant: dark
-  - three sub-components:
-  - header
-  - footer
-  - image area
-
-Hints: Cards typically group multiple semantic regions. Think about naming in a way that keeps these parts related.
-
-3. **Alert** - Create names for:
-  - a base alert
-  - two variants: warning and info
-  - a sub-component: an icon within the alert
-
-Hints: Alerts communicate meaning. Variants often express tone or severity.
-
-### Naming Conventions
-
-Read this article before class:
-[https://www.frontendmentor.io/articles/understanding-css-naming-conventions-bem-oocss-smacss-and-suit-css-V6ZZUYs1xz](https://www.frontendmentor.io/articles/understanding-css-naming-conventions-bem-oocss-smacss-and-suit-css-V6ZZUYs1xz)
-
-You will choose **one** naming convention and use it consistently throughout your CSS framework.
-
-Pick one:
-
-* **BEM**
-* **OOCSS**
-* **SUIT CSS**
-* **SMACSS**
-* or a clearly defined **Minimalist** system of your own (if you do this you must be consistent!)
-
-> Your naming convention becomes the “public API” for your framework. Think carefully—changing it later will be painful.
-
-**Challenge**: Design the Class Names for Your Framework Components
-
-You are **not writing CSS** yet.
-Your job is to design the *names* you’ll use in your components layer later.
-
-For each component below, define:
-
-* a **base component class**
-* any **parts/slots** needed
-* at least **two variants**
-* any **state classes** that make sense (disabled, error, checked, etc.)
-
-Your names **must follow the rules** of the naming system you chose!
-
-### **Example**
-
-```text
-Naming system: SUIT CSS
-
-Button:
-  .Button
-  .Button--primary
-  .Button--large
-  .Button-label
-```
-
-### What these class names mean
-
-* **`.Button`** —
-  The **base component class**.
-  This defines the default appearance and behavior of all buttons in the system: padding, border, typography, background, etc. Every other variant builds on this class.
-
-* **`.Button--primary`** —
-  A **modifier variant**.
-  Modifiers change *how* the component looks (color, emphasis, tone) but do not change its structure. Variants like `--primary`, `--secondary`, or `--warning` let you theme the same component for different purposes.
-
-* **`.Button--large`** —
-  A **size modifier**.
-  Modifiers can express any kind of variation: size, shape, tone, emphasis. This one increases spacing, font-size, etc. Notice that both color and size modifiers use the same naming pattern.
-
-* **`.Button-label`** —
-  A **descendant / sub-part** of the component.
-  This is an internal part of the Button component—useful if your system needs to style the text, add icons, or control spacing between elements inside the button.
-  (BEM calls this an “element,” SUIT calls it a “descendant.”)
-
-### Why this matters
-
-Each naming system (BEM, SUIT, SMACSS, OOCSS) expresses these ideas differently:
-
-* **BEM** uses `block__element--modifier`
-* **SUIT** uses `ComponentName-descendant` and `ComponentName--modifier`
-* **SMACSS/OOCSS** tend to simplify component names and emphasize reusable patterns
-
-What matters is not the exact syntax—it’s that:
-
-* you can identify the **base component**,
-* you can express **variants**,
-* you can express **sizes or states**,
-* and you can refer to **component parts**,
-  all using a **consistent naming API**.
-
-## **Stub these Components**
-
-Your turn, choose a naming system, and stub the component names for the components listed below.  
-
-For each component, think about:
-
-* What’s the base class?
-* What internal parts does this component need?
-* What variants or themes are common?
-* What states must you express?
-* How would another developer understand this API?
-
-**Note**: There isn’t one “perfect” answer, but there are clearly better and worse ones. Your goal is to design names that another developer could understand and use without a long explanation. Be consistent with your chosen naming system, and assume your class names are part of a public API that your future teammates will have to live with.
-
-### **1. Button**
-
-Hints:
-
-* Needs at least two color variants
-* Needs at least one size variant
-* Should have a disabled state
-* Might need a label/inner element
-
-### **2. Checkbox**
-
-Hints:
-
-* You will style the checkbox later, so plan its structure
-* Likely requires:
-  * a wrapper component
-  * a visual box with a checkmark
-  * a label or text node
-  * a checked/selected state
-  * a disabled state (optional)
-
-### **3. Card**
-
-Hints:
-
-* Cards usually contain structural regions
-* Common parts:
-  * header
-  * body
-  * footer
-* Consider whether you need variants (highlighted, featured, etc.)
-
-### **4. Alert**
-
-Hints:
-
-* Alerts almost always have variants:
-  * success
-  * warning
-  * danger
-  * info
-* Consider whether you need parts like an icon, title, or message
-* Alerts need clear semantic meaning—naming should reflect that
-
-## **Goal**
-
-By the end of this activity:
-
-* You’ll have a **consistent naming strategy**
-* Your components layer will be easier to build
-* Your Web Components (later) will have predictable structure
-* You’ll avoid the chaos of switching naming systems mid-project
-
-## Example Components
-
-### Button Component
-
-Build a **button component** with:
-
-* a base button class
-* variants
-* size modifiers
-* disabled state
-* focus/hover/active transitions
-
-Use only tokens. No raw colors.
-Keep specificity low: `.btn` should never need `!important`.
-
-Show:
+Define a component's changeable values as **local custom properties** at the top of the base class. A variant then changes only those properties:
 
 ```css
 @layer components {
   .btn {
-    --btn-bg: var(--color-accent);  /* Important! Extracting the token values */
-    --btn-fg: var(--color-bg);      /* here into local vars allows for easier */
-    --btn-radius: var(--radius-md); /* theming and variants! */
-    --btn-pad-y: var(--space-xs);
-    --btn-pad-x: var(--space-sm);
+    --btn-bg: var(--color-accent);
+    --btn-fg: var(--color-on-accent);
+    --btn-pad-y: var(--space-sm);
+    --btn-pad-x: var(--space-lg);
 
-    display: inline-block;
     padding: var(--btn-pad-y) var(--btn-pad-x);
-    border-radius: var(--btn-radius);
-    font-weight: 600;
-    text-align: center;
-    cursor: pointer;
-    border: 1px solid var(--btn-bg);
-    background-color: var(--btn-bg);
     color: var(--btn-fg);
-    transition: background-color 150ms, color 150ms;
+    background: var(--btn-bg);
+    /* ...the rest of the rules use the local properties too */
   }
 
-  .btn:hover,
-  .btn:focus-visible {
-    background-color: var(--btn-fg);
-    color: var(--btn-bg);
-  }
-
-  .btn--outline {
-    background-color: transparent;
-    color: var(--btn-bg);
+  .btn--secondary {
+    --btn-bg: transparent;
+    --btn-fg: var(--color-accent);
   }
 
   .btn--small {
-    --btn-pad-y: var(--space-xxs);
-    --btn-pad-x: var(--space-xs);
-    font-size: var(--font-size-small);
+    --btn-pad-y: var(--space-xs);
+    --btn-pad-x: var(--space-md);
+    font-size: var(--font-size-sm);
   }
 }
 ```
 
-Critical point: **token reassignments inside components** unlock variants and themes.
+The variant doesn't repeat any rules. It just changes the inputs. This is the same pattern as the button in [UI States](ui-states.md).
 
-### Card Component
+### 3. Parts: give them names
 
-Show a two-part component:
-
-```css
-.card {
-  border-radius: var(--radius-md);
-  padding: var(--space-md);
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-}
-
-.card > header {
-  font-weight: 600;
-  margin-bottom: var(--space-sm);
-}
-
-.card > footer {
-  margin-top: var(--space-sm);
-  font-size: var(--font-size-small);
-  color: var(--color-fg-muted);
-}
-```
-
-## Homework
-
-Build the components for **v1.0** of your framework. The requirements (button, card, alert, plus one optional component) are in the [CSS Framework assignment](../assignments/css-framework.md#components-in-layer-components).
-
-## Utility Classes
-
-Utility classes are **single-purpose, low-specificity helpers** that apply one specific style. They don’t define components or structure — they give developers quick, targeted control without writing custom CSS.
-
-Common examples in modern frameworks:
-
-* display helpers: `.flex`, `.grid`, `.block`
-* spacing helpers: `.mt-2`, `.p-sm`, `.gap-md`
-* text helpers: `.text-center`, `.text-sm`
-* layout helpers: `.container`, `.stack`
-
-### Why utilities matter
-
-* Developers can adjust layout **without modifying your components**.
-* Utilities prevent repetitive one-off selectors.
-* Because utilities sit later in the cascade (in `@layer utilities`), they override components predictably without `!important`.
-
-Utilities should always be:
-
-* **token-driven** (no magic numbers!)
-* **consistent in naming**
-* **specific in purpose**
-* **low specificity** (`.utilityName` only — no chaining)
-
-## **Example Utility Classes**
-
-These examples demonstrate the structure your framework should follow.
-Each uses your design tokens so they adapt to themes and future changes.
-
-### **Display Utilities**
+A card has parts. Name them with your convention instead of relying on HTML structure:
 
 ```css
-@layer utilities {
-  .flex { display: flex; }
-  .grid { display: grid; }
-  .block { display: block; }
-}
+/* ✅ Works with any HTML: <header>, <div>, or <section> */
+.card__header { ... }
+
+/* ⚠️ Breaks if a developer uses <div> instead of <header> */
+.card > header { ... }
 ```
 
-### **Spacing Utilities**
+### 4. States are part of the component
 
-Using your spacing tokens:
+Every interactive component needs the states from [UI States](ui-states.md): default, hover, focus-visible, active, and disabled. Two details matter for a framework:
+
+- `<a class="btn">` can't be `:disabled`. Support `[aria-disabled="true"]` too.
+- Put the disabled rule **last**, so it beats hover and active.
+
+### 5. Utilities: one job each
+
+A utility sets **one** property (or one closely related pair) from a token. Because the `utilities` layer comes after `components`, a utility always wins:
+
+```html
+<div class="card text-center">   <!-- the utility centers the card's text -->
+```
+
+Keep the set small. A framework with 4 good utilities is better than one with 40 random ones.
+
+---
+
+## Part 3: Challenges (75 min)
+
+Each challenge ends with **Done when**. Try each one yourself first. If you're stuck for 10 minutes, open the **Answer**, read it, close it, and write your own version.
+
+### Setup (5 min)
+
+`demo.html` has no classes, so you need a second test page for components. Create `components.html` next to it:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Components</title>
+  <link rel="stylesheet" href="framework.css">
+</head>
+<body>
+  <h2>Buttons</h2>
+  <p>
+    <button class="btn">Primary</button>
+    <button class="btn btn--secondary">Secondary</button>
+    <button class="btn btn--small">Small</button>
+    <a class="btn" href="#">Link</a>
+    <button class="btn" disabled>Disabled</button>
+    <a class="btn" aria-disabled="true">Disabled link</a>
+  </p>
+
+  <h2>Cards</h2>
+  <article class="card">
+    <img class="card__image" src="https://placehold.co/600x300" alt="">
+    <header class="card__header"><h3>Cordless drill</h3></header>
+    <div class="card__body"><p>Borrow it for up to 7 days.</p></div>
+    <footer class="card__footer">Available now</footer>
+  </article>
+
+  <h2>Alerts</h2>
+  <div class="alert alert--info">
+    <p class="alert__title">Heads up</p>
+    <p>Your plot renews next month.</p>
+  </div>
+  <div class="alert alert--warning">
+    <p class="alert__title">Warning</p>
+    <p>Only 2 spots left.</p>
+  </div>
+</body>
+</html>
+```
+
+Change the class names to match **your** naming convention, and the `<link>` to match your framework's file name. Keep this page: it's the test page for your components, and you'll screenshot it for your README.
+
+**Done when:** `components.html` opens and shows unstyled buttons, a card, and two alerts.
+
+### Challenge 1: Button (25 min)
+
+In `@layer components`, build the button:
+
+1. A base class with local custom properties (concept 2). Include `text-decoration: none` so `<a class="btn">` isn't underlined, and `font: inherit`.
+2. Hover, focus-visible, and active states. Use your motion tokens for the transition.
+3. A **secondary** variant (outlined) and a **small** size variant.
+4. A disabled rule for `:disabled` **and** `[aria-disabled="true"]`, placed last.
+5. In `DESIGN-LOG.md`, write the button's **state matrix** (from [UI States](ui-states.md#2-the-state-matrix)).
+
+**Done when:**
+
+- [ ] The link and the button look identical.
+- [ ] Every variant has a visible hover, focus ring, and press.
+- [ ] Both disabled buttons look disabled and don't react to hover.
+- [ ] The variants change only custom properties, not repeated rules.
+
+<details>
+<summary>Answer</summary>
 
 ```css
-@layer utilities {
-  .mt-sm { margin-top: var(--space-sm); }
-  .mb-lg { margin-bottom: var(--space-lg); }
-  .p-md  { padding: var(--space-md); }
+@layer components {
+  .btn {
+    --btn-bg: var(--color-accent);
+    --btn-fg: var(--color-on-accent);
+    --btn-border: var(--color-accent);
+    --btn-pad-y: var(--space-sm);
+    --btn-pad-x: var(--space-lg);
+
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);              /* room for an icon + label */
+    padding: var(--btn-pad-y) var(--btn-pad-x);
+    font: inherit;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    color: var(--btn-fg);
+    background: var(--btn-bg);
+    border: var(--border-width) solid var(--btn-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition:
+      background-color var(--duration-fast) var(--ease-out),
+      scale var(--duration-fast) var(--ease-out);
+  }
+
+  .btn:hover {
+    --btn-bg: color-mix(in oklch, var(--color-accent), black 15%);
+    --btn-border: var(--btn-bg);
+  }
+
+  .btn:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+
+  .btn:active { scale: 0.97; }
+
+  .btn--secondary {
+    --btn-bg: transparent;
+    --btn-fg: var(--color-accent);
+  }
+
+  .btn--secondary:hover {
+    --btn-bg: color-mix(in oklch, var(--color-accent), transparent 88%);
+    --btn-border: var(--color-accent);
+  }
+
+  .btn--small {
+    --btn-pad-y: var(--space-xs);
+    --btn-pad-x: var(--space-md);
+    font-size: var(--font-size-sm);
+  }
+
+  /* Last, so it beats hover and active */
+  .btn:disabled,
+  .btn[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }
 ```
+</details>
 
-### **Text Utilities**
+### Challenge 2: Card (15 min)
+
+1. Style the card container: surface background, border, radius, and `overflow: hidden` so the image follows the rounded corners.
+2. Style each part: image, header, body, and footer. Use spacing tokens, and make the footer quieter with `--color-fg-muted`.
+3. Add one **variant**, such as `--elevated` (a shadow instead of a border) or `--accent` (an accent border).
+
+**Done when:** the card looks finished, its image has rounded top corners, and your variant looks clearly different.
+
+<details>
+<summary>Answer</summary>
+
+```css
+@layer components {
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .card__image  { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  .card__header { padding: var(--space-md) var(--space-lg) 0; }
+  .card__header > * { margin: 0; font-size: var(--font-size-lg); }
+  .card__body   { padding: var(--space-sm) var(--space-lg) var(--space-lg); flex: 1; }
+  .card__body > :last-child { margin-bottom: 0; }
+  .card__footer {
+    padding: var(--space-md) var(--space-lg);
+    border-top: var(--border-width) solid var(--color-border);
+    font-size: var(--font-size-sm);
+    color: var(--color-fg-muted);
+  }
+
+  .card--elevated {
+    border-color: transparent;
+    box-shadow: var(--shadow-md);
+  }
+}
+```
+</details>
+
+### Challenge 3: Alert (15 min)
+
+Alerts use the **semantic** color tokens: `--color-info`, `--color-success`, `--color-warning`, `--color-danger`.
+
+1. Give the base `.alert` a local `--alert-color` property, and use it for a left border and a light background tint.
+2. Keep the **text** in `--color-fg`. Light tints of a color are hard to read text on, but easy to read dark text on.
+3. Each variant sets only `--alert-color`.
+
+**Done when:** you have at least 2 variants, each one changes only `--alert-color`, and the text passes AA contrast (check with WAVE).
+
+<details>
+<summary>Answer</summary>
+
+```css
+@layer components {
+  .alert {
+    --alert-color: var(--color-info);
+
+    padding: var(--space-md) var(--space-lg);
+    border-inline-start: 4px solid var(--alert-color);
+    border-radius: var(--radius-sm);
+    background: color-mix(in oklch, var(--alert-color) 12%, var(--color-surface));
+    color: var(--color-fg);
+  }
+
+  .alert__title { margin: 0 0 var(--space-xs); font-weight: 700; }
+  .alert > :last-child { margin-bottom: 0; }
+
+  .alert--info    { --alert-color: var(--color-info); }
+  .alert--success { --alert-color: var(--color-success); }
+  .alert--warning { --alert-color: var(--color-warning); }
+  .alert--danger  { --alert-color: var(--color-danger); }
+}
+```
+</details>
+
+### Challenge 4: Utilities (10 min)
+
+In `@layer utilities`, write **4 utilities** in at least **2 categories**: display, spacing, text, or color. Each one is a single class, sets one property, and uses a token. Try one on a component in `components.html`, for example `<article class="card text-center">`.
+
+**Done when:** your 4 utilities work, and one of them visibly overrides a component style.
+
+<details>
+<summary>Example</summary>
 
 ```css
 @layer utilities {
   .text-center { text-align: center; }
-  .text-right  { text-align: right; }
   .text-muted  { color: var(--color-fg-muted); }
+  .mt-lg       { margin-top: var(--space-lg); }
+  .flex        { display: flex; }
 }
 ```
+</details>
 
-### **Layout Utilities**
+### Stretch
 
-A constrained content container:
+- **Optional component:** start the one you'll submit (badge, navbar, accordion, table variant, form group, or progress bar). See the [assignment](../assignments/css-framework.md#components-in-layer-components).
+- **Danger button:** add a variant that uses `--color-danger`. Only change custom properties.
+- **Dark mode:** switch your OS to dark mode. Do the components still pass contrast?
+- **Icon button:** put an inline SVG or a badge inside a button. Does `gap` space it correctly?
 
-```css
-@layer utilities {
-  .container {
-    max-width: 60ch;
-    margin-inline: auto;
-    padding-inline: var(--space-md);
-  }
-}
-```
+---
 
-## **Takeaway**
+## Wrap up (20 min)
 
-You don’t need dozens of utilities.
-Create a **small, deliberate set** of helpers that:
+- **v0.2** (the complete classless base) is due **Tuesday, Nov 24**. There's no class time for it, so use the [base layer recipes](css-layers.md#base-layer-recipes-for-v02) for forms, tables, and code.
+- **v1.0** is due **Tuesday, Dec 1**: the three components, one optional component, 4 utilities, one enhancement, the real-world test, and the README. See the [assignment](../assignments/css-framework.md#v10-components-utilities-and-the-real-test-due-tue-dec-1).
+- Before you leave, write your v0.2 plan in your README or design log: which sections of `demo.html` you'll style on which day.
 
-* use your tokens
-* complement your components
-* solve predictable layout needs
+## Using AI here
 
-Utilities should feel like a tool belt.
+- **States:** "Here is my button component. List missing states from this checklist: hover, focus-visible, active, disabled (including aria-disabled). No code."
+- **Naming review:** "Here are my component class names and my naming convention. List any names that break the convention."
+- **Docs:** "Write a short HTML usage example for each class in this file." Then check that each example actually works in `components.html`.
 
-## Homework: Utilities
+## Resources
 
-Add **4 utilities** in at least **2 categories** to your framework. The requirements are in the [CSS Framework assignment](../assignments/css-framework.md#utilities-in-layer-utilities).
+- Real-world components to study: [Material 3](https://m3.material.io/components), [Bootstrap](https://getbootstrap.com/docs/5.3/components/buttons/), [Open Props](https://open-props.style)
+- [Understanding CSS naming conventions](https://www.frontendmentor.io/articles/understanding-css-naming-conventions-bem-oocss-smacss-and-suit-css-V6ZZUYs1xz)
+- [BEM quick start](https://getbem.com/introduction/)
+- [CSS Framework assignment](../assignments/css-framework.md)

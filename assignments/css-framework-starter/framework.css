@@ -13,21 +13,89 @@
 
 /* ==========================================================
    TOKENS: custom properties only. No element rules.
-   Start from the tokens.css you built for Fix the AI Page.
+
+   These are the token NAMES used in every course example, with
+   placeholder values so the examples work right away.
+   Keep the names. Replace the VALUES with your own, from the
+   tokens.css you built for Fix the AI Page.
    ========================================================== */
 @layer tokens {
   :root {
-    /* Type scale */
+    color-scheme: light dark;
+
+    /* Fonts */
+    --font-sans: system-ui, sans-serif;
+    --font-serif: Georgia, serif;
+    --font-mono: ui-monospace, Menlo, Consolas, monospace;
+
+    /* Type scale: base 1rem, ratio 1.25 */
+    --font-size-sm:  0.8rem;
+    --font-size-md:  1rem;
+    --font-size-lg:  1.25rem;
+    --font-size-xl:  1.563rem;
+    --font-size-2xl: 1.953rem;
+    --font-size-3xl: 2.441rem;
+    --font-size-4xl: 3.052rem;
+
+    --line-height-body: 1.6;
+    --line-height-heading: 1.2;
 
     /* Spacing scale */
+    --space-xs:  0.25rem;
+    --space-sm:  0.5rem;
+    --space-md:  1rem;
+    --space-lg:  1.5rem;
+    --space-xl:  2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
 
-    /* Color: ramps (private, used only to build the roles below) */
+    /* Color ramps: PRIVATE. Only used to build the roles below. */
+    --hue: 250;
+    --gray-50:  oklch(0.98 0.005 var(--hue));
+    --gray-100: oklch(0.95 0.01  var(--hue));
+    --gray-200: oklch(0.90 0.01  var(--hue));
+    --gray-300: oklch(0.82 0.015 var(--hue));
+    --gray-500: oklch(0.55 0.02  var(--hue));
+    --gray-600: oklch(0.45 0.02  var(--hue));
+    --gray-700: oklch(0.35 0.02  var(--hue));
+    --gray-800: oklch(0.25 0.02  var(--hue));
+    --gray-900: oklch(0.18 0.02  var(--hue));
+    --accent-100: oklch(0.95 0.03 var(--hue));
+    --accent-400: oklch(0.70 0.15 var(--hue));
+    --accent-500: oklch(0.55 0.18 var(--hue));
 
-    /* Color: roles (everything else uses ONLY these) */
+    /* Color roles: PUBLIC. Everything outside this layer uses ONLY these.
+       light-dark(light value, dark value) follows the user's OS setting. */
+    --color-bg:            light-dark(var(--gray-50),  var(--gray-900));
+    --color-surface:       light-dark(white,           var(--gray-800));
+    --color-fg:            light-dark(var(--gray-900), var(--gray-50));
+    --color-fg-muted:      light-dark(var(--gray-600), var(--gray-300));
+    --color-border:        light-dark(var(--gray-200), var(--gray-700));
+    --color-border-strong: light-dark(var(--gray-500), var(--gray-500));
+    --color-accent:        light-dark(var(--accent-500), var(--accent-400));
+    --color-on-accent:     light-dark(white,           var(--gray-900));
+    --color-focus:         var(--color-accent);
+
+    /* Semantic colors: only when they MEAN something */
+    --color-success: oklch(0.55 0.15 145);
+    --color-warning: oklch(0.65 0.15 70);
+    --color-danger:  oklch(0.55 0.20 25);
+    --color-info:    oklch(0.55 0.15 250);
 
     /* Radius, borders, shadows */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-full: 999px;
+    --border-width: 1px;
+    --shadow-md: 0 4px 12px oklch(0 0 0 / 0.08);
 
     /* Motion */
+    --duration-fast: 150ms;
+    --duration-base: 250ms;
+    --duration-slow: 400ms;
+    --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 

@@ -114,14 +114,14 @@ You already built tokens for Fix the AI Page. A framework organizes them in two 
 @layer tokens {
   :root {
     /* Ramps: the raw palette. Only used inside this layer. */
-    --gray-1: oklch(98% 0.005 250);
-    --gray-9: oklch(22% 0.02 250);
-    --green-5: oklch(52% 0.13 155);
+    --gray-50:    oklch(0.98 0.005 250);
+    --gray-900:   oklch(0.18 0.02 250);
+    --accent-500: oklch(0.55 0.18 250);
 
     /* Roles: what everything else uses */
-    --color-bg: var(--gray-1);
-    --color-fg: var(--gray-9);
-    --color-accent: var(--green-5);
+    --color-bg:     var(--gray-50);
+    --color-fg:     var(--gray-900);
+    --color-accent: var(--accent-500);
   }
 }
 ```
@@ -129,6 +129,8 @@ You already built tokens for Fix the AI Page. A framework organizes them in two 
 The **base**, **components**, and **utilities** layers use **only role tokens**. Then re-theming is easy: point `--color-accent` at a different ramp, and every link, button, and focus ring updates.
 
 For building ramps with `oklch()`, `color-mix()`, and relative colors, see the [Color lesson](design-color.md) and `colors.html` in the [CSS Framework Notes](https://github.com/Tech-at-DU/css-framework-notes).
+
+**Token names:** the starter's tokens layer lists the names used in every course example: `--font-size-md`, `--space-lg`, `--color-fg-muted`, `--radius-md`, `--duration-fast`, and so on. These are the same names from the Type & Spacing and Color lessons. **Keep the names and change the values.** Then any example you copy from a lesson works in your framework.
 
 ### 5. The classless base
 
@@ -138,14 +140,14 @@ The `base` layer styles **elements, not classes**. A developer writes plain, sem
 @layer base {
   body {
     font-family: var(--font-sans);
-    font-size: var(--font-size-0);
-    line-height: 1.5;
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-body);
     color: var(--color-fg);
     background: var(--color-bg);
   }
 
-  h1 { font-size: var(--font-size-5); }
-  h2 { font-size: var(--font-size-4); }
+  h1 { font-size: var(--font-size-3xl); }
+  h2 { font-size: var(--font-size-2xl); }
 
   a { color: var(--color-accent); }
   a:hover { text-decoration-thickness: 3px; }
@@ -173,12 +175,15 @@ Work in your framework repo. Each challenge ends with **Done when**. If you're s
 
 ### Challenge 2: Move in your tokens (15 min)
 
-1. Open the `tokens.css` from your Fix the AI Page project. Paste its contents into the `:root` rule in the `tokens` layer.
-2. Organize it under the starter's comments: type scale, spacing, color ramps, color roles, radius, motion.
-3. Check you have every role token: `--color-bg`, `--color-surface`, `--color-fg`, `--color-fg-muted`, `--color-border`, `--color-accent`, `--color-on-accent`, `--color-focus`. Add any that are missing.
-4. Make sure type sizes use `rem`, not `px`.
+The starter already has a working tokens layer with placeholder values. Make it **yours**:
 
-**Done when:** the tokens layer has a complete type scale, spacing scale, role tokens, and motion tokens, and no rules except `:root`.
+1. Open the `tokens.css` from your Fix the AI Page project.
+2. For each token in the starter, replace the placeholder **value** with your value. **Keep the starter's names**, so lesson examples keep working.
+3. Your file may have tokens the starter doesn't, such as an extra font or a second accent. Add them under the matching comment.
+4. Make sure type sizes use `rem`, not `px`.
+5. Reload `demo.html`. Nothing is styled yet, but the page should have no errors in the console.
+
+**Done when:** the tokens layer uses your fonts, colors, and scales, and has no rules except `:root`.
 
 ### Challenge 3: Page and headings (15 min)
 
@@ -202,7 +207,7 @@ In the `base` layer:
 
 ### Stretch
 
-- Start v0.2: style the **Lists** and **Code** sections.
+- Start v0.2: style the **Lists** and **Code** sections. Use the [base layer recipes](#base-layer-recipes-for-v02) below.
 - Check contrast for `--color-fg-muted` and `--color-accent` on `--color-bg` with WAVE or the DevTools contrast checker.
 - Re-theme test: change `--color-accent` to a different hue. Does every link and focus ring change with it?
 
@@ -211,8 +216,124 @@ In the `base` layer:
 ## Wrap up (15 min)
 
 - **v0.1** (layers, tokens, and text) is due **Thursday, Nov 19**. Bring it to class.
+- **v0.2** (the complete classless base) is due **Tuesday, Nov 24**. There's no class time for it, so use the recipes below.
 - Read the full [CSS Framework] assignment. Note the three releases: v0.1, v0.2, and v1.0.
 - Thursday's lesson: [Components and utilities](css-components.md).
+
+---
+
+## Base layer recipes (for v0.2)
+
+Most of the base layer is **your design**: your fonts, spacing, and colors. But some elements have browser quirks that everyone has to fix the same way. These recipes handle the quirks. Put them in `@layer base`, then make them look like yours.
+
+### Reset the box model and media
+
+```css
+*, *::before, *::after { box-sizing: border-box; }
+
+img, svg, video {
+  display: block;
+  max-width: 100%;   /* images never overflow their container */
+  height: auto;
+}
+```
+
+### Code blocks
+
+Long code lines must scroll inside their box, not push the page sideways:
+
+```css
+pre {
+  overflow-x: auto;
+  padding: var(--space-md);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+}
+
+pre code { padding: 0; background: none; }   /* undo your inline code style inside blocks */
+```
+
+### Tables
+
+```css
+table {
+  width: 100%;
+  border-collapse: collapse;   /* one border between cells, not two */
+}
+
+caption { text-align: start; font-weight: 600; }
+
+th, td {
+  padding: var(--space-sm);    /* keep it small: wide padding overflows at 320px */
+  text-align: start;
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+```
+
+### Forms
+
+Form controls **don't inherit fonts**. Without this line they use the browser's small system font:
+
+```css
+input, select, textarea, button { font: inherit; color: inherit; }
+```
+
+Text-like inputs should fill the width. Leave checkboxes, radios, color, range, and buttons alone:
+
+```css
+input:not([type="checkbox"], [type="radio"], [type="range"], [type="color"],
+          [type="submit"], [type="reset"], [type="button"]),
+select,
+textarea {
+  display: block;
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border-strong);   /* 3:1 contrast */
+  border-radius: var(--radius-md);
+}
+```
+
+One line colors checkboxes, radios, and range sliders in your accent color:
+
+```css
+input[type="checkbox"], input[type="radio"], input[type="range"] {
+  accent-color: var(--color-accent);
+}
+```
+
+A label that **wraps** a checkbox or radio should sit on one line with it:
+
+```css
+label:has(> input[type="checkbox"], > input[type="radio"]) {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
+```
+
+### Buttons in the base
+
+The base `button` is the **plain default**: one look, with all its states (hover, focus-visible, active, disabled). Variants like secondary or large come later, as **component** classes. Style `input[type="submit"]`, `[type="reset"]`, and `[type="button"]` the same as `button`.
+
+### Print (if you choose the print enhancement)
+
+```css
+@media print {
+  body { color: black; background: white; max-width: none; }
+  nav, form { display: none; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; }   /* show link URLs on paper */
+  pre, blockquote, table, figure { break-inside: avoid; }
+}
+```
+
+Test it with File → Print → Preview, or DevTools → Rendering → "Emulate CSS media type" → `print`.
+
+### Check v0.2
+
+- Scroll `demo.html` top to bottom. Does anything still look like browser defaults?
+- Drag from 320px to 1440px. Nothing should scroll sideways.
+- Press Tab through the whole form. Is focus visible on every control?
 
 ## Resources
 
