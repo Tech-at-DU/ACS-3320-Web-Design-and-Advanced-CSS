@@ -33,7 +33,7 @@ AI tools can generate a working page in seconds. What they can't do reliably is 
 | 7 | Tue, Nov 10 | [UI States & Motion]: states, transitions, microinteractions | [Microinteractions] | [Fix the AI Page] |
 | 8 | Thu, Nov 12 | [Animation], reduced motion | - | - |
 | - | **Week 5** | **CSS Framework** | | |
-| 9 | Tue, Nov 17 | [CSS Layers], design tokens - [CSS Framework Notes] | [CSS Framework] | - |
+| 9 | Tue, Nov 17 | [CSS Layers]: layers, tokens, classless base | [CSS Framework] | - |
 | 10 | Thu, Nov 19 | [CSS Components], utilities | - | [Microinteractions] |
 | - | **Week 6** | **Web Components** | | |
 | 11 | Tue, Nov 24 | [Web Components Part 1] | [Web Components] | - |

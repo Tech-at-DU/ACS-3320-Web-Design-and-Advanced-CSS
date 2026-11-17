@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Framework Demo – Element Coverage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Link your framework. Rename framework.css to your framework's name. -->
+  <link rel="stylesheet" href="framework.css">
+
+  <!--
+    No style element here on purpose.
+    CSS that isn't inside a @layer beats EVERY layer in your framework,
+    so styles added here would quietly override your base layer.
+    This page should look good with only your framework linked.
+  -->
+</head>
+<body>
+
+<header>
+  <h1>CSS Framework Demo</h1>
+  <p>This document exercises the key HTML elements your framework must style. Your goal is to make this page look intentional using <strong>only your CSS framework</strong>.</p>
+  <nav aria-label="Page sections">
+    <a href="#typography">Typography</a> ·
+    <a href="#lists">Lists</a> ·
+    <a href="#links">Links</a> ·
+    <a href="#code">Code &amp; Preformatted</a> ·
+    <a href="#media">Media</a> ·
+    <a href="#tables">Tables</a> ·
+    <a href="#forms">Forms</a> ·
+    <a href="#misc">Miscellaneous</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- TYPOGRAPHY -->
+  <section id="typography" aria-labelledby="typography-heading">
+    <header>
+      <h2 id="typography-heading">Typography &amp; Headings</h2>
+    </header>
+
+    <article>
+      <h1>Heading Level 1</h1>
+      <p>This is a paragraph under an <code>h1</code>. Your framework should define a clear visual hierarchy for headings and paragraphs, with readable line height and spacing.</p>
+
+      <h2>Heading Level 2</h2>
+      <p><strong>Strong text</strong> should stand out, while <em>emphasized text</em> should be noticeable but not obnoxious. <small>Small text</small> is often used for fine print or secondary information.</p>
+
+      <h3>Heading Level 3</h3>
+      <p>You can use the <mark>mark element</mark> to highlight text, and the <del>del element</del> or <ins>ins element</ins> to indicate changes.</p>
+
+      <h4>Heading Level 4</h4>
+      <p><abbr title="Application Programming Interface">API</abbr> is an important term in web development. The <time datetime="2025-11-16">November 16, 2025</time> date element can represent times and dates.</p>
+
+      <h5>Heading Level 5</h5>
+      <p>Make sure lower-level headings like <code>h5</code> and <code>h6</code> are still readable and obviously “smaller” in the hierarchy.</p>
+
+      <h6>Heading Level 6</h6>
+      <p>Body copy should be comfortable to read on both mobile and desktop, without tiny fonts or giant walls of text.</p>
+
+      <blockquote>
+        <p>“Good defaults are invisible until they’re not there.”</p>
+        <footer>— Someone who has seen too many browser defaults</footer>
+      </blockquote>
+      
+      <p>Inline quotes with <q cite="https://developer.mozilla.org">q elements</q> should also look reasonable.</p>
+    </article>
+  </section>
+
+  <!-- LISTS -->
+  <section id="lists" aria-labelledby="lists-heading">
+    <header>
+      <h2 id="lists-heading">Lists</h2>
+    </header>
+
+    <article>
+      <h3>Unordered List</h3>
+      <p>A basic unordered list:</p>
+      <ul>
+        <li>Learn HTML &amp; CSS</li>
+        <li>Practice JavaScript</li>
+        <li>Build projects</li>
+      </ul>
+
+      <h3>Nested Unordered List</h3>
+      <ul>
+        <li>Frontend
+          <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+          </ul>
+        </li>
+        <li>Backend
+          <ul>
+            <li>Node.js</li>
+            <li>Databases</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>Ordered List</h3>
+      <ol>
+        <li>Fork the repo.</li>
+        <li>Link the framework.</li>
+        <li>Style all the things.</li>
+      </ol>
+
+      <h3>Description List</h3>
+      <dl>
+        <dt>Accessibility</dt>
+        <dd>Designing for all users, including keyboard and screen-reader users.</dd>
+
+        <dt>Performance</dt>
+        <dd>Ensuring pages load quickly and efficiently.</dd>
+
+        <dt>Maintainability</dt>
+        <dd>Code that future you does not hate.</dd>
+      </dl>
+    </article>
+  </section>
+
+  <!-- LINKS -->
+  <section id="links" aria-labelledby="links-heading">
+    <header>
+      <h2 id="links-heading">Links &amp; Inline Elements</h2>
+    </header>
+
+    <article>
+      <p>This paragraph contains a normal <a href="https://developer.mozilla.org/">external link</a>, an internal <a href="#forms">jump link to the forms section</a>, and a <a href="#">placeholder link</a>.</p>
+      <p>Make sure you style <code>a:link</code>, <code>a:hover</code>, <code>a:active</code>, <code>a:visited</code>, and <code>a:focus-visible</code> in a way that is both attractive and accessible.</p>
+      <hr>
+      <p>The horizontal rule above is an <code>hr</code> element. Don’t forget it.</p>
+    </article>
+  </section>
+
+  <!-- CODE -->
+  <section id="code" aria-labelledby="code-heading">
+    <header>
+      <h2 id="code-heading">Code &amp; Preformatted Text</h2>
+    </header>
+
+    <article>
+      <p>Inline code looks like <code>const answer = 42;</code> inside a sentence.</p>
+
+      <pre><code>// Preformatted code block
+function greet(name) {
+  console.log(`Hello, ${name}!`);
+}
+
+greet("world");</code></pre>
+
+      <p>The <kbd>kbd element</kbd> indicates user input from the keyboard, e.g. <kbd>Ctrl</kbd> + <kbd>S</kbd>. The <samp>samp element</samp> represents sample program output.</p>
+    </article>
+  </section>
+
+  <!-- MEDIA -->
+  <section id="media" aria-labelledby="media-heading">
+    <header>
+      <h2 id="media-heading">Media, Figures, and Captions</h2>
+    </header>
+
+    <article>
+      <figure>
+        <img src="https://placehold.co/400x200" alt="Placeholder graphic showing layout">
+        <figcaption>A simple figure with an image and caption. Your framework should make this look decent at different viewport widths.</figcaption>
+      </figure>
+      <p>Images should not overflow the container. Use sensible defaults for <code>img</code> and <code>figure</code>.</p>
+    </article>
+  </section>
+
+  <!-- TABLES -->
+  <section id="tables" aria-labelledby="tables-heading">
+    <header>
+      <h2 id="tables-heading">Tables</h2>
+    </header>
+
+    <article>
+      <table>
+        <caption>Example: Learning Milestones</caption>
+        <thead>
+          <tr>
+            <th>Milestone</th>
+            <th>Focus Area</th>
+            <th>Approx. Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Foundations</td>
+            <td>HTML &amp; CSS</td>
+            <td>2–4 weeks</td>
+          </tr>
+          <tr>
+            <td>Interactivity</td>
+            <td>JavaScript Basics</td>
+            <td>4–6 weeks</td>
+          </tr>
+          <tr>
+            <td>Frameworks</td>
+            <td>React, Vue, or similar</td>
+            <td>6–12 weeks</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">Actual time varies. The key is consistent practice.</td>
+          </tr>
+        </tfoot>
+      </table>
+    </article>
+  </section>
+
+  <!-- FORMS -->
+  <section id="forms" aria-labelledby="forms-heading">
+    <header>
+      <h2 id="forms-heading">Forms &amp; Form Controls</h2>
+    </header>
+
+    <article>
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Basic Information</legend>
+
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Jane Doe">
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com">
+
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="••••••••">
+
+          <label for="search">Search</label>
+          <input id="search" name="search" type="search" placeholder="Search term">
+
+          <label for="website">Website</label>
+          <input id="website" name="website" type="url" placeholder="https://example.com">
+
+          <label for="age">Age</label>
+          <input id="age" name="age" type="number" min="0" max="120">
+        </fieldset>
+
+        <fieldset>
+          <legend>Preferences</legend>
+
+          <label for="role">Role</label>
+          <select id="role" name="role">
+            <option value="">Select a role…</option>
+            <option value="student">Student</option>
+            <option value="developer">Developer</option>
+            <option value="designer">Designer</option>
+          </select>
+
+          <label for="bio">Short Bio</label>
+          <textarea id="bio" name="bio" rows="4" placeholder="Tell us about yourself"></textarea>
+
+          <fieldset>
+            <legend>Newsletter</legend>
+            <label>
+              <input type="checkbox" name="newsletter" value="weekly">
+              Receive weekly updates
+            </label>
+            <label>
+              <input type="checkbox" name="newsletter" value="product">
+              Receive product announcements
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Experience Level</legend>
+            <label>
+              <input type="radio" name="experience" value="beginner">
+              Beginner
+            </label>
+            <label>
+              <input type="radio" name="experience" value="intermediate">
+              Intermediate
+            </label>
+            <label>
+              <input type="radio" name="experience" value="advanced">
+              Advanced
+            </label>
+          </fieldset>
+
+          <label for="favorite-color">Favorite Color</label>
+          <input id="favorite-color" name="favorite-color" type="color" value="#3366ff">
+
+          <label for="satisfaction">Satisfaction (0–10)</label>
+          <input id="satisfaction" name="satisfaction" type="range" min="0" max="10" value="7">
+
+          <label for="resume">Upload Resume</label>
+          <input id="resume" name="resume" type="file">
+
+          <label for="start-date">Desired Start Date</label>
+          <input id="start-date" name="start-date" type="date">
+        </fieldset>
+
+        <fieldset>
+          <legend>Actions</legend>
+          <button type="submit">Submit Form</button>
+          <button type="reset">Reset</button>
+          <input type="submit" value="Submit (input)">
+        </fieldset>
+      </form>
+    </article>
+  </section>
+
+  <!-- MISC -->
+  <section id="misc" aria-labelledby="misc-heading">
+    <header>
+      <h2 id="misc-heading">Miscellaneous Elements</h2>
+    </header>
+
+    <article>
+      <details>
+        <summary>Expandable Details Element</summary>
+        <p>The <code>details</code> and <code>summary</code> elements provide a built-in disclosure widget.</p>
+      </details>
+
+      <p>This section exists mostly to remind you to test selection styles: try selecting this text to see how <code>::selection</code> looks with your colors.</p>
+    </article>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 CSS Framework Demo. Built to test your styles, not your patience.</p>
+</footer>
+
+</body>
+</html>

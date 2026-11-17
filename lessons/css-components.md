@@ -331,169 +331,13 @@ Show a two-part component:
 .card > footer {
   margin-top: var(--space-sm);
   font-size: var(--font-size-small);
-  color: var(--color-muted);
+  color: var(--color-fg-muted);
 }
 ```
 
 ## Homework
 
-Now that your framework has:
-
-* a **tokens** layer
-* a **base** layer that styles default HTML elements
-
-…it’s time to add a **components** layer.
-This is where your framework becomes something real — reusable UI building blocks that other developers can drop into any project.
-
-Your components **must** follow:
-
-* your chosen naming convention (BEM, SUIT, etc.)
-* your layer structure (`@layer components`)
-* your tokens (no hard-coded values)
-
-### Required Components
-
-These are common to nearly every modern UI framework.
-Your framework must implement **all four**:
-
-#### 1. Button Component
-
-Your button system should include:
-
-* a base button class
-* at least **two color variants** (e.g., primary, secondary, danger)
-* at least **one size variant** (e.g., small or large)
-* a visible, accessible **focus state**
-* a functional **disabled** state
-* support for an optional internal label or icon
-
-This is fundamental — if a framework can't deliver a robust button system, nothing else will feel consistent.
-
-#### 2. Card Component
-
-Your card should support:
-
-* a base card container class
-* token-driven spacing, background, and radius
-* optional sub-components:
-
-  * header
-  * body/content
-  * footer
-  * image area (optional but encouraged)
-* at least **one visual variant** (dark, elevated, bordered, etc.)
-
-Cards test layout, spacing, typography, and composition.
-
-#### 3. Alert / Message Component
-
-Your alert system should include:
-
-* a base `alert` class
-* at least **two variants** (recommended: `info`, `warning`, `success`, `danger`)
-* an internal icon or title area (optional but useful)
-* accessible color contrast and focus/hover behavior (if interactive)
-
-Alerts force you to think about tone, color meaning, and usability.
-
-#### 4. Badge / Tag / Chip Component
-
-The meaning of Badge/Tag/Chip are interpreted differently in different frameworks. Look these up in existing frameworks like: Bootstrap, Material, and Tailwind. 
-
-A small inline component used for labeling.
-
-Requirements:
-
-* base badge class
-* at least **two variants** (primary/neutral, success/danger, etc.)
-* should be usable inside text, cards, and buttons
-* must be token-driven (padding, radius, color)
-
-## Optional Components (Choose at least 2)
-
-These components are more challenging.
-Pick **any two** (or more, if you want extra credit).
-
-Choose components based on your interest and your naming system.
-
-### A. Navbar
-
-A horizontal header/navigation bar.
-Should style:
-
-* container
-* links
-* active/selected state
-* optional variants (light/dark)
-
-### B. Tabs
-
-A tabbed interface with:
-
-* tab list
-* tab items
-* selected tab state
-* tab panel area
-
-Excellent practice for states and borders.
-
-### C. Accordion
-
-You may style:
-
-* your own structure
-  **or**
-* built-in `<details>/<summary>` elements
-
-Great for nested spacing and open/closed states.
-
-### D. Modal (Styling Only)
-
-Implement:
-
-* backdrop
-* dialog box
-* title, body, footer
-* token-driven size and spacing
-
-*No JavaScript required — focus on appearance.*
-
-### E. Table Variants
-
-Enhance default table styling with:
-
-* `.table` class
-* `.table--striped` or `.table--compact`
-* consistent spacing and borders
-
-Useful for real-world data layouts.
-
-### F. Form Groups & Input Groups
-
-Create visually consistent wrappers for:
-
-* label + input
-* input + icon
-* input + button
-
-Focus on spacing, alignment, and accessibility.
-
-### G. Progress Bar
-
-Simple but instructive:
-
-* base progress container
-* filled track
-* optional success/warning variants
-* token-driven width, height, colors
-
-### H. Avatar or Avatar Group
-
-Practice shape, object-fit, borders, and small-size design.
-
-### I. Custom Check box and Radio buttons
-
-Note! customizing these can cause problems for accessiblity! If you choose this option be sure to not hide the input element, this will cause screen reads to miss it. Instead set it's opacity to transparent. 
+Build the components for **v1.0** of your framework. The requirements (button, card, alert, plus one optional component) are in the [CSS Framework assignment](../assignments/css-framework.md#components-in-layer-components).
 
 ## Utility Classes
 
@@ -552,7 +396,7 @@ Using your spacing tokens:
 @layer utilities {
   .text-center { text-align: center; }
   .text-right  { text-align: right; }
-  .text-muted  { color: var(--color-muted); }
+  .text-muted  { color: var(--color-fg-muted); }
 }
 ```
 
@@ -581,27 +425,6 @@ Create a **small, deliberate set** of helpers that:
 
 Utilities should feel like a tool belt.
 
-## Homework: Add Utility Classes to Your Framework
+## Homework: Utilities
 
-In addition to your components, your framework must include a small set of **utility classes**. Utilities are single-purpose helpers that apply one specific style (e.g., spacing, alignment, display). They allow developers to adjust layout or presentation **without modifying component CSS**.
-
-### Requirements
-
-Create at least **six** utility classes total, covering **at least three** different categories.
-All utilities must:
-
-* be placed inside `@layer utilities`
-* use your design tokens (no hard-coded values)
-* use low-specificity, single-class selectors
-* follow your chosen naming convention
-
-### Suggested Categories
-
-Choose from:
-
-* **Display utilities** (e.g., `.flex`, `.grid`, `.block`)
-* **Spacing utilities** (e.g., `.mt-sm`, `.p-md`)
-* **Text utilities** (e.g., `.text-center`, `.text-muted`)
-* **Layout utilities** (e.g., `.container`, `.stack`)
-* **Sizing utilities** (e.g., `.w-100`, `.h-auto`)
-* **Color utilities** (e.g., `.bg-primary`, `.fg-muted`)
+Add **4 utilities** in at least **2 categories** to your framework. The requirements are in the [CSS Framework assignment](../assignments/css-framework.md#utilities-in-layer-utilities).

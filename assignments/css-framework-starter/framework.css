@@ -1,0 +1,73 @@
+/* ==========================================================
+   [Framework name] v0.1
+   A classless CSS framework. Link it and plain HTML looks good.
+
+   Rename this file to your framework's name, then update the
+   <link> in demo.html to match.
+   ========================================================== */
+
+/* Layer order: later layers win, no matter how specific the
+   selectors in earlier layers are. Declare the order once, here. */
+@layer tokens, base, components, utilities, overrides;
+
+
+/* ==========================================================
+   TOKENS: custom properties only. No element rules.
+   Start from the tokens.css you built for Fix the AI Page.
+   ========================================================== */
+@layer tokens {
+  :root {
+    /* Type scale */
+
+    /* Spacing scale */
+
+    /* Color: ramps (private, used only to build the roles below) */
+
+    /* Color: roles (everything else uses ONLY these) */
+
+    /* Radius, borders, shadows */
+
+    /* Motion */
+  }
+}
+
+
+/* ==========================================================
+   BASE: element selectors only. No classes.
+   Work through demo.html top to bottom.
+   ========================================================== */
+@layer base {
+  /* Page: html, body */
+
+  /* Headings: h1–h6 */
+
+  /* Text: p, strong, em, small, mark, del, ins, abbr, time, q, blockquote */
+
+  /* Links: a and its states */
+
+  /* Lists: ul, ol, li, dl, dt, dd */
+
+  /* Code: code, pre, kbd, samp */
+
+  /* Media: img, figure, figcaption, hr */
+
+  /* Tables: table, caption, th, td, thead, tbody, tfoot */
+
+  /* Forms: form, fieldset, legend, label, input, select, textarea, button */
+
+  /* Misc: details, summary, ::selection */
+}
+
+
+/* ==========================================================
+   COMPONENTS: opt-in classes, added in v1.0.
+   ========================================================== */
+@layer components {
+}
+
+
+/* ==========================================================
+   UTILITIES: single-purpose classes, added in v1.0.
+   ========================================================== */
+@layer utilities {
+}

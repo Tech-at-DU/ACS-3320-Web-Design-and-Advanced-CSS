@@ -1,360 +1,224 @@
-# A CSS Framework
+# CSS Framework 1: Layers, Tokens, and a Classless Base
 
-## What are layers? 
+Today you start the [CSS Framework] project. It's different from the earlier assignments: instead of a page, you're building a **tool other developers use to build pages**. By the end of class you'll have the start of v0.1: a layered CSS file with your tokens and your first text styles.
 
-CSS cascade layers (`@layer`) give you structural control over the cascade.
-They let you group styles by purpose and define **which groups override which** without specificity hacks.
+## Today
 
-Get the sample files here. 
+| Time | What |
+|:--|:--|
+| 45 min | **Show and tell:** present your Microinteractions |
+| 15 min | **Warm-up:** see what a framework does |
+| 20 min | **Part 1: Concepts** |
+| 10 min | Break |
+| 60 min | **Part 2: Challenges** (self-paced) |
+| 15 min | **Wrap up:** what's due for v0.1 |
 
-## What is “the cascade”?
+## Learning Objectives
 
-The cascade is how CSS decides which rule wins when multiple rules match the same element:
+1. Explain what a classless CSS framework is and who it's for
+2. Use `@layer` to control which styles win, regardless of specificity
+3. Explain why unlayered CSS beats every layer
+4. Organize tokens as private ramps and public role tokens
+5. Style semantic HTML with element selectors only
 
-1. **Origin & layer** (browser vs user vs author, plus layer order)
-2. **Specificity** (IDs > classes > elements)
-3. **Source order** (later rules win)
+---
 
-Layers let you control the **first step**—the most powerful one—so your framework behaves predictably and is easy to override.
+## Show and tell (45 min)
 
-## Key principle: Layer order beats specificity
+Each person gets about **2 minutes**:
 
-A less specific selector in a **later layer** beats a more specific selector in an **earlier layer**.
+1. Show your three microinteractions.
+2. For one of them, name its **job** and show its **reduced-motion** version.
+
+**Listeners:** write down one timing or easing choice you'd like to borrow.
+
+---
+
+## Warm-up: What a framework does (15 min)
+
+**Goal:** see the finished product before you build one.
+
+1. Create a new repo for the [CSS Framework] project. Copy the [css-framework-starter](../assignments/css-framework-starter/) folder into it.
+2. Open `demo.html` in your browser. It's about 45 HTML elements with **browser defaults only**.
+3. In `demo.html`, change the `<link>` to each of these in turn, and reload after each one:
+   ```html
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+   <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
+   ```
+4. Change the `<link>` back to `framework.css`.
+
+The HTML never changed, and there isn't a single class in it. Each framework is just a CSS file that styles elements. **That's what you're building.** Yours will be built from your own tokens and have your own look.
+
+**Done when:** you can answer in one sentence, "What's the difference between styling a page and building a framework?"
+
+---
+
+## Part 1: Concepts (20 min)
+
+### 1. Layers: order beats specificity
+
+The cascade decides which rule wins when several rules match the same element. Layers sit **above** specificity: a rule in a later layer beats a rule in an earlier layer, however specific the earlier selector is.
 
 ```css
-/* Two layers: A and B. B comes later. */
-@layer A, B;
+@layer A, B;   /* B is declared last, so B wins */
 
 @layer A {
-  /* Specificity 0-2 (element + class) */
-  button.btn {
-    color: red;
-  }
+  button.btn { color: red; }   /* specificity 0-1-1 */
 }
 
 @layer B {
-  /* Specificity 0-1 (class only), but in the later layer */
-  .btn {
-    color: blue;
-  }
+  .btn { color: blue; }        /* specificity 0-1-0, but in the later layer */
 }
 ```
 
-**Result**: The button is blue. Layer B wins, even though its selector is less specific.
+**The button is blue.** Layer B wins even though its selector is less specific.
 
-**Challenge 1**: Change the order at the top to `@layer B, A;`. What happens? Explain why.
-**Challenge 2**: Move the `.btn` rule into `@layer A` instead of `@layer B`. What happens now? Explain why.
+A framework needs this. A developer using your framework should be able to override a component with a simple class, without fighting your selectors or reaching for `!important`.
 
-> The main takeaway: **the order of layers controls override power**.
-
----
-
-## Why Use Layers in a Framework?
-
-A framework needs:
-
-* **Predictability** – rules in later layers always beat earlier layers.
-* **Low specificity** – no need for `!important` wars or hacky selectors.
-* **Reliable overrides** – users of your framework can easily customize styles.
-* **Clear architecture** – the cascade is explicit and documented.
-
-Modern design systems do exactly this:
-
-* **Tailwind**: `@layer base`, `@layer components`, `@layer utilities`
-* **Bootstrap 5.3+**: tokens + layering
-* **USWDS, Shoelace, Material**: heavy use of tokens and layered organization
-
-Your framework will follow the same pattern.
-
----
-
-## Defining Layers
-
-Start by defining your layers in a single line:
+### 2. Your framework's layers
 
 ```css
 @layer tokens, base, components, utilities, overrides;
 ```
 
-### Layer meanings
+| Layer | Contains | Why it's in this position |
+|:--|:--|:--|
+| `tokens` | Custom properties only | Everything else reads them |
+| `base` | Element selectors: `h1`, `p`, `a`, `table` | The classless defaults, with the least power |
+| `components` | Opt-in classes: `.button`, `.card` | Beats base, so `.button` can restyle a `<button>` |
+| `utilities` | One-job classes: `.text-center` | Beats components, so a utility can adjust a component |
+| `overrides` | Empty | For developers who use your framework |
 
-| Layer          | Purpose                                                        |
-| -------------- | -------------------------------------------------------------- |
-| **tokens**     | Values (colors, spacing, typography). Only custom properties.  |
-| **base**       | Element selectors: `body`, `h1`, `p`, `a`, forms, etc.         |
-| **components** | Reusable patterns: `.btn`, `.card`, `.navbar`, `.alert`, etc.  |
-| **utilities**  | Single-purpose helpers: `.mt-1`, `.text-center`, `.flex`, etc. |
-| **overrides**  | Project-specific or user overrides of the above.               |
+### 3. The gotcha: unlayered CSS beats every layer
 
-Example:
+CSS that **isn't** inside a `@layer` beats all of your layers, whatever its specificity:
+
+```css
+@layer base {
+  body { background: var(--color-bg); }
+}
+
+body { background: white; }   /* not in a layer: this wins */
+```
+
+That's why `demo.html` has no `<style>` tag. A stray unlayered rule, in your file or in the page, will override your framework, and you'll waste an hour wondering why. If a style "isn't working," check that it's inside a layer.
+
+(`!important` reverses the layer order. Your framework shouldn't need it.)
+
+### 4. Tokens: ramps and roles
+
+You already built tokens for Fix the AI Page. A framework organizes them in two levels:
 
 ```css
 @layer tokens {
   :root {
-    --base-font-size: 16px;
-    --color-bg: #eee;
-    --color-fg: #111;
-    --color-primary: tomato;
-    --color-secondary: cornflowerblue;
-    --color-tertiary: gold;
+    /* Ramps: the raw palette. Only used inside this layer. */
+    --gray-1: oklch(98% 0.005 250);
+    --gray-9: oklch(22% 0.02 250);
+    --green-5: oklch(52% 0.13 155);
+
+    /* Roles: what everything else uses */
+    --color-bg: var(--gray-1);
+    --color-fg: var(--gray-9);
+    --color-accent: var(--green-5);
   }
 }
+```
 
+The **base**, **components**, and **utilities** layers use **only role tokens**. Then re-theming is easy: point `--color-accent` at a different ramp, and every link, button, and focus ring updates.
+
+For building ramps with `oklch()`, `color-mix()`, and relative colors, see the [Color lesson](design-color.md) and `colors.html` in the [CSS Framework Notes](https://github.com/Tech-at-DU/css-framework-notes).
+
+### 5. The classless base
+
+The `base` layer styles **elements, not classes**. A developer writes plain, semantic HTML and it looks right:
+
+```css
 @layer base {
   body {
-    font-size: var(--base-font-size);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-0);
+    line-height: 1.5;
     color: var(--color-fg);
-    background-color: var(--color-bg);
+    background: var(--color-bg);
   }
 
-  a {
-    color: var(--color-primary);
-  }
+  h1 { font-size: var(--font-size-5); }
+  h2 { font-size: var(--font-size-4); }
+
+  a { color: var(--color-accent); }
+  a:hover { text-decoration-thickness: 3px; }
+  a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }
 }
 ```
 
-### Architecture Challenge
-
-1. Create a new CSS file called `<framework-name>.css`.
-
-2. Add your layer definition at the top:
-
-   ```css
-   @layer tokens, base, components, utilities, overrides;
-   ```
-
-3. Look at how real frameworks organize their layers (Tailwind's `base/components/utilities`, Bootstrap, USWDS).
-
-4. Decide if you want extra layers such as `reset`, `themes`, or `animations`.
-
-Your framework **must** include at least:
-
-* `tokens`
-* `base`
-* `components`
-* `utilities`
+Every value is a token. If you type the same literal value twice, make it a token.
 
 ---
 
-# Defining a Color Palette
+## Part 2: Challenges (60 min)
 
-A framework needs a consistent, reusable color system.
-We’ll use **modern color tools** to build one.
+Work in your framework repo. Each challenge ends with **Done when**. If you're stuck for 10 minutes, ask a classmate or your instructor.
 
-## Color formats to know
+### Challenge 1: Prove the layer order (10 min)
 
-* **Hex:** `#rrggbb`, `#rrggbbaa` (red, green, and blue as hexidecimal 0 to F)
-* **RGB:** `rgb(255 0 0 / 0.5)` (red, green, and blue, as 0 to 255)
-* **HSL:** `hsl(210 50% 40%)` (hue (0 to 360), saturation, and lightness)
-* **OKLCH:** `oklch(l c h)` — perceptually uniform, great for ramps (lightness, chroma, and hue)
+1. In `framework.css`, add `button { background: red; }` inside `@layer base`, and `button { background: blue; }` inside `@layer components`.
+2. Predict the color of the buttons in `demo.html`, then reload.
+3. Swap the two layer names in the `@layer` line at the top. Predict, then reload.
+4. Add `button { background: green; }` at the very bottom of the file, outside any layer. Predict, then reload.
+5. Delete all three test rules and restore the layer line.
 
-We’ll prefer **OKLCH** for tokens because it makes tints and shades more predictable.
+**Done when:** your three predictions matched, or you can explain why one didn't.
 
----
+### Challenge 2: Move in your tokens (15 min)
 
-## OKLCH 
+1. Open the `tokens.css` from your Fix the AI Page project. Paste its contents into the `:root` rule in the `tokens` layer.
+2. Organize it under the starter's comments: type scale, spacing, color ramps, color roles, radius, motion.
+3. Check you have every role token: `--color-bg`, `--color-surface`, `--color-fg`, `--color-fg-muted`, `--color-border`, `--color-accent`, `--color-on-accent`, `--color-focus`. Add any that are missing.
+4. Make sure type sizes use `rem`, not `px`.
 
-OKLCH describes a color with three main values:
+**Done when:** the tokens layer has a complete type scale, spacing scale, role tokens, and motion tokens, and no rules except `:root`.
 
-* **l** – lightness, from 0 (black) to 1 (white)
-* **c** – chroma (intensity), from gray to vivid
-* **h** – hue, as an angle from `0deg` to `360deg` (or a number from 0 to 1)
-* **(optional)** alpha for transparency
+### Challenge 3: Page and headings (15 min)
 
-Why use it?
+In the `base` layer:
 
-* Adjusting lightness or chroma behaves more like human perception.
-* You can keep contrast stable while changing hue.
-* It supports a wider range of colors than legacy sRGB.
+1. Style `body` with your font, base size, line height, and the `--color-fg` and `--color-bg` roles.
+2. Give `h1`–`h6` sizes from your type scale. Make each level visibly smaller than the one above it.
+3. Give headings more space **above** than below, so each heading belongs to the text that follows it (from [Type & Spacing](design-type-spacing.md)).
 
-Example:
+**Done when:** the **Typography & Headings** section of `demo.html` has a clear hierarchy, and every value comes from a token.
 
-```css
-/* Red-ish color in OKLCH */
-background-color: oklch(0.628 0.258 29.23);
-```
+### Challenge 4: Text and links (20 min)
 
----
+1. Style `p`, `strong`, `em`, `small`, `mark`, `blockquote`, and `q`.
+2. Style `a` in every state: `:link`, `:visited`, `:hover`, `:active`, and `:focus-visible`.
+3. Press **Tab** through the links. Is focus obvious every time?
 
-## `color-mix()`
+**Done when:** the **Typography** and **Links** sections look intentional, and the focus ring is visible on every link.
 
-`color-mix()` creates a new color by mixing two others, in a given color space.
+**That's v0.1.** Commit it: `git commit -m "v0.1: tokens and text"`.
 
-```css
-color-mix(<colorspace>, <color1> <percent1>, <color2> <percent2>);
-```
+### Stretch
 
-Example with OKLCH:
-
-```css
-/* Base color token */
---primary: oklch(0.6 0.15 250);
-
-/* Tint: mix 80% primary with white */
---primary-light: color-mix(in oklch, var(--primary) 80%, white);
-
-/* Shade: mix 70% primary with black */
---primary-dark: color-mix(in oklch, var(--primary) 70%, black);
-```
+- Start v0.2: style the **Lists** and **Code** sections.
+- Check contrast for `--color-fg-muted` and `--color-accent` on `--color-bg` with WAVE or the DevTools contrast checker.
+- Re-theme test: change `--color-accent` to a different hue. Does every link and focus ring change with it?
 
 ---
 
-## Relative Colors
+## Wrap up (15 min)
 
-Relative colors let you define a new color **based on an existing one** by tweaking its channels.
+- **v0.1** (layers, tokens, and text) is due **Thursday, Nov 19**. Bring it to class.
+- Read the full [CSS Framework] assignment. Note the three releases: v0.1, v0.2, and v1.0.
+- Thursday's lesson: [Components and utilities](css-components.md).
 
-Relative colors work with all of the color models (rgb, hsl, lab, ...), here you will focus on oklch. 
+## Resources
 
-You can:
+- [CSS Framework Notes](https://github.com/Tech-at-DU/css-framework-notes): `layers.html`, `headings.html`, and `colors.html` for practice
+- [MDN: @layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer)
+- [Classless frameworks to study](https://github.com/dbohdan/classless-css): a list with live demos
+- [Pico CSS](https://picocss.com), [Simple.css](https://simplecss.org), [Water.css](https://watercss.kognise.dev)
 
-* make a color lighter or darker
-* increase or reduce its chroma
-* shift its hue
-* keep some channels unchanged
-
-Example with OKLCH:
-
-```css
---primary: oklch(0.628 0.258 29.23);
-
-/* Lighter and darker variants derived from --primary */
---primary-light: oklch(from var(--primary) calc(l + 0.15) c h);
---primary-dark:  oklch(from var(--primary) calc(l - 0.10) c h);
-```
-
-What happens:
-
-* The browser extracts `l`, `c`, and `h` from `--primary`.
-* It changes only `l` (lightness) using `calc()`.
-* Chroma (`c`) and hue (`h`) stay the same.
-
-You can repeat this pattern to create a whole palette of colors:
-
-```css
---secondary-3: oklch(0.7 0.12 250);
-
-/* Shades */
---secondary-2: oklch(from var(--secondary-3) calc(l - 0.12) c h);
---secondary-1: oklch(from var(--secondary-3) calc(l - 0.24) c h);
-
-/* Tints */
---secondary-4: oklch(from var(--secondary-3) calc(l + 0.12) c h);
---secondary-5: oklch(from var(--secondary-3) calc(l + 0.24) c h);
-```
-
-### Why use relative colors in a framework?
-
-* All variants stay aligned to the same hue.
-* Tints and shades are consistent across the design.
-* You can adjust the base token and the whole palette shifts with it.
-* Themes become trivial: change a handful of base colors, and everything else updates.
-
----
-
-## Challenge: Build a Color System
-
-Using either `color-mix()` or relative OKLCH colors (or both):
-
-1. Choose **5 main colors** (e.g., gray, primary, secondary, success, warning).
-2. Generate **3 tints** and **3 shades** for each main color.
-3. Put all of these in the `tokens` layer.
-4. Test the colors in `colors.html`.
-
-Focus on naming:
-
-* Neutral ramp: `--gray-1` … `--gray-7`
-* Main ramps:
-
-  * `--primary-1` … `--primary-7`
-  * `--secondary-1` … `--secondary-7`
-  * etc.
-
-Look at how Bootstrap and Tailwind name their palettes, then design yours intentionally.
-
----
-
-# What to Style?
-
-Once your `tokens` layer exists, start the `base` layer.
-
-Your framework should provide sane defaults for **basic elements**, replacing the browser’s user-agent stylesheet without being heavy-handed.
-
-Use the sample documents to guide you. For each element, ask: *“Does this look deliberate?”*
-
-### Base Text
-
-* Document text: `color`, `background-color`
-* Font stack, base `font-size`, `line-height`
-* Margins for block elements
-
-Elements to handle:
-
-* Headings: `h1`–`h6`
-* Paragraphs: `p`
-* Code: `code`, `pre`
-* Quotes: `blockquote`
-* Inline semantics: `strong`, `em`, `q`
-* Selection: `::selection`
-
-### Links
-
-* `a` base style
-* States: `:link`, `:hover`, `:active`, `:visited`, `:focus-visible`
-* Make sure focus is visible and accessible.
-
-### Buttons
-
-* Base button styling: padding, border radius, background, color.
-* Variants: `.btn-primary`, `.btn-secondary` (in the **components** layer).
-* States: `:hover`, `:active`, `:focus-visible`, `:disabled`.
-
-### Forms
-
-* Text inputs: `input[type="text"]`, `textarea`
-* Checkboxes, radios (optionally custom-styled)
-* Focus states using your tokens
-* Ensure good contrast and touch targets.
-
-Components and utilities will come later; for now your goal is a solid **tokens + base** foundation.
-
----
-
-# Using Tokens
-
-Any value you expect to reuse should be a token in the `tokens` layer:
-
-```css
-color: var(--color-fg);
-border-radius: var(--radius-md);
-padding: var(--space-md);
-font-size: var(--font-size-2);
-```
-
-> If you type the same literal value more than once, consider promoting it to a token.
-
----
-
-# Headings & Type Scale
-
-Style `h1–h6` using a type scale instead of arbitrary sizes.
-
-Choose a modular ratio (e.g., `1.25`, `1.333`, `1.5`, or `1.618`) and:
-
-* Define a base font size (e.g., `var(--font-size-0)` for body).
-* Calculate heading sizes based on that ratio.
-
-```CSS
-:root {
-  --font-base-size: 16px;
-  --font-ratio: 1.5;
-}
-
-h5 {
-  /* 24px */
-  font-size: calc(var(--font-base-size) * var(--font-ratio));
-}
-```
-
-Use `headings.html` to experiment until your headings:
-
-Explore these ideas and get started with your CSS framework here: https://github.com/Tech-at-DU/css-framework-notes
+[CSS Framework]: ../assignments/css-framework.md
