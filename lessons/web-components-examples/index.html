@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web Components: fw-card</title>
+  <link rel="stylesheet" href="framework.css">
+  <!-- type="module" scripts don't load from file:// URLs.
+       Open this page with Live Server (or any local server). -->
+  <script type="module" src="fw-card.js"></script>
+</head>
+<body>
+  <h1>&lt;fw-card&gt;</h1>
+  <p>
+    Open DevTools → Elements and expand a card to see its <code>#shadow-root</code>.
+    Then try the experiments at the bottom of the page.
+  </p>
+
+  <h2>1. A plain HTML card (no component)</h2>
+  <article style="padding: var(--space-lg); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface)">
+    <h3>Plain article</h3>
+    <p>The framework's <code>h3</code> rule makes this heading the accent color.</p>
+  </article>
+
+  <h2>2. The component</h2>
+  <fw-card>
+    <h3 slot="header">Cordless drill</h3>
+    <p>Borrow it for up to 7 days. This paragraph is <strong>slotted</strong>: it stays in the page's DOM, so the framework still styles it.</p>
+    <span slot="footer">Available now</span>
+  </fw-card>
+
+  <h2>3. A variant, set by an attribute</h2>
+  <fw-card variant="elevated">
+    <h3 slot="header">Elevated</h3>
+    <p><code>variant="elevated"</code> is matched by <code>:host([variant="elevated"])</code> inside the component.</p>
+    <span slot="footer">No JavaScript needed for this</span>
+  </fw-card>
+
+  <h2>Experiments</h2>
+  <ol>
+    <li>In DevTools, change <code>--hue</code> on <code>:root</code> from 250 to 30. The cards change too: tokens cross the shadow boundary.</li>
+    <li>In <code>fw-card.js</code>, move the <code>&lt;h3&gt;</code> out of the slot and type it directly into the template. Is it still the accent color? Why not?</li>
+    <li>Delete the <code>&lt;script&gt;</code> tag and reload. The cards disappear. Find the rule in <code>framework.css</code> that hides them and comment it out. What does an undefined custom element look like?</li>
+  </ol>
+</body>
+</html>

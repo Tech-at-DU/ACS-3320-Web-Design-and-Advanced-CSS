@@ -1,201 +1,302 @@
-# ACS 3320 — Advanced CSS
+# Web Components 1: Build Your First Component
 
-## Intro to Web Components
+Your CSS framework gives developers classes like `.card`. A **Web Component** goes one step further: it gives them a whole new HTML tag, like `<fw-card>`, that brings its own structure and styles. Web Components are built into the browser. They need no library, and they work in plain HTML, React, Vue, or anywhere else.
 
-### Why this matters
+Today you'll build a card component step by step, connect it to your framework's tokens, and then start your own component for the [Web Components] assignment.
 
-Web Components are **native browser technology** for building reusable UI elements.
-They’re already used in real systems and work without extra libraries. Because they’re built into the platform, they’re unusually portable—usable in plain HTML, or inside React, Vue, Svelte, etc.
+## Today
 
-An official MDN overview summarizes them as a suite of technologies that let you create reusable, encapsulated custom elements. ([MDN Web Docs][1])
+| Time | What |
+|:--|:--|
+| 30 min | **Show and tell:** your framework v0.2 |
+| 15 min | **Part 1: Concepts** |
+| 70 min | **Part 2: Build-along** (self-paced) |
+| 10 min | Break |
+| 40 min | **Part 3: Start your Component 1** |
+
+## Learning Objectives
+
+1. Define a custom element with JavaScript
+2. Give it a private shadow DOM, built from a template
+3. Put the page's content inside it with slots
+4. Style it with your framework's tokens, and explain what crosses the shadow boundary
+5. Create a variant with an attribute and `:host()`
 
 ---
 
-## Learning objectives
+## Show and tell (30 min)
 
-By the end of today, you should be able to:
-
-1. Name the core Web Components technologies
-2. Build a basic custom element with JavaScript
-3. Style it, encapsulate it, and slot content inside it
-4. Understand how a Web Component could fit into the CSS framework you’re building
+Each person gets about **1 minute**: show `demo.html` with your framework v0.2. Scroll to the **forms** section. Which element was hardest to style?
 
 ---
 
-## Big picture: components ≈ reusable pieces
+## Part 1: Concepts (15 min)
 
-Think of a web page like a stack of reusable parts—buttons, cards, navbars, tooltips, forms. Browser HTML gives you some pieces out of the box, like `<input>` in many flavors. But when you need a new kind of widget, you often build it from scratch with lots of markup, CSS, and JS.
+### See it first
 
-Web Components let you define **your own tags** that bundle structure, behavior, and style into a single reusable element.
+Open [web-components-examples/index.html](web-components-examples/index.html) with **Live Server** (see "Loading a component" below). It shows a finished `<fw-card>`. Open DevTools → **Elements** and expand a card: you'll see a `#shadow-root` inside it.
 
-Example: instead of the long Bootstrap carousel markup, imagine a single tag:
+### The four pieces
+
+| Piece | What it does | You'll write |
+|:--|:--|:--|
+| **Custom element** | Registers a new tag name | `customElements.define('fw-card', FwCard)` |
+| **Shadow DOM** | A private DOM inside the element. Page CSS can't reach in, and the component's CSS can't leak out. | `this.attachShadow({ mode: 'open' })` |
+| **Template** | The component's HTML and CSS, written once and copied into every instance | `template.content.cloneNode(true)` |
+| **Slot** | A hole in the template where the page's content shows up | `<slot></slot>`, `<slot name="header"></slot>` |
+
+### What crosses the shadow boundary
+
+This is the most important idea today. It decides how your component connects to your framework.
+
+| From the page into the component | Crosses? |
+|:--|:--|
+| Your framework's rules: `h3 { ... }`, `.btn { ... }` | ❌ No. They can't reach elements inside the shadow DOM. |
+| **Custom properties**: `--color-accent`, `--space-md` | ✅ **Yes.** They inherit into the shadow DOM. |
+| Inherited properties: `font-family`, `color`, `line-height` | ✅ Yes, through the host element |
+| **Slotted content**: the page's own elements, shown in a slot | Stays in the page's DOM, so **your framework still styles it** |
+
+So a component matches your framework by using your **tokens** inside its own CSS:
+
+```css
+/* inside the component's template */
+:host {
+  background: var(--color-surface);   /* your framework's token */
+  padding: var(--space-lg);
+}
+```
+
+Change a token in your framework, and every component follows.
+
+### Loading a component
+
+Each component lives in its own JavaScript file. Load it as a **module**:
 
 ```html
-<frmwrk-slides time="5000">
-  <img src="kitten-0.jpeg">
-  <img src="kitten-1.jpeg">
-  <!-- more images -->
-</frmwrk-slides>
+<link rel="stylesheet" href="framework.css">
+<script type="module" src="elements/fw-card.js"></script>
 ```
 
-That single tag carries everything needed—your component code knows how to render, slide, and style the images, so the page author writes far less markup.
+**Module scripts don't load from `file://` URLs.** Open your page with **Live Server** in VS Code. If your component does nothing and the console shows a CORS error, this is why.
+
+### Naming
+
+Custom element names **must contain a hyphen**: `fw-card` works, `card` doesn't. Use your framework's name as the prefix, for example `<ember-card>`. Today's examples use `fw-`. Replace it with yours.
 
 ---
 
-## Before you build: quick exploration task
+## Part 2: Build-along (70 min)
 
-**Hands‑on:** open the Shoelace Web Components demo page. 
+Build `<fw-card>` one step at a time. Each step ends with **Done when**. If you get stuck, compare with [fw-card.js](web-components-examples/fw-card.js).
 
-https://shoelace.style
+### Setup (5 min)
 
-* Look at the kinds of components provided.
-* Try to use one example in a blank HTML page.
-* Answer these in a few sentences:
+In your **CSS Framework** repo:
 
-  1. What types of components are provided?
-  2. Do these appear usable inside React or Vue?
-  3. Can you style them? How easy does it seem?
+1. Create a folder `elements/` and an empty file `elements/fw-card.js` (use your prefix).
+2. Create `web-components.html`:
+   ```html
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <title>Web Components</title>
+     <link rel="stylesheet" href="framework.css">
+     <script type="module" src="elements/fw-card.js"></script>
+   </head>
+   <body>
+     <fw-card>
+       <h3>Cordless drill</h3>
+       <p>Borrow it for up to 7 days.</p>
+     </fw-card>
+   </body>
+   </html>
+   ```
+3. Change `framework.css` and `fw-card` to your file name and prefix. Open the page with **Live Server**.
 
-*This gives context: production Web Components are already out there.*
+**Done when:** the page opens from an `http://` address (not `file://`) and shows the heading and paragraph, styled by your framework.
 
----
+### Step 1: Define the element (10 min)
 
-## Core tech you need to know
-
-Web Components come from four native browser features.
-
-### 1. Custom Elements
-
-Define a new tag and its behavior in JavaScript.
-
-```js
-customElements.define('my-element', class extends HTMLElement { ... });
-```
-
-Custom elementsd include lifecycle callbacks such as `connectedCallback`, `attributeChangedCallback`, etc.
-
-### 2. Shadow DOM
-
-Encapsulates an element’s internal markup and styles so they don’t leak out—or get overridden—by the page’s global styles.
-
-```js
-this.attachShadow({ mode: 'open' });
-```
-
-### 3. HTML Templates
-
-Reusable, inert fragments of HTML and CSS. They don’t render until you clone and insert them.
+Right now `<fw-card>` is an unknown tag. The browser shows its content but knows nothing about it. Register it in `elements/fw-card.js`:
 
 ```js
-const template = document.createElement('template');
-template.innerHTML = `...`;
-const clone = template.content.cloneNode(true);
+class FwCard extends HTMLElement {
+  connectedCallback() {
+    // Runs when the element is added to the page
+    console.log('fw-card connected');
+  }
+}
+
+customElements.define('fw-card', FwCard);
 ```
 
-### 4. Slots
+**Done when:** the console shows `fw-card connected`. Add a second `<fw-card>` to the page: the message appears twice, once per card.
 
-Points where user‑provided content is projected inside your component.
+### Step 2: Add a shadow DOM and a slot (15 min)
+
+1. Above the class, create a template:
+   ```js
+   const template = document.createElement('template');
+   template.innerHTML = `
+     <div class="card">
+       <p>This text is inside the shadow DOM.</p>
+     </div>
+   `;
+   ```
+2. Replace the class with one that attaches a shadow root and copies the template into it:
+   ```js
+   class FwCard extends HTMLElement {
+     constructor() {
+       super();
+       this.attachShadow({ mode: 'open' });
+       this.shadowRoot.append(template.content.cloneNode(true));
+     }
+   }
+   ```
+3. Reload. **Your heading and paragraph disappeared.** Once an element has a shadow root, its own children only show where the shadow DOM has a `<slot>`.
+4. Add `<slot></slot>` inside `.card` in the template. Reload.
+
+**Done when:** your heading and paragraph are back, and in DevTools you can see `#shadow-root` containing the slot.
+
+### Step 3: Style it with your tokens (15 min)
+
+Add a `<style>` element at the top of the template string:
+
+```js
+template.innerHTML = `
+  <style>
+    :host {
+      display: block;   /* custom elements are inline by default */
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+    }
+  </style>
+  <div class="card">
+    <slot></slot>
+  </div>
+`;
+```
+
+`:host` means "the `<fw-card>` element itself."
+
+Then try two experiments:
+
+1. Change `--color-surface` or `--hue` in your framework's tokens. Does the card change? (It should. Tokens cross the boundary.)
+2. Add `<h3>Inside the template</h3>` to the template, next to the slot. Does your framework's `h3` style apply to it? Compare it with the `<h3>` you put in the page.
+
+**Done when:** the card uses only tokens (no raw colors or sizes), and you can explain why the two `<h3>` elements look different.
+
+<details>
+<summary>Answer to experiment 2</summary>
+
+The `<h3>` typed into the template is inside the shadow DOM, so your framework's `h3` rule can't reach it. It only inherits `color` and `font-family` from the host, and it gets the browser's default size. The `<h3>` in the page is **slotted**: it stays in the page's DOM, so your framework still styles it. Remove the template `<h3>` before you move on.
+</details>
+
+### Step 4: Named slots (15 min)
+
+A card has places for different content. Give each place a named slot:
 
 ```html
-<slot></slot>
-<slot name="header"></slot>
+<header><slot name="header"></slot></header>
+<div class="body"><slot></slot></div>
+<footer><slot name="footer"></slot></footer>
 ```
 
----
+The page chooses a slot with the `slot` attribute. Anything without a `slot` attribute goes into the unnamed (default) slot:
 
-## Styling tools you’ll use inside components
+```html
+<fw-card>
+  <h3 slot="header">Cordless drill</h3>
+  <p>Borrow it for up to 7 days.</p>
+  <span slot="footer">Available now</span>
+</fw-card>
+```
 
-* `:host` / `:host()` — style the custom element itself from inside its shadow DOM
-* `::slotted()` — style content supplied by whoever uses your component
-* `::part()` — allow external styles to target specific internal parts, when you choose to expose them
+Move the padding from `:host` to `header`, `.body`, and `footer` in the template's style, and give the footer a top border and `--color-fg-muted` text.
 
----
+`::slotted(selector)` styles slotted elements from inside the component, but **the page's CSS wins** if both set the same property. Use it only for properties your framework doesn't set.
 
-## Optional but useful additions you’ll see in real components
+**Done when:** the header, body, and footer each show in their own area, and the footer looks quieter than the body.
 
-* **CustomEvent** to communicate state outward, e.g. `dispatchEvent(new CustomEvent('change', ...))`
-* **Constructable Stylesheets** to share CSS across many components
-* **Form‑associated custom elements** when integrating with forms
-* **Declarative Shadow DOM** (emerging, optional)
+### Step 5: A variant from an attribute (10 min)
 
-These aren’t strictly required today, but good to know they exist and may show up in examples or future work.
+`:host([attribute])` matches the element when it has that attribute. Variants need no JavaScript:
 
----
+```css
+:host([variant="elevated"]) {
+  border-color: transparent;
+  box-shadow: var(--shadow-md);
+}
+```
 
-## Examples
+Add a second card with `variant="elevated"`.
 
-Your goal is to work through the examples here: https://github.com/Tech-at-DU/simple-component
+**Done when:** the two cards look different, and the only difference in the HTML is the attribute.
 
-- 01 Simple Component - These examples show the basics of custom elements and shadow DOM
-  - 01 Hello World - Open this example in the browser, read the comments and solve the challenge problems you find there. 
-  - 02 Rainbow Text - Read the comments and solve the challenge problems you find there. 
-- 02 Simple Component Templates - These examples illustrate the use of templates. 
-  - 01 Company logo - Open the example in your broswer. Read the comments in the source code and solve the challenge problems you find there. 
-  - 02 Toggle Tag - Read the comments, and solve the challenge problems. 
+### Step 6: No flash of unstyled content (5 min)
 
----
+Until the script loads, the browser shows `<fw-card>` as an unknown inline element. In your framework's `components` layer, hide undefined components:
 
-## Active learning exercises
+```css
+@layer components {
+  fw-card:not(:defined) { visibility: hidden; }
+}
+```
 
-Use these right after the demo or as homework during class.
-
-### Exercise A — Inspect native inputs
-
-Open a page with `<input>` elements. Inspect them using DevTools.
-
-* Notice whether they have a shadow root or some internal structure.
-* Think: why does the browser need a hidden inner structure to build a native widget?
-
-### Exercise B — Build a tiny component
-
-In pairs or small groups, sketch a component idea for your framework—something basic, like:
-
-* `<theme-toggle>`
-* `<mini-alert>`
-* `<badge>`
-
-For each idea, answer:
-
-1. What slots or content might it need?
-2. What attribute(s) control behavior or appearance?
-3. What styles should come from your framework’s tokens?
-
-Later in the week, you’ll pick one of these and implement it.
-
-### Exercise C — Reading & reflection
-
-After working through a short tutorial or demo file, write one sentence on each:
-
-* What was easiest to understand?
-* What was most confusing?
-* What question would you ask the instructor or a teammate?
+**Done when:** reloading never shows a flash of unstyled card. Your `fw-card.js` should now look like the [finished example](web-components-examples/fw-card.js).
 
 ---
 
-## Practical notes for your own code
+## Part 3: Start your Component 1 (40 min)
 
-### Naming custom elements
+The [Web Components] assignment asks for two components. **Component 1 is a static component**, built exactly the way you just built the card. Start it now.
 
-* Names must contain a hyphen, so they don’t collide with standard tags.
+1. Choose one:
+   - `<fw-badge>`: a small label, with a `variant` attribute for color
+   - `<fw-callout>`: a highlighted note with an icon slot and a message slot
+   - `<fw-avatar>`: an image or initials in a circle, with a `size` attribute
+   - `<fw-logo>`: your framework's logo, with a `size` attribute
+   - Your own idea. It should be **static**: no clicks or timers yet.
+2. Create `elements/fw-yourname.js` and add it to `web-components.html`.
+3. Build it with a template, a shadow DOM, at least one slot, your tokens, and one attribute variant with `:host()`.
+4. Add a usage example to your README:
+   ```html
+   <fw-badge variant="success">Paid</fw-badge>
+   ```
 
-  * Good: `my-component`, `frmwrk-blink`
-  * Bad: `mycomponent`, `blink`
-* Using a prefix tied to your framework or project reduces collisions, e.g., `<frmwrk-*>`.
+**Done when:** your component shows on `web-components.html` in at least two variants, uses only tokens, and changes when you change a token in your framework.
 
-### Typical structure of a simple component
+### Stretch
 
-1. Extend `HTMLElement`
-2. Create a shadow root in the constructor
-3. Clone and append a template into that shadow root
-4. Add event listeners in `connectedCallback`
-5. Clean up in `disconnectedCallback`
-6. Use `attributeChangedCallback` if needed to react to attribute changes
+- Expose an inner element with `part="label"`, then style it from the page with `fw-badge::part(label)`. ([Styling Web Components](styling-web-components.md) covers this on Thursday, Dec 3.)
+- Switch your OS to dark mode. Does your component follow your framework's `light-dark()` tokens?
+- More practice: the examples in the [simple-component repo](https://github.com/Tech-at-DU/simple-component).
 
 ---
 
-## What to do next
+## After Class
 
-**Homework:**
-Work through the basic Web Component examples in the repository
-(hello world, rainbow text, logo, toggle, and counter examples). Aim to finish at least the first few today.
-Links, tutorials, and guides are provided in the repo and the class page.
+- Finish **Component 1**. It's part of the [Web Components] assignment, due **Tue, Dec 8**.
+- **CSS Framework v1.0** is due **Tue, Dec 1**.
+- Next class, [Web Components Part 2](lesson-16.md), covers lifecycle, attributes, and events: everything you need for Component 2, the interactive one.
+
+## Using AI here
+
+- **Explain:** "Explain what this line does: `this.shadowRoot.append(template.content.cloneNode(true))`."
+- **Debug:** "My custom element shows nothing and the console says [paste the error]. Here's my HTML and JS."
+- **Review:** "Here's my component. Does it use any hard-coded values that should be tokens?"
+
+Don't ask AI to write the component. You need to understand every line for Component 2.
+
+## Resources
+
+- [MDN: Using custom elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements)
+- [MDN: Using shadow DOM](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM)
+- [MDN: Using templates and slots](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_templates_and_slots)
+- Real component libraries to explore: [Web Awesome](https://webawesome.com) (formerly Shoelace), [Material Web](https://material-web.dev)
+
+[Web Components]: ../assignments/web-components.md

@@ -1,174 +1,120 @@
-# Homework: Build Three Web Components for Your CSS Framework
+# Assignment: Web Components for Your CSS Framework
 
-### *The Future of Your Framework Starts Here*
+## Overview
 
-Modern design systems increasingly ship **CSS tokens + Web Components** instead of giant JavaScript frameworks.
-Shoelace, Material Web, FAST, Adobe Spectrum Web Components, Ionic, GitHub’s Primer Elements—all follow this model.
+Modern design systems ship **CSS tokens + Web Components**. [Web Awesome](https://webawesome.com) (formerly Shoelace), Material Web, and GitHub's Primer all work this way: one CSS file of tokens, plus custom HTML tags that use them.
 
-This assignment asks you to take a step into that future.
+You'll add **two Web Components** to your CSS framework. They should look like official parts of it: same tokens, same naming prefix, same look and feel.
 
-You will design **three Web Components** that complement the CSS framework you built earlier in the semester. These components should be visually aligned with your design system, use your design tokens, and feel like “official” parts of your UI library.
+**Due:** Tue, Dec 8
 
-# Goals
+## What You Will Learn
 
-* Practice building Web Components that are **practical**, not ornamental
-* Integrate components with your existing **CSS design tokens**
-* Use templates, attributes, lifecycle callbacks, and (if appropriate) shadow DOM
-* Think like a **design system author**, not just a JS implementer
+- Build custom elements with templates, shadow DOM, and slots
+- Connect components to a design system through custom properties
+- Use attributes, lifecycle callbacks, and events to build interactive components
+- Make components keyboard accessible
+- Document components for other developers
 
-# Vanilla or Lit?
+## Where it lives
 
-You may build your components with **vanilla Web Components** (`class extends HTMLElement`) or with **[Lit](https://lit.dev)**, a small library that removes most of the boilerplate (rendering, attribute syncing, scoped styles) while producing standard custom elements. See the [Lit lesson](../lessons/lit-element.md).
+Add the components to your **CSS Framework** repo:
 
-* Build **at least one** component in vanilla JS so you understand what the platform does.
-* Use either approach for the others.
-
-# Requirements
-
-You must build **three web components**, each meeting specific constraints:
-
-## Component 1 — A Visual, Static Component
-
-A component with **no interactivity** beyond markup and style.
-Examples (choose one or invent your own):
-
-* `<frmwk-card>` (uses slots for header, body, footer)
-* `<frmwk-badge>`
-* `<frmwk-avatar>`
-* `<frmwk-callout>`
-* `<frmwk-logo>`
-
-**Must use:**
-
-* Template
-* Optional shadow DOM
-* Your framework’s spacing, colors, and typography variables
-* At least one slot (named or default)
-
-## Component 2 — An Interactive Component
-
-A component with **user interaction**, event handling, and internal state.
-Examples:
-
-* Toggle switch (like `<frmwk-toggle>`)
-* Tabs (`<frmwk-tabs>` + `<frmwk-tab>`)
-* Accordion / disclosure panel
-* Counter / stepper
-* Tooltip
-* `<frmwk-alert dismissible>`
-
-**Must use:**
-
-* Event listeners (click, change, etc.)
-* `connectedCallback()` + `disconnectedCallback()`
-* Attributes that users can pass in (e.g., `open`, `value`, `variant`)
-* Dispatch a CustomEvent to communicate changes outward
-
-## Component 3 — A “Smart” Component
-
-A component that **does something dynamic**, such as animation, timers, or layout logic.
-Think of this as a “rich widget” built from scratch.
-
-Examples:
-
-* Image carousel / slideshow
-* Countdown timer
-* Toast notification manager
-* Progress bar that animates
-* Character counter that updates as you type
-* Animated number ticker
-* “Theme switcher” that toggles CSS variables on `<html>`
-
-**Must use:**
-
-* Attributes that control behavior (e.g., `time`, `transition`, `paused`)
-* At least one internal method (`_next()`, `_update()`, etc.)
-* Shadow DOM strongly recommended
-* A timer OR animation OR DOM measurement OR auto-advancing behavior
-
-# Integration Requirements (for all components)
-
-All three components must:
-
-### ✓ Use your existing CSS framework
-
-Your colors, spacing, radii, typography, shadows, etc.
-You can import them, or expose internal parts using `::part()`.
-
-### ✓ Use your naming prefix
-
-For example:
-`<aurora-card>`, `<aurora-tabs>`, `<aurora-carousel>`
-(Replace *aurora* with your framework name.)
-
-### ✓ Be documented
-
-Each component should include **basic usage examples** in HTML:
-
-```html
-<frmwk-card variant="info">
-  <h3 slot="header">Account Status</h3>
-  <p>Everything looks good.</p>
-</frmwk-card>
+```
+framework.css
+elements/
+  fw-badge.js        ← Component 1 (use your prefix)
+  fw-toggle.js       ← Component 2
+web-components.html  ← demo page
 ```
 
-### ✓ Be accessible
+Load each component with `<script type="module" src="elements/...">`, and test with Live Server (module scripts don't load from `file://`).
 
-Doesn’t need to be perfect, but consider:
+## Vanilla or Lit?
 
-* Keyboard accessibility for interactive parts
-* ARIA attributes where appropriate
-* Focus handling
-* Visible states (focus, hover, pressed)
+You may build your components with **vanilla Web Components** (`class extends HTMLElement`) or with **[Lit](https://lit.dev)**, a small library that removes most of the boilerplate. See the [Lit lesson](../lessons/lit-element.md). **Component 1 must be vanilla**, so you understand what the platform does.
 
-# Using AI on this project
+---
 
-AI tools are good at Web Component boilerplate and bad at making components that fit **your** design system. Use them for:
+## Component 1: A Static Component
 
-* Explaining lifecycle and shadow DOM behavior you don't understand
-* Reviewing a component against the state checklist and for keyboard accessibility
-* Generating a demo page skeleton
+Built in [Web Components Part 1](../lessons/lesson-15.md). A component with **no interactivity**, only structure and style.
 
-You must write the styling yourself using your tokens, and you must be able to explain every line. Log the prompts you use in your design log.
+Examples: `<fw-badge>`, `<fw-callout>`, `<fw-avatar>`, `<fw-logo>`, or a card.
 
-# Submission Expectations
+**Must have:**
 
-Submit:
+- [ ] Vanilla JS: `class extends HTMLElement`
+- [ ] A template and a shadow DOM
+- [ ] At least one slot (default or named)
+- [ ] Styles that use only your framework's **tokens**
+- [ ] At least one **variant** set by an attribute and styled with `:host([...])`
 
-1. **Three component `.js` files**
-2. An **HTML demo page** showing each component in use
-3. A short **write-up** (1–2 paragraphs each) describing
+## Component 2: An Interactive Component
 
-   * The problem each component solves
-   * Why it belongs in your design system
-   * How it uses your framework’s styles
-   * Any future improvements you would make
-4. A `DESIGN-LOG.md` (see [Design Log](design-log.md)) with a **state matrix** for your interactive component
+Built after [Web Components Part 2](../lessons/lesson-16.md). A component the user **interacts with**, which keeps track of its own state.
 
-# Stretch Challenges (Optional, Highly Recommended)
+Examples: a toggle switch, an accordion or disclosure panel, a counter or stepper, a dismissible alert, or tabs.
 
-* Use `::part()` to allow external styling
-* Add a “variant” attribute (outline, solid, danger, etc.)
-* Expose CustomEvents with `detail` objects
-* Make one component form-associated
-* Add dark-mode support by switching CSS variables
-* Publish your components publicly (GitHub Pages, Netlify, Vercel)
+**Must have:**
 
-# **The Big Picture**
+- [ ] Event listeners (click, keydown, etc.)
+- [ ] `connectedCallback()` to add listeners, and `disconnectedCallback()` to remove them
+- [ ] At least one attribute the user can set, watched with `observedAttributes` (e.g., `open`, `value`, `checked`)
+- [ ] A `CustomEvent` that tells the page when the state changes
+- [ ] Keyboard support: it works with Tab, and Enter or Space
+- [ ] Every state from your state matrix: hover, focus-visible, active, disabled if relevant, and the component's own states (e.g., open and closed)
 
-This assignment is more than practice:
-you’re creating the beginnings of a **design system**.
+---
 
-Your CSS framework + your Web Component library together form a complete **UI toolkit**—something real teams ship, maintain, and evolve.
+## Requirements for both components
 
-# Rubric
+- **Your prefix:** `<ember-badge>`, not `<fw-badge>`. Replace `fw` with your framework's name.
+- **Your tokens:** colors, spacing, radius, type, and motion all come from your framework's custom properties. No raw values.
+- **No flash of unstyled content:** hide `:not(:defined)` components in your framework's components layer.
+- **Documented:** a usage example for each component in your README:
+  ```html
+  <ember-badge variant="success">Paid</ember-badge>
+  ```
+
+## Demo page
+
+`web-components.html` links your framework and shows **every component in every variant and state**. Put a short heading and usage example above each one, like a real design system's docs.
+
+## Submission
+
+Submit your **CSS Framework** repo to Gradescope, containing:
+
+1. `elements/` with your two component files
+2. `web-components.html`
+3. A **Web Components** section in your README. For each component: what it does, a usage example, and its attributes, slots, and events.
+4. Your `DESIGN-LOG.md` with a **state matrix** for Component 2 and the AI prompts you used
+
+## Stretch challenges
+
+- **A third, "smart" component:** a carousel, countdown timer, toast manager, character counter, or theme switcher. It uses a timer, animation, or measurement, and handles `prefers-reduced-motion`.
+- **`::part()`:** let developers style one inner element from outside.
+- **Form-associated:** make Component 2 work inside a `<form>`.
+- **Publish:** put the demo page on GitHub Pages.
+
+## Using AI on this project
+
+AI tools are good at Web Component boilerplate and bad at making components that fit **your** design system. Use them to:
+
+- Explain lifecycle and shadow DOM behavior you don't understand
+- Review a component against the state checklist and for keyboard accessibility
+- Debug errors from the console
+
+Write the styling yourself with your tokens, and be able to explain every line. Log the prompts you use in your design log.
+
+## Rubric
 
 | **Criteria** | **Does Not Meet** | **Meets Expectations** | **Exceeds Expectations** | **Points** |
 |:--|:--|:--|:--|:--:|
-| **Component Requirements** | Fewer than three components, or required features missing (slots, events, lifecycle, attributes). | All three components meet their requirements; one is vanilla. | Components are robust, configurable with attributes, and clean up after themselves. | /15 |
-| **Design System Integration** | Hard-coded styles; components don't match the framework. | Components use framework tokens through the shadow boundary (custom properties) and share its look. | Theming works automatically (dark mode, `--hue`); `::part()` and variants expose a clean styling API. | /10 |
-| **States & Accessibility** | Not keyboard usable; no focus states. | Keyboard accessible, visible focus, appropriate ARIA, full state matrix for the interactive component. | Accessibility is thoughtful (focus management, announcements, reduced motion). | /10 |
-| **Demo & Documentation** | No demo or usage docs. | Demo page shows every component and variant; usage examples and write-ups included. | Demo reads like real design system docs; published live. | /10 |
-| **Design Log** | Missing. | Decisions, state matrix, and AI use recorded. | Clear reasoning, including what was tried and rejected. | /5 |
+| **Component 1: Static** | Missing, or missing a template, shadow DOM, slot, or variant. | Vanilla, with a template, shadow DOM, slot, and an attribute variant. | Several well-designed variants and slots; feels like a finished library component. | /10 |
+| **Component 2: Interactive** | Missing, or missing events, lifecycle, attributes, or a CustomEvent. | Listeners added and removed in lifecycle callbacks, observed attributes, and a CustomEvent. | Robust: state stays in sync with attributes, and the component cleans up after itself. | /15 |
+| **Design System Integration** | Hard-coded styles; components don't match the framework. | Only tokens; the components match the framework, and the prefix is used. | Changing a token or switching to dark mode updates every component with no other changes. | /10 |
+| **States & Accessibility** | Not keyboard usable, or no focus states. | Keyboard accessible, visible focus, appropriate ARIA, and a full state matrix for Component 2. | Thoughtful focus handling and announcements; reduced motion handled. | /10 |
+| **Demo, Docs & Design Log** | No demo page or usage docs. | The demo shows every component and variant; the README documents attributes, slots, and events; the log has a state matrix and AI use. | Reads like a real design system's documentation; published live. | /5 |
 
 ### Total Points: /50
